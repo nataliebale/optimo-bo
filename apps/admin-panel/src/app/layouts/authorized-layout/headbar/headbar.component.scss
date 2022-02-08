@@ -1,0 +1,75 @@
+@import 'libs/ui/styles/src/lib/scss/variables';
+@import 'libs/ui/styles/src/lib/scss/bootstrap-override';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins/breakpoints';
+
+$header-height: 88px;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: $header-height;
+  background: $white;
+  padding-left: var(--sidebar-width);
+  // border-bottom: $border-width solid $border-color;
+
+  &__logo {
+    width: var(--sidebar-width);
+    text-align: center;
+    border-right: 1px solid $border-color;
+    height: 100%;
+    align-items: center;
+  }
+
+  &-profile {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.15s linear;
+
+    @include media-breakpoint-up(sm) {
+      width: 100%;
+      max-width: 300px;
+    }
+
+    // &.active {
+    //   background-color: #f2f8ff;
+    // }
+  }
+
+  &-dropdown {
+    position: absolute;
+    top: 123%;
+    right: 8px;
+    background-color: #fff;
+    width: 320px;
+    box-shadow: 0 19px 21px -1px rgba(10, 31, 68, 0.05);
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: -8px;
+      right: 15px;
+      width: 15px;
+      height: 15px;
+      background-color: $white;
+      border: {
+        top: $border-width solid #e6ecf5;
+        right: $border-width solid #e6ecf5;
+      }
+      transform: rotate(-45deg);
+    }
+  }
+
+  &-burger {
+    margin-left: 24px;
+    @include media-breakpoint-up(sm) {
+      margin-left: 32px;
+    }
+  }
+}

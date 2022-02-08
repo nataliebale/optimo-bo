@@ -1,0 +1,73 @@
+<div
+  class="bg-white d-block d-sm-flex align-items-sm-center border-bottom product-header"
+>
+  <div class="product-select product-search flex-grow-1 mb-3 mb-sm-0">
+    <app-icon
+      [icon]="'search'"
+      fill="#0077ff"
+      style="margin-top: -4px;"
+    ></app-icon>
+    <app-dynamic-select
+      placeholder="კატეგორიები"
+      [dataGetter]="getStockitemCategories"
+      [itemGetterById]="getStockitemCategoryById"
+      [(ngModel)]="categoryId"
+      (change)="onCategoryChange($event)"
+      class="flex-grow-1 flex-shrink-0 mw-100"
+    ></app-dynamic-select>
+  </div>
+  <div class="product-year-select flex-grow-1 flex-sm-grow-0">
+    <div
+      class="position-relative flex-grow-1 flex-md-grow-0"
+      style="width: 320px;"
+    >
+      <div
+        class="input-group"
+        (click)="onToggleDatePicker(); $event.stopPropagation()"
+      >
+        <input
+          id="rangeSelect"
+          data-hj-allow
+          class="form-control bg-transparent"
+          style="height: 42px;"
+          type="text"
+          placeholder="არჩიე პერიოდი"
+          value="{{ dateRange[0] | date }} - {{ dateRange[1] | date }}"
+          readonly
+        />
+        <div class="input-group-append">
+          <span
+            class="input-group-text bg-transparent"
+            style="width: 42px;height: 42px;"
+          >
+            <app-icon
+              style="transform: translateY(-1px);"
+              [icon]="'calendar'"
+              [fill]="'#0077ff'"
+            ></app-icon>
+          </span>
+        </div>
+      </div>
+      <app-date-picker
+        *ngIf="isDatePickerVisible"
+        clickOutside
+        (clickOutside)="onToggleDatePicker()"
+        [maxDate]="endOfToday"
+        (dateChange)="onDateChanged($event)"
+        [defaultDate]="dateRange"
+      ></app-date-picker>
+    </div>
+  </div>
+</div>
+<div class="px-0 px-sm-4 product-cards-margin">
+  <div class="product px-2">
+    <app-categories-report-card
+      [category]="category"
+    ></app-categories-report-card>
+
+    <app-categories-report-grids
+      [categoryId]="categoryId"
+      [dateRange]="dateRange"
+    ></app-categories-report-grids>
+  </div>
+</div>

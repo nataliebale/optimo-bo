@@ -1,0 +1,421 @@
+<app-header [theme]="toggleClass$ | push" [isFixed]="scrollThreshold$ | push"
+  [requestButtonVisibility]="scrollThreshold$ | push" class="header-animate header-landing"></app-header>
+<div #videoContainerElement class="video-container">
+  <div class="gradient"></div>
+  <video muted autoplay autobuffer playsinline webkit-playsinline loop oncanplay="this.play()"
+    onloadedmetadata="this.muted = true; this.play()">
+    <source src="https://cdn.optimo.ge/videos/bg_video.mp4" type="video/mp4" />
+    Your browser does not support HTML5 video.
+  </video>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 text-center">
+        <div class="font-family-medium text-white font-size-18 font-size-sm-32 mb-40">
+          {{'HomePage.VideoTitle.FirstLine' | translate}} <br>
+          {{'HomePage.VideoTitle.SecondLine' | translate}}
+        </div>
+        <a href="https://adopter.typeform.com/to/PWX3mDCB" target="_blank" (click)="onRequestDemo()"
+          class="btn btn-request-custom-hover btn-outline-primary py-12 px-32 mb-4 d-block d-sm-inline-block request-demo">{{'GENERAL.BecomeDealer'
+          | translate}}</a>
+        <a [routerLink]="'/' + translateService.currentLang+'/request-demo'" (click)="onRequest()"
+          class="btn btn-request-custom-hover btn-primary py-12 ml-sm-4 px-32 mb-4 d-block d-sm-inline-block">{{'GENERAL.RequestDemo'
+          | translate}}</a>
+      </div>
+    </div>
+  </div>
+  <div style="
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+    " class="icon-down-holder" (click)="scrollDown()">
+    <app-icon icon="down"></app-icon>
+  </div>
+</div>
+<div class="landing-body bg-white position-relative" [style.margin-top.px]="containerHeight$ | push">
+  <div class="container text-center">
+    <app-icon icon="pie-chart" [data]="{ rotate: -90 }" class="d-inline-block mb-4"></app-icon>
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3 mb-4">
+        <div class="font-size-24 text-dark font-family-semibold">
+          {{'HomePage.WhatIsOptimoSection.Question' | translate}}
+        </div>
+      </div>
+      <div class="col-md-9 offset-md-1 col-lg-8 offset-lg-2">
+        <div class="font-size-14 text-muted" style="line-height: 24px;">
+          {{'HomePage.WhatIsOptimoSection.Answer' | translate}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="border-bottom">
+      <div class="row">
+        <div
+          class="col-sm-10 offset-sm-1 offset-md-0 col-md-8 col-lg-7 d-flex justify-content-end mt-sm-40 order-2 order-md-1 mb-64 mb-md-0">
+          <div class="flex-shrink-lg-0 text-center">
+            <video isInViewport (isInViewport)="play($event)" muted autobuffer playsinline webkit-playsinline
+              onloadedmetadata="this.muted = true" class="landing-img video-1">
+              <source src="https://cdn.optimo.ge/videos/1.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <div class="col-sm-10 offset-sm-1 col-md-4 col-lg-5 offset-md-0 operators-content order-first order-md-2">
+          <div class="pl-lg-4 text-center text-lg-left mb-80 mb-sm-0 mb-md-80 mt-100 mt-md-0 mb-lg-0">
+            <div class="font-size-18 font-size-sm-24 text-center text-md-left font-family-semibold mb-4"
+              style="line-height: 42px;">
+              <div class="text-primary">{{'HomePage.WhatIsOptimoSection.EasyWithOptimo.FirstLine' | translate}}</div>
+              <div class="text-dark">{{'HomePage.WhatIsOptimoSection.EasyWithOptimo.SecondLine' | translate}}</div>
+            </div>
+            <div class="font-size-14 text-muted text-center text-md-left" style="line-height: 28px;">
+              {{'HomePage.WhatIsOptimoSection.EasyWithOptimo.Description' | translate}}
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-10 offset-sm-1 col-md-12 offset-md-0 order-3 mt-lg-40 mb-80">
+          <div class="row">
+            <div class="col-sm-4 mb-5 mb-md-0 text-center">
+              <app-icon icon="info"></app-icon>
+              <div class="font-family-semibold text-dark mt-4 mb-12">
+                {{'HomePage.WhatIsOptimoSection.OptimoIsInformative.title' | translate}}
+              </div>
+              <div class="font-size-14 text-muted" style="line-height: 21px;">
+                {{'HomePage.WhatIsOptimoSection.OptimoIsInformative.Description' | translate}}
+              </div>
+            </div>
+            <div class="col-sm-4 mb-5 mb-md-0 text-center">
+              <app-icon icon="interface"></app-icon>
+              <div class="font-family-semibold text-dark mt-4 mb-12">
+                {{'HomePage.WhatIsOptimoSection.OptimoIsIntuitive.title' | translate}}
+              </div>
+              <div class="font-size-14 text-muted" style="line-height: 21px;">
+                {{'HomePage.WhatIsOptimoSection.OptimoIsIntuitive.Description' | translate}}
+              </div>
+            </div>
+            <div class="col-sm-4 mb-5 mb-md-0 text-center">
+              <app-icon icon="development"></app-icon>
+              <div class="font-family-semibold text-dark mt-4 mb-12" style="line-height: 24px;">
+                {{'HomePage.WhatIsOptimoSection.OptimoIsDevelopmental.title' | translate}}
+              </div>
+              <div class="font-size-14 text-muted" style="line-height: 21px;">
+                {{'HomePage.WhatIsOptimoSection.OptimoIsDevelopmental.Description' | translate}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container text-center mt-60">
+    <app-icon icon="pie-chart" [data]="{
+        secondaryColor: '#FFAA31',
+        primaryColor: '#713AC9'
+      }" class="d-inline-block mb-4"></app-icon>
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3 mb-4">
+        <div class="font-size-18 font-size-sm-24 text-dark font-family-semibold">
+          {{'HomePage.ManagerWorkspaceSection.Title' | translate}}
+        </div>
+      </div>
+      <div class="col-md-9 offset-md-1 col-lg-8 offset-lg-2">
+        <div class="font-size-14 text-muted" style="line-height: 24px;">
+          {{'HomePage.ManagerWorkspaceSection.Description' | translate}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-10">
+    <div class="border-bottom">
+      <div class="row">
+        <div class="col-md-10 col-lg-5 col-xl-6 offset-md-1 offset-lg-0 business-content">
+          <div class="font-size-18 font-size-sm-24 text-center text-md-left font-family-semibold mb-4"
+            style="line-height: 42px;">
+            <div class="text-warning">{{'HomePage.ManagerWorkspaceSection.ManageYourBusiness.FirstLine' | translate}}
+            </div>
+            <div class="text-dark">{{'HomePage.ManagerWorkspaceSection.ManageYourBusiness.SecondLine' | translate}}
+            </div>
+          </div>
+          <div class="font-size-14 text-muted text-center text-md-left" style="line-height: 28px;">
+            {{'HomePage.ManagerWorkspaceSection.ManageYourBusiness.Description' | translate}}
+          </div>
+        </div>
+        <div class="col-md-10 col-lg-7 col-xl-6 offset-md-1 offset-lg-0 mb-70 mb-lg-0 text-center">
+          <!--          <img-->
+          <!--            src="/assets/images/business.png"-->
+          <!--            class="landing-img business-bg"-->
+          <!--            alt=""-->
+          <!--          />-->
+          <video isInViewport (isInViewport)="play($event)" muted autobuffer playsinline webkit-playsinline
+            onloadedmetadata="this.muted = true" class="landing-img video-2">
+            <source src="https://cdn.optimo.ge/videos/2.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="col-12 mb-80">
+          <div class="row">
+            <div class="col-sm-4 mb-5 mb-md-0 text-center">
+              <app-icon icon="control"></app-icon>
+              <div class="font-family-semibold text-dark mt-4 mb-12">
+                {{'HomePage.ManagerWorkspaceSection.WillBeConstantlyInformed.Title' | translate}}
+              </div>
+              <div class="font-size-14 text-muted" style="line-height: 21px;">
+                {{'HomePage.ManagerWorkspaceSection.WillBeConstantlyInformed.Description' | translate}}
+              </div>
+            </div>
+            <div class="col-sm-4 mb-5 mb-md-0 text-center">
+              <app-icon icon="integration"></app-icon>
+              <div class="font-family-semibold text-dark mt-4 mb-12">
+                {{'HomePage.ManagerWorkspaceSection.WillHaveIntegrationWithRS.Title' | translate}}
+              </div>
+              <div class="font-size-14 text-muted" style="line-height: 21px;">
+                {{'HomePage.ManagerWorkspaceSection.WillHaveIntegrationWithRS.Description' | translate}}
+              </div>
+            </div>
+            <div class="col-sm-4 mb-5 mb-sm-0 text-center">
+              <app-icon icon="statistics"></app-icon>
+              <div class="font-family-semibold text-dark mt-4 mb-12" style="line-height: 24px;">
+                {{'HomePage.ManagerWorkspaceSection.EasilyReadStatistics.Title' | translate}}
+              </div>
+              <div class="font-size-14 text-muted" style="line-height: 21px;">
+                {{'HomePage.ManagerWorkspaceSection.EasilyReadStatistics.Description' | translate}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container text-center mt-60">
+    <app-icon icon="pie-chart" [data]="{
+        rotate: 90,
+        secondaryColor: '#27D3A2',
+        primaryColor: '#713AC9'
+      }" class="d-inline-block mb-4"></app-icon>
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3 mb-4">
+        <div class="font-size-24 text-dark font-family-semibold">
+          {{'HomePage.CashierSection.Title' | translate}}
+        </div>
+      </div>
+      <div class="col-md-9 offset-md-1 col-lg-8 offset-lg-2">
+        <div class="font-size-14 text-muted" style="line-height: 24px;">
+          {{'HomePage.CashierSection.Description' | translate}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="border-bottom">
+      <div class="row">
+        <div
+          class="col-sm-10 offset-sm-1 offset-md-0 col-md-8 col-lg-7 d-flex justify-content-end mt-sm-40 order-2 order-md-1 mb-64 mb-md-0">
+          <div class="flex-shrink-lg-0 text-center">
+            <!--            <img-->
+            <!--              src="assets/images/operators-bg.png"-->
+            <!--              class="landing-img operators-bg"-->
+            <!--              alt=""-->
+            <!--            />-->
+            <video isInViewport (isInViewport)="play($event)" muted autobuffer playsinline webkit-playsinline
+              onloadedmetadata="this.muted = true" class="landing-img video-3">
+              <source src="https://cdn.optimo.ge/videos/3.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <div class="col-sm-10 offset-sm-1 col-md-4 col-lg-5 offset-md-0 operators-content order-first order-md-2">
+          <div class="pl-lg-4 text-center text-lg-left mb-80 mb-sm-0 mb-md-80 mt-80 mt-md-0 mb-lg-0">
+            <div class="font-size-18 font-size-sm-24 text-center text-md-left font-family-semibold mb-4"
+              style="line-height: 42px;">
+              <div class="text-success">{{'HomePage.CashierSection.SaveTimeAndSellEasily.FirstLine' | translate}}</div>
+              <div class="text-dark">{{'HomePage.CashierSection.SaveTimeAndSellEasily.SecondLine' | translate}}</div>
+            </div>
+            <div class="font-size-14 text-muted text-center text-md-left" style="line-height: 28px;">
+              {{'HomePage.CashierSection.SaveTimeAndSellEasily.Description' | translate}}
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-10 offset-sm-1 col-md-12 offset-md-0 order-3 mb-80">
+          <div class="row">
+            <div class="col-sm-4 mb-5 mb-md-0 text-center">
+              <!--              <app-icon icon="circle"></app-icon>-->
+              <app-icon icon="easy-interface"></app-icon>
+              <div class="font-family-semibold text-dark mt-4 mb-12">
+                {{'HomePage.CashierSection.EasyInterface.Title' | translate}}
+              </div>
+              <div class="font-size-14 text-muted" style="line-height: 21px;">
+                {{'HomePage.CashierSection.EasyInterface.Description' | translate}}
+              </div>
+            </div>
+            <div class="col-sm-4 mb-5 mb-md-0 text-center">
+              <app-icon icon="orders"></app-icon>
+              <div class="font-family-semibold text-dark mt-4 mb-12">
+                {{'HomePage.CashierSection.IntegratedOrders.Title' | translate}}
+              </div>
+              <div class="font-size-14 text-muted" style="line-height: 21px;">
+                {{'HomePage.CashierSection.IntegratedOrders.Description' | translate}}
+              </div>
+            </div>
+            <div class="col-sm-4 mb-5 mb-md-0 text-center">
+              <app-icon icon="next-step"></app-icon>
+              <div class="font-family-semibold text-dark mt-4 mb-12" style="line-height: 24px;">
+                {{'HomePage.CashierSection.EasyPayment.Title' | translate}}
+              </div>
+              <div class="font-size-14 text-muted" style="line-height: 21px;">
+                {{'HomePage.CashierSection.EasyPayment.Description' | translate}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container text-center mt-60">
+    <app-icon icon="pie-chart" [data]="{
+        rotate: 180,
+        secondaryColor: '#713AC9',
+        primaryColor: '#3DD7AB'
+      }" class="d-inline-block mb-4"></app-icon>
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3 mb-4">
+        <div class="font-size-18 font-size-sm-24 text-dark font-family-semibold">
+          {{'HomePage.DevicesSection.Title' | translate}}
+        </div>
+      </div>
+      <div class="col-sm-9 offset-sm-1 col-lg-8 offset-lg-2">
+        <div class="font-size-14 text-muted" style="line-height: 24px;">
+          {{'HomePage.DevicesSection.Description' | translate}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 offset-md-1 col-lg-5 col-xl-6 offset-lg-0 gadget-content">
+        <div class="pl-0 pl-lg-4">
+          <div class="font-size-18 font-size-sm-24 text-center text-md-left font-family-semibold mb-4"
+            style="line-height: 42px;">
+            <div class="text-info">{{'HomePage.DevicesSection.OptimoDevice.FirstLine' | translate}}</div>
+            <div class="text-dark">{{'HomePage.DevicesSection.OptimoDevice.SecondLine' | translate}}</div>
+          </div>
+          <div class="font-size-14 text-muted text-center text-md-left" style="line-height: 28px;">
+            {{'HomePage.DevicesSection.OptimoDevice.Description' | translate}}
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7 col-xl-6 my-50 text-center">
+        <!--        <img src="/assets/images/gadget.png" class="img-fluid" alt=""/>-->
+        <video isInViewport (isInViewport)="play($event)" muted autobuffer playsinline webkit-playsinline
+          onloadedmetadata="this.muted = true" class="landing-img video-4">
+          <source src="https://cdn.optimo.ge/videos/4.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="col-sm-4 mb-5 text-center mb-80">
+        <app-icon icon="envelope"></app-icon>
+        <div class="font-family-semibold text-dark mt-4 mb-12">
+          {{'HomePage.DevicesSection.ModernAndBudget.Title' | translate}}
+        </div>
+        <div class="font-size-14 text-muted" style="line-height: 21px;">
+          {{'HomePage.DevicesSection.ModernAndBudget.Description' | translate}}
+        </div>
+      </div>
+      <div class="col-sm-4 mb-5 text-center mb-80">
+        <app-icon icon="calendar"></app-icon>
+        <div class="font-family-semibold text-dark mt-4 mb-12">
+          {{'HomePage.DevicesSection.Flexible.Title' | translate}}
+        </div>
+        <div class="font-size-14 text-muted" style="line-height: 21px;">
+          {{'HomePage.DevicesSection.Flexible.Description' | translate}}
+        </div>
+      </div>
+      <div class="col-sm-4 mb-5 text-center mb-80">
+        <app-icon icon="flag"></app-icon>
+        <div class="font-family-semibold text-dark mt-4 mb-12" style="line-height: 24px;">
+          {{'HomePage.DevicesSection.Compatible.Title' | translate}}
+        </div>
+        <div class="font-size-14 text-muted" style="line-height: 21px;">
+          {{'HomePage.DevicesSection.Compatible.Description' | translate}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-light pt-60 pb-0 py-md-60">
+    <div class="container text-center mb-5 mb-lg-60">
+      <div class="row">
+        <div class="col-md-6 offset-md-3 mb-4">
+          <div class="font-size-18 font-size-sm-24 font-family-semibold text-dark">
+            {{'HomePage.OptimoIsAlreadyInUseSection.Title' | translate}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container text-left text-md-center">
+      <div class="row">
+        <div class="col-sm-6 col-md-3 mb-5 mb-lg-0">
+          <div class="mb-32">
+            <picture>
+              <source type="image/webp" srcset="assets/images/item-1.webp" />
+              <img src="assets/images/item-1.png" class="w-100" alt="" />
+            </picture>
+          </div>
+          <div class="font-family-semibold text-dark mb-4">
+            {{'HomePage.OptimoIsAlreadyInUseSection.AutoPartsStore' | translate}}
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3 mb-5 mb-lg-0">
+          <div class="mb-32">
+            <picture>
+              <source type="image/webp" srcset="assets/images/item-2.webp" />
+              <img src="assets/images/item-2.png" class="w-100" alt="" />
+            </picture>
+          </div>
+          <div class="font-family-semibold text-dark mb-4">{{'HomePage.OptimoIsAlreadyInUseSection.ZooShop' |
+            translate}}</div>
+
+        </div>
+        <div class="col-sm-6 col-md-3 mb-5 mb-lg-0">
+          <div class="mb-32">
+            <picture>
+              <source type="image/webp" srcset="assets/images/item-3.webp" />
+              <img src="assets/images/item-3.png" class="w-100" alt="" />
+            </picture>
+          </div>
+          <div class="font-family-semibold text-dark mb-4">
+            {{'HomePage.OptimoIsAlreadyInUseSection.GroceryStore' | translate}}
+          </div>
+
+        </div>
+        <div class="col-sm-6 col-md-3 mb-5 mb-lg-0">
+          <div class="mb-32">
+            <picture>
+              <source type="image/webp" srcset="assets/images/item-4.webp" />
+              <img src="assets/images/item-4.png" class="w-100" alt="" />
+            </picture>
+          </div>
+          <div class="font-family-semibold text-dark mb-4">
+            {{'HomePage.OptimoIsAlreadyInUseSection.HardwareStore' | translate}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-80">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+          <div class="font-size-18 font-size-sm-24 text-dark font-family-semibold mb-4">
+            {{'HomePage.BecomeTheNext' | translate}}
+          </div>
+          <div class="font-size-14 text-muted mb-40">
+            {{'HomePage.ManageAndGrowYourBusinessWithOptimo' | translate}}
+          </div>
+          <a [routerLink]="'/' + translateService.currentLang+'/request-demo'" (click)="onRequest()"
+            class="btn btn-request-custom-hover btn-primary py-12 px-32 mb-2">
+            {{'GENERAL.JoinUs' | translate}}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,123 @@
+<div class="h-100 d-flex flex-column" style="padding-bottom: 71px;">
+  <div class="d-flex align-items-center py-3 px-4" style="height: 80px;">
+    <a class="btn btn-primary btn-add mr-3" routerLink="/entity-clients/add"
+      *ngIf="selectedRows && selectedRows.length === 0">
+      <span>
+        {{'GENERAL.ADD' | translate}}
+      </span>
+    </a>
+    <button class="btn p-0 mr-2 bg-table-border-color" (click)="onEdit()"
+      [disabled]="!selectedRows || selectedRows.length !== 1" style="width: 64px; height: 42px;"
+      *ngIf="isOneRowSelected">
+      <app-icon icon="edit"></app-icon>
+    </button>
+    <button class="btn mr-2 p-0 bg-table-border-color" (click)="openRemovalDialog()"
+      [disabled]="!selectedRows || selectedRows.length === 0" style="width: 64px; height: 42px;"
+      *ngIf="isOneRowSelected || areMultipleRowsSelected">
+      <app-icon icon="trash"></app-icon>
+    </button>
+
+    <button
+      class="btn p-0 mr-2 bg-table-border-color"
+      (click)="onRSImport()"
+      style="width: 64px; height: 42px;"
+      [matTooltip]="'ENTITY_CLIENTS.RS_IMPORT'|translate"
+      *ngIf="selectedRows && selectedRows.length === 0"
+    >
+      <app-icon icon="rs" ></app-icon>
+    </button>
+    <div
+      class="d-flex align-items-center pr-3"
+      *ngIf="areNoRowsSelected"
+    >
+      <button
+        [matTooltip]="'Ingredients.ExportToExcel' | translate"
+        class="btn rounded bg-excel-export p-0 mr-2"
+        (click)="onExport()"
+        style="width: 64px; height: 42px;"
+      >
+        <!-- product-report-chart-header-export-button -->
+        <app-icon icon="excel"> </app-icon>
+      </button>
+    </div>
+
+  </div>
+  <div class="bg-white flex-grow-1">
+    <app-table
+      #table
+      [dataSource]="dataSource"
+      [totalCount]="totalCount"
+      [state]="currentState"
+      [selectable]="true"
+      [paginable]="true"
+      [actions]="{ editable: isRowSelectable, deletable: isRowSelectable, activatable: null }"
+      defaultSort="id"
+      defaultSortDirection="DESC"
+      [displayedColumns]="displayedColumns"
+      (stateChanged)="onTableStateChanged($event)"
+      (selectionChanged)="onSelectionChanged($event)"
+      (showHideToggle)="showHide($event)"
+      (rowEdit)="onEdit($event)"
+      (rowDelete)="openRemovalDialog($event)"
+      (rowActivate)="onToggleActivate($event)"
+      [selectableCustomEnable]="isRowSelectable"
+      class="table-inventory table-th-2-b-0 action-control-w-auto">
+
+      <ng-template app-cell let-cell="cell" let-row="row" name="entityNameOrIdentifier">
+        <div class="line-height-normal">
+          <span
+			[matTooltip]="row.entityName"
+			#ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+            class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1"
+          >
+            {{ row.entityName }}
+          </span>
+          <br>
+          <span
+			[matTooltip]="row.entityIdentifier"
+			#ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+            class="text-truncate mw-100 d-inline-block table-text-dark"
+          >
+            {{ row.entityIdentifier }}
+          </span>
+        </div>
+      </ng-template>
+
+      <ng-template app-header-cell let-row="row" name="dashboardPriority">
+        <button
+          type="button"
+          class="btn p-0 bg-transparent mx-auto"
+          [matTooltip]="activatedHeaderTooltip | translate"
+          (click)="onActivateCol(); $event.stopPropagation()"
+        >
+          <app-icon
+            [icon]="activateHeaderIcon"
+            class="icon-dashboard-light"
+          ></app-icon>
+        </button>
+      </ng-template>
+
+      <ng-template
+        app-cell
+        let-cell="cell"
+        let-row="row"
+        name="dashboardPriority"
+        class="abcd"
+      >
+        <div class="d-flex">
+          <button
+            type="button"
+            class="btn p-0 bg-transparent"
+            [matTooltip]="getActivatedTitle(row) | translate"
+            (click)="onToggleActivate(row); $event.stopPropagation()"
+          >
+            <app-icon
+              [icon]="isActivated(row) ? 'full-star' : 'empty-star'"
+              class="icon-dashboard-light"
+            ></app-icon>
+          </button>
+        </div>
+      </ng-template>
+    </app-table>
+  </div>
+</div>

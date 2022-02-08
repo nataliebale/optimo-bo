@@ -1,0 +1,63 @@
+<app-column
+  [dataField]="col.dataField"
+  [caption]="col.caption"
+  [asyncCaption]="col.asyncCaption"
+  [sortable]="col.sortable"
+  [widthPercent]="col.widthPercent"
+  [isHeaderRight]="!col.sortable"
+  (cellClick)="cellClick.emit($event)"
+>
+  <ng-template *ngIf="headerCellTmpl" #headerCell>
+    <ng-container *ngTemplateOutlet="headerCellTmpl"></ng-container>
+  </ng-template>
+
+  <ng-template #cell let-row="row">
+    <ng-container
+      *ngTemplateOutlet="
+        cellTmpl;
+        context: { cell: row[col.dataField], row: row }
+      "
+    ></ng-container>
+    <div *ngIf="!cellTmpl" class="text-truncate text-right">
+      <span [matTooltip]="row[col.dataField] | date: format" #ref1 [matTooltipDisabled]="textIsTruncated(ref1)">
+        {{ row[col.dataField] | date: format }}
+      </span>
+    </div>
+  </ng-template>
+
+  <ng-template *ngIf="col.filterable" #filterCell>
+    <div class="d-flex align-items-center" (click)="onToggleFilter($event)">
+      <input
+        data-hj-allow
+        type="text"
+        class="table-form-control"
+        placeholder="აირჩიე"
+        readonly
+        [value]="displayedFilter"
+      />
+      <app-icon
+        [icon]="'calendar'"
+        *ngIf="!displayedFilter"
+        class="th-icon"
+        style="cursor: pointer;"
+      ></app-icon>
+    </div>
+    <button
+      *ngIf="displayedFilter"
+      type="reset"
+      class="filter-reset outline-none"
+      (click)="onRangeChange(null); onSubmit(true)"
+    >
+      <app-icon icon="filter-reset"></app-icon>
+    </button>
+    <app-date-picker
+	  [isDatePickerVisible]="isFilterVisible"
+	  [showActionsAndInput]="false"
+	  (onIsDatePickerVisible)="$event ? null : onToggleFilter()"
+      [maxDate]="col.data?.maxDate"
+      [defaultDate]="dateRange"
+      (dateChange)="onRangeChange($event); onSubmit()"
+      class="date-picker-regular r-13px only-range-picker top-4px"
+    ></app-date-picker>
+  </ng-template>
+</app-column>

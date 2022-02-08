@@ -1,0 +1,33 @@
+<div 
+[ngClass]="{'header-shadow': !scrolledToTop}"
+class="header fixed-top">
+<div class="col-2 col-custsm d-flex align-items-center justify-content-start px-0">
+  <div class="d-none d-md-flex pl-4 font-size-lg-22 font-size-20 font-color-dark font-family-bold">
+  {{title | translate}}
+</div>
+<button
+  (click)="sidebarComponent.onToggleActive()"
+  class="d-flex d-md-none ml-sm-4 ml-3 btn p-0 border-0"
+>
+  <app-icon
+    icon="burger"></app-icon>
+</button>
+</div>
+<div class="col text-center px-0 d-flex d-md-none justify-content-center">
+   <a href="">
+     <img src="/assets/images/logo.svg" alt="" style="width: 116px;">
+   </a>
+</div>
+  <div class="d-flex align-items-center h-100 col justify-content-end px-0">
+    <app-headbar-location
+      class="position-relative h-100 dropdown-custom d-md-block d-none"
+    ></app-headbar-location>
+    <!-- nothing -->
+	<app-notifications></app-notifications>
+    <app-headbar-menu
+      class="h-100"
+      [userDetails]="userDetails"
+      (logout)="logout.emit()"
+    ></app-headbar-menu>
+  </div>
+</div>

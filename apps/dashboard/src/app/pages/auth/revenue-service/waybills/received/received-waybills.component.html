@@ -1,0 +1,54 @@
+<div
+  class="h-100 d-flex flex-column"
+  
+>
+  <div class="bg-white h-100">
+    <app-table
+      class="waybills-table action-control-w-auto"
+      [dataSource]="dataSource"
+      [totalCount]="totalCount"
+      [state]="currentState"
+      [selectable]="false"
+      [actions]="{ editable: true, deletable: false }"
+      [hasColumnSelector]="true"
+      defaultSort="beginDate"
+      defaultSortDirection="DESC"
+      [displayedColumns]="displayedColumns"
+      (stateChanged)="onTableStateChanged($event)"
+      (rowClick)="toQueryParam('waybillId', $event.waybillNumber)"
+      (rowEdit)="goToEdit($event)"
+    >
+      <ng-template app-cell let-cell="cell" let-row="row" name="isConfirmed">
+        <div class="d-flex flex-column line-height-normal">
+          <span
+            [matTooltip]="conditionData[cell]"
+            #ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+            class="mw-100  text-truncate table-text-dark pb-1"
+          >
+            {{ conditionData[cell] }}
+          </span>
+          <span
+          *ngIf="row.isCorrected"
+            class="text-truncate font-size-12 mw-100  table-text-muted"
+          >
+            {{'WAYBILLS.CORRECTED' | translate}}
+          </span>
+        </div>
+      </ng-template>
+      <ng-template app-cell let-cell="cell" name="status">
+        <span
+          [ngClass]="{
+            'cancelled': cell == -2,
+            'active': cell == 1,
+            'bg-secondary': cell == 0
+          }"
+          class="text-truncate cell-status"
+          [matTooltip]="statusData[cell]"
+		      #ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+        >
+          {{ statusData[cell] }}
+        </span>
+      </ng-template>
+    </app-table>
+  </div>
+</div>

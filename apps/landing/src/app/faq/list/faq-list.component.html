@@ -1,0 +1,9 @@
+<ng-container *ngIf="list">
+  <ng-container *ngFor="let item of list">
+    <div app-collapse
+      class="faq-list-item"
+      [triggerOpen]="item.id === activeFAQSlug"
+      [data]="item"
+    ></div>
+  </ng-container>
+</ng-container>

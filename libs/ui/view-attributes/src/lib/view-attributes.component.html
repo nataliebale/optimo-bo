@@ -1,0 +1,49 @@
+<div class="w-100 h-100 position-relative">
+    <div class="d-flex align-items-center">
+        <div class="flex-grow-1 d-flex pr-4 justify-content-between">
+           <div
+        *ngFor="let item of primaryItems"
+        class="col px-0 line-height-normal  "
+        style="max-width:210px;"
+    >
+        <optimo-attribute-item class="mw-100"
+            [item]="item"
+        >
+        </optimo-attribute-item>
+      </div>  
+        </div>
+     
+      <button 
+        *ngIf="hasAdditionalItems"
+        (click)="toggleAdditionalItems(); $event.stopPropagation();"
+        class="btn btn-view-btn bg-table-border-color rounded-circle p-0 ">
+
+        <app-icon icon="more-dots"></app-icon>
+
+    </button>
+   </div>
+
+    
+    <div
+        *ngIf="additionalItemsShown"
+        class="position-absolute border border-table-border-color view-dropdown rounded bg-white py-1"
+        clickoutside
+        (clickOutside)="closeAdditionalItems()"
+    >
+     
+        <div
+            *ngFor="let item of additionalItems"
+            class="col line-height-normal pl-2 d-flex align-items-center"
+            style="height: 60px;"
+        >
+            <optimo-attribute-item 
+                class="mw-100"
+                [item]="item"
+            >
+            </optimo-attribute-item>
+        </div>
+    
+
+
+    </div>
+</div>

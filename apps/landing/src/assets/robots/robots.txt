@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://optimo.ge/sitemap.xml

@@ -1,0 +1,1281 @@
+﻿{
+  "HOME": {
+    "TITLE": "Заголовок дома  (for testing)",
+    "SELECT": "Выбрать (for testing)"
+  },
+  "DefaultApproveDialog": {
+    "title": "Вы действительно хотите отменить?",
+    "titleForDelete": "Вы действительно хотите удалить?",
+    "message": "В случае отмены изменения не будут сохранены.",
+    "yes": "Да",
+    "no": "Нет"
+  },
+  "BUTTON_LABELS": {
+    "CANCEL": "Отменить",
+    "SAVE": "Сохранить",
+    "YES": "Да",
+    "NO": "Нет"
+  },
+  "SPECIAL_LABELS": {
+    "OTHERS": "Другое"
+  },
+  "GENERAL": {
+    "NAME_SLASH_BARCODE": "Наименование/Баркод",
+    "CONFIRM": "Подтвердить",
+    "NAME": "Наименование",
+    "NAME_2": "Имя",
+    "LAST_NAME": "Фамилия",
+    "SELECT": "Выбрать",
+    "QUANTITY": "Количество",
+    "AMOUNT_OF_MONEY": "Сумма",
+    "INCOME": "Доход",
+    "PROFIT": "Прибыль",
+    "PROFIT_PERCENT": "Наценка (%)",
+    "CASH": "Наличный",
+    "CREDIT": "Безналичный",
+    "CONSIGNATION": "Консигнация",
+    "MAIN": "Главное",
+    "PRODUCTS": "Продукты",
+    "CATEGORIES": "Категории",
+    "TRANSPORTATIONS": "Перевозки",
+    "INVENTORISATION": "Инвентаризация",
+    "SUPPLIERS": "Поставщики",
+    "PURCHASES": "Закупки",
+    "PURCHASE": "Покупка",
+    "QUICK_PURCHASE": "Быстрая покупка",
+    "WAYBILLS": "Накладные",
+    "LOTS": "Партии",
+    "ENITYT_SALES": "Продажи юридическим лицам",
+    "SALES": "Продажи",
+    "BUYERS": "Покупатели",
+    "PRODUCTION": "Производство",
+    "INGREDIENTS": "Ингредиенты",
+    "RECEIPT_TEMPLATES": "Шаблон квитанции",
+    "RECEIPTS": "Квитанции",
+    "PRODUCTION_ORDERS": "Подготовка",
+    "ACCOUNTING": "Бухгалтерия",
+    "STOCK_HOLDINGS": "Остаток",
+    "REPORTS": "Отчеты",
+    "GLOVO": "Глoво",
+    "GLOVO_PRODUCTS": "Продукты",
+    "GLOVO_SUBCATEGORIES": "Подкатегории",
+    "TRANSACTIONS": "Транзакции",
+    "SUPPLIES": "Запасы",
+    "PRICES": "Цены",
+    "WITHDRAWALS": "Выдача суммы",
+    "SHIFTS": "Смены",
+    "STATISTICS": "Статистика",
+    "GENERAL": "Общее",
+    "ADMINSTRATION": "Администрирование",
+    "PROFILE": "Профиль",
+    "WORKERS": "Сотрудники",
+    "BRANCHES": "Филиалы",
+    "SUB_USERS": "Субпользователи",
+    "HELP": "Помощь",
+    "TABLES": "Таблицы",
+    "ADD": "Добавить",
+    "DELETE": "Удалить",
+    "EDIT": "Редактировать",
+    "SAVE": "Сохранить",
+    "RECEIVE": "Получить",
+    "ORDER": "Заказать",
+    "CANCEL": "Отменить",
+    "SIGN_OUT": "Выйти из системы",
+    "CONTINUE": "Продолжить",
+    "EMAIL": "Электронная почта",
+    "MARGIN": "Наценка",
+    "VAT": "НДС",
+    "DISTRIBUTOR": "Поставщик",
+    "CATEGORY": "Категория",
+    "APPROVE_DELETE": "Вы действительно хотите удалить?",
+    "APPROVE_STOCKITEM_DELETE_MULTIPLE_LOCATIONS": "В случае удаления, товар будет удален из всех локаций",
+    "APPROVE_SUPPLIER_DELETE_MULTIPLE_LOCATIONS": "В случае удаления, поставщики будет удален из всех локаций",
+    "APPROVE_INGREDIENT_DELETE_MULTIPLE_LOCATIONS": "В случае удаления, ингредиент будет удален из всех локаций",
+    "APPROVE_RECEIPT_TEMPLATE_DELETE_MULTIPLE_LOCATIONS": "В случае удаления, шаблон квитанции будет удален из всех локаций",
+    "APPROVE_RECEIPT_DELETE_MULTIPLE_LOCATIONS": "В случае удаления, квитанция будет удалена из всех локаций",
+    "DESCRIPTION": "Описание",
+    "QUANTITY_IN_STOCK": "Наличное количество",
+    "DOWNLOAD": "Скачать",
+    "SYNC": "Синхронизация",
+    "FILL_IN_EMPTY_INPUTS": "Заполните пропущенные поля",
+    "GENERAL_INFO": "Общая информация",
+    "MIN_ACCEPTABLE_RESOLUTION": "Минимальный допустимый размер",
+    "ADDITIONAL_INFO": "Дополнительная информация",
+    "IMEI_CODE": "Серийный код",
+    "COLOR": "Цвет",
+    "SIZE": "Размер",
+    "PRODUCT": "Продукт",
+    "DATE": "Дата",
+    "BACK": "Назад",
+    "IMPORT": "Импортировать",
+    "PHONE_NUMBER": "Номер телефона",
+    "PHONE": "Телефон",
+    "MANAGER": "Менеджер",
+    "ADDRESS": "Адрес",
+    "BARCODE": "Баркод",
+    "UNIT_PRICE": "Продажная цена",
+    "INFORMATION": "Информация",
+    "SHIPPING": "Перевозка",
+    "STOCK": "Запас",
+    "UNIT": "Единица",
+    "COST": "Стоимость",
+    "INGREDIENT": "Ингредиент",
+    "TOTAL_COST": "Суммарная стоимость",
+    "BARCODE_SLASH_SKU": "Баркод/Единица складского учета (SKU)",
+    "BACKBTN": "Назад",
+    "STATUS": "Статус",
+    "RECEIPT": "Квитанция",
+    "USER": "Пользователь",
+    "VAT_TYPE": "Вид НДС",
+    "TOTAL_VAT": "Суммарный размер НДС",
+    "TYPE": "Тип",
+    "THE_DATA_IS_EMPTY": "Данные пустые"
+  },
+  "PLACEHOLDER": {
+    "TEXT_INPUT": "Введите текст",
+    "BACK": "Назад",
+    "CONTINUE": "Продолжить",
+    "IMPORT": "Импортировать",
+    "CONFIRM": "Подтвердить"
+  },
+  "MAIN": {
+    "TOTAL_COST": "Общая себестоимость",
+    "TOTAL_PRICE": "Суммарная продажная цена",
+    "TOTAL_MARGIN": "Наценка",
+    "CARDS": {
+      "TOTAL_INCOME": {
+        "TOTAL_INCOME": "Общий доход "
+      },
+      "PROFIT": {
+        "PROFIT": "Прибыль"
+      },
+      "INCOME": {
+        "ACCORDING_TO_ACCOUNT": "по расчету"
+      },
+      "BOG_LOAN": {
+        "TEXT1": "Запросите в Банке Грузии кредит",
+        "TEXT2": "расчитанный с учетом специфики вашего бизнеса",
+        "BUTTON_LABEL": "Запроси кредит"
+      },
+      "POPULAR_PRODUCTS": {
+        "TITLE": "Популярные продукты",
+        "TABLE": {
+          "NAME": "Наименование",
+          "QUANTITY": "Количество",
+          "AMOUNT_OF_MONEY": "Сумма"
+        },
+        "SEE_MORE": "Смотреть подробнее"
+      },
+      "STOCK_HOLDINGS": {
+        "TITLE": "Показатель запасов",
+        "TABLE": {
+          "NAME": "Наименование",
+          "QUANTITY": "Количество"
+        },
+        "SEE_MORE": "Смотреть подробнее"
+      },
+      "UPCOMING_PURCHASE": {
+        "TITLE": "Предстоящие закупки",
+        "TABLE": {
+          "NAME": "Наименование",
+          "DISTRIBUTOR": "Поставщик",
+          "TOTAL_AMOUNT": "Общая сумма",
+          "DATE": "Дата"
+        }
+      }
+    }
+  },
+  "PROFILE": {
+    "LANGUAGE": "Язык",
+    "CHANGE_PASSWORD": "Изменить пароль",
+    "RS_PARAMETERS": "RS-параметры",
+    "GENERAL_INFO": "Общая информация",
+    "BRAND_NAME": "Наименование бренда",
+    "COMPANY_NAME": "Название компании",
+    "IDENTIFICATION_NUMBER": "Идентификационный номер",
+    "REGISTRATION_DATE": "Дата регистрации",
+    "FIELD_OF_OPERATION": "Сфера деятельности",
+    "VAT_PAYER": "Плательщик НДС",
+    "CONTACT_INFO": "Контактная информация",
+    "PHONE_NUMBER": "Номер телефона",
+    "LEGAL_ADDRESS": "Юридический адрес",
+    "REAL_ADDRESS": "Фактический адрес",
+    "CONFIGURATION": "Конфигурация",
+    "GLOVO_INTEGRATION": "Интеграция на Glovo",
+    "SERVICE_TAX_PERCENT": "Процент за услуги",
+    "ENTITY_SALES": "Продажи юридическому лицу",
+    "PASSWORD_CHANGE_SUCCESS": "Пароль успешно изменен",
+    "EXISTING_PASSWORD": "Текущий пароль",
+    "NEW_PASSWORD": "Новый пароль",
+    "REPEAT_NEW_PASSWORD": "Подтвердить новый пароль",
+    "NAME": "Имя",
+    "PASSWORD": "Пароль",
+    "GLOVO_PERCENT": "გლოვოს პროცენტი",
+    "OPTIMO_PERCENT": "ოპტიმოს პროცენტი"
+  },
+  "LOCATIONS": {
+    "MAIN_LOCATION": "Основное",
+    "NOTIFICATION": {
+      "RECORD_DELETE_SUCCESSFULLY": "Запись успешно удалена"
+    },
+    "ALL_LOCATION": "Все",
+    "EDIT": {
+      "EDIT_LOCATION": "Редактировать филиалы",
+      "ADD_LOCATION": "Добавить филиал",
+      "LOCATION_NAME": "Название филиала",
+      "EXTRA_SALES": "экстра-продажи"
+    }
+  },
+  "INVENTORY": {
+    "UNIT_COST_SHORT": "Закупочная цена",
+    "UNIT_PRICE": "Продажная цена",
+    "SYNC_PRICES": "Синхронизация цен",
+    "CHANGE_PRICES": "Изменение цен",
+    "RS_IMPORT": "Скачивание с RS",
+    "UPLOAD_PRODUCTS": "Загрузить продукты",
+    "FORM_DOWNLOAD": "Скачать форму",
+    "FORM_UPLOAD": "Загрузить форму",
+    "EXPORT_FOR_SCALE": "Экспорт для весов",
+    "EXPORT_TO_EXCEL": "Экспортировать в Эксел",
+    "PRINT_BARCODE": "Распечатать баркод",
+    "ADD_TO_FAVORITES": "Добавить в Избранное",
+    "REMOVE_FROM_FAVORITES": "Удалить из Избранного",
+    "PRODUCT_DOWNLOAD_IN_PROCESS": "Идет скачивание продуктов",
+    "DO_YOU_REALLY_WANT_TO_DEACTIVATE": "Вы действительно хотите осуществить деактивацию?",
+    "BUTTON_CONFIRM": "Да",
+    "BUTTON_DENY": "Нет",
+    "PRODUCT_DELETE_SUCCESS": "Товар успешно удален",
+    "POPUPS": {
+      "UPLOADING_PRODUCTS": "Идет загрузка продуктов",
+      "SOME_PRODUCTS_UPLOAD_FAILED": "Некоторые продукты не были загружены",
+      "DOWNLOAD_FILL_REUPLOAD": "Для загрузки всех продуктов скачайте и заполните форму заново.",
+      "DUPLICATED_PRODUCTS": "Дублированные продукты",
+      "ERRORED_PRODUCTS": "Незагруженные продукты",
+      "PRICE_CHANGED_PRODUCTS": "Продукты с измененными ценами",
+      "SYNC_PRICES_WARNING": "Продажная цена на все продукты в данном филиале будет обновляться в соответствии с выбранным филиалом.",
+      "IMPORT_NOTIFICATION_ERROR": "Загрузка продуктов не осуществилась",
+      "IMPORT_NOTIFICATION_SUCCESS": "Все продукты были успешно загружены",
+      "CHOOSE_TIME_INTERVAL": "Выберите временной период"
+    },
+    "EDIT": {
+      "PRODUCT_EDIT_TITLE_PREFIX": "Продукт",
+      "ADD_CATEGORY": "Добавить категорию",
+      "BARCODE_SLASH_SKU": "Баркод/SKU",
+      "ADD_DISTRIBUTOR": "Добавить поставщика",
+      "PRICES_AND_SUPPLIES": "Цены и Запасы",
+      "CURRENT_SUPPLY": "Текущий запас",
+      "MIN_SUPPLY_THRESHOLD": "Минимальный запас",
+      "UNIT_COST": "Закупочная стоимость",
+      "UNIT_PRICE": "Продажная цена",
+      "PRICE_UPDATE_DATE": "Дата обновления цены",
+      "PRICE_WILL_UPDATE_ON_NEXT_SYNC": "Цена будет обновлена при следующей синхронизации",
+      "PRICE_WILL_UPDATE": "Цена будет обновлена",
+      "VAT_TYPE": "Вид НДС",
+      "SIZE_COLOR_GROUP_ID": "Размер, цвет, ID группы",
+      "ADD_PRODUCT": "Добавить продукт",
+      "BARCODE_ALREADY_EXISTS_WARNING": "Баркод уже существует, хотите продолжить?",
+      "SAVE_WARNING": "Вы действительно хотите сохранить",
+      "PRODUCT_ADD_SUCCESS": "Продукт успешно добавлен",
+      "PRODUCT_UPDATE_SUCCESS": "продукт успешно обновлен",
+      "CANCEL_TITLE": "Вы действительно хотите отменить",
+      "CANCEL_MESSAGE": "В случае отмены изменения не будут сохранены",
+      "IMEI_ALREADY_EXISTS": "Данный код уже существует"
+    },
+    "IMEI": {
+      "POPUP_TITLE_PREFIX": "Серийного кода",
+      "WRITE_IMEI": "Введите код"
+    },
+    "TOOLTIPS": {
+      "SELECT_PRICE_CHANGE_DATE": "Выберите дату обновления цен"
+    }
+  },
+  "CATEGORIES": {
+    "LIST": {
+      "TABLECOLUMNS": {
+        "TITLE": "Наименование",
+        "TOTALUNITS": "Общее количество единиц",
+        "TOTALCOST": "Общая стоимость",
+        "ASSORTMENT": "Ассортимент"
+      }
+    },
+    "ITEM": {
+      "TABLECOLUMNS": {
+        "TITLE": "Наименование",
+        "QUANTITY": "Количество",
+        "UNITCOST": "Закупочная цена"
+      },
+      "CATEGORYATTRIBUTEITEMS": {
+        "TOTALQUANTITYONHAND": "Общее количество единиц",
+        "TOTALCOST": "Суммарная стоимость",
+        "ASSORTMENT": "Ассортимент"
+      }
+    },
+    "ADDOREDITMODAL": {
+      "ADDCATEGORY": "Добавить категорию",
+      "EDITCATEGORY": "Редактировать категорию",
+      "TITLE": "Наименование",
+      "MINIMUMALLOWABLEDIMENSIONS": "Минимально допустимые размеры"
+    }
+  },
+  "OPERATORS": {
+    "PERMISSIONS": "Полномочия",
+    "LAST_LOGIN_DATE": "Дата последнего входа",
+    "GENERATE_CODE": "Генерировать кода",
+    "NOTIFICATIONS": {
+      "OPERATOR_CAN_BE_REMOVED_AFTER_SESSION_ENDS": "Сотрудник может быть удален после закрытия сессии"
+    },
+    "VIEW": {
+      "ADD_OPERATOR": "Добавить сотрудника",
+      "EDIT_OPERATOR": "Редактировать сотрудника",
+      "OPERATOR_NAME": "Имя сотрудника",
+      "OPERATOR_CAN_DO": "Возможности сотрудника:",
+      "PIN_CODE": "PIN-код"
+    },
+    "TMP_PRIVILAGE": {
+      "PRODUCT_DELETE": "Удаление продукта",
+      "TEMPORARY_CODE": "Временный код"
+    },
+    "PERMISSION_VALUES": {
+      "CanReceivePurchaseOrders": "Возможность получения заказа на закупку",
+      "CanSetDiscount": "Установление скидки",
+      "CanChangePrice": "Изменение цены",
+      "CanDeleteFromBasket": "Удаление продукта из заказа",
+      "CanDeleteBasket": "Удаление заказа",
+      "CanSeeAllOrders": "Просмотр и изменение всех заказов",
+      "CanOrder": "Оформление заказа",
+      "CanOpenShift": "Открытие и закрытие смены",
+      "CanSeeShiftSums": "Просмотр выручки за смену",
+      "CanWithdrawCash": "Выдача наличных средств"
+    }
+  },
+  "SUPPLIERS": {
+    "PAYMENT_METHOD_BUTTON": "Вид оплаты",
+    "RS_IMPORT_BUTTON": "Импортировать с RS",
+    "LIST": {
+      "TABLE_COLUMNS": {
+        "TITLE": "Название",
+        "CONTACT_NAME": "Контактное лицо",
+        "PHONE_NUMBER": "Номер телефона",
+        "EMAIL": "Эл.почта",
+        "LIABILITY_DEPOSIT": "Обязательство/депозит",
+        "BANK_ACCOUNT_NUMBER": "Номер банковского счета",
+        "IS_VAT_REGISTERED": "Плательщик НДС"
+      },
+      "FILTER_OPTIONS": {
+        "YES": "Да",
+        "NO": "Нет"
+      }
+    },
+    "ITEM": {
+      "DETAILS": {
+        "ADD_SUPPLIER": "Добавить поставщика",
+        "EDIT_SUPPLIER": "Редактировать поставщика",
+        "GLOBAL_ERROR_MESSAGE": "Заполните пропущенные поля",
+        "EMAIL_ERROR_MESSAGE": "Введите правильный адрес Эл. почты",
+        "UNIT_PRICE_ERROR_MESSAGE": "Цена покупки товара выше, чем цена продажи.",
+        "PHONE_ERROR_MESSAGE": "Введите как минимум 9 цифр",
+        "BANK_ACCOUNT_ERROR_MESSAGE": "Введите как минимум 22 цифры",
+        "GENERAL_INFO": "Общая информация",
+        "TITLE": "Название",
+        "INN": "Идентификационный код",
+        "CONTACT_NAME": "Контактное лицо",
+        "PHONE_NUMBER": "Номер телефона",
+        "EMAIL": "Эл.почта",
+        "BANK_ACCOUNT_NUMBER": "Номер банковсвого счета",
+        "IS_VAT_REGISTERED": "Плательщик НДС",
+        "ADD_PRODUCT": "Добавить продукт",
+        "STOCKITEMS_LIST": {
+          "LABEL": "Выбрать продукт",
+          "TABLE_COLUMNS": {
+            "TITLE": "Наименование",
+            "CATEGORY": "Категория",
+            "UNIT_COST": "Себестоимость"
+          }
+        }
+      },
+      "LIST": {
+        "LABEL": "Выбрать продукт",
+        "TABLE_COLUMNS": {
+          "TITLE": "Наименование",
+          "QUANTITY": "Количество",
+          "UNIT_COST": "Стоимость закупки"
+        }
+      },
+      "ATTRIBUTES": {
+        "CONTACT_NAME": "Контактное лицо",
+        "PHONE_NUMBER": "Номер телефона",
+        "EMAIL": "Эл. почта",
+        "INN": "Идентификационный код",
+        "BANK_ACCOUNT_NUMBER": "Номер банковского счета",
+        "IS_VAT_REGISTERED": "Плательщик НДС",
+        "YES": "Да",
+        "NO": "Нет"
+      }
+    },
+    "SUPPLIER_PRODUCTS": {
+      "ADD-SUPPLIER_PRODUCTS": "Добавить продукцию поставщика",
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "TITLE": "Наименование",
+          "UNIT_COST": "Себестоимость"
+        }
+      }
+    },
+    "SUPPLIER_IMPORT": {
+      "SUCCESS_MESSAGE": "Поставщик добавлен",
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "TITLE": "Наименование",
+          "SELLER_IIN": "Идентификационный код"
+        }
+      }
+    },
+    "TRANSACTIONS": {
+      "CASH": "Наличный расчет",
+      "CARD": "Безналичный расчет",
+      "SUCCESS_MESSAGE": "Расчет осуществлен",
+      "PAYMENT": "Оплата",
+      "PAYMENT_TYPE": "Вид оплаты",
+      "ENTER_THE_AMOUNT": "Введите сумму"
+    },
+    "UPDATE_SUCCESSFULLY_MESSAGE": "Поставщик успешно обновлен",
+    "ADDED_SUCCESSFULLY_MESSAGE": "Поставщик успешно добавлен",
+    "DELETED_SUCCESSFULLY_MESSAGE": "Поставщик успешно удален"
+  },
+  "ORDERS": {
+    "DUPLICATE_ORDER": "Дублировать заказ",
+    "RECEIVE_ORDER": "Получить заказ",
+    "ROLLBACK": "ROLLBACK",
+    "EXPORT_LOADING_POPUP_TEXT": "Идет загрузка закупок",
+    "EXPORT_ORDERS": "Экспортировать закупки",
+    "LIST": {
+      "TABLE_COLUMNS": {
+        "TITLE": "Название",
+        "COMPANY": "Компания",
+        "STATUS": "Статус",
+        "QUANTITY": "Количество",
+        "TOTAL_COST": "Общая сумма",
+        "IS_APPROVED": "Подтверждающий документ",
+        "DATE": "Дата",
+        "APPROVED": {
+          "YES": "Да",
+          "NO": "Нет"
+        }
+      }
+    },
+    "ITEM": {
+      "DETAILS": {
+        "ADD_ORDER": "Добавить заказ",
+        "ADD_QUICK_ORDER": "Добавить быструю покупку",
+        "EDIT_ORDER": "Редактировать заказ",
+        "DUPLICATE_ORDER": "Дублировать заказ",
+        "RECEIVE_ORDER": "Получить заказ",
+        "GLOBAL_ERROR_MESSAGE": "Заполнить пропущенные поля",
+        "GENERAL_INFO": "Общая информация",
+        "TITLE": "Наименование",
+        "SUPPLIER": "Поставщик",
+        "PAYMENT_TYPE": "Метод оплаты",
+        "ORDER_RECEIVE_DATE": "Дата доставки заказа",
+        "IS_APPROVED": "Наличие подтверждающего документа",
+        "ADD_PRODUCT": "Добавить продукт",
+        "ORDER_GENERATED_NAME_PREFIX": "Заказ",
+        "ENTER_FUTURE_DATE": "Ввести будущую дату ",
+        "SUPPLIER_CHANGE_DIALOG_TITLE": "В случае изменения поставщика продукт не будет сохранен, хотите продолжить?",
+        "LOADING_POPUP_TEXT": "Идет загрузка продуктов",
+        "UPLOAD_PRODUCTS": "Загрузить продукты",
+        "UPLOAD_FORM": "Загрузить форму",
+        "CLEAR_FILE_SUCCESS_NOTIFICATION": "Продукты успешно удалены",
+        "UPLOAD_FILE_SUCCESS_NOTIFICATION": "Продукты успешно загружены",
+        "UPLOAD_FAILED_DIALOG": {
+          "TITLE": "Загрузка продуктов не была осуществлена",
+          "BODY": "Для успешной загрузки всех продуктов скачайте и заполните форму заново.",
+          "DUPLICATED_PRODUCTS": "Дублированные продукты",
+          "ASSORTMENT_PRODUCTS": "Продукты в ассортименте",
+          "FAILED_TO_UPLOAD_PRODUCTS": "Продукты, которые не были загружены",
+          "CANCEL_BUTTON_LABEL": "Отменить",
+          "DOWNLOAD_BUTTON_LABEL": "Скачать"
+        },
+        "APPROVE_RECEIVE_DIALOG": {
+          "TITLE": "Вы действительно хотите получить продукт?",
+          "APPROVE_LABEL": "Получить",
+          "DENY_LABEL": "Отменить"
+        },
+        "STOCKITEMS_LIST": {
+          "LABEL": "Выберите продукт",
+          "TOTAL_UNIT_COST": "Общая стоимость единицы продукции",
+          "TABLE_COLUMNS": {
+            "TITLE": "Наименование",
+            "QUANTITY": "Количество в наличии",
+            "ORDERED_QUANTITY": "Заказное количество",
+            "UNIT_COST": "Стоимость единицы продукции",
+            "TOTAL_COST": "Общая стоимость",
+            "UNIT_PRICE": "Цена за единицу продукции"
+          }
+        }
+      },
+      "LIST": {
+        "LABEL": "Выберите продукт",
+        "TABLE_COLUMNS": {
+          "TITLE": "Наименование",
+          "QUANTITY": "Количество",
+          "UNIT_COST": "Стоимость единицы"
+        }
+      },
+      "ATTRIBUTES": {
+        "CONTACT_NAME": "Контактное лицо",
+        "PHONE_NUMBER": "номер телефона",
+        "EMAIL": "Эл.почта",
+        "INN": "Идентификационный код",
+        "BANK_ACCOUNT_NUMBER": "номер банковского счета",
+        "IS_VAT_REGISTERED": "Плательщик НДС",
+        "YES": "Да",
+        "NO": "Нет"
+      }
+    },
+    "SUPPLIER_PRODUCTS": {
+      "ADD-SUPPLIER_PRODUCTS": "Добавить продукт поставщика",
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "TITLE": "Название",
+          "UNIT_COST": "Себестоимость"
+        }
+      }
+    },
+    "SUPPLIER_IMPORT": {
+      "SUCCESS_MESSAGE": "Поставщик успешно добавлен",
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "TITLE": "Название поставщика",
+          "SELLER_IIN": "Идентификационный код"
+        }
+      }
+    },
+    "TRANSACTIONS": {
+      "CASH": "Наличный расчет",
+      "CARD": "Безналичный расчет",
+      "SUCCESS_MESSAGE": "Расчет успешно осуществлен",
+      "PAYMENT": "Расчет",
+      "PAYMENT_TYPE": "Вид расчета",
+      "ENTER_THE_AMOUNT": "Введите сумму"
+    }
+  },
+  "WAYBILLS": {
+    "RECEIVED": "Полученные",
+    "ISSUED": "Выданные",
+    "LAST_DAYS": "за последние 3 дня",
+    "ALL_ITEMS": "Все записи",
+    "CORRECTED": "Корректированные",
+    "RS_ERROR_MESSAGE": "RS: Зафиксирована ошибка",
+    "IMPORT_LOADING_FROM_RS": "Идет загрузка накладной с RS",
+    "RECEIVED_WAYBILLS": {
+      "REGISTERED_ORDERS": "Зарегистрированные заказы",
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "WAYBILL_NUMBER": "Номер накладной",
+          "IS_CONFIRMED": "Состояние",
+          "STATUS": "Статус",
+          "TYPE": "Вид",
+          "SELLER_NAME": "Название организации-продавца",
+          "FULL_AMOUNT": "Полная сумма",
+          "ACTIVATE_DATE": "Дата активации",
+          "DELIVERY_DATE": "Дата доставки",
+          "END_ADDRESS": "Конечный адрес"
+        }
+      },
+      "ITEM": {
+        "CREATE_ORDER": "Создать заказ",
+        "CREATE": "Создать",
+        "CHOOSE": "Выбрать",
+        "TITLE": "Название",
+        "EXPECTED_RECEIVE_DATE": "Предполагаемая дата получения заказа",
+        "PAYMENT_METHOD": "Метод оплаты",
+        "BUY": "Закупка",
+        "CONNECT_ORDER_MESSAGE": "Вы не связали заказ. Хотите связать?",
+        "EDIT_WAYBILL": "Редактировать накладную",
+        "WAYBILL": "Накладная",
+        "ORDER": "Заказ",
+        "SUPPLIER": "Поставщик",
+        "ADD_SUPPLIER": "Добавить поставщика",
+        "ERROR_MESSAGE": "Единица продукции, указанная в накладной, отличается от оптимо",
+        "ADD_PRODUCT": "Добавить продукт",
+        "FULL_AMOUNT": "Полная сумма",
+        "DETAILS": {
+          "LIST": {
+            "TABLE_COLUMNS": {
+              "ORDERS": "Заказы",
+              "STATUS": "Статус",
+              "WB_NAME": "Наименование",
+              "WB_QUANTITY": "Количество",
+              "WB_UNIT_OF_MEASUREMENT": "Единица измерения",
+              "WB_UNIT_COST": "Себестоимость единицы",
+              "WB_TOTAL_COST": "Общая стоимость",
+              "PO_NAME": "Наименование",
+              "PO_QUANTITY": "Количество",
+              "PO_UNIT_OF_MEASUREMENT": "Единица измерения",
+              "PO_UNIT_COST": "Себестоимость единицы",
+              "PO_TOTAL_COST": "Общая стоимость",
+              "PO_UNIT_PRICE": "Цена за единицу",
+              "PO_MARGIN": "Наценка"
+            },
+            "WB_BOX_QUANTITY_TOOLTIP": "Для разбивки ящика или упаковки укажите количество единиц"
+          }
+        },
+        "LIST": {
+          "TABLE_COLUMNS": {
+            "BARCODE": "Баркод",
+            "WB_NAME": "Название",
+            "QUANTITY": "Количество",
+            "UNIT_OF_MEASUREMENT": "Единица измерения",
+            "UNIT_PRICE": "Цена единицы",
+            "TOTAL_COST": "Общая стоимость",
+            "VAT_TYPE": "Вид налогообложения"
+          }
+        },
+        "ATTRIBUTES": {
+          "SELLER_NAME": "Название поставщика",
+          "SELLER_INN": "Идентификационный код",
+          "END_ADDRESS": "Конечный адрес"
+        }
+      }
+    },
+    "ISSUED_WAYBILLS": {
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "WAYBILL_NUMBER": "Номер накладной",
+          "IS_CONFIRMED": "Состояние",
+          "STATUS": "Статус",
+          "TYPE": "Тип",
+          "SELLER_NAME": "Название организации-продавца",
+          "FULL_AMOUNT": "Полнгая сумма",
+          "ACTIVATE_DATE": "Дата активации",
+          "DELIVERY_DATE": "Дата доставки",
+          "END_ADDRESS": "Конечный адрес"
+        }
+      }
+    }
+  },
+  "LOTS": {
+    "GENERAL": "Общее",
+    "PRODUCTS": "Продукция",
+    "EXCEL_IMPORT": "Экспортировать в Эксел",
+    "GENERAL_LOTS": {
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "TITLE": "Название",
+          "TYPE": "Тип",
+          "TYPES_DATA" : {
+            "0" : "Импорт",
+            "1" : "Покупка"
+          },
+          "SUPPLIER_NAME": "Поставщик",
+          "RECEIVED_QUANTITY": "Количество в заказе",
+          "UNIT_COST": "Себестоимость единицы продукции",
+          "QUANTITY_ON_HAND": "Количество в наличии",
+          "DATE": "Дата"
+        }
+      }
+    },
+    "SPECIFIC_LOTS": {
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "SUPPLIER_NAME": "Поставщик",
+          "TYPE": "Тип",
+          "TYPES_DATA" : {
+            "0" : "Импорт",
+            "1" : "Покупка"
+          },
+          "RECEIVED_QUANTITY": "Количество в заказе",
+          "UNIT_COST": "Себестоймость единицы продукции",
+          "QUANTITY_ON_HAND": "Количество в наличии ",
+          "DATE": "Дата"
+        }
+      },
+      "CARD": {
+        "CATEGORY": "Категория",
+        "TOTAL_QUANTITY": "Общее количество",
+        "UNIT_COST": "Закупочная цена",
+        "UNIT_PRICE": "Продажная цена"
+      }
+    },
+    "ITEM": {
+      "DETAILS": {
+        "ADD_ORDER": "Добавить закупку",
+        "EDIT_ORDER": "Редактировать закупку",
+        "DUPLICATE_ORDER": "Дублировать закупку",
+        "RECEIVE_ORDER": "Получить заказ",
+        "GLOBAL_ERROR_MESSAGE": "Заполнить пропущенные поля",
+        "GENERAL_INFO": "Общая информация",
+        "TITLE": "Название",
+        "SUPPLIER": "Поставщик",
+        "PAYMENT_TYPE": "Вид оплаты",
+        "ORDER_RECEIVE_DATE": "Дата получения заказа",
+        "IS_APPROVED": "Имеется подтверждающий документ",
+        "ADD_PRODUCT": "Добавить продукт",
+        "STOCKITEMS_LIST": {
+          "LABEL": "Выбрать продукт",
+          "TOTAL_UNIT_COST": "Суммарная стоимость закупки",
+          "TABLE_COLUMNS": {
+            "TITLE": "Наименование",
+            "QUANTITY": "Количество продукта в наличии",
+            "ORDERED_QUANTITY": "Заказанное количество",
+            "UNIT_COST": "Себестоимость единицы продукции",
+            "TOTAL_COST": "Общая стоимость"
+          }
+        }
+      }
+    }
+  },
+  "ENTITY_CLIENTS": {
+    "RS_IMPORT": "Импортировать из RS",
+    "IMPORT": "Импортировать",
+    "ADD_TO_FAVORITES": "Добавить в Избранное",
+    "REMOVE_FROM_FAVORITES": "Удалить из Избранного",
+    "DEACTIVATE_MESSAGE": "Вы действительно хотите осуществить деактивацию?",
+    "SUCCESS_MESSAGE": "Добавление клиентов успешно завершено",
+    "YES": "Да",
+    "NO": "Нет",
+    "LIST": {
+      "TABLE_COLUMNS": {
+        "TITLE": "Название",
+        "CONTACT_PERSON": "Контакное лицо",
+        "PHONE_NUMBER": "Номер телефона",
+        "EMAIL": "Эл.почта"
+      }
+    },
+    "CLIENTS_IMPORT": {
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "BUYER_NAME": "Имя покупателя",
+          "BUYER_INN": "Идентификационный код"
+        }
+      }
+    },
+    "ITEM": {
+      "DETAILS": {
+        "ADD_CLIENT": "Добавить покупателя",
+        "EDIT_CLIENT": "Редактировать покупателя",
+        "GLOBAL_ERROR_MESSAGE": "Заполнить пропущенные поля",
+        "GENERAL_INFO": "Общая информация",
+        "TITLE": "Название",
+        "CONTACT_PERSON": "Контактное лицо",
+        "ENTITY_IDENTIFIER": "Идентификационный код",
+        "PHONE_NUMBER": "Номер телефона",
+        "EMAIL": "Эл. почта",
+        "IS_VAT_REGISTERED": "Плательщик НДС",
+        "BANK_ACCOUNT": "Номер счета",
+        "EXISTING_ERROR": "Указанный код уже существует"
+      },
+      "LIST": {
+        "LABEL": "Выбрать продукт",
+        "TABLE_COLUMNS": {
+          "TITLE": "Наименование",
+          "QUANTITY": "Количество",
+          "UNIT_COST": "Себестоимость единицы продукции"
+        }
+      },
+      "ATTRIBUTES": {
+        "CONTACT_NAME": "Контактное лицо",
+        "PHONE_NUMBER": "Номер телефона",
+        "EMAIL": "Эл. почта",
+        "INN": "Идентификационный код",
+        "BANK_ACCOUNT_NUMBER": "Номер банковского счета",
+        "IS_VAT_REGISTERED": "Плательщик НДС",
+        "YES": "Да",
+        "NO": "Нет"
+      }
+    },
+    "TRANSACTIONS": {
+      "SUCCESS_MESSAGE": "Расчет успешно завершен",
+      "PAYMENT": "Расчет"
+    }
+  },
+
+  "TABLES": {
+    "ADD_SPACE": "Добавить пространство",
+    "EDIT_SPACE": "Редактировать пространство",
+    "WARNING_MESSAGE": "Вы действительно хотите удалить пространство?",
+    "GENERAL_ERROR": "Ошибка общего зарактера",
+    "SPACE_DELETED_SUCCESSFULLY": "Пространство успешно удалено",
+    "TABLE_DELETED_SUCCESSFULLY": "Таблица успешно удалена",
+    "SPACE_ADD_SUCCESSFULLY": "Пространство успешно добавлено",
+    "TABLE_ADD_SUCCESSFULLY": "Таблица успешно добавлена",
+    "CHANGED_SUCCESSFULLY": "Пространство успешно изменено",
+    "CLOSE_THE_SHIFT_TO_DELETE_TABLE": "Закройте смену для удаления таблицы",
+    "CLOSE_THE_SHIFT_TO_DELETE_SPACE": "Закройте смену для удаления пространства",
+    "NAME_EXISTS": "Указанное имя уже существует",
+    "NAME_CHANGES_SUCCESSFULLY": "Название таблицы успешно изменено",
+    "TITLE": "Заголовок"
+  },
+
+  "Shipping": {
+    "ShippingButton": "Перевозка",
+    "List": {
+      "TableColumns": {
+        "name": "Наименование",
+        "locationNameFrom": "Из филиала",
+        "locationNameTo": "В филиал",
+        "status": "Статус",
+        "orderDate": "Дата"
+      }
+    },
+    "Item": {
+      "List": {
+        "TableColumns": {
+          "stockItemName": "Наименование",
+          "quantity": "Количество"
+        }
+      },
+      "Attributes": {
+        "locationNameFrom": "Из филиала",
+        "locationNameTo": "В филиал"
+      },
+      "Details": {
+        "addShipping": "Добавить перевозку",
+        "editShipping": "Редактировать перевозку",
+        "globalErrorMessage": "Заполните пропущенные поля",
+        "generalInfo": "Общая информация",
+        "title": "Наименование",
+        "locationNameFrom": "Из филиала",
+        "locationNameTo": "В филиал",
+        "addProduct": "Добавить продукт",
+        "selectProduct": "Выберите продукт",
+        "uploadProducts": "Загрузить продукты",
+        "approveDialog": {
+          "title": "Вы действительно хотите осуществить перевозку?",
+          "ship": "Перевозка",
+          "cancel": "Отмена"
+        },
+        "notifications": {
+          "saveShippingSuccess": "Перевозка успешно сохранена",
+          "productsUploadSuccess": "Продукты успешно загружены",
+          "productsClearSuccess": "Продукты успешно удалены"
+        },
+        "excelUpload": {
+          "uploadProducts": "Загрузить продукцию",
+          "uploadForm": "Загрузить форму",
+          "clear": "Стереть",
+          "uploadPopup": {
+            "uploadingText": "Идет загрузка продукции",
+            "uploadFailed": "Продукт не загружен",
+            "uploadFailedText": "Для успешной загрузки всех продуктов скачайте и заполните форму заново.",
+            "duplicatedProducts": "Дублированные продукты",
+            "failedProducts": "Незагруженные продукты",
+            "cancelButton": "Отменить",
+            "downloadButton": "Скачать"
+          }
+        },
+        "ProductList": {
+          "TableColumns": {
+            "name": "Наименование",
+            "quantityOnHand": "Количество в наличии",
+            "quantity": "Количество"
+          }
+        }
+      }
+    }
+  },
+  "ReceiptTemlates": {
+    "edit": "Редактировать шаблон квитанции",
+    "add": "Добавить шаблон квитанции",
+    "addIngredients": "Добавить ингредиент"
+  },
+  "Receipts": {
+    "uploadReceipts": "Загрузить квитанцию",
+    "uploadIngredients": "Загрузить ингредиент",
+    "UploadForm": "Загрузить форму",
+    "DownloadReceiptsInProgress": "Идет скачивание квитанций",
+    "UploadReceiptsInProgress": "Идет загрузка квитанций",
+    "UploadReceiptsSuccess": "Загрузка квитанций успешно завершена",
+    "UploadReceiptsFail": "Некоторые квитанции не были загружены.",
+    "UploadReceiptsRetry": "Для загрузки всех квитанций скачайте и заполните форму заново.",
+    "DownloadForm": "Скачать форму",
+    "DublicateReceiptsWarning": "Имеющиеся в форме дублированные продукты",
+    "ReceiptsThatCouldNotBeUploaded": "Незагруженные квитанции",
+    "ReceiptsThatChangedPrice": "Квитанции с корректировкой цены",
+    "UploadReceiptsFailMessage": "Загрузка квитанции не осуществлена",
+    "ITEM": {
+      "edit": "Редактировать квитанцию",
+      "add": "Добавить квитанцию",
+      "addCategory": "Добавить категорию",
+      "priceUpdateDate": "Дата обновления цены",
+      "priceUpdate": "Цена будет обновлена",
+      "onNextSync": "при последующей синхронизации",
+      "addIngredient": "Добавить ингредиент",
+      "PRODUCT_UPDATE_SUCCESS": "Обновление продукта успешно завершено",
+      "barcodeAlredyExist": "Баркод уже существует, хотите продолжить?",
+      "saveWarning": "Вы действительно хотите сохранить?"
+    }
+  },
+  "ProductionOrders": {
+    "prepare": "Подготовка заказа",
+    "prepareApprove": "Вы действительно хотите подготовить заказ?",
+    "prepareSuccess": "Подготовка успешно завершена",
+    "deleteSuccess": "Запись успешно удалена",
+    "shortTotalPrice": "Суммарная стоимость",
+    "LIST": {
+      "TABLE_COLUMNS": {
+        "TOTAL_COST": "Суммарная продажная цена"
+      }
+    },
+    "ITEM": {
+      "addReceipt": "Добавить квитанцию",
+      "add": "Добавить подготовку",
+      "edit": "Редактировать подготовку"
+    }
+  },
+  "SalesHistory": {
+    "retail": "Розничные продажи",
+    "entity": "Продажи юридическим лицам",
+    "exportToExcel": "Экспортировать в Эксел",
+    "totalRevenue": "Общая сумма",
+    "quantitySold": "Количество проданной продукции",
+    "unitExpense": "Закупочная цена",
+    "unitRevenue": "Продажная цена",
+    "totalVATRate": "Суммарная ставка НДС"
+  },
+  "Stockholdings": {
+    "unitCost": "Цена закупки",
+    "quantity": "Остаток",
+    "exportToExcel": "Экспортимровать в Эксел"
+  },
+  "OperatorsReport": {
+    "exportToExcel": "Экспортировать в Эксел",
+    "TableColumns": {
+      "startOperatorName": "Сотрудник",
+      "endOperatorName": "Сотрудник",
+      "grandTotalTaxAmount": "Комиссионные",
+      "grandTotalOrderLinesPrice": "Стоимость",
+      "dateBegin": "Открытие смены",
+      "cashBegin": "Начальный остаток",
+      "turnover": "Оборот",
+      "cashWithdrawn": "Выданная сумма",
+      "dateEnd": "Закрытие смены",
+      "cashEnd": "Конечный остаток"
+    }
+  },
+  "WithdrawalsReport": {
+    "exportToExcel": "Экспортировать в Эксел",
+    "TableColumns": {
+      "operatorName": "Имя оператора",
+      "reason": "Причина",
+      "amount": "Сумма",
+      "withdrawalDate": "Дата"
+    }
+  },
+  "PricesHistory": {
+    "exportToExcel": "Экспортировать в Эксел",
+    "TableColumns": {
+      "name": "Наименование",
+      "priceType": "Статус",
+      "unitPriceBefore": "Начальная цена",
+      "unitPriceChange": "Изменение",
+      "unitPriceCurrent": "Текущая цена",
+      "date": "Дата изменения"
+    }
+  },
+  "SuppliesHistory": {
+    "exportToExcel": "Экспортировать в Эксел",
+    "other": "Другое",
+    "TableColumns": {
+      "stockItemName": "Наименование",
+      "suppliers": "Поставщик",
+      "categoryName": "Категория",
+      "type": "Статус",
+      "quantityBefore": "Количество",
+      "transactionQuantity": "Переменное количество",
+      "quantityAfter": "Окончательное количество",
+      "transactionDate": "Дата"
+    }
+  },
+  "Ingredients": {
+    "Ingredient": "Ингредиент",
+    "BARCODE_ALREADY_EXISTS_WARNING": "Баркод уже существует, хотите продолжить?",
+    "SAVE_WARNING": "Вы действительно хотите сохранить",
+    "UploadIngredients": "Загрузить ингредиенты",
+    "DownloadForm": "Скачать форму",
+    "DownloadInProgress": "Идет скачивание ингредиентов",
+    "UploadInProgress": "Идет загрузка ингредиентов",
+    "UploadIngredientsSuccess": "Все ингредиенты были успешно загружены",
+    "UploadIngredienFail": "Некоторые ингредиенты не были загружены",
+    "UploadIngredienRetry": "Для успешной загрузки всех ингредиентов скачайте и заполните форму заново",
+    "DublicateIngredientsWarning": "Дублированные ингредиенты",
+    "IngredientsThatCouldNotBeUploaded": "Ингредиенты, которые не могут быть загружены",
+    "UploadIngredienFailMessage": "Загрузка ингредиента не осуществлена",
+    "UploadForm": "Загрузить форму",
+    "ExportToExcel": "Экспортировать в Эксел",
+    "MoveProduct": "Перенос продукта",
+    "ProductName": "Наименование продукта",
+    "IngredientName": "Наименование ингредиента",
+    "UpdatableStockType": "Тип обновляемого запаса",
+    "List": {
+      "TableColumns": {
+        "name": "Наименование",
+        "categoryName": "Категория",
+        "supplierNames": "Поставщик",
+        "quantity": "Количество",
+        "unitCost": "Стоимость"
+      }
+    },
+    "Item": {
+      "Attributes": {
+        "name": "Наименование",
+        "categoryName": "Категория",
+        "supplierNames": "Поставщик",
+        "barcode": "Баркод",
+        "description": "Описание",
+        "unitOfMeasurement": "Количество продукции в наличии",
+        "unitCost": "Себестоимость единицы"
+      },
+      "addIngredients": "Добавить ингредиент",
+      "editIngredients": "Редактировать ингредиент",
+      "addCategory": "Добавить категорию",
+      "BARCODE_SLASH_SKU": "Баркод/Единица складского учета (SKU)",
+      "ADD_DISTRIBUTOR": "Добавить поставщика",
+      "PRICES_AND_SUPPLIES": "Цены и Запасы",
+      "CURRENT_SUPPLY": "Текущий запас",
+      "MIN_SUPPLY_THRESHOLD": "Минимальный запас",
+      "UNIT_COST": "Цена закупки",
+      "updateSuccessMessage": "Ингредиент успешно обновлен",
+      "addSuccessMessage": "Ингредиент успешно добавлен",
+      "deleteSuccessMessage": "Ингредиент успешно удален"
+    }
+  },
+  "GLOVO_SUBCATEGORIES": {
+		"ADD_SUBCATEGORY": "Добавить подкатегорию",
+		"EDIT_SUBCATEGORY": "Изменить подкатегорию",
+		"DELETE_MESSAGE": "Если удалить подкатегорию, товары будут удалены из меню",
+    "RECORD_DELETE_SUCCESSFULLY": "Запись успешно удалена",
+    "ADDED_SUCCESSFULLY_MESSAGE": "Подкатегория успешно добавлена",
+    "UPDATE_SUCCESSFULLY_MESSAGE": "Подкатегория успешно обновлена",
+    "ALREADY_EXISTS": "Подкатегория уже существует",
+    "CATEGORY": "категория",
+    "CHOOSE_CATEGORY": "Выберите категорию",
+    "SUBCATEGORY": "Подкатегория",
+    "LIST": {
+      "TABLE_COLUMNS": {
+        "SUBCATEGORY_NAME": "Наименование",
+        "MAIN_CATEGORY_NAME": "категория"
+      }
+    }
+  },
+  "GLOVO_PRODUCTS":{
+		"ADD_PRODUCTS": "Добавить продукт",
+		"EDIT_PRODUCTS": "Изменить продукт",
+    "UPLOAD_PRODUCTS": "Загрузить продукты",
+    "PRODUCT_DOWNLOAD_IN_PROCESS": "Идет скачивание продуктов",
+    "IMPORT_NOTIFICATION_ERROR": "Загрузка продуктов не осуществилась",
+    "IMPORT_NOTIFICATION_SUCCESS": "Все продукты были успешно загружены",
+    "UPLOADING_PRODUCTS": "Идет загрузка продуктов",
+    "SOME_PRODUCTS_UPLOAD_FAILED": "Некоторые продукты не были загружены",
+    "DOWNLOAD_FILL_REUPLOAD": "Для загрузки всех продуктов скачайте и заполните форму заново.",
+    "DUPLICATED_PRODUCTS": "Подкатегория не выбрана",
+    "ERRORED_PRODUCTS": "Нет штрих-кода",
+    "ALREADY_EXISTS": "Продукт уже существует",
+    "UPDATE_SUCCESSFULLY_MESSAGE": "Продукт успешно обновлена",
+    "ADDED_SUCCESSFULLY_MESSAGE": "Продукт успешно добавлена",
+    "RECORD_DELETE_SUCCESSFULLY": "Запись успешно удалена",
+		"DELETE_MESSAGE": "В случае удаления продукт будут удалены из меню",
+		"LIST":{
+			"TABLE_COLUMNS":{
+				"NAME_OR_BARCODE": "Наименование/Баркод",
+				"CATEGORY": "Категория",
+				"SUBCATEGORY": "Подкатегория",
+        "PRODUCT":"Продукт"
+			}
+		}
+	},
+  "SaleOrdersHistory": {
+    "retail": "Розничные продажи",
+    "entity": "продажи юридических лиц",
+    "exportProducts": "Экспорт продукции",
+    "checks": "Чеки",
+    "products": "Продукты",
+    "other": "Другое",
+    "TableColumns": {
+      "receiptNumber": "Номер квитанции",
+      "receiptNumberEntity": "Номер заказа",
+      "transactionId": "Транзакция",
+      "paymentMethod": "метод оплаты",
+      "paymentType": "Тип оплаты",
+      "operatorName": "Сотрудник",
+      "imeIs": "Серийный код",
+      "totalOrderLines": "Единица",
+      "totalOrderLinesEntity": "Количество",
+      "totalPrice": "Общая стоимость",
+      "totalOrderLinesPrice": "Стоимость",
+      "totalPriceEntity": "Общая сумма",
+      "orderDate": "Дата",
+      "taxAmount": "Комиссионные",
+      "totalPriceHoreca": "Оплаченная сумма",
+      "entityName": "Название компании",
+      "entityIdentifier": "Идентификационный код",
+      "status": "Статус"
+    },
+    "View": {
+      "TableColumns": {
+        "stockItemName": "Наименование",
+        "quantity": "Количество",
+        "totalPrice": "Стоимость",
+        "totalPriceEntity": "Суммарная стоимость",
+        "unitPrice": "Цена единицы продукции"
+      },
+      "Attributes": {
+        "operatorName": "Кассир",
+        "paymentMethodDescription": "Тип оплаты",
+        "orderDate": "Дата",
+        "paymentMethodDescriptionEntity": "Метод оплаты",
+        "startAddress": "Исходный адрес",
+        "endAddress": "Конечный адрес",
+        "driverPIN": "Личный номер водителя",
+        "driverName": "Имя и фамилия водителя",
+        "driverCarNumber": "Номер автомобиля",
+        "returnReason": "причина возврата",
+        "SaleOrderReturnReasons": {
+          "Damaged": "Забракованная продукция",
+          "WrongPrice": "Ошибка в цене",
+          "WrongProduct": "Неверная продукция",
+          "WrongQuantity": "Неверное количество",
+          "WrongRealization": "Неправильная реализация",
+          "Other": "Другое"
+        }
+      }
+    }
+  },
+  "Inventorisations": {
+    "UploadProducts": "Загрузить продукты",
+    "UploadForm": "Загрузить форму",
+    "DownloadForm": "Скачать форму",
+    "Downloading": "Идет скачивание",
+    "Uploading": "Идет загрузка",
+    "SuccessMessageWithoutChange": "Инвентаризация завершилась без изменений",
+    "List": {
+      "TableColumns": {
+        "name": "Наименование",
+        "type": "Тип",
+        "status": "Статус",
+        "orderDate": "Дата"
+      }
+    },
+    "Item": {
+      "SuccessMessageForDelete": "Запись успешно удалена",
+      "List": {
+        "TableColumns": {
+          "stockItemName": "Наименование",
+          "quantityOnHand": "Запас",
+          "stocktakeQuantity": "Наличный запас",
+          "mismatch": "Разницаა",
+          "approvedQuantity": "Утвержденное количество",
+          "unapprovedQuantity": "Неутвержденное количество",
+          "reason": "Причина"
+        }
+      },
+      "FullTypeAttributes": {
+        "type": "Тип",
+        "typeHardValue": "Полный",
+        "orderDate": "Дата"
+      },
+      "Attributes": {
+        "type": "Тип",
+        "criteria": "Критерий",
+        "orderDate": "Дата",
+        "typeHardValue": "Частичный"
+      },
+      "Details": {
+        "addInventorisation": "Добавить инвентаризацию",
+        "editInventorisation": "Редактировать инвентаризацию",
+        "globalErrorMessage": "Заполнить пропущенные поля",
+        "generalInfo": "Общая информация",
+        "title": "Наименование",
+        "type": "Тип",
+        "date": "Дата",
+        "criteria": "Критерий",
+        "addCategory": "Добавить категорию",
+        "addProduct": "Добавить продукт",
+        "addSupplier": "Добавить поставщика",
+        "List": {
+          "Label_Category": "Выберите категорию",
+          "Label_Products": "Выберите продукты",
+          "Label_Supplier": "Выберите поставщика",
+          "TableColumns": {
+            "name": "Наименование",
+            "barcode": "Баркод",
+            "phoneNumber": "Номер"
+          }
+        }
+      }
+    },
+    "Mismatches": {
+      "correct": "Корректировать",
+      "confirm": "Подтвердить",
+      "deny": "Отклонить",
+      "productWarningMessage": "Имеющиеся в форме неподходящие продукты",
+      "assortmentWarningMessage": "Имеющиеся в форме продукты ассортимента",
+      "dublicateWarningMessage": "Имеющиеся в форме дублированные продукты",
+      "productErrorMessage": "Продукты в загруженном файле не соответствуют вашему списку продуктов.",
+      "globalErrorMessage": "Заполните пропущенные поля",
+      "Carefully": "Осторожно",
+      "Download": "Скачать",
+      "DownloadForm": "Скачать форму",
+      "Downloading": "Идет скачивание",
+      "ApproveDialog": {
+        "title": "Хотите подтвердить корректировку?",
+        "message": "В случае подтверждения ваши имеющиеся запасы будут изменены",
+        "yes": "Да",
+        "no": "Нет"
+      },
+      "List": {
+        "TableColumns": {
+          "name": "Наименование",
+          "quantityOnHand": "Запас",
+          "stocktakeQuantity": "Наличный запас",
+          "mismatch": "Разница",
+          "approvedQuantity": "Утвержденное количество",
+          "unapprovedQuantity": "Неутвержденное количество",
+          "reason": "Причина разницы"
+        }
+      }
+    }
+  },
+  "HEADBAR": {
+    "MENU": {
+      "NO_NAME_ASSIGNED": "Имя не указано"
+    }
+  },
+  "SUB_USERS": {
+    "LAST_LOGIN_DATE": "Дата последнего входа в систему",
+    "NOTIFICATIONS": {
+      "SUB_USER_ALREADY_EXISTS": "Субпользователь с таким именем уже существует."
+    },
+    "EDIT": {
+      "TITLE_ADD": "Добавить субпользователя",
+      "TITLE_EDIT": "Редактировать субпользователя"
+    },
+    "CONFIRL_DIALOG": {
+      "CONFIRM_ADD_ALREADY_PRESENT_USER_TITLE": "Вы действительно хотите добавить данного пользователя?",
+      "CONFIRM_ADD_ALREADY_PRESENT_USER_MESSAGE": "Пользователь с таким номером уже существует, вы действительно хотите добавить?"
+    }
+  },
+  "HELP": {
+    "TITLE": "Найти нужный видео-урок"
+  },
+  "STATISTICS": {
+    "GENERAL": {
+      "POPULAR_PRODUCTS": "Популярная продукция",
+      "POPULAR_CATEGORIES": "Популярные категории",
+      "AVARAGE_CHEQUE": "Средний чек",
+      "HOURS_AND_DAYS": "Часы и дни"
+    },
+    "PRODUCT": {
+      "NO_PRODUCT_SELECTED": "Продукт не выбран",
+      "UNIT_COST": "Себестоимость единицы",
+      "CURRENT_SUPPLY": "Текущий запас"
+    },
+    "CATEGORY": {
+      "NO_CATEGORY_SELECTED": "Категория не выбрана",
+      "ASSORTMENT": "Ассортимент",
+      "TOTAL_COST": "Суммарная себестоимость",
+      "TOTAL_PRICE": "Суммарная продажная цена",
+      "CATEGORY_POPULAR_PRODUCTS": "Популярные продукты категории"
+    }
+  }
+}

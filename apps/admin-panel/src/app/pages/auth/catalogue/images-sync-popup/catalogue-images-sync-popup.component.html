@@ -1,0 +1,45 @@
+<div class="approve-dialog">
+  <div class="d-flex align-items-center justify-content-between p-4">
+    <div
+      class="approve-dialog-title text-danger"
+      *ngIf="syncSuccess === undefined"
+    >
+      <app-icon icon="warn" class="mr-2" style="height: 21px;"></app-icon>
+
+      ნამდვილად გსურს სინქრონიზაცია?
+    </div>
+
+    <div class="approve-dialog-title text-success" *ngIf="syncSuccess">
+      სინქრონიზაცია წარმატებით განხორციელდა
+    </div>
+
+    <div class="approve-dialog-title text-danger" *ngIf="syncSuccess === false">
+      სინქრონიზაცია წარუმატებელია, სცადეთ თავიდან
+    </div>
+
+    <button
+      class="close py-0 font-size-16 ml-auto approve-dialog-close"
+      (click)="onDecline()"
+    >
+      <app-icon icon="close" style="cursor: pointer;"></app-icon>
+    </button>
+  </div>
+
+  <div class="d-flex p-4 border-top" *ngIf="!syncSuccess">
+    <button class="btn btn-primary w-50 flex-grow-1 mr-3" (click)="onApprove()">
+      კი
+    </button>
+    <button
+      class="btn btn-outline-primary border w-50 flex-grow-1"
+      (click)="onDecline()"
+    >
+      არა
+    </button>
+  </div>
+
+  <div class="d-flex p-4 border-top" *ngIf="syncSuccess">
+    <button class="btn btn-primary w-50 flex-grow-1 mr-3" (click)="onDecline()">
+      დაბრუნება
+    </button>
+  </div>
+</div>

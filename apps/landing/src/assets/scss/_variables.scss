@@ -1,0 +1,51 @@
+$image-path: '/assets/images/';
+$font-path: '/assets/fonts/';
+
+// Fonts
+$font-regular: 'notosans-regular';
+// $font-medium: 'NotoSans-Medium';
+$font-medium: 'notosans-medium';
+$font-semibold: 'notosans-semibold';
+$font-regular-georgian: 'notosansgeorgian-regular';
+$font-medium-georgian: 'notosansgeorgian-medium';
+$font-semibold-georgian: 'notosansgeorgian-semibold';
+
+$font-families: (
+  'regular': #{$font-regular-georgian,
+  $font-regular},
+  'medium': #{$font-medium-georgian,
+  $font-medium},
+  'semibold': #{$font-semibold-georgian,
+  $font-semibold},
+);
+
+$font-sizes: (
+  11: 11px,
+  12: 12px,
+  13: 13px,
+  14: 14px,
+  15: 15px,
+  16: 16px,
+  18: 18px,
+  24: 24px,
+  32: 32px,
+  40: 40px,
+);
+
+// Footer
+$footer-bg: #1b2126;
+$footer-color: #ebecf5;
+$footer-height: 447px;
+
+//header
+$header-height: var(--header-height);
+$header-box-shadow: 0 19px 21px -1px rgba(10, 31, 68, 0.03);
+
+// Request
+$request-form-border-color: #e6ecf5;
+$request-form-padding: 32px 40px 40px;
+$request-form-box-shadow: 0 27px 50px -15px rgba(10, 31, 68, 0.07);
+
+// Ng-select
+$custom-select-box-shadow: 0 10px 30px -16px rgba(0, 0, 0, 0.6);
+$custom-select-top-box-shadow: 0 -19px 21px -1px rgba(10, 31, 68, 0.05);

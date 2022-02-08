@@ -1,0 +1,42 @@
+<div
+  class="bg-white d-block d-sm-flex align-items-sm-center border-bottom product-header"
+>
+  <div class="product-select product-search flex-grow-1 mb-3 mb-sm-0">
+    <app-icon
+      [icon]="'search'"
+      fill="#0077ff"
+      style="margin-top: -4px;"
+    ></app-icon>
+    <app-dynamic-select
+      placeholder="პროდუქტი"
+      [dataGetter]="getStockitems"
+      [itemGetterById]="getStockitemById"
+      additionalSearchKey="barcode"
+      [(ngModel)]="stockItemId"
+      class="flex-grow-1 flex-shrink-0 mw-100"
+      (change)="onStockitemChange($event)"
+    ></app-dynamic-select>
+  </div>
+  <div class="product-year-select flex-grow-1 flex-sm-grow-0">
+    <app-year-select [(ngModel)]="year" class="w-100"></app-year-select>
+    <app-icon
+      class="product-year-select-icon"
+      [icon]="'calendar'"
+      fill="#0077ff"
+    ></app-icon>
+  </div>
+</div>
+<div class="px-0 px-sm-4 product-cards-margin">
+  <div class="product px-2">
+    <app-product-report-cards
+      [stockItem]="stockItem"
+      [year]="year"
+    ></app-product-report-cards>
+
+    <app-product-report-sold-chart [stockItemId]="stockItemId">
+    </app-product-report-sold-chart>
+
+    <app-product-report-stock-chart [stockItemId]="stockItemId">
+    </app-product-report-stock-chart>
+  </div>
+</div>

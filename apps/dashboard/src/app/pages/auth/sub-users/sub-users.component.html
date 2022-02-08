@@ -1,0 +1,94 @@
+<div class="h-100 d-flex flex-column" style="padding-bottom: 71px;">
+    <div class="d-flex align-items-center py-3 px-4" style="height: 80px;">
+      <div
+        class="d-flex align-items-center pr-3"
+        *ngIf="!(selectedRows.length > 0 )"
+      >
+        <button (click)="openAddNewModal()" class="btn btn-primary btn-add mr-3">
+          <span>{{'GENERAL.ADD' | translate}}</span>
+        </button>
+      </div>
+      <button
+      class="btn p-0 mr-2 bg-table-border-color"
+      style="width: 64px; height: 42px;"
+        [matTooltip]="'GENERAL.EDIT' | translate"
+        (click)="onEdit()"
+        *ngIf="selectedRows.length === 1"
+      >
+        <app-icon [icon]="'edit'"></app-icon>
+      </button>
+      <button
+      class="btn mr-2 p-0 bg-table-border-color"
+        (click)="openRemovalDialog(selectedRows)"
+        [matTooltip]="'GENERAL.DELETE' | translate"
+        *ngIf="selectedRows.length !== 0 "
+        style="width: 64px; height: 42px;"
+      >
+        <app-icon [icon]="'trash'"></app-icon>
+      </button>   
+
+    </div>
+    <div class="bg-white">
+      <app-table
+        [dataSource]="dataSource"
+        [totalCount]="totalCount"
+        [state]="currentState"
+        [selectable]="true"
+        [actions]="{ editable: true, deletable: true }"
+        defaultSort="firstName"
+        defaultSortDirection="DESC"
+        [displayedColumns]="displayedColumns"
+        (stateChanged)="onTableStateChanged($event)"
+        (selectionChanged)="onSelectionChanged($event)"
+        (rowEdit)="onEdit($event)"
+        (rowDelete)="openRemovalDialog($event)"
+        class="table-operators before-last-th-bordered"
+      >
+      
+      <ng-template app-cell let-cell="cell" let-row="row" name="phoneNumber">
+        <div 
+        class="line-height-normal translate-t-1px"
+        [class.d-flex]="!row.email"
+        >
+          <span
+            [matTooltip]="cell"
+			#ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+            [class.font-family-bold]="row.email"
+            class="text-truncate mw-100 d-inline-block table-text-dark pb-1"
+          >
+            {{ cell }}
+          </span>
+          <br>
+          <span
+            [matTooltip]="row.email"
+			#ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+            class="text-truncate mw-100 d-inline-block table-text-dark"
+          >
+            {{ row.email }}
+          </span>
+        </div>
+      </ng-template>   
+      
+      <!-- <ng-template app-cell let-cell="cell" let-row="row" name="permission">
+        <div class="pt-1 line-height-normal">
+          <span
+            [matTooltip]="getLocationItem( branch.locationId )"
+            class="text-truncate mw-100 d-inline-block table-text-dark"
+            *ngFor="let branch of row.permission; let last = last"
+          >
+            {{ getLocationItem( branch.locationId ) }}
+            <ng-container *ngIf="!last">, &nbsp;</ng-container>
+          </span>
+          <span
+            [matTooltip]="cell"
+            class="text-truncate mw-100 d-inline-block table-text-dark"
+            *ngFor="let branch of row.permission"
+            >
+            {{ branch }}12313123
+          </span>
+        </div>
+      </ng-template>         -->
+      </app-table>
+    </div>
+  </div>
+  

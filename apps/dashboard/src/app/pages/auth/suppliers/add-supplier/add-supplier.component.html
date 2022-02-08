@@ -1,0 +1,221 @@
+<form
+  *ngIf="form"
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+  (keydown.enter)="$event.preventDefault()"
+  class="mb-2"
+>
+  <div
+    class="container-fluid sticky-top bg-white"
+    style="height: 72px;"
+  >
+    <div class="row align-items-center h-100 border-bottom border-secondary">
+      <div class="col pl-0 h-100">
+        <button
+          type="button"
+          class="btn bg-white px-2 h-100 rounded-0"
+          style="width: 102px;"
+          (click)="onCancel()"
+        >
+        <app-icon icon="close"></app-icon>
+        </button>
+      </div>
+      <div class="col-auto font-size-20 font-family-bold text-dark">
+        {{ title | translate}}
+      </div>
+      <div class="col pr-4 h-100 d-flex align-items-center justify-content-end">
+        
+        <button
+          class="btn btn-primary font-size-14 font-family-bold text-white  py-0 px-23px h-42px text-center"
+          
+          type="submit"
+           
+          [disabled]="requestIsSent"
+        >
+          {{"GENERAL.SAVE" | translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="w-100" *ngIf="isSubmited && form?.invalid">
+    <div  class="mx-auto bg-danger-bg  px-4  rounded text-center border  d-flex align-items-center border-danger-border mt-3" style="max-width: 960px;height: 54px;">
+     <div class="col-2 d-flex px-0"> <app-icon icon="alert"></app-icon></div>
+     <div class="col text-center font-size-14 font-color-dark font-family-regular">
+      {{'SUPPLIERS.ITEM.DETAILS.GLOBAL_ERROR_MESSAGE' | translate}}
+     </div>
+     <div class="col-2 px-0"></div>
+    </div>
+  </div>
+  <div [class.mt-70px]="!(isSubmited && form?.invalid)" class="mx-auto  pt-20px px-0 pb-50px" style="max-width: 960px;">
+    <div >
+      <div
+      class="font-size-20 font-color-dark font-family-bold pb-30px"
+      >
+       {{'SUPPLIERS.ITEM.DETAILS.GENERAL_INFO' | translate}}
+      </div>
+        <div class="row" >
+          <div class="col-12 col-md-6">
+            <div class="form-group form-group-lg" style="margin-bottom: 32px;">
+              <label for="addSupplierName" class="font-size-15 font-color-dark font-family-bold">
+                {{'SUPPLIERS.ITEM.DETAILS.TITLE' | translate}}*
+              </label>
+              <input
+                id="addSupplierName"
+                data-hj-allow
+                class="form-control"
+                formControlName="name"
+                type="text"
+                 
+              />
+              
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="form-group form-group-lg">
+              <label for="addSupplierInn" class="font-size-15 font-color-dark font-family-bold">
+                {{'SUPPLIERS.ITEM.DETAILS.INN' | translate}}*
+              </label>
+              <div class="position-relative">
+                <input
+                  id="addSupplierInn"
+                  data-hj-allow
+                  type="text"
+                  class="form-control"
+                   
+                  formControlName="inn"
+                  mask="9{11}"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="form-group form-group-lg">
+              <label for="addSupplierContactName" class="font-size-15 font-color-dark font-family-bold">
+                {{'SUPPLIERS.ITEM.DETAILS.CONTACT_NAME' | translate}}
+              </label>
+              <input
+                id="addSupplierContactName"
+                data-hj-allow
+                formControlName="contactName"
+                type="text"
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="form-group form-group-lg">
+              <label for="addSupplierPhoneNumber" class="font-size-15 font-color-dark font-family-bold">
+                {{'SUPPLIERS.ITEM.DETAILS.PHONE_NUMBER' | translate}}
+              </label>
+              <input
+                id="addSupplierPhoneNumber"
+                data-hj-allow
+                formControlName="phoneNumber"
+                type="text"
+                class="form-control"
+                [ngClass]="{
+                  'has-error-message': needErrorMessage('phoneNumber')
+                }"
+                mask="9{22}"
+              />
+              <div
+                *ngIf="needErrorMessage('phoneNumber')"
+                [matTooltip]="getErrorMessage('phoneNumber') | translate"
+                matTooltipClass="tooltip-validation"
+                class="form-validation"
+              ></div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="form-group form-group-lg">                 
+              <label for="addSupplierEmail" class="font-size-15 font-color-dark font-family-bold">
+                {{'SUPPLIERS.ITEM.DETAILS.EMAIL' | translate}}
+              </label>
+              <input
+                id="addSupplierEmail"
+                data-hj-allow
+                formControlName="email"
+                type="text"
+                class="form-control"
+                [ngClass]="{ 'has-error-message': needErrorMessage('email') }"                 
+              />
+              <div
+                *ngIf="needErrorMessage('email')"
+                [matTooltip]="getErrorMessage('email') | translate"
+                matTooltipClass="tooltip-validation"
+                class="form-validation"
+              ></div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="form-group form-group-lg">
+              <label for="addSupplierBankAccountNumber" class="font-size-15 font-color-dark font-family-bold">
+                {{'SUPPLIERS.ITEM.DETAILS.BANK_ACCOUNT_NUMBER' | translate}}
+              </label>
+              <input
+                id="addSupplierBankAccountNumber"
+                data-hj-allow
+                class="form-control"
+                type="text"
+                formControlName="bankAccountNumber"
+                [ngClass]="{
+                  'has-error-message': needErrorMessage('bankAccountNumber')
+                }"                 
+              />
+              <div
+                *ngIf="needErrorMessage('bankAccountNumber')"
+                [matTooltip]="getErrorMessage('bankAccountNumber') | translate"
+                matTooltipClass="tooltip-validation"
+                class="form-validation"
+              ></div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="form-group form-group-lg">
+              <label for="initialBalance" class="font-size-15 font-color-dark font-family-bold">
+                {{'SUPPLIERS.ITEM.DETAILS.INITIAL_BALANCE' | translate}}
+              </label>
+              <input
+                id="initialBalance"
+                data-hj-allow
+                formControlName="initialBalance"
+                autocomplete="off"
+                [mask]="'separator.2'"
+                [allowNegativeNumbers]="true"
+                thousandSeparator=","
+                type="text"
+                class="form-control"              
+              />
+            </div>
+            <div
+                class="custom-checkbox custom-checkbox-selected-blue justify-content-start"
+                style="margin-top: 12px;"
+              >
+                <input
+                  type="checkbox"
+                  id="custom-checkbox-VAT"
+                  class="custom-checkbox-control"
+                  formControlName="isVATRegistered"
+                />
+                <label for="custom-checkbox-VAT" class="custom-checkbox-label">
+                  <span class="ml-3">
+                    {{'SUPPLIERS.ITEM.DETAILS.IS_VAT_REGISTERED' | translate}}
+                  </span>
+                </label>
+              </div>
+          </div>
+        </div>
+    </div>
+    <div class="mt-5 pt-42px">
+      <div
+         class="font-size-20 font-color-dark font-family-bold pb-30px"
+      >
+        {{'SUPPLIERS.ITEM.DETAILS.ADD_PRODUCT' | translate}}
+      </div>
+      <app-add-supplier-stockitems
+        [editId]="editId"
+        (changeSupplierProducts)="gridDataSource = $event"
+      ></app-add-supplier-stockitems>
+    </div>
+  </div>
+</form>

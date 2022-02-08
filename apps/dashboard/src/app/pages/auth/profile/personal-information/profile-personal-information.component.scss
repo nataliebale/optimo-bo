@@ -1,0 +1,30 @@
+@import 'libs/ui/styles/src/lib/scss/variables';
+@import 'libs/ui/styles/src/lib/scss/bootstrap-override';
+@import '~bootstrap/scss/mixins/breakpoints';
+
+.card-header {
+  padding-left: 16px;
+  @include media-breakpoint-up(sm) {
+    padding-left: 195px;
+    height: 120px;
+  }
+}
+
+//style="padding-left: 32px; padding-right: 32px; padding-bottom: 40px;"
+.card-body {
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 40px;
+
+  @include media-breakpoint-up(sm) {
+    padding-right: 32px;
+    padding-left: 32px;
+    padding-bottom: 24px;
+  }
+}
+
+.form-group {
+  @include media-breakpoint-only(xs) {
+    margin-bottom: 0;
+  }
+}

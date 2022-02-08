@@ -1,0 +1,23 @@
+<div class="px-4 h-100 d-flex flex-column" style="padding-bottom: 115px;">
+  <div class="pt-2">
+    <div class="bg-white mt-4">
+      <app-table
+        [dataSource]="dataSource"
+        [totalCount]="totalCount"
+        [selectable]="false"
+        [paginable]="true"
+        [filterable]="false"
+        defaultSort="id"
+        defaultSortDirection="DESC"
+        [displayedColumns]="displayedColumns"
+        (stateChanged)="onTableStateChanged($event)"
+        (rowClick)="gridRowClick($event)"
+        class="table-transactions"
+      >
+        <ng-template app-cell let-cell="cell" name="totalCostPrice">
+          {{ cell }} ₾
+        </ng-template>
+      </app-table>
+    </div>
+  </div>
+</div>

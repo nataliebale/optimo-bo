@@ -1,0 +1,101 @@
+<div class="h-100 d-flex flex-column" style="padding-bottom: 71px;">
+  <div class="d-flex align-items-center py-3 px-4" style="height: 80px;">
+    <div
+      class="d-flex align-items-center pr-3"
+      *ngIf="selectedRows && selectedRows.length === 0"
+    >
+      <a class="btn btn-primary btn-add mr-3" routerLink="/shippings/add">
+        <span>{{'GENERAL.ADD' | translate}}</span>
+      </a>
+      <!-- <div style="width: 1px; background-color: #e7e7e7; height: 32px;"> </div> -->
+    </div>
+
+    <button
+      class="btn p-0 mr-2 bg-table-border-color"
+      (click)="onEdit()"
+      [matTooltip]="'GENERAL.EDIT' | translate"
+      *ngIf="selectedRows && selectedRows.length === 1 && !isAnyShipped"
+      style="width:64px; height: 42px;"
+    >
+      <!-- [disabled]="!selectedRows || selectedRows.length !== 1 || isAnyShipped" -->
+      <app-icon [icon]="'edit'"></app-icon>
+    </button>
+
+    <button
+      class="btn mr-2 p-0 bg-table-border-color  "
+      [matTooltip]="'GENERAL.DELETE' | translate"
+      (click)="onDelete()"
+      *ngIf="selectedRows && selectedRows.length >= 1 && !isAnyShipped"
+      style="width:64px; height: 42px;"
+    >
+      <!-- [disabled]="!selectedRows || selectedRows.length === 0 || isAnyShipped" -->
+      <app-icon [icon]="'trash'"></app-icon>
+    </button>
+
+    <button
+      class="btn p-0 mr-2 bg-table-border-color"
+      [matTooltip]="'Shipping.ShippingButton' | translate"
+      (click)="onDraftFinish()"
+      *ngIf="selectedRows && selectedRows.length === 1 && !isAnyShipped"
+      style="width: 64px; height: 42px;"
+    >
+      <!-- [disabled]="!selectedRows || selectedRows.length !== 1 || isAnyShipped" -->
+      <app-icon icon="shipping"></app-icon>
+    </button>
+
+    <button
+      (click)="onRSUpload()"
+      *ngIf="
+        selectedRows && selectedRows.length === 1 && isAnyShipped && !requestIsSent
+      "
+      matTooltip="RS-ზე ატვირთვა"
+      style="width: 64px; height: 42px;"
+      class="btn mr-2 p-0 bg-table-border-color"
+    >
+      <app-icon icon="import"></app-icon>
+      
+    </button>
+  </div>
+
+  <div class="bg-white flex-grow-1">
+    <app-table
+      [dataSource]="dataSource"
+      [totalCount]="totalCount"
+      [state]="currentState"
+      [selectable]="true"
+      [paginable]="true"
+      [actions]="{ editable: isRowDraft, deletable: isRowDraft }"
+      [selectableCustomEnable]="isRowUploadedToRS"
+      [hasColumnSelector]="true"
+      defaultSort="orderDate"
+      defaultSortDirection="DESC"
+      [displayedColumns]="displayedColumns"
+      (stateChanged)="onTableStateChanged($event)"
+      (selectionChanged)="onSelectionChanged($event)"
+      (rowClick)="toQueryParam('shippingId', $event.id)"
+      (rowEdit)="onEdit($event)"
+      (rowDelete)="openRemovalDialog($event)"
+      class="table-orders"
+    >
+      <ng-template app-cell let-cell="cell" let-row="row" name="orderDate">
+        <div class="text-truncate text-right">
+          <span [matTooltip]="row.orderDate | date: 'd MMM yy, HH:mm'" #ref1 [matTooltipDisabled]="textIsTruncated(ref1)">
+            {{ row.orderDate | date: 'd MMM yy, HH:mm' }}
+          </span>
+        </div>
+      </ng-template>
+      <ng-template app-cell let-cell="cell" let-row="row" name="status">
+        <span
+          [ngClass]="{
+            'draft': isRowDraft(row)
+          }"
+          class="text-truncate cell-status"
+          [matTooltip]="statusData[cell]"
+          #ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+        >
+          {{ statusData[cell] }}
+        </span>
+      </ng-template>
+    </app-table>
+  </div>
+</div>

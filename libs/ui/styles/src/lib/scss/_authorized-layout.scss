@@ -1,0 +1,14 @@
+.authorized-layout {
+  min-height: calc(100vh - #{$header-height});
+  display: flex;
+
+  &-container {
+    max-height: 100%;
+    flex: 1;
+    padding-left: $sidebar-width;
+    // background-color: #f6f7fb;
+    background-color:white;
+    max-width: 100%;
+    position: relative;
+  }
+}

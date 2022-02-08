@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>favicon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="favicon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-22" fill-rule="nonzero">
+            <circle id="Oval" fill="#4563FF" cx="255.884014" cy="255.884014" r="255.884014"></circle>
+            <path d="M511.795589,255.911574 L255.911574,255.911574 L255.911574,0.02755886 C397.232413,0.02755886 511.795589,114.590735 511.795589,255.911574 L511.795589,255.911574 Z" id="Path" fill="#FF6257"></path>
+            <path d="M511.795589,255.911574 L255.911574,255.911574 L255.911574,511.768033 C323.773699,511.775339 388.85887,484.822339 436.847224,436.839154 C484.835578,388.855968 511.795589,323.773701 511.795589,255.911574 Z" id="Path" fill="#3D1877"></path>
+        </g>
+    </g>
+</svg>

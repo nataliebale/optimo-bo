@@ -1,0 +1,54 @@
+
+
+<div class="d-flex align-items-center justify-content-between border-bottom border-table-border-color pl-4 pr-18px" style="height: 60px;">
+  <span class="font-color-dark font-size-18 font-family-bold line-height-normal">
+    ბიზნეს ტიპის {{ title }}
+  </span>
+  <span>
+    <button class="btn bg-transparent rounded-0 p-0"
+    (click)="onClose()"
+    > <app-icon icon="close" class="icon-w-20px icon-h-20px"></app-icon>
+     </button>
+  </span>
+</div>
+
+ <form
+  *ngIf="form"
+  [formGroup]="form"
+  (submit)="onSubmit()"
+  class="mb-0 p-4 no-validation-padding"
+> 
+
+  
+  <div class="w-100 pb-4" *ngIf="alreadyExists">
+    <div class="mx-auto bg-danger-bg px-4 rounded text-center border d-flex align-items-center border-danger-border mt-3"
+      style="max-width: 960px;height: 54px;">
+      <div class="col-2 d-flex px-0">
+        <app-icon icon="alert"></app-icon>
+      </div>
+      <div class="col text-center font-size-14 font-color-dark font-family-regular">
+        ბიზნეს ტიპი ამ სახელით უკვე არსებობს
+      </div>
+      <div class="col-2 px-0"></div>
+    </div>
+  </div>
+  <div class="form-group-lg line-height-normal">
+    <label for="attribute-name" class="font-size-14 font-color-dark font-family-bold line-height-normal">სახელი*</label>
+     
+    <input
+        class="form-control"
+        id="name"
+        type="text"
+        formControlName="name"
+      />
+  </div>
+  
+  <div class="d-flex justify-content-end">
+    <button
+           class="btn btn-primary font-color-white font-size-14 font-family-bold"
+           type="submit"
+          style="width: 120px; height: 42px;"
+      >
+      შენახვა</button>
+  </div>
+</form>

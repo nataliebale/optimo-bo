@@ -1,0 +1,45 @@
+.circle-progress {
+  $height: 84px;
+  $width: 84px;
+
+  position: relative;
+  height: $height;
+  width: $width;
+
+  &-chart {
+    height: $height;
+    width: $width;
+    transform: rotate(-90deg);
+  }
+
+  &-background {
+    fill: none;
+    stroke: #f1f1f1;
+    stroke-width: .7;
+  }
+
+  &-bar {
+    fill: none;
+    stroke-width: .7;
+    stroke-dasharray: 100 100;
+    stroke-linecap: round;
+    animation: 2.5s fill;
+  }
+
+  &-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+}
+
+@keyframes fill {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}

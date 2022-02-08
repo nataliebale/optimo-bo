@@ -1,0 +1,20 @@
+<div class="header fixed-top">
+  <!-- <div class="header__logo pl-3 text-left d-none d-sm-flex">
+    <a routerLink="/" routerLinkActive="router-link-active">
+      <img src="/assets/images/logo.svg" alt="" />
+    </a>
+  </div> -->
+  <app-icon
+    class="header-burger d-inline-block d-md-none"
+    style="cursor: pointer;"
+    icon="burger"
+    (click)="onBurgerClick()"
+  ></app-icon>
+  <div class="font-size-22 font-color-dark font-family-bold pl-4">{{title}}</div>
+  <div class="d-flex align-items-center h-100">
+    <app-headbar-menu
+      class="h-100"
+      (logout)="logout.emit()"
+    ></app-headbar-menu>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+ <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="icon icon-edit">
+    <g id="Icon/table/edit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect   x="0" y="0" width="24" height="24"></rect>
+        <g id="Group" transform="translate(6.000000, 4.500000)">
+            <path d="M9.19488642,0.865814165 C9.59954879,0.75 9.70618095,0.784827619 9.78403484,0.859641414 L9.78403484,0.859641414 L11.5552309,2.56737458 C11.6225265,2.63147879 11.6566319,2.71620726 11.6557772,2.80183585 C11.6547919,2.90053904 11.6089944,2.99753282 11.5273339,3.07037093 L11.5273339,3.07037093 L4.18776342,10.8765338 L1.58180252,11.5577672 L1.91535432,8.60667133 Z" id="Combined-Shape" stroke="#343434" stroke-width="1.5"></path>
+            <rect id="Rectangle" fill="#343434" fill-rule="nonzero" x="1.77635684e-14" y="14.0056617" width="8.96530178" height="1.61538462" rx="0.75"></rect>
+        </g>
+    </g>
+</svg>

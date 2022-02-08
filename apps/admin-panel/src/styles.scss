@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import 'libs/ui/styles/src/lib/scss/styles';
+
+.dialog-overflow-visible .mat-dialog-container {
+  overflow: visible !important;
+}
+
+.mat-dialog-container {
+  padding: 0 !important;
+  box-shadow: 0 30px 30px 0 rgba(0, 0, 0, 0.1) !important;
+  overflow-x: hidden !important;
+}
+
+.mat-tooltip {
+  white-space: pre-line !important;
+}
+
+.table-height-100 {
+  app-lots-report-general {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+// temporary, then inline fix form-group-lg class to mb-20px
+app-supplier-user-detail {
+  form {
+    div.form-group-lg {
+      margin-bottom: 20px;
+      &:nth-child(5) {
+        margin-bottom: 24px;
+      }
+    }
+  }
+}
+// temporary, then inline fix form-group-lg class to mb-20px

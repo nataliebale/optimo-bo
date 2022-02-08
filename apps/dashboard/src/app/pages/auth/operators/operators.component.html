@@ -1,0 +1,58 @@
+<div class="h-100 d-flex flex-column" style="padding-bottom: 71px;">
+  <div class="d-flex align-items-center py-3 px-4">
+    <div class="d-flex align-items-center pr-3" *ngIf="!(selectedRows && selectedRows.length > 0)">
+      <button class="btn btn-primary btn-add mr-3" (click)="addNewItem()">
+        <span>{{'GENERAL.ADD' | translate}}</span>
+      </button>
+      <div style="width: 1px; background-color: #e7e7e7; height: 32px;" *ngIf="selectedRows && selectedRows.length > 0"></div>
+    </div>
+    <button
+    class="btn p-0 mr-2 bg-table-border-color"
+      [matTooltip]="'GENERAL.EDIT' | translate"
+      (click)="goToEdit()"
+      style="width: 64px; height: 42px;"
+      *ngIf="selectedRows && selectedRows.length === 1"
+    >
+      <app-icon [icon]="'edit'"></app-icon>
+    </button>
+    <button
+    class="btn mr-2 p-0 bg-table-border-color"
+      [matTooltip]="'GENERAL.DELETE' | translate"
+      (click)="openRemovalDialog(selectedRows)"
+      *ngIf="selectedRows && selectedRows.length > 0"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon [icon]="'trash'"></app-icon>
+    </button>
+    <button
+    class="btn mr-2 p-0 bg-table-border-color"
+      [matTooltip]="'OPERATORS.GENERATE_CODE' | translate"
+      (click)="onTempPrivile(selectedRows[0])"
+      *ngIf="selectedRows && selectedRows.length === 1"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon [icon]="'key'"></app-icon>
+      <!-- key icon svg chasamtebelia -->
+    </button>
+  </div>
+
+  <div class="bg-white">
+    <app-table
+      [dataSource]="dataSource"
+      [totalCount]="totalCount"
+      [state]="currentState"
+      [selectable]="true"
+      [actions]="{ editable: true, deletable: true }"
+      defaultSort="id"
+      defaultSortDirection="DESC"
+      [displayedColumns]="displayedColumns"
+      (stateChanged)="onTableStateChanged($event)"
+      (selectionChanged)="onSelectionChanged($event)"
+      (rowEdit)="goToEdit($event)"
+      (rowDelete)="openRemovalDialog($event)"
+      class="table-operators table-inventory before-last-th-bordered"
+      dropdownKeyForStaticValueSelector="permissions"
+    >
+    </app-table>
+  </div>
+</div>

@@ -1,0 +1,102 @@
+<app-column
+  [dataField]="col.dataField"
+  [caption]="col.caption"
+  [asyncCaption]="col.asyncCaption"
+  [sortable]="col.sortable"
+  [widthPercent]="col.widthPercent"
+  (cellClick)="cellClick.emit($event)"
+>
+  <ng-template *ngIf="headerCellTmpl" #headerCell>
+    <ng-container *ngTemplateOutlet="headerCellTmpl"></ng-container>
+  </ng-template>
+
+  <ng-template #cell let-row="row">
+    <ng-container
+      *ngTemplateOutlet="
+        cellTmpl;
+        context: { cell: row[col.dataField], row: row }
+      "
+    ></ng-container>
+    <div *ngIf="!cellTmpl" [ngClass]="col.className">
+      <span
+		[matTooltip]="getStaticPermissionsData(col, row)"
+		#ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+		class="mw-100 d-inline-block text-truncate"
+      >
+        {{ getStaticPermissionsData(col, row) }}
+      </span>
+    </div>
+  </ng-template>
+
+  <ng-template *ngIf="col.filterable" #filterCell>
+    <div class="d-flex align-items-center" (click)="onToggleFilter($event)">
+      <input
+        data-hj-allow
+        type="text"
+        class="table-form-control text-truncate"
+        placeholder="აირჩიე"
+        readonly
+        [value]="selectedValuesLabel || ''"
+		[matTooltip]="selectedValuesLabel || ''"
+		#ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+    [class.pr-12px]="filterSelected"
+      />
+      <app-icon
+        [icon]="'arrow-down'"
+        *ngIf="!selectedKey?.length"
+        class="th-icon"
+        style="cursor: pointer;"
+      ></app-icon>
+      <!-- <app-icon [icon]="'arrow-down'"class="th-icon" style="cursor: pointer;"></app-icon> -->
+    </div>
+    <!-- <button
+      *ngIf="displayedFilter"
+      type="reset"
+      class="filter-reset"
+      (click)="filterForm.reset(); onSubmit(true)"
+    >
+    <app-icon icon="filter-reset"></app-icon>
+    </button> -->
+    <button
+      *ngIf="filterSelected"
+      type="reset"
+      class="filter-reset"
+      (click)="filterForm.reset(); onSubmit(true)"
+    >
+      <app-icon icon="filter-reset"></app-icon>
+    </button>
+    <div
+      *ngIf="isFilterVisible"
+      clickOutside
+      (clickOutside)="onToggleFilter()"
+      class="custom-select-body"
+      style="display: block;left: 0px;top: 85%;"
+    >
+      <!-- <button *ngIf="selectedKey" type="reset" class="filter-reset" (click)="filterForm.reset(); onSubmit(true)">
+        reset
+      </button> -->
+      <div
+        class="custom-select-option"
+        *ngFor="let key of objectKeys(col.data)"
+        [class.active]="selectedKey === key"
+        (click)="onSelectionChange(key)"
+      >
+        <div
+          class="custom-checkbox custom-checkbox-selected-blue justify-content-start"
+        >
+          <input
+            data-hj-allow
+            type="checkbox"
+            [checked]="isItemSelected(key)"
+            class="custom-checkbox-control"
+          />
+          <label class="custom-checkbox-label text-truncate">
+            <span class="custom-select-text ml-2 pl-1 font-weight-normal">{{
+              col.data[key]
+            }}</span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</app-column>

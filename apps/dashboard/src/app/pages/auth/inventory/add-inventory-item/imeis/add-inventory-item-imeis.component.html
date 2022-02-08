@@ -1,0 +1,62 @@
+<div class="pt-5 mt-42px">
+  <div class="pb-30px">
+    <span class="font-size-20 font-color-dark font-family-bold">{{ 'GENERAL.IMEI_CODE' | translate }}</span>
+  </div>
+
+  <div class="h-100 d-flex flex-column">
+    <div class="d-flex align-items-center pb-4">
+      <div class="d-flex align-items-center pr-3" *ngIf="!(selectedRows && selectedRows?.length > 0)">
+        <button (click)="onDetail()" type="button" class="btn btn-primary btn-add mr-3 d-flex justify-content-center"  >
+          <span>{{ 'GENERAL.ADD' | translate }}</span>
+        </button>
+        <div style="width: 1px; background-color: #e7e7e7; height: 32px;"></div>
+      </div>
+      <!-- label ratoa da button ara ver mivxvdi -->
+      <label 
+        *ngIf="!selectedRows?.length"
+        (click)="fileInput.value = null" for="imeiImport" class="btn d-flex align-items-center justify-content-center p-0 mr-2 bg-table-border-color mb-0" style="cursor:pointer; color: inherit;
+          width: 64px;
+          height: 42px;">
+        <app-icon [icon]="'import'"></app-icon>
+      </label>
+      <button 
+        *ngIf="!selectedRows?.length"
+        type="button" class="btn p-0 mr-2 bg-excel-export mb-0" style="width: 64px;height: 42px;"
+        (click)="onExport()">
+        <app-icon [icon]="'excel'" class="icon-download"></app-icon>
+      </button>
+      <!-- <app-select-all [table]="table"></app-select-all> -->
+      <button *ngIf="selectedRows && selectedRows?.length === 1" type="button"
+      class="btn p-0 mr-2 bg-table-border-color" style="width: 64px; height: 42px;"
+      (click)="onDetail(selectedRows[0])">
+      <app-icon [icon]="'edit'"></app-icon>
+
+    </button>
+      <button *ngIf="selectedRows && selectedRows?.length > 0" type="button"
+        class="btn mr-2 p-0 bg-table-border-color  " (click)="onRemove()" style="width: 64px; height: 42px;">
+        <app-icon [icon]="'trash'"></app-icon>
+
+      </button>
+     
+      <input
+        id="imeiImport"
+        data-hj-allow
+        class="d-none"
+        #fileInput
+        type="file"
+        accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+        (change)="onImport($event.target.files)" />
+
+    </div>
+
+    <app-table class="table-imei" #table [dataSource]="dataSource" [totalCount]="dataSource?.length" [selectable]="true"
+      [staticData]="true" [actions]="{ editable: true, deletable: true }" [filterable]="false" [paginable]="false"
+      defaultSort="dateModified" defaultSortDirection="DESC" [displayedColumns]="displayedColumns"
+      (selectionChanged)="onSelectionChanged($event)" (rowEdit)="onDetail($event)" (rowDelete)="onRemove($event)">
+      <!--    <tr cdk-header-row-->
+      <!--        *cdkHeaderRowDef="[]">-->
+      <!--    </tr>-->
+    </app-table>
+  </div>
+
+</div>

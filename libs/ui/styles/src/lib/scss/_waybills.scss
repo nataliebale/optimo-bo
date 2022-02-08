@@ -1,0 +1,134 @@
+.waybills {
+  &-table {
+    th {
+      padding-left: 24px !important;
+      padding-right: 0px !important;
+      &[class*="__filter"]{
+        padding-right: 16px !important;
+      }
+    }
+    td {
+      padding-left: 24px !important;
+      padding-right: 16px !important;
+      div {
+        @include text-truncate;
+      }
+    }
+
+    thead {
+      tr {
+        &:nth-child(2) {
+          th {
+            &.cdk-header-cell {
+              &:nth-child(1),
+              &:nth-child(2) {
+                &::after {
+                  content: "" !important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &-paddings {
+      .table td:first-child,
+      table th:first-child {
+        padding-left: 24px;
+      }
+
+      .table td:last-child{
+        padding-right: 32px;
+      }
+      .table th:last-child {
+        padding-right: 0px;
+      }
+
+      th {
+        border-right: 0 !important;
+        font-size: 16px;
+      }
+
+      td {
+        font-size: 16px;
+      }
+      .mat-sort-header-button {
+        padding-left: 0 !important;
+      }
+    }
+    &.before-last-th-bordered {
+      thead {
+        tr {
+          &:nth-child(2) {
+            th {
+              &.cdk-header-cell {
+                &:nth-last-of-type(-n + 2) {
+                  &::after {
+                    content: "" !important;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &-choose-table {
+    .table {
+      margin-bottom: 0;
+      th {
+        border: none;
+      }
+      td {
+        height: 69px;
+      }
+    }
+
+    .h-100 {
+      height: auto !important;
+    }
+
+    .border {
+      border: 0 !important;
+    }
+  }
+
+  &-calendar {
+    .filter-dialog {
+      top: 0;
+      bottom: 0;
+      left: calc(100% + 16px);
+      width: 331px;
+
+      &::before {
+        top: 50%;
+        transform: rotate(-135deg) translateY(-50%);
+        left: -3px;
+      }
+    }
+  }
+
+  &-dialog {
+    .mat-dialog-container {
+      overflow: unset !important;
+    }
+    &.top-128px{
+      position: absolute !important;
+      top: 128px;
+    }
+  }
+  &-edit-divider {
+    position: relative;
+    &::after {
+      content: "";
+      width: 1px;
+      height: 100%;
+      background-color: $table-border-color;
+      position: absolute;
+      left: 39.88%;
+    }
+  }
+}

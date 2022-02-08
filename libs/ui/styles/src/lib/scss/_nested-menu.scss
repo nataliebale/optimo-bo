@@ -1,0 +1,60 @@
+.nested-menu {
+  $root: &;
+  padding: 8px;
+
+  &-item {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  &-link {
+    padding: 8px;
+
+    font: rem(14px) $font-regular;
+    cursor: pointer;
+    @include transition;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    @include border-radius(5px);
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    // &.active.has-route {
+    //   color: white;
+    //   font-family: $font-regular;
+    //   background-color: $blue;
+    //   .item-icon {
+    //     svg {
+    //       .stroke-change {
+    //         stroke: $blue !important;
+    //       }
+    //       .fill-change{
+    //         fill: $blue !important;
+    //       }
+    //     }
+    //   }
+    // }
+  }
+  .icon-sidebar {
+    width: 24px;
+  }
+}
+
+.subnav-wrapper {
+  display: none;
+
+  &.active {
+    display: block;
+    .nested-menu-link {
+      transition: none;
+    }
+  }
+  .nested-menu-link {
+    padding-left: 43px;
+  }
+}

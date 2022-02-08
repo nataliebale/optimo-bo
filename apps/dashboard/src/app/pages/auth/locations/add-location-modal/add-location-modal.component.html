@@ -1,0 +1,161 @@
+<div class="d-flex align-items-center justify-content-between border-bottom border-table-border-color px-4"
+     style="height: 60px;">
+  <div class="font-color-dark font-size-18 font-family-bold line-height-normal">
+    <span *ngIf="!data">
+      {{'LOCATIONS.EDIT.ADD_LOCATION' | translate}}
+    </span>
+    <span *ngIf="data">
+      {{'LOCATIONS.EDIT.EDIT_LOCATION' | translate}}
+    </span>
+  </div>
+  <button
+      class="btn bg-transparent rounded-0 p-0"
+      (click)="onClose()"
+    >
+      <app-icon icon="close" class="icon-w-20px icon-h-20px"   style="cursor: pointer;"></app-icon>
+    </button>
+</div>
+<form
+  *ngIf="form"
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+  (keydown.enter)="$event.preventDefault()"
+>
+  <div  class="pt-3 px-4 ">
+    <div class="form-group mt-n1px line-height-normal">
+      <label for="" class="font-size-14 font-color-dark font-family-bold ">
+        {{'LOCATIONS.EDIT.LOCATION_NAME' | translate}}
+      </label>
+      <input
+        id="locationName"
+        data-hj-allow
+        class="form-control"
+        type="text"
+        formControlName="name"
+      />
+    </div>
+    <div class="form-group   line-height-normal">
+      <label for="" class="font-size-14 font-color-dark font-family-bold ">
+        {{'GENERAL.CITY' | translate}}
+      </label>
+      <!-- <input
+        id="locationAddress"
+        data-hj-allow
+        class="form-control"
+        type="text"
+        formControlName="address"
+        /> -->
+        <ng-select
+        class="custom-select-header form-control dropdown-max-h-450px"
+        [items]="cityNamesList"
+        bindValue="cityName"
+        bindLabel="cityName"
+        [searchable]="true"
+        [clearable]="false"
+        [formControl]="cityNameControl"
+        >
+      </ng-select>
+    </div>
+    <div class="form-group mt-n1px line-height-normal">
+      <label for="" class="font-size-14 font-color-dark font-family-bold line-height-normal">
+        {{'GENERAL.DISTRICT' | translate}}
+      </label>
+      <ng-select
+        class="custom-select-header form-control dropdown-max-h-450px"
+        [items]="districtNamesList"
+        bindValue="id"
+        bindLabel="districtName"
+        [searchable]="true"
+        [clearable]="false"
+        formControlName="locationAddressId"
+      >
+      </ng-select>
+    </div>
+    <div class="form-group   line-height-normal">
+      <label for="" class="font-size-14 font-color-dark font-family-bold ">
+        {{'GENERAL.ADDRESS' | translate}}
+      </label>
+      <input
+        id="locationAddress"
+        data-hj-allow
+        class="form-control"
+        type="text"
+        formControlName="address"
+      />
+    </div>
+    <div class="form-group mt-n1px line-height-normal">
+      <label for="" class="font-size-14 font-color-dark font-family-bold line-height-normal">
+        {{'GENERAL.MANAGER' | translate}}
+      </label>
+      <input
+        id="locationManagerName"
+        data-hj-allow
+        class="form-control"
+        type="text"
+        formControlName="managerName"
+      />
+    </div>
+    <div class="form-group  line-height-normal mb-22px">
+      <label for="" class="font-size-14 font-color-dark font-family-bold ">
+        {{'GENERAL.PHONE_NUMBER' | translate}}
+      </label>
+      <input
+        id="phoneNumber"
+        data-hj-allow
+        class="form-control"
+        type="text"
+        placeholder=""
+        mask="9{22}"
+        formControlName="phoneNumber"
+      />
+    </div>
+    <div class="form-group mb-0 custom-checkbox-selected-blue">
+      <input
+        id="isForExtra"
+        data-hj-allow
+        class="custom-checkbox-control"
+        formControlName="isForExtra"
+        type="checkbox"
+        name="isForExtra"
+      />
+      <label for="isForExtra" class="custom-checkbox-label ">
+        <span style="margin-left: 12px;"  class="font-size-14 font-color-dark font-family-regular">
+          {{'LOCATIONS.EDIT.EXTRA_SALES' | translate}}
+        </span>
+      </label>
+    </div>
+
+    <!-- <div class="form-group-lg custom-checkbox-selected-blue">
+      <input
+        formControlName="autoUploadEntitySalesToRS"
+        type="checkbox"
+        id="autoUploadEntitySalesToRS"
+        name="autoUploadEntitySalesToRS"
+        class="custom-checkbox-control"
+      />
+      <label for="autoUploadEntitySalesToRS" class="custom-checkbox-label ml-2">
+        <span style="margin-left: 12px;">ზედნადების ატვირთვა</span>
+      </label>
+    </div> -->
+  </div>
+  <div
+    class="d-flex justify-content-end pt-20px pb-4 px-4 mt-n1px"
+     
+  >
+    <button
+    class="btn bg-transparent mr-3 font-size-14 font-color-dark font-family-bold"   
+    style="width: 120px;height: 42px;"
+    type="button"
+    (click)="onClose()"
+  >
+    {{'GENERAL.CANCEL' | translate}}
+  </button>
+    <button
+      class="btn btn-primary font-color-white  font-size-14  font-family-bold"
+      style="width: 120px;height: 42px;"
+      type="submit"
+    >
+      {{'GENERAL.SAVE' | translate}}
+    </button>
+  </div>
+</form>

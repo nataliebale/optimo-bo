@@ -1,0 +1,1291 @@
+﻿{
+  "HOME": {
+    "TITLE": "Home title  (for testing)",
+    "SELECT": "Select (for testing)"
+  },
+  "DefaultApproveDialog": {
+    "title": "Do you really want to cancel?",
+    "titleForDelete": "Do you really want to delete?",
+    "message": "If cancelled changes will not be saved.",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "BUTTON_LABELS": {
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "YES": "Yes",
+    "NO": "No"
+  },
+  "SPECIAL_LABELS": {
+    "OTHERS": "Other"
+  },
+  "GENERAL": {
+    "NAME_SLASH_BARCODE": "Name/Barcode",
+    "CONFIRM": "Confirm",
+    "NAME": "Name",
+    "NAME_2": "Name",
+    "LAST_NAME": "Last name",
+    "SELECT": "Select",
+    "QUANTITY": "Quantity",
+    "AMOUNT_OF_MONEY": "Amount",
+    "INCOME": "Income",
+    "PROFIT": "Profit",
+    "PROFIT_PERCENT": "Extra charge (%)",
+    "CASH": "Cash",
+    "CREDIT": "Non-cash",
+    "CONSIGNATION": "Consignation",
+    "MAIN": "Main",
+    "PRODUCTS": "Products",
+    "CATEGORIES": "Categories",
+    "TRANSPORTATIONS": "Transportations",
+    "INVENTORISATION": "Inventorisation",
+    "SUPPLIERS": "Suppliers",
+    "PURCHASES": "Purchases",
+    "PURCHASE": "Purchase",
+    "QUICK_PURCHASE": "Quick Purchase",
+    "WAYBILLS": "Waybills",
+    "LOTS": "Lots",
+    "ENITYT_SALES": "Legal entity sales",
+    "SALES": "Sales",
+    "BUYERS": "Buyers",
+    "PRODUCTION": "Production",
+    "INGREDIENTS": "Ingredients",
+    "RECEIPT_TEMPLATES": "Receipt templates",
+    "RECEIPTS": "Receipts",
+    "PRODUCTION_ORDERS": "Preparation",
+    "ACCOUNTING": "Accounting",
+    "STOCK_HOLDINGS": "Leftover",
+    "REPORTS": "Reports",
+    "GLOVO": "Glovo",
+    "GLOVO_PRODUCTS": "Products",
+    "GLOVO_SUBCATEGORIES": "Subcategories",
+    "TRANSACTIONS": "Transactions",
+    "SUPPLIES": "Supplies",
+    "PRICES": "Prices",
+    "WITHDRAWALS": "Cash withdrawals",
+    "SHIFTS": "Shifts",
+    "STATISTICS": "Statistics",
+    "GENERAL": "General",
+    "ADMINSTRATION": "Administration",
+    "PROFILE": "Profile",
+    "WORKERS": "Workers",
+    "BRANCHES": "Branches",
+    "SUB_USERS": "Sub-users",
+    "HELP": "Help",
+    "TABLES": "Tables",
+    "ADD": "Add",
+    "DELETE": "Delete",
+    "EDIT": "Edit",
+    "SAVE": "Save",
+    "RECEIVE": "Receive",
+    "ORDER": "Order",
+    "CANCEL": "Cancel",
+    "SIGN_OUT": "Sign out",
+    "CONTINUE": "Continue",
+    "EMAIL": "E-mail",
+    "MARGIN": "Margin",
+    "VAT": "VAT",
+    "DISTRIBUTOR": "Distributor",
+    "CATEGORY": "Category",
+    "APPROVE_DELETE": "Do you really want to delete?",
+    "APPROVE_STOCKITEM_DELETE_MULTIPLE_LOCATIONS": "In case of deletion, the product will be deleted from all locations",
+    "APPROVE_SUPPLIER_DELETE_MULTIPLE_LOCATIONS": "In case of deletion, the supplier will be deleted from all locations",
+    "APPROVE_INGREDIENT_DELETE_MULTIPLE_LOCATIONS": "In case of deletion, the ingredient will be deleted from all locations",
+    "APPROVE_RECEIPT_TEMPLATE_DELETE_MULTIPLE_LOCATIONS": "In case of deletion, the receipt template will be deleted from all locations",
+    "APPROVE_RECEIPT_DELETE_MULTIPLE_LOCATIONS": "In case of deletion, the receipt will be deleted from all locations",
+    "DESCRIPTION": "Description",
+    "QUANTITY_IN_STOCK": "Quantity in stock",
+    "DOWNLOAD": "Download",
+    "SYNC": "synchronization",
+    "FILL_IN_EMPTY_INPUTS": "Fill in the empty inputs",
+    "GENERAL_INFO": "General information",
+    "MIN_ACCEPTABLE_RESOLUTION": "Minimal acceptable size",
+    "ADDITIONAL_INFO": "Additional information",
+    "IMEI_CODE": "Serial code",
+    "COLOR": "Color",
+    "SIZE": "Size",
+    "PRODUCT": "Product",
+    "DATE": "Data",
+    "BACK": "Back",
+    "IMPORT": "Import",
+    "PHONE_NUMBER": "Phone number",
+    "PHONE": "Phone",
+    "MANAGER": "Manager",
+    "ADDRESS": "Address",
+    "BARCODE": "Barcode",
+    "UNIT_PRICE": "Selling price",
+    "INFORMATION": "Information",
+    "SHIPPING": "Shipping",
+    "STOCK": "Stock",
+    "UNIT": "Unit",
+    "COST": "Cost",
+    "INGREDIENT": "Ingredient",
+    "TOTAL_COST": "Total cost",
+    "BARCODE_SLASH_SKU": "Barcode/Stock-Keeping Unit (SKU)",
+    "BACKBTN": "Back",
+    "STATUS": "Status",
+    "RECEIPT": "Receipt",
+    "USER": "User",
+    "VAT_TYPE": "VAT type",
+    "TOTAL_VAT": "Total VAT",
+    "TYPE": "Type",
+    "THE_DATA_IS_EMPTY": "The data is empty"
+  },
+  "PLACEHOLDER": {
+    "TEXT_INPUT": "Enter text",
+    "BACK": "Back",
+    "CONTINUE": "Continue",
+    "IMPORT": "Import",
+    "CONFIRM": "Confirm"
+  },
+  "MAIN": {
+    "TOTAL_COST": "Total cost",
+    "TOTAL_PRICE": "Total selling price",
+    "TOTAL_MARGIN": "Margin",
+    "CARDS": {
+      "TOTAL_INCOME": {
+        "TOTAL_INCOME": "Total income "
+      },
+      "PROFIT": {
+        "PROFIT": "Profit"
+      },
+      "INCOME": {
+        "ACCORDING_TO_ACCOUNT": "according to account"
+      },
+      "BOG_LOAN": {
+        "TEXT1": "Apply for a Bank of Georgia loan",
+        "TEXT2": "tailored to suit your business",
+        "BUTTON_LABEL": "Apply for a loan"
+      },
+      "POPULAR_PRODUCTS": {
+        "TITLE": "Popular products",
+        "TABLE": {
+          "NAME": "Name",
+          "QUANTITY": "Quantity",
+          "AMOUNT_OF_MONEY": "Amount"
+        },
+        "SEE_MORE": "See more"
+      },
+      "STOCK_HOLDINGS": {
+        "TITLE": "Stock indicator",
+        "TABLE": {
+          "NAME": "Name",
+          "QUANTITY": "Quantity"
+        },
+        "SEE_MORE": "See more"
+      },
+      "UPCOMING_PURCHASE": {
+        "TITLE": "Upcoming purchases",
+        "TABLE": {
+          "NAME": "Name",
+          "DISTRIBUTOR": "Distributor",
+          "TOTAL_AMOUNT": "Total amount",
+          "DATE": "Date"
+        }
+      }
+    }
+  },
+  "PROFILE": {
+    "LANGUAGE": "Language",
+    "CHANGE_PASSWORD": "Change password",
+    "RS_PARAMETERS": "RS-parameters",
+    "GENERAL_INFO": "General information",
+    "BRAND_NAME": "Brand name",
+    "COMPANY_NAME": "Company name",
+    "IDENTIFICATION_NUMBER": "Identification number",
+    "REGISTRATION_DATE": "registration date",
+    "FIELD_OF_OPERATION": "Field of activity",
+    "VAT_PAYER": "VAT payer",
+    "CONTACT_INFO": "Contact information",
+    "PHONE_NUMBER": "Phone number",
+    "LEGAL_ADDRESS": "Legal address",
+    "REAL_ADDRESS": "Фактический адрес",
+    "CONFIGURATION": "Configuration",
+    "GLOVO_INTEGRATION": "Integration on Glovo",
+    "SERVICE_TAX_PERCENT": "Service percent",
+    "ENTITY_SALES": "Legal entity sales",
+    "PASSWORD_CHANGE_SUCCESS": "Password successfully changed",
+    "EXISTING_PASSWORD": "Current password",
+    "NEW_PASSWORD": "New password",
+    "REPEAT_NEW_PASSWORD": "Confirm new password",
+    "NAME": "Name",
+    "PASSWORD": "Password",
+    "GLOVO_PERCENT": "გლოვოს პროცენტი",
+    "OPTIMO_PERCENT": "ოპტიმოს პროცენტი"
+  },
+  "LOCATIONS": {
+    "MAIN_LOCATION": "Main",
+    "NOTIFICATION": {
+      "RECORD_DELETE_SUCCESSFULLY": "Record successfully deleted"
+    },
+    "ALL_LOCATION": "All",
+    "EDIT": {
+      "EDIT_LOCATION": "Edit branch",
+      "ADD_LOCATION": "Add branch",
+      "LOCATION_NAME": "Branch name",
+      "EXTRA_SALES": "Extra slaes"
+    }
+  },
+  "INVENTORY": {
+    "UNIT_COST_SHORT": "Purchase price",
+    "UNIT_PRICE": "Selling price",
+    "SYNC_PRICES": "Synchronize prices",
+    "CHANGE_PRICES": "Change prices",
+    "RS_IMPORT": "RS-import",
+    "UPLOAD_PRODUCTS": "Upload products",
+    "FORM_DOWNLOAD": "Download form",
+    "FORM_UPLOAD": "Upload form",
+    "EXPORT_FOR_SCALE": "Export for scale",
+    "EXPORT_TO_EXCEL": "Export to Excel",
+    "PRINT_BARCODE": "Print barcode",
+    "ADD_TO_FAVORITES": "Add to Favorites",
+    "REMOVE_FROM_FAVORITES": "Remove from Favorites",
+    "PRODUCT_DOWNLOAD_IN_PROCESS": "Product download in progress",
+    "DO_YOU_REALLY_WANT_TO_DEACTIVATE": "Do you really want to deactivate?",
+    "BUTTON_CONFIRM": "Yes",
+    "BUTTON_DENY": "No",
+    "PRODUCT_DELETE_SUCCESS": "Product successfully deleted",
+    "POPUPS": {
+      "UPLOADING_PRODUCTS": "Product uploading",
+      "SOME_PRODUCTS_UPLOAD_FAILED": "Some products could not be uploaded",
+      "DOWNLOAD_FILL_REUPLOAD": "To upload all products download and fill in the form again.",
+      "DUPLICATED_PRODUCTS": "Duplicated products",
+      "ERRORED_PRODUCTS": "Products that could not be uploaded",
+      "PRICE_CHANGED_PRODUCTS": "Products with changed prices",
+      "SYNC_PRICES_WARNING": "The sellign price for all products in this branch will be updated according to the selected branch.",
+      "IMPORT_NOTIFICATION_ERROR": "Product import failed",
+      "IMPORT_NOTIFICATION_SUCCESS": "All products were successfully imported",
+      "CHOOSE_TIME_INTERVAL": "Choose period"
+    },
+    "EDIT": {
+      "PRODUCT_EDIT_TITLE_PREFIX": "Product",
+      "ADD_CATEGORY": "Add category",
+      "BARCODE_SLASH_SKU": "Barcode/SKU",
+      "ADD_DISTRIBUTOR": "Add distributor",
+      "PRICES_AND_SUPPLIES": "Prices and supplies",
+      "CURRENT_SUPPLY": "Current supply",
+      "MIN_SUPPLY_THRESHOLD": "Minimal supply",
+      "UNIT_COST": "Purchase cost",
+      "UNIT_PRICE": "Selling price",
+      "PRICE_UPDATE_DATE": "Date of price update",
+      "PRICE_WILL_UPDATE_ON_NEXT_SYNC": "Price will be updated on next synchronization",
+      "PRICE_WILL_UPDATE": "Price will be updated",
+      "VAT_TYPE": "VAT type",
+      "SIZE_COLOR_GROUP_ID": "Size, color, group ID",
+      "ADD_PRODUCT": "Add product",
+      "BARCODE_ALREADY_EXISTS_WARNING": "Barcode already exists, do you want to continue?",
+      "SAVE_WARNING": "Do you really want to save",
+      "PRODUCT_ADD_SUCCESS": "Product successfully added",
+      "PRODUCT_UPDATE_SUCCESS": "Product successfully updated",
+      "CANCEL_TITLE": "Do you really want to cancel?",
+      "CANCEL_MESSAGE": "If cancelled changes will not be saved",
+      "IMEI_ALREADY_EXISTS": "The given code already exists"
+    },
+    "IMEI": {
+      "POPUP_TITLE_PREFIX": "Serial code",
+      "WRITE_IMEI": "Enter code"
+    },
+    "TOOLTIPS": {
+      "SELECT_PRICE_CHANGE_DATE": "Select price change date"
+    }
+  },
+  "CATEGORIES": {
+    "LIST": {
+      "TABLECOLUMNS": {
+        "TITLE": "Title",
+        "TOTALUNITS": "Total units",
+        "TOTALCOST": "Total cost",
+        "ASSORTMENT": "Assortment"
+      }
+    },
+    "ITEM": {
+      "TABLECOLUMNS": {
+        "TITLE": "Title",
+        "QUANTITY": "Quantity",
+        "UNITCOST": "Purchase cost"
+      },
+      "CATEGORYATTRIBUTEITEMS": {
+        "TOTALQUANTITYONHAND": "Total quantity on hand",
+        "TOTALCOST": "Total cost",
+        "ASSORTMENT": "Assortment"
+      }
+    },
+    "ADDOREDITMODAL": {
+      "ADDCATEGORY": "Add category",
+      "EDITCATEGORY": "Edit category",
+      "TITLE": "Title",
+      "MINIMUMALLOWABLEDIMENSIONS": "Minimal allowable dimensions"
+    }
+  },
+  "OPERATORS": {
+    "PERMISSIONS": "Permissions",
+    "LAST_LOGIN_DATE": "Last login date",
+    "GENERATE_CODE": "Generate code",
+    "NOTIFICATIONS": {
+      "OPERATOR_CAN_BE_REMOVED_AFTER_SESSION_ENDS": "Operator can be removed after closing the session"
+    },
+    "VIEW": {
+      "ADD_OPERATOR": "Add operator",
+      "EDIT_OPERATOR": "Edit operator",
+      "OPERATOR_NAME": "Operator name",
+      "OPERATOR_CAN_DO": "Operator can do:",
+      "PIN_CODE": "PIN-code"
+    },
+    "TMP_PRIVILAGE": {
+      "PRODUCT_DELETE": "Delete product",
+      "TEMPORARY_CODE": "Temporary code"
+    },
+    "PERMISSION_VALUES": {
+      "CanReceivePurchaseOrders": "Receive purchase orders",
+      "CanSetDiscount": "Set discount",
+      "CanChangePrice": "Change price",
+      "CanDeleteFromBasket": "Delete product from order",
+      "CanDeleteBasket": "Delete order",
+      "CanSeeAllOrders": "See and change all orders",
+      "CanOrder": "Make order",
+      "CanOpenShift": "Open and close shift",
+      "CanSeeShiftSums": "See shift sums",
+      "CanWithdrawCash": "Withdraw cash"
+    }
+  },
+  "SUPPLIERS": {
+    "PAYMENT_METHOD_BUTTON": "Payment type",
+    "RS_IMPORT_BUTTON": "Import from RS",
+    "LIST": {
+      "TABLE_COLUMNS": {
+        "TITLE": "Title",
+        "CONTACT_NAME": "Contact name",
+        "PHONE_NUMBER": "Phone number",
+        "EMAIL": "E-mail",
+        "LIABILITY_DEPOSIT": "Liability/Deposit",
+        "BANK_ACCOUNT_NUMBER": "Account number",
+        "IS_VAT_REGISTERED": "VAT payer"
+      },
+      "FILTER_OPTIONS": {
+        "YES": "Yes",
+        "NO": "No"
+      }
+    },
+    "ITEM": {
+      "DETAILS": {
+        "ADD_SUPPLIER": "Add supplier",
+        "EDIT_SUPPLIER": "Edit supplier",
+        "GLOBAL_ERROR_MESSAGE": "Fill in missing fields",
+        "EMAIL_ERROR_MESSAGE": "Enter correct E-mail",
+        "UNIT_PRICE_ERROR_MESSAGE": "The purchase unit price of the product is higher than the unit cost",
+        "PHONE_ERROR_MESSAGE": "Enter minimum 9 digits",
+        "BANK_ACCOUNT_ERROR_MESSAGE": "Enter minimum 22 digits",
+        "GENERAL_INFO": "General information",
+        "TITLE": "Title",
+        "INN": "Identification number",
+        "CONTACT_NAME": "Contact person",
+        "PHONE_NUMBER": "Phone number",
+        "EMAIL": "E-mail",
+        "BANK_ACCOUNT_NUMBER": "Account number",
+        "IS_VAT_REGISTERED": "VAT payer",
+        "ADD_PRODUCT": "Add product",
+        "STOCKITEMS_LIST": {
+          "LABEL": "Select product",
+          "TABLE_COLUMNS": {
+            "TITLE": "Title",
+            "CATEGORY": "Category",
+            "UNIT_COST": "Cost"
+          }
+        }
+      },
+      "LIST": {
+        "LABEL": "Select product",
+        "TABLE_COLUMNS": {
+          "TITLE": "Title",
+          "QUANTITY": "Quantity",
+          "UNIT_COST": "Purchase cost"
+        }
+      },
+      "ATTRIBUTES": {
+        "CONTACT_NAME": "Contact person",
+        "PHONE_NUMBER": "Phone number",
+        "EMAIL": "E-mail",
+        "INN": "Identification number",
+        "BANK_ACCOUNT_NUMBER": "Account number",
+        "IS_VAT_REGISTERED": "VAT payer",
+        "YES": "Yes",
+        "NO": "No"
+      }
+    },
+    "SUPPLIER_PRODUCTS": {
+      "ADD-SUPPLIER_PRODUCTS": "Add supplier products",
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "TITLE": "Title",
+          "UNIT_COST": "Cost"
+        }
+      }
+    },
+    "SUPPLIER_IMPORT": {
+      "SUCCESS_MESSAGE": "Supplier successfully added",
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "TITLE": "Title",
+          "SELLER_IIN": "Identification number"
+        }
+      }
+    },
+    "TRANSACTIONS": {
+      "CASH": "Cash transaction",
+      "CARD": "Cashless transaction",
+      "SUCCESS_MESSAGE": "Transaction completed",
+      "PAYMENT": "Payment",
+      "PAYMENT_TYPE": "Payment type",
+      "ENTER_THE_AMOUNT": "Enter the amount"
+    },
+    "UPDATE_SUCCESSFULLY_MESSAGE": "Supplier successfully updated",
+    "ADDED_SUCCESSFULLY_MESSAGE": "Supplier successfully added",
+    "DELETED_SUCCESSFULLY_MESSAGE": "Supplier successfully deleted"
+  },
+  "ORDERS": {
+    "DUPLICATE_ORDER": "Duplicate order",
+    "RECEIVE_ORDER": "Receive order",
+    "ROLLBACK": "ROLLBACK",
+    "EXPORT_LOADING_POPUP_TEXT": "Purchase loading in progress",
+    "EXPORT_ORDERS": "Export purchases",
+    "LIST": {
+      "TABLE_COLUMNS": {
+        "TITLE": "Title",
+        "COMPANY": "Company",
+        "STATUS": "Sttaus",
+        "QUANTITY": "Quantity",
+        "TOTAL_COST": "Total amount",
+        "IS_APPROVED": "Approval document available",
+        "DATE": "Data",
+        "APPROVED": {
+          "YES": "Yes",
+          "NO": "No"
+        }
+      }
+    },
+    "ITEM": {
+      "DETAILS": {
+        "ADD_ORDER": "Add order",
+        "ADD_QUICK_ORDER": "Add quick order",
+        "EDIT_ORDER": "Edit order",
+        "DUPLICATE_ORDER": "Duplicate order",
+        "RECEIVE_ORDER": "Edit order",
+        "GLOBAL_ERROR_MESSAGE": "Fill in missing fields",
+        "GENERAL_INFO": "General information",
+        "TITLE": "Title",
+        "SUPPLIER": "Supplier",
+        "PAYMENT_TYPE": "Payment method",
+        "ORDER_RECEIVE_DATE": "Order delivery date",
+        "IS_APPROVED": "Approval document available",
+        "ADD_PRODUCT": "Add product",
+        "ORDER_GENERATED_NAME_PREFIX": "Order",
+        "ENTER_FUTURE_DATE": "Enter future date ",
+        "SUPPLIER_CHANGE_DIALOG_TITLE": "In case of change of supplier product will not be saved, do you want to continue?",
+        "LOADING_POPUP_TEXT": "Product loading in progress",
+        "UPLOAD_PRODUCTS": "Upload products",
+        "UPLOAD_FORM": "Upload the form",
+        "CLEAR_FILE_SUCCESS_NOTIFICATION": "Products successfully removed",
+        "UPLOAD_FILE_SUCCESS_NOTIFICATION": "Products successfully uploaded",
+        "UPLOAD_FAILED_DIALOG": {
+          "TITLE": "Product upload failed",
+          "BODY": "To upload all products download and fill in form again.",
+          "DUPLICATED_PRODUCTS": "Duplicated products",
+          "ASSORTMENT_PRODUCTS": "Products in assortment",
+          "FAILED_TO_UPLOAD_PRODUCTS": "Products that could not be uploaded",
+          "CANCEL_BUTTON_LABEL": "Cancel",
+          "DOWNLOAD_BUTTON_LABEL": "Download"
+        },
+        "APPROVE_RECEIVE_DIALOG": {
+          "TITLE": "Do you really want to receive product?",
+          "APPROVE_LABEL": "Receive",
+          "DENY_LABEL": "Cancel"
+        },
+        "STOCKITEMS_LIST": {
+          "LABEL": "Select product",
+          "TOTAL_UNIT_COST": "Total unit cost",
+          "TABLE_COLUMNS": {
+            "TITLE": "Title",
+            "QUANTITY": "Quantity on hand",
+            "ORDERED_QUANTITY": "Ordered quantity",
+            "UNIT_COST": "Unit cost",
+            "TOTAL_COST": "Total cost",
+            "UNIT_PRICE": "Unit price"
+          }
+        }
+      },
+      "LIST": {
+        "LABEL": "Select product",
+        "TABLE_COLUMNS": {
+          "TITLE": "Title",
+          "QUANTITY": "Quantity",
+          "UNIT_COST": "Unit cost"
+        }
+      },
+      "ATTRIBUTES": {
+        "CONTACT_NAME": "Contact person",
+        "PHONE_NUMBER": "Phone number",
+        "EMAIL": "E-mail",
+        "INN": "Identification number",
+        "BANK_ACCOUNT_NUMBER": "Account number",
+        "IS_VAT_REGISTERED": "VAT payer",
+        "YES": "Yes",
+        "NO": "No"
+      }
+    },
+    "SUPPLIER_PRODUCTS": {
+      "ADD-SUPPLIER_PRODUCTS": "Add supplier product",
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "TITLE": "Title",
+          "UNIT_COST": "Unit cost"
+        }
+      }
+    },
+    "SUPPLIER_IMPORT": {
+      "SUCCESS_MESSAGE": "Supplier successfully added",
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "TITLE": "Supplier's title",
+          "SELLER_IIN": "Identification number"
+        }
+      }
+    },
+    "TRANSACTIONS": {
+      "CASH": "Cash transaction",
+      "CARD": "Cashless transaction",
+      "SUCCESS_MESSAGE": "Transaction successfully completed",
+      "PAYMENT": "Payment",
+      "PAYMENT_TYPE": "Payment type",
+      "ENTER_THE_AMOUNT": "Enter the amount"
+    }
+  },
+  "WAYBILLS": {
+    "RECEIVED": "Received",
+    "ISSUED": "Issued",
+    "LAST_DAYS": "within the last 3 days",
+    "ALL_ITEMS": "All records",
+    "CORRECTED": "Corrected",
+    "RS_ERROR_MESSAGE": "RS: Error reported",
+    "IMPORT_LOADING_FROM_RS": "Waybill loading from RS in progress",
+    "RECEIVED_WAYBILLS": {
+      "REGISTERED_ORDERS": "Registered orders",
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "WAYBILL_NUMBER": "Waybill number",
+          "IS_CONFIRMED": "Condition",
+          "STATUS": "Status",
+          "TYPE": "Type",
+          "SELLER_NAME": "Organization name",
+          "FULL_AMOUNT": "Full amount",
+          "ACTIVATE_DATE": "Activation date",
+          "DELIVERY_DATE": "Delivery date",
+          "END_ADDRESS": "End address"
+        }
+      },
+      "ITEM": {
+        "CREATE_ORDER": "Create order",
+        "CREATE": "Create",
+        "CHOOSE": "Select",
+        "TITLE": "Название",
+        "EXPECTED_RECEIVE_DATE": "Expected order receipt date",
+        "PAYMENT_METHOD": "Payment method",
+        "BUY": "Purchase",
+        "CONNECT_ORDER_MESSAGE": "Order has not been connected. Do you want to connect?",
+        "EDIT_WAYBILL": "Edit waybill",
+        "WAYBILL": "Waybill",
+        "ORDER": "Order",
+        "SUPPLIER": "Supplier",
+        "ADD_SUPPLIER": "Add supplier",
+        "ERROR_MESSAGE": "Product unit indicated in the waybill differs from that in the Optimo",
+        "ADD_PRODUCT": "Add product",
+        "FULL_AMOUNT": "Full amount",
+        "DETAILS": {
+          "LIST": {
+            "TABLE_COLUMNS": {
+              "ORDERS": "Orders",
+              "STATUS": "Status",
+              "WB_NAME": "Name",
+              "WB_QUANTITY": "Quantity",
+              "WB_UNIT_OF_MEASUREMENT": "Unit of measurement",
+              "WB_UNIT_COST": "Unit cost",
+              "WB_TOTAL_COST": "Total cost",
+              "PO_NAME": "Name",
+              "PO_QUANTITY": "Quantity",
+              "PO_UNIT_OF_MEASUREMENT": "Unit of measurement",
+              "PO_UNIT_COST": "Unit cost",
+              "PO_TOTAL_COST": "Total cost",
+              "PO_UNIT_PRICE": "Unit price",
+              "PO_MARGIN": "Margin"
+            },
+            "WB_BOX_QUANTITY_TOOLTIP": "To split box or bundle, please, indicate the number of units"
+          }
+        },
+        "LIST": {
+          "TABLE_COLUMNS": {
+            "BARCODE": "Barcode",
+            "WB_NAME": "Name",
+            "QUANTITY": "Quality",
+            "UNIT_OF_MEASUREMENT": "Unit of measurement",
+            "UNIT_PRICE": "Unit price",
+            "TOTAL_COST": "Total cost",
+            "VAT_TYPE": "VAT type"
+          }
+        },
+        "ATTRIBUTES": {
+          "SELLER_NAME": "Supplier name",
+          "SELLER_INN": "Identification number",
+          "END_ADDRESS": "End address"
+        }
+      }
+    },
+    "ISSUED_WAYBILLS": {
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "WAYBILL_NUMBER": "Waybill number",
+          "IS_CONFIRMED": "Condition",
+          "STATUS": "Status",
+          "TYPE": "Type",
+          "SELLER_NAME": "Organization",
+          "FULL_AMOUNT": "Amount",
+          "ACTIVATE_DATE": "Activation",
+          "DELIVERY_DATE": "Delivery ",
+          "END_ADDRESS": "End address"
+        }
+      }
+    }
+  },
+  "LOTS": {
+    "GENERAL": "General",
+    "PRODUCTS": "Products",
+    "EXCEL_IMPORT": "Export to Excel",
+    "GENERAL_LOTS": {
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "TITLE": "Title",
+          "TYPE": "Type",
+          "TYPES_DATA" : {
+            "0" : "Import",
+            "1" : "Purchase"
+          },
+          "SUPPLIER_NAME": "Supplier",
+          "RECEIVED_QUANTITY": "Quantity in order",
+          "UNIT_COST": "Purchase cost",
+          "QUANTITY_ON_HAND": "Quantity on hand",
+          "DATE": "Date"
+        }
+      }
+    },
+    "SPECIFIC_LOTS": {
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "SUPPLIER_NAME": "Supplier",
+          "TYPE": "Type",
+          "TYPES_DATA" : {
+            "0" : "Import",
+            "1" : "Purchase"
+          },
+          "RECEIVED_QUANTITY": "Quantity in order",
+          "UNIT_COST": "Purchase cost",
+          "QUANTITY_ON_HAND": "Quantity on hand ",
+          "DATE": "Data"
+        }
+      },
+      "CARD": {
+        "CATEGORY": "Category",
+        "TOTAL_QUANTITY": "Total quantity",
+        "UNIT_COST": "Purchase cost",
+        "UNIT_PRICE": "Selling price"
+      }
+    },
+    "ITEM": {
+      "DETAILS": {
+        "ADD_ORDER": "Add purchase",
+        "EDIT_ORDER": "Edit purchase",
+        "DUPLICATE_ORDER": "Duplicate purchase",
+        "RECEIVE_ORDER": "Receive purchase",
+        "GLOBAL_ERROR_MESSAGE": "Fill in the missing fields",
+        "GENERAL_INFO": "General information",
+        "TITLE": "Title",
+        "SUPPLIER": "Supplier",
+        "PAYMENT_TYPE": "Payment type",
+        "ORDER_RECEIVE_DATE": "Purchase delivery date",
+        "IS_APPROVED": "Approval document available",
+        "ADD_PRODUCT": "Add product",
+        "STOCKITEMS_LIST": {
+          "LABEL": "Select product",
+          "TOTAL_UNIT_COST": "Total purchases",
+          "TABLE_COLUMNS": {
+            "TITLE": "Title",
+            "QUANTITY": "Quantity on hand",
+            "ORDERED_QUANTITY": "Ordered quantity",
+            "UNIT_COST": "Purchase unit cost",
+            "TOTAL_COST": "Total cost"
+          }
+        }
+      }
+    }
+  },
+  "ENTITY_CLIENTS": {
+    "RS_IMPORT": "Import from RS",
+    "IMPORT": "Import",
+    "ADD_TO_FAVORITES": "Add to Favorites",
+    "REMOVE_FROM_FAVORITES": "Remove from Favorites",
+    "DEACTIVATE_MESSAGE": "Do you really want to deactivate?",
+    "SUCCESS_MESSAGE": "Clients successfully added",
+    "YES": "Yes",
+    "NO": "No",
+    "LIST": {
+      "TABLE_COLUMNS": {
+        "TITLE": "Title",
+        "CONTACT_PERSON": "Contact person",
+        "PHONE_NUMBER": "Phone number",
+        "EMAIL": "E-mail"
+      }
+    },
+    "CLIENTS_IMPORT": {
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "BUYER_NAME": "Buyer",
+          "BUYER_INN": "Identification number"
+        }
+      }
+    },
+    "ITEM": {
+      "DETAILS": {
+        "ADD_CLIENT": "Add buyer",
+        "EDIT_CLIENT": "Edit buyer",
+        "GLOBAL_ERROR_MESSAGE": "Fill in the missing fields",
+        "GENERAL_INFO": "General information",
+        "TITLE": "Title",
+        "CONTACT_PERSON": "Contact person",
+        "ENTITY_IDENTIFIER": "Identification number",
+        "PHONE_NUMBER": "Phone number",
+        "EMAIL": "E-mail",
+        "IS_VAT_REGISTERED": "VAT payer",
+        "BANK_ACCOUNT": "Account number",
+        "EXISTING_ERROR": "The indicated code already exists"
+      },
+      "LIST": {
+        "LABEL": "select product",
+        "TABLE_COLUMNS": {
+          "TITLE": "Title",
+          "QUANTITY": "Quantity",
+          "UNIT_COST": "Purchase cost"
+        }
+      },
+      "ATTRIBUTES": {
+        "CONTACT_NAME": "Contact name",
+        "PHONE_NUMBER": "Phone number",
+        "EMAIL": "E-mail",
+        "INN": "Identification number",
+        "BANK_ACCOUNT_NUMBER": "Account number",
+        "IS_VAT_REGISTERED": "VAT payer",
+        "YES": "Yes",
+        "NO": "No"
+      }
+    },
+    "TRANSACTIONS": {
+      "SUCCESS_MESSAGE": "Transaction successfully completed",
+      "PAYMENT": "Payment"
+    }
+  },
+
+  "TABLES": {
+    "ADD_SPACE": "Add space",
+    "EDIT_SPACE": "Edit space",
+    "WARNING_MESSAGE": "Do you really want to delete space?",
+    "GENERAL_ERROR": "General error",
+    "SPACE_DELETED_SUCCESSFULLY": "Space successfully deleted",
+    "TABLE_DELETED_SUCCESSFULLY": "Table successfully deleted",
+    "SPACE_ADD_SUCCESSFULLY": "Space successfully added",
+    "TABLE_ADD_SUCCESSFULLY": "Table successfully added",
+    "CHANGED_SUCCESSFULLY": "Space successfully changed",
+    "CLOSE_THE_SHIFT_TO_DELETE_TABLE": "Close the shift to delete the table",
+    "CLOSE_THE_SHIFT_TO_DELETE_SPACE": "Close the shift to delete the space",
+    "NAME_EXISTS": "The indicated name already exists",
+    "NAME_CHANGES_SUCCESSFULLY": "Table name successfully changed",
+    "TITLE": "Title"
+  },
+
+  "Shipping": {
+    "ShippingButton": "Shipment",
+    "List": {
+      "TableColumns": {
+        "name": "Title",
+        "locationNameFrom": "from branch",
+        "locationNameTo": "to branch",
+        "status": "Status",
+        "orderDate": "Date"
+      }
+    },
+    "Item": {
+      "List": {
+        "TableColumns": {
+          "stockItemName": "Title",
+          "quantity": "Quantity"
+        }
+      },
+      "Attributes": {
+        "locationNameFrom": "from branch",
+        "locationNameTo": "to branch"
+      },
+      "Details": {
+        "addShipping": "add shipment",
+        "editShipping": "edit shipment",
+        "globalErrorMessage": "Fill in the missing fields",
+        "generalInfo": "General information",
+        "title": "Title",
+        "locationNameFrom": "from branch",
+        "locationNameTo": "to branch",
+        "addProduct": "Add product",
+        "selectProduct": "Select product",
+        "uploadProducts": "Upload products",
+        "approveDialog": {
+          "title": "Do you really want to perform shipping?",
+          "ship": "Ship",
+          "cancel": "Cancel"
+        },
+        "notifications": {
+          "saveShippingSuccess": "Shipment successfully saved",
+          "productsUploadSuccess": "Products successfully uploaded",
+          "productsClearSuccess": "Products successfully removed"
+        },
+        "excelUpload": {
+          "uploadProducts": "Upload products",
+          "uploadForm": "Upload form",
+          "clear": "Clear",
+          "uploadPopup": {
+            "uploadingText": "Product upload in progress",
+            "uploadFailed": "Product upload failed",
+            "uploadFailedText": "To successfully upload all products download and fill in the form again.",
+            "duplicatedProducts": "Duplicated products",
+            "failedProducts": "Products that could not be uploaded",
+            "cancelButton": "Cancel",
+            "downloadButton": "Download"
+          }
+        },
+        "ProductList": {
+          "TableColumns": {
+            "name": "Name",
+            "quantityOnHand": "Quantity on hand",
+            "quantity": "Quantity"
+          }
+        }
+      }
+    }
+  },
+  "ReceiptTemlates": {
+    "edit": "Edit receipt template",
+    "add": "Add receipt template",
+    "addIngredients": "Add ingredients"
+  },
+  "Receipts": {
+    "uploadReceipts": "Загрузить квитанцию",
+    "uploadIngredients": "Upload ingredient",
+    "UploadForm": "Upload form",
+    "DownloadReceiptsInProgress": "Receipt download is in progress",
+    "UploadReceiptsInProgress": "Receipt upload is in progress",
+    "UploadReceiptsSuccess": "Receipts successfully uploaded",
+    "UploadReceiptsFail": "Some receipts could not be uploaded.",
+    "UploadReceiptsRetry": "To upload all receipts download and fill in the form again.",
+    "DownloadForm": "Download form",
+    "DublicateReceiptsWarning": "Duplicated products available in the receipt",
+    "ReceiptsThatCouldNotBeUploaded": "Receipts that could not beuploaded",
+    "ReceiptsThatChangedPrice": "Receipts with adjusted price",
+    "UploadReceiptsFailMessage": "Receipt upload failed",
+    "ITEM": {
+      "edit": "Edit receipt",
+      "add": "Add receipt",
+      "addCategory": "Add category",
+      "priceUpdateDate": "Price update date",
+      "priceUpdate": "Price will be updated",
+      "onNextSync": "on next synchronization",
+      "addIngredient": "Add ingredient",
+      "PRODUCT_UPDATE_SUCCESS": "Product succesfully updated",
+      "barcodeAlredyExist": "Barcode already exists, do you want to continue?",
+      "saveWarning": "Do you really want to save?"
+    }
+  },
+  "ProductionOrders": {
+    "prepare": "Prepare order",
+    "prepareApprove": "Do you really want to prepare order?",
+    "prepareSuccess": "Preparation successfully completed",
+    "deleteSuccess": "Record successfully deleted",
+    "shortTotalPrice": "Total price",
+    "LIST": {
+      "TABLE_COLUMNS": {
+        "TOTAL_COST": "Total selling cost"
+      }
+    },
+    "ITEM": {
+      "addReceipt": "Add receipt",
+      "add": "Add preparation",
+      "edit": "Edit preparation"
+    }
+  },
+  "SalesHistory": {
+    "retail": "Retail sales",
+    "entity": "Legal entity sales ",
+    "exportToExcel": "Export to Excel",
+    "totalRevenue": "Total amount",
+    "quantitySold": "Quantity of product sold",
+    "unitExpense": "Purchase price",
+    "unitRevenue": "Selling price",
+    "totalVATRate": "Total VAT rate"
+  },
+  "Stockholdings": {
+    "unitCost": "Purchase cost",
+    "quantity": "Leftover",
+    "exportToExcel": "Export to Excel"
+  },
+  "OperatorsReport": {
+    "exportToExcel": "Export to Excel",
+    "TableColumns": {
+      "startOperatorName": "Operator",
+      "endOperatorName": "Operator",
+      "grandTotalTaxAmount": "Commission fee",
+      "grandTotalOrderLinesPrice": "Price",
+      "dateBegin": "Open shift",
+      "cashBegin": "Starting cash balance",
+      "turnover": "Turover",
+      "cashWithdrawn": "Amount withdrawn",
+      "dateEnd": "Close shift",
+      "cashEnd": "End cash balance"
+    }
+  },
+  "WithdrawalsReport": {
+    "exportToExcel": "Export to Excel",
+    "TableColumns": {
+      "operatorName": "Operator",
+      "reason": "Reason",
+      "amount": "Amount",
+      "withdrawalDate": "Date"
+    }
+  },
+  "PricesHistory": {
+    "exportToExcel": "Export to Excel",
+    "TableColumns": {
+      "name": "Name",
+      "priceType": "Status",
+      "unitPriceBefore": "Starting price",
+      "unitPriceChange": "Change",
+      "unitPriceCurrent": "Current price",
+      "date": "Change date"
+    }
+  },
+  "SuppliesHistory": {
+    "exportToExcel": "Export to Excel",
+    "other": "Other",
+    "TableColumns": {
+      "stockItemName": "Name",
+      "suppliers": "Supplier",
+      "categoryName": "Category",
+      "type": "Status",
+      "quantityBefore": "Quantity",
+      "transactionQuantity": "Variable quantity",
+      "quantityAfter": "Final quantity",
+      "transactionDate": "Date"
+    }
+  },
+  "Ingredients": {
+    "Ingredient": "Ingredient",
+    "BARCODE_ALREADY_EXISTS_WARNING": "Barcode already exists, do you want to continue?",
+    "SAVE_WARNING": "Do you really want to save",
+    "UploadIngredients": "Upload ingredients",
+    "DownloadForm": "Download form",
+    "DownloadInProgress": "Ingredient downloading in progress",
+    "UploadInProgress": "Ingredient uploading in progress",
+    "UploadIngredientsSuccess": "All ingredients were successfully uploaded",
+    "UploadIngredienFail": "Some ingredients could not be uploaded",
+    "UploadIngredienRetry": "To upload all ingrediets download and fill in the form again",
+    "DublicateIngredientsWarning": "Duplicated ingredients",
+    "IngredientsThatCouldNotBeUploaded": "Ingredients that could not be uploaded",
+    "UploadIngredienFailMessage": "Ingredient upload failed",
+    "UploadForm": "Upload form",
+    "ExportToExcel": "Export to Excel",
+    "MoveProduct": "Move product",
+    "ProductName": "Product name",
+    "IngredientName": "Ingredient name",
+    "UpdatableStockType": "Updatable stock type ",
+    "List": {
+      "TableColumns": {
+        "name": "Name",
+        "categoryName": "Category",
+        "supplierNames": "Supplier",
+        "quantity": "Quantity",
+        "unitCost": "Cost"
+      }
+    },
+    "Item": {
+      "Attributes": {
+        "name": "Name",
+        "categoryName": "Category",
+        "supplierNames": "Supplier",
+        "barcode": "Barcode",
+        "description": "Description",
+        "unitOfMeasurement": "Quantity in stock",
+        "unitCost": "Purchase cost"
+      },
+      "addIngredients": "Add ingredients",
+      "editIngredients": "Edit ingredients",
+      "addCategory": "Add category",
+      "BARCODE_SLASH_SKU": "Barcode/SKU",
+      "ADD_DISTRIBUTOR": "Add supplier",
+      "PRICES_AND_SUPPLIES": "Prices and supplies",
+      "CURRENT_SUPPLY": "Current supply",
+      "MIN_SUPPLY_THRESHOLD": "Minimal supply",
+      "UNIT_COST": "Purchase cost",
+      "updateSuccessMessage": "Ingredient successfully updated",
+      "addSuccessMessage": "Ingredient successfully added",
+      "deleteSuccessMessage": "Ingredient successfully deleted"
+    }
+  },
+	"GLOVO_SUBCATEGORIES":{
+		"ADD_SUBCATEGORY": "Add subcategory",
+		"EDIT_SUBCATEGORY": "Edit subcategory",
+		"DELETE_MESSAGE": "If you remove the subcategory, the products will be deleted from the menu",
+    "RECORD_DELETE_SUCCESSFULLY": "Record successfully deleted",
+    "ADDED_SUCCESSFULLY_MESSAGE": "Subcategory added successfully",
+    "UPDATE_SUCCESSFULLY_MESSAGE": "The subcategory has been successfully updated",
+    "ALREADY_EXISTS": "Subcategory already exists",
+    "CATEGORY": "Category",
+    "CHOOSE_CATEGORY": "Choose category",
+    "SUBCATEGORY": "Subcategory",
+		"LIST":{
+			"TABLE_COLUMNS":{
+				"SUBCATEGORY_NAME": "Title",
+				"MAIN_CATEGORY_NAME": "Category"
+			}
+		}
+	},
+  "GLOVO_PRODUCTS":{
+		"ADD_PRODUCTS": "Add product",
+		"EDIT_PRODUCTS": "Edit product",
+		"UPLOAD_PRODUCTS": "Upload products",
+    "PRODUCT_DOWNLOAD_IN_PROCESS": "Product download in progress",
+    "UPLOADING_PRODUCTS": "Product uploading",
+    "SOME_PRODUCTS_UPLOAD_FAILED": "Some products could not be uploaded",
+    "DOWNLOAD_FILL_REUPLOAD": "To upload all products download and fill in the form again.",
+    "DUPLICATED_PRODUCTS": "Subcategory not selected",
+    "ERRORED_PRODUCTS": "There is no barcode",
+    "PRICE_CHANGED_PRODUCTS": "Products with changed prices",
+    "SYNC_PRICES_WARNING": "The sellign price for all products in this branch will be updated according to the selected branch.",
+    "IMPORT_NOTIFICATION_ERROR": "Product import failed",
+    "IMPORT_NOTIFICATION_SUCCESS": "All products were successfully imported",
+    "ALREADY_EXISTS": "Product already exists",
+    "UPDATE_SUCCESSFULLY_MESSAGE": "The product has been successfully updated",
+    "ADDED_SUCCESSFULLY_MESSAGE": "Product added successfully",
+    "RECORD_DELETE_SUCCESSFULLY": "Record successfully deleted",
+		"DELETE_MESSAGE": "In case of deletion, the product will be deleted from the menu",
+		"LIST":{
+			"TABLE_COLUMNS":{
+				"NAME_OR_BARCODE": "Title/Barcode",
+				"CATEGORY": "Category",
+				"SUBCATEGORY": "Subcategory",
+        "PRODUCT":"Product"
+			}
+		}
+	},
+  "SaleOrdersHistory": {
+    "retail": "Retail sales",
+    "entity": "Legal entity sales",
+    "exportProducts": "Export products",
+    "checks": "Cheques",
+    "products": "Products",
+    "other": "Other",
+    "TableColumns": {
+      "receiptNumber": "Receipt number",
+      "receiptNumberEntity": "Order number",
+      "transactionId": "Transaction",
+      "paymentMethod": "Payment method",
+      "paymentType": "Payment type",
+      "operatorName": "Operator",
+      "imeIs": "Serial number",
+      "totalOrderLines": "Unit",
+      "totalOrderLinesEntity": "Quantity",
+      "totalPrice": "Total price",
+      "totalOrderLinesPrice": "Price",
+      "totalPriceEntity": "Total amount",
+      "orderDate": "Date",
+      "taxAmount": "Commission fee",
+      "totalPriceHoreca": "Amount paid",
+      "entityName": "Company name",
+      "entityIdentifier": "Identification number",
+      "status": "Status"
+    },
+    "View": {
+      "TableColumns": {
+        "stockItemName": "Name",
+        "quantity": "Quantity",
+        "totalPrice": "Price",
+        "totalPriceEntity": "Total price",
+        "unitPrice": "Selling price"
+      },
+      "Attributes": {
+        "operatorName": "Teller",
+        "paymentMethodDescription": "Payment type",
+        "orderDate": "Date",
+        "paymentMethodDescriptionEntity": "Payment method",
+        "startAddress": "Start address",
+        "endAddress": "End address",
+        "driverPIN": "Driver personal number",
+        "driverName": "Driver full name",
+        "driverCarNumber": "Car number",
+        "returnReason": "Reason for return",
+        "SaleOrderReturnReasons": {
+          "Damaged": "Damaged product",
+          "WrongPrice": "Wrong price",
+          "WrongProduct": "Wrong product",
+          "WrongQuantity": "Wrong quantity",
+          "WrongRealization": "Wrong realization",
+          "Other": "Other"
+        }
+      }
+    }
+  },
+  "Inventorisations": {
+    "UploadProducts": "Upload products",
+    "UploadForm": "Upload form ",
+    "DownloadForm": "Download form",
+    "Downloading": "Download in progress",
+    "Uploading": "Upload in progress",
+    "SuccessMessageWithoutChange": "Inventarization finished without change",
+    "List": {
+      "TableColumns": {
+        "name": "Name",
+        "type": "Type",
+        "status": "Status",
+        "orderDate": "Date"
+      }
+    },
+    "Item": {
+      "SuccessMessageForDelete": "Record successfully deleted",
+      "List": {
+        "TableColumns": {
+          "stockItemName": "Name",
+          "quantityOnHand": "Stock",
+          "stocktakeQuantity": "Stock on hand",
+          "mismatch": "Mismatch",
+          "approvedQuantity": "Approved",
+          "unapprovedQuantity": "Unapproved",
+          "reason": "Reason for mismatch"
+        }
+      },
+      "FullTypeAttributes": {
+        "type": "Type",
+        "typeHardValue": "Full",
+        "orderDate": "Date"
+      },
+      "Attributes": {
+        "type": "Type",
+        "criteria": "Criteria",
+        "orderDate": "Date",
+        "typeHardValue": "Partial"
+      },
+      "Details": {
+        "addInventorisation": "Add inventory",
+        "editInventorisation": "Edit inventory",
+        "globalErrorMessage": "Fill in the missing fields",
+        "generalInfo": "General information",
+        "title": "Title",
+        "type": "Type",
+        "date": "Date",
+        "criteria": "Criteria",
+        "addCategory": "Add category",
+        "addProduct": "Add product",
+        "addSupplier": "Add supplier",
+        "List": {
+          "Label_Category": "Select category",
+          "Label_Products": "Select products",
+          "Label_Supplier": "Select supplier",
+          "TableColumns": {
+            "name": "Name",
+            "barcode": "Barcode",
+            "phoneNumber": "Number"
+          }
+        },
+        "GLOVO_SUBCATEGORIES": {
+          "LIST": {
+            "TABLE_COLUMNS": {
+              "SUBCATEGORY_NAME": "Title",
+              "MAIN_CATEGORY_NAME": "Category"
+            }
+          }
+        }
+      }
+    },
+    "Mismatches": {
+      "correct": "Correct",
+      "confirm": "Confirm",
+      "deny": "Deny",
+      "productWarningMessage": "Irrelevant products available in the form",
+      "assortmentWarningMessage": "Assortment products available in the form",
+      "dublicateWarningMessage": "Duplicated products available in the form",
+      "productErrorMessage": "Products in the uploaded file do not match your product list.",
+      "globalErrorMessage": "Fill in the missing fields",
+      "Carefully": "Caution",
+      "Download": "Download",
+      "DownloadForm": "Download form",
+      "Downloading": "Download is in progress",
+      "ApproveDialog": {
+        "title": "Do you want to confirm correction?",
+        "message": "In case of confirmation your available stock will be changed",
+        "yes": "yes",
+        "no": "No"
+      },
+      "List": {
+        "TableColumns": {
+          "name": "Name",
+          "quantityOnHand": "Stock",
+          "stocktakeQuantity": "Stock on hand",
+          "mismatch": "Mismatch",
+          "approvedQuantity": "Approved quantity",
+          "unapprovedQuantity": "Unapproved quantity",
+          "reason": "Reason for mismatch"
+        }
+      }
+    }
+  },
+  "HEADBAR": {
+    "MENU": {
+      "NO_NAME_ASSIGNED": "Name not assigned"
+    }
+  },
+  "SUB_USERS": {
+    "LAST_LOGIN_DATE": "Last login date",
+    "NOTIFICATIONS": {
+      "SUB_USER_ALREADY_EXISTS": "Subuser with this name already exists."
+    },
+    "EDIT": {
+      "TITLE_ADD": "Add subuser ",
+      "TITLE_EDIT": "Edit subuser"
+    },
+    "CONFIRL_DIALOG": {
+      "CONFIRM_ADD_ALREADY_PRESENT_USER_TITLE": "Do you really want to add this user?",
+      "CONFIRM_ADD_ALREADY_PRESENT_USER_MESSAGE": "A user with such number already exists, do you still want to add it?"
+    }
+  },
+  "HELP": {
+    "TITLE": "Find a required video-lesson"
+  },
+  "STATISTICS": {
+    "GENERAL": {
+      "POPULAR_PRODUCTS": "Popular products",
+      "POPULAR_CATEGORIES": "Popular categories",
+      "AVARAGE_CHEQUE": "Average cheque",
+      "HOURS_AND_DAYS": "Hours and days"
+    },
+    "PRODUCT": {
+      "NO_PRODUCT_SELECTED": "Product not selected",
+      "UNIT_COST": "Purchase cost",
+      "CURRENT_SUPPLY": "Current supply"
+    },
+    "CATEGORY": {
+      "NO_CATEGORY_SELECTED": "Category not selected",
+      "ASSORTMENT": "Assortment",
+      "TOTAL_COST": "Total cost",
+      "TOTAL_PRICE": "Total selling price",
+      "CATEGORY_POPULAR_PRODUCTS": "Popular products of the category"
+    }
+  }
+}

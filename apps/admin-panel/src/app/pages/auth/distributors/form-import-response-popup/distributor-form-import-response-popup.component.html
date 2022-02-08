@@ -1,0 +1,98 @@
+<ng-container *ngIf="!response && !error">
+  <div class="p-4 text-center">
+    <div class="text-right">
+      <button class="close" (click)="onClose()">
+        <app-icon icon="close" class="ml-auto"></app-icon>
+      </button>
+    </div>
+    <div style="padding-top: 40px; padding-bottom: 24px;">
+      <app-icon  icon="loader-big"></app-icon>
+    </div>
+    <div class="font-size-18 text-dark" style="padding-bottom: 66px;">
+      მიმდინარეობს ფორმის ატვირთვა
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="response && !hasError">
+  <div class="p-4 text-center">
+    <div class="text-right">
+      <button class="close" (click)="onClose()">
+        <app-icon icon="close" class="ml-auto"></app-icon>
+      </button>
+    </div>
+    <div style="padding-top: 40px; padding-bottom: 24px;">
+      <app-icon icon="success"></app-icon>
+    </div>
+    <div class="font-size-18 text-dark" style="padding-bottom: 66px;">
+      კატალოგი წარმატებით აიტვირთა
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="response && hasError">
+  <div class="p-4">
+    <div class="text-right">
+      <button class="close" (click)="onClose()">
+        <app-icon icon="close" class="ml-auto"></app-icon>
+      </button>
+    </div>
+    <div class="text-center mb-3">
+      <app-icon icon="alert"></app-icon>
+    </div>
+    <div class="font-size-14 text-dark">
+      ფორმის ატვირთვა ვერ განხორციელდა.
+      <br /><br />
+      თუ გსურთ, რომ კატალოგი წარმატებით აიტვირთოს, გთხოვთ, თავიდან ჩამოტვირთოთ
+      და შეავსოთ ფორმა.
+    </div>
+    <div
+      class="d-inline-flex align-items-center mt-3 mb-2"
+      (click)="onExport()"
+      style="cursor: pointer;"
+    >
+      <app-icon icon="excel" class="mr-2"></app-icon>
+      <span
+        class="text-success font-size-14"
+        style="text-decoration: underline;"
+        >ფორმის ჩამოტვირთვა
+      </span>
+    </div>
+  </div>
+  <div class="p-4 border-top">
+    <div class="d-flex align-items-center mb-2">
+      <span
+        class="bg-warning rounded-circle"
+        style="width: 8px; height: 8px;"
+      ></span>
+      <div class="font-size-14 text-dark ml-2">
+        ფორმაში არსებული დუბლირებული პროდუქტები
+      </div>
+    </div>
+    <div class="d-flex align-items-center">
+      <span
+        class="bg-danger rounded-circle"
+        style="width: 8px; height: 8px;"
+      ></span>
+      <div class="font-size-14 text-dark ml-2">
+        პროდუქტები რომლებიც ვერ აიტვირთა
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="error">
+  <div class="p-4 text-center">
+    <div class="text-right">
+      <button class="close" (click)="onClose()">
+        <app-icon icon="close" class="ml-auto"></app-icon>
+      </button>
+    </div>
+    <div style="padding-top: 40px; padding-bottom: 24px;">
+      <app-icon icon="alert"></app-icon>
+    </div>
+    <div class="font-size-18 text-dark" style="padding-bottom: 66px;">
+      პროდუქტების ატვირთვა ვერ განხორციელდა
+    </div>
+  </div>
+</ng-container>

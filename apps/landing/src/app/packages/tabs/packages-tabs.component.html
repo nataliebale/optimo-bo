@@ -1,0 +1,10 @@
+<nav class="packages-tabs">
+  <button class="packages-tabs-item"
+          *ngFor="let packageType of mapOfPackageTypes"
+          (click)="onChangeTab(packageType.value)"
+          [disabled]="packageType.disabled"
+          [class.active]="activeTab === packageType.value"
+  >
+    {{ packageType.text | translate }}
+  </button>
+</nav>

@@ -1,0 +1,193 @@
+<form *ngIf="form" [formGroup]="form">
+	<div class="container-fluid sticky-top bg-white" style="height: 72px;">
+		<div class="row align-items-center h-100 border-bottom border-secondary">
+			<div class="col pl-0 h-100">
+				<button type="button" class="btn bg-white px-2 h-100 rounded-0" style="width: 102px;"
+					(click)="onCancel()">
+					<app-icon icon="close"></app-icon>
+				</button>
+			</div>
+			<div class="col-auto font-size-20 font-family-bold text-dark">
+				{{ title | translate}}
+			</div>
+			<div class="col pr-4 h-100 d-flex align-items-center justify-content-end">
+				<ng-container *ngIf="orderLinesVisible">
+					<button
+						class="btn bg-table-border-color font-size-14 font-family-bold text-dark py-0 px-23px h-42px text-center mr-3"
+						(click)="saveOrder()" [disabled]="requestIsSent" *ngIf="
+							(editMode !== editModes.Receive && editMode !== editModes.Edit) ||
+							(editMode === editModes.Edit &&
+								item?.status === orderStatuses.Draft)
+						">
+						{{"GENERAL.SAVE" | translate}}
+					</button>
+					<button class="btn btn-primary font-size-14 font-family-bold text-white py-0 px-23px h-42px text-center"
+						(click)="makeOrder()" *ngIf="
+							(editMode !== editModes.Receive && editMode !== editModes.Edit) ||
+							(editMode === editModes.Edit &&
+								item?.status === orderStatuses.Draft)
+						" [disabled]="requestIsSent">
+						{{"GENERAL.ORDER" | translate}}
+					</button>
+					<button class="btn btn-primary font-size-14 font-family-bold text-white py-0 px-23px h-42px text-center" (click)="receiveOrder()"
+						*ngIf="editMode === editModes.Receive" [disabled]="requestIsSent">
+						{{"GENERAL.RECEIVE" | translate}}
+					</button>
+				</ng-container>
+				<ng-container *ngIf="isFormExcelMode">
+					<button
+						class="btn bg-table-border-color font-size-14 font-family-bold text-dark py-0 px-23px h-42px text-center mr-3"
+						(click)="saveOrderExcel()" [disabled]="requestIsSent"
+						*ngIf="canSaveExcelMode && !canReceiveExcelMode">
+						{{"GENERAL.SAVE" | translate}}
+					</button>
+					
+					<button class="btn btn-primary font-size-14 font-family-bold text-white py-0 px-23px h-42px text-center"
+						(click)="receiveOrderExcel()"
+						*ngIf="canReceiveExcelMode"
+						[disabled]="requestIsSent">
+						{{"GENERAL.RECEIVE" | translate}}
+					</button>
+				</ng-container>
+			</div>
+		</div>
+	</div>
+	<div class="w-100" *ngIf="isSubmited && form?.invalid || isSubmited && isFormInvalid">
+		<div class="mx-auto bg-danger-bg px-4 rounded text-center border d-flex align-items-center border-danger-border mt-3"
+			style="max-width: 960px;height: 54px;">
+			<div class="col-2 d-flex px-0">
+				<app-icon icon="alert"></app-icon>
+			</div>
+			<div class="col text-center font-size-14 font-color-dark font-family-regular">
+				{{'SUPPLIERS.ITEM.DETAILS.GLOBAL_ERROR_MESSAGE' | translate}}
+			</div>
+			<div class="col-2 px-0"></div>
+		</div>
+	</div>
+
+	<div [class.mt-70px]="!(isSubmited && form?.invalid)" class="pt-20px px-0 pb-50px mx-auto"
+		style="max-width: 960px;">
+		<div class="font-size-20 font-color-dark font-family-bold pb-30px">
+			{{'SUPPLIERS.ITEM.DETAILS.GENERAL_INFO' | translate}}
+		</div>
+
+		<div class="row">
+			<div class="col-6">
+				<label for="addOrderName" class="font-size-15 font-color-dark font-family-bold">
+					{{'ORDERS.ITEM.DETAILS.TITLE' | translate}}*
+				</label>
+				<div class="form-group form-group-lg d-flex">
+					<input
+						id="addOrderName"
+						data-hj-allow
+						class="form-control"
+						type="text"
+						formControlName="name"
+						[readonly]="editMode == editModes.Receive" />
+				</div>
+				<div>
+					<label for="addOrderPaymentMethod" class="font-size-15 font-color-dark font-family-bold">
+						{{'ORDERS.ITEM.DETAILS.PAYMENT_TYPE' | translate}}*</label>
+					<ng-select id="addOrderPaymentMethod" class="custom-select-header form-control"
+						[items]="paymentMethods" formControlName="paymentMethod" bindValue="value" bindLabel="label"
+						[searchable]="true" [clearable]="false">
+					</ng-select>
+				</div>
+			</div>
+			<div class="col-6">
+				<label for="addOrderSupplierId"
+					class="font-size-15 font-color-dark font-family-bold">
+					{{'ORDERS.ITEM.DETAILS.SUPPLIER' | translate}}*</label>
+				<div class="form-group form-group-lg">
+					<app-dynamic-select id="addOrderSupplierId" [dataGetter]="getSuppliers"
+						[itemGetterById]="getSupplierById" formControlName="supplierId"
+						(change)="onChangeSupplier($event)"></app-dynamic-select>
+				</div>
+				<div>
+					<label for="addOrderReceiveDate" class="font-size-15 font-color-dark font-family-bold">
+						{{'ORDERS.ITEM.DETAILS.ORDER_RECEIVE_DATE' | translate}}*</label>
+					<div class="position-relative">
+						<div
+							class="input-group-custom d-flex align-items-center"
+							[class.disabled]="form.get('receiveDate').disabled">
+							<input
+								id="addOrderReceiveDate"
+								data-hj-allow
+								class="form-control input-left"
+								type="text"
+								readonly
+								[value]="receiveDate | date"
+								(click)="onToggleDatePicker(); $event.stopPropagation()"
+								[class.ng-touched]="form.get('receiveDate').touched"
+								[class.ng-invalid]="form.get('receiveDate').invalid" />
+							<app-icon icon="calendar" (click)="onToggleDatePicker(); $event.stopPropagation()"
+								class="input-section cursor-pointer" style="right: 16px;"></app-icon>
+						</div>
+
+						<div *ngIf="needErrorMessage('receiveDate')" [matTooltip]="getErrorMessage('receiveDate')"
+							matTooltipClass="tooltip-validation" class="form-validation"></div>
+						<app-date-picker [isDatePickerVisible]="isDatePickerVisible" class="date-picker-regular r-0 top-4px"
+							[showActionsAndInput]="false" [isRangePicker]="false" [maxDate]="maxDate"
+							[defaultDate]="receiveDate" (onIsDatePickerVisible)="isDatePickerVisible = $event" (dateChange)="onReceiveDateChange($event)"></app-date-picker>
+					</div>
+
+				</div>
+			</div>
+			<div 
+				*ngIf="editMode !== editModes.Receive"
+				class="px-12px d-flex justify-content-between w-100 pt-4 align-items-start">
+				<div class="custom-checkbox custom-checkbox-selected-blue ">
+					<input
+						id="excel-toggle-checkbox"
+						data-hj-allow
+						class="custom-checkbox-control"
+						type="checkbox"
+						formControlName="excelUpload" />
+					<label for="excel-toggle-checkbox" class="custom-checkbox-label line-height-normal">
+						<span class="ml-3">
+							{{ 'ORDERS.ITEM.DETAILS.UPLOAD_PRODUCTS' | translate }}
+						</span>
+					</label>
+					<label>
+					</label>
+				</div>
+				<button
+					id="submitOrderExcel"
+					class="line-height-normal btn bg-blue px-4  font-size-14 font-color-white font-family-bold py-12px"
+					*ngIf="form?.controls?.excelUpload?.value && !orderSaved"
+					(click)="submitOrderForExcelMode()"
+					[disabled]="requestIsSent"
+				>
+				 {{ 'GENERAL.CONTINUE' | translate }}
+				</button>
+			</div>
+			
+			  
+				 
+			  
+		</div>
+		<app-order-lines-excel-import
+		    *ngIf="excelUploadVisible"
+			formControlName="selectedFile"
+			[orderId]="orderId"
+		></app-order-lines-excel-import>
+		<div 
+			*ngIf="orderLinesVisible"
+			class="mt-5 pt-42px"
+		>
+			<div class="font-size-20 font-color-dark font-family-bold pb-30px">
+				{{'ORDERS.ITEM.DETAILS.ADD_PRODUCT' | translate}}
+			</div>
+			<div>
+				<app-add-order-lines [supplierId]="lastSupplierId" [orderLines]="item?.orderLines"
+					(changeOrderLines)="orderLines = $event" [editable]="
+            editMode !== editModes.Edit ||
+            (editMode === editModes.Edit &&
+              item?.status === orderStatuses.Draft)"
+					[withUnitPrice]="editMode === editModes.Receive"
+					[clearSelection]="clearSelection"
+				></app-add-order-lines>
+			</div>
+		</div>
+	</div>
+</form>

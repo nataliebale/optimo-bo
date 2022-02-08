@@ -1,0 +1,121 @@
+<div class="h-100 d-flex flex-column" style="padding-bottom: 71px;">
+  <div class="d-flex align-items-center py-3 px-4" style="height: 80px;">
+    <!-- <div
+      class="d-flex align-items-center pr-3"
+      *ngIf="selectedRows && selectedRows.length === 0"
+    >
+      <a class="btn btn-primary btn-add mr-3" routerLink="/suppliers/add">
+        <span>{{ 'GENERAL.ADD' | translate}}</span>
+      </a>
+      <div
+        class=""
+        style="width: 1px; background-color: #e7e7e7; height: 32px;"
+      ></div>
+    </div> -->
+    <button
+      class="btn p-0 mr-2 bg-table-border-color"
+      (click)="onOpenTransactionPopup()"
+      *ngIf="selectedRows && selectedRows.length === 1"
+      [matTooltip]="'GENERAL.EDIT' | translate"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon [icon]="'edit'"></app-icon>
+    </button>
+
+    <button
+      class="btn mr-2 p-0 bg-table-border-color "
+      (click)="openCancelDialog()"
+      *ngIf="isRowsCancelable"
+      [matTooltip]="'გაუქმება'"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon [icon]="'not-allowed'"></app-icon>
+    </button>
+    
+    <button
+      class="btn px-4 mr-3 bg-blue font-size-14 font-color-white font-family-bold"
+      (click)="onOpenTransactionPopup()"
+      *ngIf="selectedRows && selectedRows.length === 0"
+      [matTooltip]="'SUPPLIERS_HISTORY.PAYMENT_METHOD_BUTTON' | translate"
+      style="height: 42px;"
+    >
+    ანგარიშსწორება
+    </button>
+    <div 
+      style="width: 1px; background-color: #e7e7e7; height: 32px;"
+      *ngIf="selectedRows && selectedRows.length === 0">
+    </div>
+    <button
+      [matTooltip]="'LOTS.EXCEL_IMPORT' | translate"
+      class="btn rounded bg-excel-export p-0 ml-3"
+      *ngIf="selectedRows && selectedRows.length === 0"
+      (click)="onExport()"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon icon="excel"> </app-icon>
+    </button>
+  </div>
+
+  <div class="bg-white">
+    <app-table
+      #table
+      [dataSource]="dataSource"
+      [totalCount]="totalCount"
+      [state]="currentState"
+      [selectable]="true"
+      [paginable]="true"
+      [actions]="{ editable: isRowSelectable, deletable: false }"
+      [selectableCustomEnable]="isRowSelectable"
+      [hasColumnSelector]="true"
+      defaultSort="date"
+      defaultSortDirection="DESC"
+      [displayedColumns]="displayedColumns"
+      (stateChanged)="onTableStateChanged($event)"
+      (selectionChanged)="onSelectionChanged($event)"
+      (rowEdit)="onOpenTransactionPopup($event)"
+      (rowDelete)="openCancelDialog($event)"
+      class="table-suppliers suppliers-span-link"
+    >
+    
+    <ng-template
+      app-cell
+      let-cell="cell"
+      let-row="row"
+      name="transferAmount"
+    >
+      <div class="text-truncate text-right">
+        {{ cell | number: '1.2-2':'en' }} ₾ 
+      </div>
+    </ng-template>
+    
+    <ng-template app-cell let-cell="cell" let-row="row" name="supplierName">
+      <div
+        class="d-flex align-items-center font-family-regular table-text-dark"
+      >
+        <span
+          class="text-truncate d-inline-block flex-shrink-1 table-link font-color-dark"
+          (click)="
+            toQueryParam('supplierId', row && row.supplierId);
+            $event.stopPropagation()
+          "
+          [matTooltip]="cell"
+          style="cursor: pointer;"
+        >
+          {{ cell }}
+        </span>
+      </div>
+    </ng-template>
+
+    <ng-template
+      app-cell
+      let-cell="cell"
+      let-row="row"
+      name="balance"
+    >
+      <div class="text-truncate text-right">
+        {{ cell | number: '1.2-2':'en' }} ₾ 
+      </div>
+    </ng-template>
+    </app-table>
+  </div>
+</div>

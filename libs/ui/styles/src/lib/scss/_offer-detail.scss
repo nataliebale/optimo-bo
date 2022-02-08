@@ -1,0 +1,35 @@
+.offer-detail {
+  &-tooltip {
+    padding: 11px 16px;
+    background-color: $dark;
+    position: absolute;
+    font: 13px $font-regular;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    top: 85px;
+    span {
+      z-index: 99;
+    }
+    &:after {
+      content: '';
+      width: 19px;
+      height: 19px;
+      border-radius: 2px;
+      transform: rotate(45deg);
+      background-color: $dark;
+      top: -1px;
+      position: absolute;
+    }
+  }
+}
+
+.selected-custom-blue {
+  &::-moz-selection {
+    background: $file-upload-bg;
+  }
+  &::selection {
+    background: $file-upload-bg;
+  }
+}

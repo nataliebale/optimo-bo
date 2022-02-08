@@ -1,0 +1,34 @@
+<div class="sale-order" *ngIf="item">
+  <div class="sale-order-transaction-id">
+    <mat-form-field class="full-width">
+      <input
+        data-hj-allow
+        matInput
+        placeholder="ტრანზაქციის ნომერი"
+        readonly
+        [value]="item.transactionId"
+      />
+    </mat-form-field>
+  </div>
+  <div class="sale-order-total-price">
+    <mat-form-field class="full-width">
+      <input
+        data-hj-allow
+        matInput
+        placeholder="ჯამური ფასი"
+        readonly
+        [value]="item.totalPrice"
+      />
+    </mat-form-field>
+  </div>
+  <div class="sale-order-products-table">
+    <app-table
+      [dataSource]="item.orderLines"
+      [totalCount]="item.orderLines.length"
+      [displayedColumns]="orderLinesDiplayedColumns"
+      [selectable]="false"
+      [staticData]="true"
+    >
+    </app-table>
+  </div>
+</div>

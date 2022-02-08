@@ -1,0 +1,102 @@
+<div
+  class="bg-white border rounded d-flex align-items-center flex-wrap flex-sm-nowrap p-3 pb-4 pt-sm-4 pt-md-4 mt-2 mt-sm-4"
+>
+  <div
+    class="product-image rounded mb-3 mb-sm-0"
+    style="background: no-repeat center / contain;"
+    [ngStyle]="{ 'background-image': 'url(' + imgSrc + ')' }"
+  ></div>
+  <div class="ml-0 ml-sm-3 ml-md-4 flex-grow-1">
+    <div
+      class="font-family-semibold font-size-18 font-size-md-28 text-dark text-truncate"
+    >
+      {{ stockItem?.name }}
+    </div>
+    <div class="container-fluid mt-3 mt-md-4 pt-0 pt-md-2 px-0">
+      <div class="row">
+        <div class="col-6 col-sm-4 col-lg-2 mt-4 mt-sm-3 mt-md-0">
+          <div class="font-family-regular font-size-14" style="color: #898da8;">
+            ბარკოდი
+          </div>
+          <div
+            class="font-family-medium font-size-16 text-dark  text-truncate mw-100 d-inline-block"
+            
+            [matTooltip]="stockItem?.barcode"
+          >
+            {{ stockItem?.barcode }}
+          </div>
+        </div>
+        <div class="col-6 col-sm-4 col-lg-2 mt-4 mt-sm-3 mt-md-0">
+          <div class="font-family-regular font-size-14" style="color: #898da8;">
+            კატეგორია
+          </div>
+          <div
+            class="font-family-medium font-size-16 text-dark  text-truncate mw-100 d-inline-block"
+            
+            [matTooltip]="stockItem?.categoryName"
+          >
+            {{ stockItem?.categoryName }}
+          </div>
+        </div>
+        <div class="col-6 col-sm-4 col-lg-2 mt-4 mt-sm-3 mt-md-0">
+          <div class="font-family-regular font-size-14" style="color: #898da8;">
+            მომწოდებელი
+          </div>
+          <div
+            class="font-family-medium font-size-16 text-dark  text-truncate mw-100 d-inline-block"
+            
+            [matTooltip]="suppliersName"
+          >
+            {{ shortSuppliersName }}
+            <ng-container
+              *ngIf="
+                stockItem &&
+                stockItem.suppliers &&
+                stockItem.suppliers.length > 1
+              "
+            >
+              {{ stockItem.suppliers.length - 1 }} სხვა
+            </ng-container>
+          </div>
+        </div>
+        <div class="col-6 col-sm-4 col-lg-2 mt-4 mt-sm-3 mt-md-0">
+          <div class="font-family-regular font-size-14" style="color: #898da8;">
+            შესყიდვის ფასი
+          </div>
+          <div
+            class="font-family-medium font-size-16 text-dark  text-truncate mw-100 d-inline-block"
+            
+            [matTooltip]="stockItem?.unitCost | number: '1.2-2':'en'"
+          >
+            {{ stockItem?.unitCost | number: '1.2-2':'en' }}
+          </div>
+        </div>
+        <div class="col-6 col-sm-4 col-lg-2 mt-4 mt-sm-3 mt-md-0">
+          <div class="font-family-regular font-size-14" style="color: #898da8;">
+            გასაყიდი ფასი
+          </div>
+          <div
+            class="font-family-medium font-size-16 text-dark  text-truncate mw-100 d-inline-block"
+            
+            [matTooltip]="stockItem?.unitPrice | number: '1.2-2':'en'"
+          >
+            {{ stockItem?.unitPrice | number: '1.2-2':'en' }}
+          </div>
+        </div>
+        <div class="col-6 col-sm-4 col-lg-2 mt-4 mt-sm-3 mt-md-0">
+          <div class="font-family-regular font-size-14" style="color: #898da8;">
+            მიმდინარე მარაგი
+          </div>
+          <div
+            class="font-family-medium font-size-16 text-dark  text-truncate mw-100 d-inline-block"
+            
+            matTooltip="{{ stockItem?.quantity || 0 | number: '1.4-4':'en' }} ც"
+          >
+            {{ stockItem?.quantity || 0 | number: '1.4-4':'en' }}
+            {{ getUMOAcronym(stockItem?.unitOfMeasurement) }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

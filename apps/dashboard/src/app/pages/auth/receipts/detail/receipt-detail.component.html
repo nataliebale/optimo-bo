@@ -1,0 +1,302 @@
+<form *ngIf="form" [formGroup]="form" (submit)="onSubmit()">
+	<div class="container-fluid sticky-top bg-white  " style="height: 72px;">
+		<div class="row align-items-center h-100 border-bottom border-secondary">
+			<div class="col pl-0 h-100">
+				<button type="button" class="btn bg-white px-2 h-100 rounded-0" style="width: 102px;"
+					(click)="onCancel()">
+					<app-icon icon="close"></app-icon>
+				</button>
+			</div>
+			<div class="col-auto font-size-20 font-family-bold text-dark">
+				{{ title | translate }}
+			</div>
+			<div class="col pr-4 h-100 d-flex align-items-center justify-content-end">
+
+				<button class="btn btn-primary font-size-14 font-family-bold text-white py-0 px-23px h-42px"
+					type="submit" [disabled]="requestIsSent">
+					{{'GENERAL.SAVE' | translate}}
+				</button>
+			</div>
+		</div>
+		<!-- <div
+      *ngIf="isSubmited && form?.invalid"
+      class="row bg-danger py-2 px-3 text-white text-center d-block"
+    >
+      გთხოვთ, სწორად შეავსოთ ველები
+    </div> -->
+	</div>
+	<div class="w-100" *ngIf="isSubmited && form?.invalid">
+		<div class="mx-auto bg-danger-bg  px-4  rounded text-center border  d-flex align-items-center border-danger-border mt-3"
+			style="max-width:960px;height: 54px;">
+			<div class="col-2 d-flex px-0">
+				<app-icon icon="alert"></app-icon>
+			</div>
+			<div class="col text-center font-size-14 font-color-dark font-family-regular">{{'GENERAL.FILL_IN_EMPTY_INPUTS' | translate}}
+			</div>
+			<div class="col-2 px-0"></div>
+		</div>
+	</div>
+	<div [class.mt-70px]="!(isSubmited && form?.invalid)" class="pt-20px px-0 pb-68px mx-auto"
+		style="max-width: 960px;">
+		<div id="addReceiptModalBodyId">
+			<div class="no-validation-padding">
+				<div class="font-size-20  pb-30px   font-color-dark font-family-bold">
+					{{'GENERAL.GENERAL_INFO' | translate}}
+				</div>
+
+				<div class="container-fluid px-0">
+					<div class="row align-items-stretch">
+						<div class="col" style="max-width: 656px; flex-basis: 656px;">
+							<div class="w-100">
+								
+								<div class="row form-group-lg line-height-normal">
+									<div class="col">
+										<label for="addReceiptName"
+											class="font-size-15 font-color-dark font-family-bold">{{'GENERAL.NAME' | translate}}*</label>
+										<input
+											id="addReceiptName"
+											data-hj-allow
+											class="form-control w-100"
+											type="text"
+											formControlName="name" />
+									</div>
+									<div class="col">
+										<label for="addReceiptBarcode"
+											class="font-size-15 font-color-dark font-family-bold">{{'GENERAL.BARCODE_SLASH_SKU' | translate}}*</label>
+										<input
+											id="addReceiptBarcode"
+											data-hj-allow
+											class="form-control w-100"
+											type="text"
+											formControlName="barcode"
+											autocomplete="off" />
+									</div>
+									
+								</div>
+								<div class="form-group form-group-lg no-validation-padding row line-height-normal">
+									<div class="col-6">
+										<label for="addReceiptCategoryId"
+											class="font-size-15 font-color-dark font-family-bold line-height-normal">{{'GENERAL.CATEGORY' | translate}}*</label>
+										<app-dynamic-select id="addReceiptCategoryId" #categorySelect
+											class="add-Receipt-item__dynamic-select"
+											[dataGetter]="getStockitemCategories"
+											[itemGetterById]="getStockitemCategoryById" formControlName="categoryId">
+											<ng-template app-dynamic-select-footer-tmp>
+												<div class="border-top">
+													<a class="my-1 py-2 d-inline-block text-decoration-none"
+														style="cursor: pointer;"
+														(click)="onAddCategory(); categorySelect.close()">
+														<app-icon [icon]="'add'"></app-icon>
+														<span
+															class="font-family-regular font-size-14 text-dark ml-2">{{'Receipts.ITEM.addCategory' | translate}}</span>
+													</a>
+												</div>
+											</ng-template>
+										</app-dynamic-select>
+									</div>
+									
+									<div class="col-6">
+										<label for="addReceiptCategoryId"
+											class="font-size-15 font-color-dark font-family-bold line-height-normal">{{'GENERAL.UNIT' | translate}}*</label>
+										<ng-select id="addReceiptUnitOfMeasurement" formControlName="unitOfMeasurement"
+											[items]="mapOfMeasurementUnits" bindValue="value" bindLabel="label"
+											class="custom-select-header form-control" [searchable]="true"
+											[clearable]="false">
+										</ng-select>
+									</div>
+
+
+
+
+								</div>
+								<!-- <div class="form-group form-group-lg no-validation-padding row line-height-normal">
+									 <div class="col">
+										<label for="addInventoryUnitPrice"
+											class="font-size-15 font-color-dark font-family-bold">გასაყიდი ფასი*</label>
+										<div class="d-flex w-100">
+											<div class="input-group-custom d-flex align-items-center flex-grow-1">
+												<input id="addInventoryUnitPrice" class="form-control input-left"
+													formControlName="unitPrice" autocomplete="off" mask="separator.4"
+													thousandSeparator="," />
+												<div
+													class="font-size-14 font-color-dark font-family-regular input-section">
+													₾
+												</div>
+											</div>
+											<div class="ml-2 input-group w-auto">
+												<ng-container *ngIf="isEditMode">
+													<div class="position-relative ">
+														<button type="button"
+															class="btn bg-white rounded border p-0 border-pagination-border"
+															style="width: 48px; height: 48px;"
+															matTooltip="აირჩიეთ ფასის განახლების თარიღი" (click)="
+															onToggleDatePicker(); $event.stopPropagation()
+                                ">
+															<app-icon [icon]="'calendar'" fill="#515366"></app-icon>
+														</button>
+														<app-date-picker [isDatePickerVisible]="isDatePickerVisible"[showActionsAndInput]="false"
+															[isRangePicker]="false" [defaultDate]="startDate" (onIsDatePickerVisible)="isDatePickerVisible = $event"
+															[minDate]="minDate" (dateChange)="onStartDateChange($event)"
+															class="date-picker-regular r-0 w-304px top-4px"></app-date-picker>
+													</div>
+													<span class="font-size-12 position-absolute"
+														style="color: #c0c5d2; bottom: -20px;">
+														<ng-container *ngIf="
+                                  isPriceChanged && startDate < startOfTomorrow
+                                ">
+															ფასი განახლდება შემდგომ სინქრონიზაციაზე
+														</ng-container>
+														<ng-container *ngIf="
+                                  isPriceChanged && startDate >= startOfTomorrow
+                                ">
+															ფასი განახლდება {{ startDate | date: 'dd/MM/yyyy' }}
+														</ng-container>
+
+														<ng-container *ngIf="
+                                  ((item && item.newUnitPrice) ||
+                                    (item && item.newtUnitPrice === 0)) &&
+                                  !isControlDirty('startDate') &&
+                                  !isControlDirty('unitPrice')
+                                ">
+															- {{ item.newUnitPrice }} ₾
+														</ng-container>
+													</span>
+												</ng-container>
+											</div>
+										</div>
+									</div> 
+
+								</div> 
+								<div></div>
+								-->
+								<div class="row">
+									<div class="col-12 col-md-6 line-height-normal">
+										<div class="form-group form-group-lg no-validation-padding">
+											<label for="addInventoryUnitPrice"
+												class="font-size-15 font-color-dark font-family-bold line-height-normal">{{'GENERAL.UNIT_PRICE' | translate}}*</label>
+											<div class="input-group-custom d-flex align-items-center">
+												<input
+													id="addInventoryUnitPrice"
+													data-hj-allow
+													class="form-control input-left"
+													formControlName="unitPrice"
+													autocomplete="off"
+													mask="separator.4"
+													[thousandSeparator]="','"
+													/>
+												<div class="font-size-14 font-color-dark font-family-regular input-section">
+													₾
+												</div>
+											</div>
+										</div>
+									</div>
+		
+									<div class="col-12 col-md-6">
+										<div class="no-validation-padding">
+											<div class="input-group d-flex flex-column">
+												 
+                    
+												<ng-container *ngIf="editId">
+													<label for="inventorisationDate"
+														class="font-size-15 font-color-dark font-family-bold line-height-normal">{{'Receipts.ITEM.priceUpdateDate' | translate}}*</label>
+													<div class="position-relative">
+														<div class="input-group-custom d-flex align-items-center">
+															<input
+																id="startDate"
+																data-hj-allow
+																class="form-control input-left"
+																type="text"
+																readonly
+																(click)="
+									  							onToggleDatePicker();
+																	$event.stopPropagation()
+																"
+																value="{{getValue('startDate') | date}}" />
+															<button
+																class="btn rounded p-0  input-section "
+																style="right: 16px;"
+																type="button"
+																matTooltip="აირჩიეთ ფასის განახლების თარიღი"
+																(click)="
+																	onToggleDatePicker();
+																	$event.stopPropagation()
+																">
+																<app-icon icon="calendar" class="cursor-pointer"></app-icon>
+															</button>
+														</div>
+													</div>
+													<app-date-picker 
+														[showActionsAndInput]="false"
+														[isDatePickerVisible]="isDatePickerVisible"
+														(onIsDatePickerVisible)="isDatePickerVisible = $event"
+														(dateChange)="onStartDateChange($event)"
+														 [minDate]="minDate"
+														[defaultDate]="startDate"
+														 [isRangePicker]="false"
+														class="date-picker-regular w-304px"></app-date-picker>
+													<div class="position-relative ml-2"></div>
+													<span class="font-size-12 position-absolute"
+														style="color: #c0c5d2; bottom: -20px;">
+														<ng-container *ngIf="isPriceChanged && startDate < startOfTomorrow">
+															
+
+															{{'Receipts.ITEM.priceUpdate' | translate}} {{'Receipts.ITEM.onNextSync' | translate}}
+														</ng-container>
+														<ng-container *ngIf="isPriceChanged && startDate >= startOfTomorrow">
+															{{'Receipts.ITEM.priceUpdate' | translate}} {{ startDate | date: 'dd/MM/yyyy' }}
+														</ng-container>
+														<ng-container *ngIf="
+                              ((item && item.newUnitPrice) ||
+                                (item && item.newtUnitPrice === 0)) &&
+                              !isControlDirty('startDate') &&
+                              !isControlDirty('unitPrice')
+                            ">
+															- {{ item.newUnitPrice }} ₾
+														</ng-container>
+													</span>
+												</ng-container>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-12  px-0">
+								<label for="addReceiptDescription"
+									class="font-size-15 font-color-dark font-family-bold">{{'GENERAL.DESCRIPTION' | translate}}</label>
+								<textarea
+									id="addReceiptDescription"
+									data-hj-allow
+									class="form-control"
+									style="height: 130px; resize: none;"
+									formControlName="description"
+									autocomplete="off"></textarea>
+							</div>
+						</div>
+						<div class="col d-flex flex-column pt-30px" style="width: 100%; max-width: 458px;">
+							<div class="custom-file uploader-305-bg" style="height: 245px;">
+								<app-file-uploader id="addReceiptPhotoUploader" class="h-100"
+									[shownImage]="item?.photoUrl" (uploaded)="onPhotoUploaded($event)">
+								</app-file-uploader>
+							</div>
+							<div class="font-size-13 font-color-dark font-family-regular pt-14"> <span class="pr-2">
+									{{'GENERAL.MIN_ACCEPTABLE_RESOLUTION' | translate}} 290x244px </span><span>(.jpg, .jpeg .png) </span> </div>
+						</div>
+
+					</div>
+				</div>
+
+
+			</div>
+
+			<div class="mt-5 pt-42px">
+				<div class="font-size-20 font-color-dark font-family-bold pb-30px">
+					{{'Receipts.ITEM.addIngredient' | translate}}
+				</div>
+				<div>
+					<app-ingredients-list [orderLines]="item?.items" (changeOrderLines)="gridDataSource = $event">
+					</app-ingredients-list>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

@@ -1,0 +1,256 @@
+<app-header class="packages-header" [requestButtonVisibility]="true"></app-header>
+<div class="packages">
+  <div #backgroundElement class="packages-background"></div>
+  <div class="packages-container">
+    <div class="container px-sm-40 px-lg-15">
+      <div class="row">
+        <div class="col-12 text-center mt-64 mt-sm-64 mt-xl-80 pt-md-40 pt-lg-0 mb-4">
+          <div class="font-family-semibold font-size-24 text-dark">
+            {{'PackagesPage.ModernSection.Title' | translate}}
+          </div>
+        </div>
+        <div class="col-lg-8 offset-lg-2 text-center">
+          <div class="font-size-14 text-muted" style="line-height: 24px;">
+            {{'PackagesPage.ModernSection.Description' | translate}}
+          </div>
+        </div>
+        <div class="col-12 pt-5 pb-4 text-center font-family-semibold text-dark">
+          {{'PackagesPage.ModernSection.WantDevice' | translate}}
+        </div>
+        <div class="col-12 d-flex justify-content-center align-items-center mx-auto custom-switch-margin"
+          style="user-select: none;">
+          <span class="font-family-semibold mr-3">{{'GENERAL.No' | translate}}</span>
+          <div class="custom-switch" [class.active]="isAnnualActive" (click)="toggleAnnualActive()">
+            <div class="custom-switch-circle"></div>
+          </div>
+          <span class="font-family-semibold ml-3">{{'GENERAL.Yes' | translate}}</span>
+        </div>
+
+        <app-packages-tabs class="col-12 d-block d-sm-none sticky-top" (changeTab)="onChangeTab($event)">
+        </app-packages-tabs>
+
+        <div [ngClass]="{ 'd-none d-sm-block': !isActiveTab(packageType.Basic) }"
+          class="col-lg-4 mb-3 mb-sm-5 text-center mb-lg-0">
+          <div [class.mt-n2]="isAnnualActive" class="package package-basic text-center">
+            <div class="mx-auto mb-4"
+              style="width: 40px;  height: 40px; border-radius: 3px; background-color: rgba(39, 211, 162, .3); padding: 10px;">
+              <div style="width: 20px; height: 20px; border-radius: 1.3px; background-color: #27d3a2;"></div>
+            </div>
+            <div class="font-family-semibold text-dark mb-4">{{'GENERAL.Basic' | translate}}</div>
+            <div class="d-flex align-items-center justify-content-center">
+              <app-icon icon="gel" style="top: -10px" class="position-relative"></app-icon>
+              <span class="font-size-40 text-dark font-family-semibold mx-2">{{
+                isAnnualActive ? '130' : '40'
+                }}</span>
+              <span class="font-family-regular font-size-16 text-muted position-relative"
+                style="bottom: -8px;">/{{'GENERAL.Month' | translate}}</span>
+            </div>
+            <div class="package-info success text-success mt-2" [class.d-none]="!isAnnualActive">
+              10% {{'GENERAL.AnnualDiscount' | translate}}
+            </div>
+            <div class="pb-32 font-size-14 text-muted border-bottom" [class.mt-4]="isAnnualActive"
+              style="line-height: 24px;">
+              <ng-container *ngIf="isAnnualActive">
+                {{'PackagesPage.IfAnnualDiscountIsActive' | translate}} 117
+
+                <app-icon icon="gel" class="icon-gel-12px"></app-icon>
+              </ng-container>
+            </div>
+            <div class="font-size-14 text-dark font-family-semibold mt-32 mb-4">
+              {{'GENERAL.Functional' | translate}}
+            </div>
+            <ul class="text-left p-0" style="list-style: none;">
+              <li class="font-size-14 text-muted mb-3">
+                <app-icon icon="ok" class="mr-12"></app-icon>
+                {{'PackagesPage.BusinessDashboard' | translate}}
+              </li>
+              <li class="font-size-14 text-muted mb-3">
+                <app-icon icon="ok" class="mr-12"></app-icon>
+                {{'PackagesPage.InventoryManagement' | translate}}
+              </li>
+              <li class="font-size-14 text-muted mb-3">
+                <app-icon icon="ok" class="mr-12"></app-icon>
+                {{'PackagesPage.Integrations' | translate}}
+              </li>
+              <li class="font-size-14 text-muted mb-3">
+                <app-icon icon="ok" class="mr-12"></app-icon>
+                {{'PackagesPage.Production' | translate}}
+              </li>
+              <li class="font-size-14 text-muted">
+                <app-icon icon="ok" class="mr-12"></app-icon>
+                {{'PackagesPage.Reports' | translate}}
+              </li>
+            </ul>
+            <div class="px-0 px-sm-2" style="margin-top: 118px;">
+              <a [routerLink]="'/' + translateService.currentLang+'/request-demo'" (click)="onRequest()"
+                [queryParams]="{}"
+                class="btn btn-success btn-block text-white font-size-14 d-flex align-items-center justify-content-center"
+                style="height: 56px;">{{'PackagesPage.ModernSection.UseThe14DaysForFree' | translate}}
+              </a>
+            </div>
+          </div>
+        </div>
+        <div [ngClass]="{
+            'd-none d-sm-block': !isActiveTab(packageType.Standard)
+          }" class="col-lg-4 px-15 px-lg-0 col-lg-0 mb-3 mb-sm-5 text-center mb-lg-0" style="z-index: 10;">
+          <div class="package package-standard text-center">
+            <div class="d-flex align-items-center">
+              <span class="flex-grow-1" style="height: 1px; background-color: #e6ecf5;"></span>
+              <span class="px-12 text-dark font-size-14 font-family-medium">{{'GENERAL.Popular' | translate}}</span>
+              <span class="flex-grow-1" style="height: 1px; background-color: #e6ecf5;"></span>
+            </div>
+            <div class="mx-auto my-4 rounded-circle"
+              style="width: 40px;  height: 40px; background-color: rgba(69, 98, 255, .3); padding: 10px;">
+              <div class="rounded-circle" style="width: 20px; height: 20px; background-color: #4562ff;"></div>
+            </div>
+            <div class="font-family-semibold text-dark mb-4">{{'GENERAL.Standart' | translate}}</div>
+            <div class="d-flex align-items-center justify-content-center">
+              <app-icon icon="gel" style="top: -10px" class="position-relative"></app-icon>
+              <span class="font-size-40 text-dark font-family-semibold mx-2">
+                {{ isAnnualActive ? '170' : '80' }}
+              </span>
+              <span class="font-family-regular font-size-16 position-relative text-muted"
+                style="bottom: -8px;">/{{'GENERAL.Month' | translate}}</span>
+            </div>
+            <div class="package-info primary mx-auto text-primary mt-2" [class.d-none]="!isAnnualActive">
+              10% {{'GENERAL.AnnualDiscount' | translate}}
+            </div>
+            <div class="pb-32 font-size-14 text-muted border-bottom" [class.mt-4]="isAnnualActive"
+              style="line-height: 24px;">
+              <ng-container *ngIf="isAnnualActive">
+                {{'PackagesPage.IfAnnualDiscountIsActive' | translate}} 153
+                <app-icon icon="gel" class="icon-gel-12px"></app-icon>
+              </ng-container>
+            </div>
+            <div class="font-size-14 text-dark font-family-semibold mt-32 mb-4">
+              {{'GENERAL.Functional' | translate}}
+            </div>
+            <ul class="text-left p-0" style="list-style: none;">
+              <li class="font-size-14 text-muted mb-3">
+                <app-icon icon="ok" class="primary mr-12"></app-icon>
+                {{'PackagesPage.BusinessDashboard' | translate}}
+              </li>
+              <li class="font-size-14 text-muted mb-3">
+                <app-icon icon="ok" class="primary mr-12"></app-icon>
+                {{'PackagesPage.ManagingBranches' | translate}}
+              </li>
+              <li class="font-size-14 text-muted mb-3">
+                <app-icon icon="ok" class="primary mr-12"></app-icon>
+                {{'PackagesPage.InventoryManagement' | translate}}
+              </li>
+              <li class="font-size-14 text-muted mb-3">
+                <app-icon icon="ok" class="primary mr-12"></app-icon>
+                {{'PackagesPage.Integrations' | translate}}
+              </li>
+              <li class="font-size-14 text-muted mb-3">
+                <app-icon icon="ok" class="primary mr-12"></app-icon>
+                {{'PackagesPage.Production' | translate}}
+              </li>
+              <li class="font-size-14 text-muted mb-3">
+                <app-icon icon="ok" class="primary mr-12"></app-icon>
+                {{'PackagesPage.Reports' | translate}}
+              </li>
+              <li class="font-size-14 text-muted">
+                <app-icon icon="ok" class="primary mr-12"></app-icon>
+                {{'PackagesPage.Statistics' | translate}}
+              </li>
+            </ul>
+            <div class="px-0 px-sm-2" style="margin-top: 81px;">
+              <a [routerLink]="'/' + translateService.currentLang+'/request-demo'" (click)="onRequest()"
+                [queryParams]="{}"
+                class="btn btn-primary btn-block text-white font-size-14 d-flex align-items-center justify-content-center w-100"
+                style="height: 56px; max-width: 290px;">{{'PackagesPage.ModernSection.UseThe14DaysForFree' | translate}}
+              </a>
+            </div>
+          </div>
+        </div>
+        <div [ngClass]="{ 'd-none d-lg-block': !isActiveTab(packageType.Premium) }"
+          class="col-lg-4 mb-3 mb-lg-0 text-center d-none d-lg-block">
+          <div [class.mt-n2]="isAnnualActive" class="package package-premium text-center">
+            <div class="coming-soon">{{'GENERAL.Soon' | translate}}</div>
+            <div class="mx-auto mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43">
+                <g fill="none" fill-rule="evenodd" transform="rotate(45 11.257 25.743)">
+                  <rect width="30.8" height="30.8" fill="#D4C4EF" rx="2.053" />
+                  <rect width="15.4" height="15.4" x="7.7" y="7.7" fill="#713AC9" rx="1.027" />
+                </g>
+              </svg>
+            </div>
+            <div class="font-family-semibold text-dark mb-5 pb-98">{{'GENERAL.Premium' | translate}}</div>
+
+            <div [class.pt-78]="isAnnualActive" style="opacity: .1; pointer-events: none; user-select: none;">
+
+              <div class="font-size-14 text-dark font-family-semibold mt-32 mb-4">
+                {{'GENERAL.Functional' | translate}}
+              </div>
+              <ul class="text-left p-0" style="list-style: none;">
+                <li class="font-size-14 text-muted mb-3">
+                  <app-icon icon="ok" class="info mr-12"></app-icon>
+                  {{'PackagesPage.BusinessDashboard' | translate}}
+                </li>
+                <li class="font-size-14 text-muted mb-3">
+                  <app-icon icon="ok" class="info mr-12"></app-icon>
+                  {{'PackagesPage.ManagingBranches' | translate}}
+                </li>
+                <li class="font-size-14 text-muted mb-3">
+                  <app-icon icon="ok" class="info mr-12"></app-icon>
+                  {{'PackagesPage.InventoryManagement' | translate}}
+                </li>
+                <li class="font-size-14 text-muted mb-3">
+                  <app-icon icon="ok" class="info mr-12"></app-icon>
+                  {{'PackagesPage.Integrations' | translate}}
+                </li>
+                <li class="font-size-14 text-muted  mb-3">
+                  <app-icon icon="ok" class="mr-12"></app-icon>
+                  {{'PackagesPage.Production' | translate}}
+                </li>
+                <li class="font-size-14 text-muted  mb-3">
+                  <app-icon icon="ok" class="mr-12"></app-icon>
+                  {{'PackagesPage.Reports' | translate}}
+                </li>
+                <li class="font-size-14 text-muted">
+                  <app-icon icon="ok" class="mr-12"></app-icon>
+                  {{'PackagesPage.Statistics' | translate}}
+                </li>
+              </ul>
+              <div class="px-0 px-sm-2`" style="margin-top:44px;">
+                <a [routerLink]="'/' + translateService.currentLang+'/request'" (click)="onRequest()"
+                  class="btn btn-info btn-block text-white font-size-14 d-flex align-items-center justify-content-center"
+                  style="height: 56px;">{{'PackagesPage.ModernSection.UseThe14DaysForFree' | translate}}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 mt-md-80 pt-40 text-center d-none d-sm-block">
+          <span
+            class="font-size-18 font-size-md-24 text-dark font-family-semibold">{{'PackagesPage.AdvantagesComparisonSection.Title'
+            | translate}}</span>
+        </div>
+        <div class="col-8 offset-2 font-size-14 text-muted text-center mt-4 mb-80 d-none d-sm-block"
+          style="line-height: 24px;">
+          {{'PackagesPage.AdvantagesComparisonSection.Description' | translate}}
+        </div>
+
+        <app-packages-table *ngIf="isAnnualActive" [data]="technicTableData" [shownColl]="activeTab">
+        </app-packages-table>
+
+        <app-packages-table [data]="controlTableData" [shownColl]="activeTab"></app-packages-table>
+        <app-packages-table [data]="prodTableData" [shownColl]="activeTab"></app-packages-table>
+        <app-packages-table [data]="integrationsTableData" [shownColl]="activeTab"></app-packages-table>
+        <app-packages-table [data]="accountingTableData" [shownColl]="activeTab"></app-packages-table>
+        <app-packages-table [data]="statisticsTableData" [shownColl]="activeTab"></app-packages-table>
+      </div>
+    </div>
+  </div>
+
+  <div class="packages-info mt-0 pt-0">
+    <div class="container">
+
+      <app-contact class="col-12 px-15 px-md-0"></app-contact>
+    </div>
+  </div>
+</div>
+<div *ngIf="scrollThreshold$ | push" (click)="onScrollUp()" class="scroll-top">
+  <app-icon icon="arrow-top"></app-icon>
+</div>

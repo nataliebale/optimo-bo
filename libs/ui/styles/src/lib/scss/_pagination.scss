@@ -1,0 +1,83 @@
+.pagination {
+  display: flex;
+  @include list-unstyled();
+  @include border-radius();
+  align-items: center;
+
+  &-sm {
+    .col-2 {
+      display: none;
+    }
+  }
+}
+
+.page-link {
+  position: relative;
+  display: flex;
+  line-height: $pagination-line-height;
+  color: $dark;
+  background-color: $pagination-bg;
+  // border: $pagination-border-width solid transparent;
+  width: 100%;
+  height: 100%;
+  padding: 0 12px;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  border-radius: 100px;
+  @include transition;
+
+  &:hover {
+    z-index: 2;
+    color: $dark;
+    text-decoration: none;
+    background-color: $table-border-color;
+    // border-color: $table-border-color;
+    box-shadow: 0 5px 30px -10px rgba(13, 18, 46, 0.5);
+  }
+
+  &:focus {
+    z-index: 2;
+    outline: $pagination-focus-outline;
+    box-shadow: $pagination-focus-box-shadow;
+  }
+}
+
+.page-item {
+  min-width: 32px;
+  height: 32px;
+  margin-left: 2px;
+  margin-right: 2px;
+  @include transition;
+
+  &.active .page-link {
+    z-index: 1;
+
+    color: white;
+
+    border-color: $pagination-active-border-color;
+
+    background-color: $blue;
+  }
+  &.dots {
+    min-width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 14px;
+    padding-bottom: 4px;
+  }
+
+  &.disabled .page-link {
+    color: $pagination-disabled-color;
+    pointer-events: none;
+    // Opinionated: remove the "hand" cursor set previously for .page-link
+    cursor: auto;
+    background-color: $pagination-disabled-bg;
+    border-color: $pagination-disabled-border-color;
+  }
+  &:last-child{
+    margin-right: 0px;
+  }
+}

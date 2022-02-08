@@ -1,0 +1,60 @@
+<div
+    class="d-flex align-items-center justify-content-between border-bottom border-table-border-color   container-fluid pl-4"
+    style="height:60px;"
+  >
+      <span class="text-dark font-size-18 font-family-bold">
+        {{'OPERATORS.TMP_PRIVILAGE.PRODUCT_DELETE' | translate}}
+      </span>
+      <app-icon
+      (click)="onClose()"
+        [icon]="'close'"
+        class="icon-w-20px icon-h-20px pr-1"
+        style="cursor: pointer;  "
+      ></app-icon>
+  </div>
+  <div class="pt-3 px-4">
+    <div class="form-group-lg">
+      <div class="position-relative w-100" >
+        <label class="font-size-14 font-family-bold font-color-dark line-height-normal">
+          {{'OPERATORS.TMP_PRIVILAGE.TEMPORARY_CODE' | translate}}
+        </label>
+        <div class=" form-group-lg input-group-custom d-flex align-items-center">
+          <input
+            id="tempPass"
+            data-hj-allow
+            class="form-control input-left disabled-unstyle"
+            type="text"
+            [value]="tempPass"
+            disabled
+          />
+          <button
+      class="btn p-0 input-section"
+      style="right: 11px;"
+      (click)="requestPassword.next()"
+      type="button"
+     >
+       <app-icon icon="reload"></app-icon>
+       </button>
+            </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex  px-4 justify-content-end pb-4">
+    <button
+      class="btn  mr-2 font-family-bold"
+      style="width: 113px;height: 42px;"
+      type="button"
+      (click)="onClose()"
+    >
+      {{'GENERAL.CANCEL' | translate}}
+    </button>
+    <button
+      class="btn btn-primary font-family-bold"
+      style="width: 120px;height: 42px;"
+      type="submit"
+      (click)="onClose()"
+    >
+      {{'GENERAL.SAVE' | translate}}
+    </button>
+  </div>
+ 

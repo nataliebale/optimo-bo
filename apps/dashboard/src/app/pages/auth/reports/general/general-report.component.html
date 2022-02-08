@@ -1,0 +1,20 @@
+<div class="bg-white d-flex align-items-center border-bottom"
+     style="padding: 12px 32px;">
+
+  <div class="product-year-select ml-auto" style="width: 320px;">
+    <app-year-select [(ngModel)]="year" class="w-100"></app-year-select>
+    <app-icon class="product-year-select-icon" [icon]="'calendar'" fill="#0077ff"></app-icon>
+  </div>
+</div>
+
+<div class="px-0 px-sm-4 product-cards-margin">
+  <div class="product px-2">
+
+    <app-general-report-cards [year]="year"></app-general-report-cards>
+
+    <app-general-report-sold-chart> </app-general-report-sold-chart>
+
+    <app-general-report-sale-orders-chart>
+    </app-general-report-sale-orders-chart>
+  </div>
+</div>

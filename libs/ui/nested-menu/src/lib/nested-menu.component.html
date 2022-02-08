@@ -1,0 +1,9 @@
+<div class="nested-menu">
+  <app-menu-item
+  *ngFor="let menuItem of menu"
+    [item]="menuItem"
+    [level]="1"
+    [hasGlovoIntegration]="this.hasGlovoIntegration"
+    [userDetails]="userDetails"
+  ></app-menu-item>
+</div>

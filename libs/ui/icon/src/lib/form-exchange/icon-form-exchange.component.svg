@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <path d="M0 0H24V24H0z" transform="translate(-641 -116) translate(230 88) translate(391 19) translate(20 9)"/>
+                        <g>
+                            <path d="M0 0L24 0 24 24 0 24z" transform="translate(-641 -116) translate(230 88) translate(391 19) translate(20 9)"/>
+                            <g>
+                                <g>
+                                    <path fill="#343434" fill-rule="nonzero" d="M10 0c1.657 0 3 1.343 3 3v11c0 1.657-1.343 3-3 3H7v-1.5h3c.78 0 1.42-.595 1.493-1.356L11.5 14V3c0-.78-.595-1.42-1.356-1.493L10 1.5H3c-.78 0-1.42.595-1.493 1.356L1.5 3v4.5H0V3c0-1.657 1.343-3 3-3h7z" transform="translate(-641 -116) translate(230 88) translate(391 19) translate(20 9) translate(4 2) translate(0 .5) matrix(-1 0 0 1 13 0)"/>
+                                    <g>
+                                        <g>
+                                            <g>
+                                                <path stroke="#343434" stroke-dasharray="8 314" stroke-linecap="round" stroke-width="1.5" d="M9.06 4.06C7.99 2.13 5.556 1.43 3.624 2.503c-1.932 1.07-2.63 3.505-1.56 5.437C3.136 9.871 5.57 10.57 7.503 9.5c1.932-1.072 2.63-3.506 1.559-5.438z" transform="translate(-641 -116) translate(230 88) translate(391 19) translate(20 9) translate(4 2) translate(0 .5) translate(7 7.5) matrix(-1 0 0 1 11 0)"/>
+                                                <path fill="#343434" fill-rule="nonzero" d="M4.49.85c.326 0 .597.24.643.554l.007.096v3c0 .359-.291.65-.65.65-.326 0-.597-.24-.643-.554L3.84 4.5V2.15H1.49c-.326 0-.597-.24-.643-.554L.84 1.5c0-.326.24-.597.554-.643L1.49.85h3z" transform="translate(-641 -116) translate(230 88) translate(391 19) translate(20 9) translate(4 2) translate(0 .5) translate(7 7.5) matrix(-1 0 0 1 11 0) matrix(0 1 1 0 -.01 .01)"/>
+                                            </g>
+                                        </g>
+                                        <g>
+                                            <g>
+                                                <path stroke="#343434" stroke-dasharray="8 314" stroke-linecap="round" stroke-width="1.5" d="M9.06 4.06C7.99 2.13 5.556 1.43 3.624 2.503c-1.932 1.07-2.63 3.505-1.56 5.437C3.136 9.871 5.57 10.57 7.503 9.5c1.932-1.072 2.63-3.506 1.559-5.438z" transform="translate(-641 -116) translate(230 88) translate(391 19) translate(20 9) translate(4 2) translate(0 .5) translate(7 7.5) matrix(1 0 0 -1 0 12)"/>
+                                                <path fill="#343434" fill-rule="nonzero" d="M4.49.85c.326 0 .597.24.643.554l.007.096v3c0 .359-.291.65-.65.65-.326 0-.597-.24-.643-.554L3.84 4.5V2.15H1.49c-.326 0-.597-.24-.643-.554L.84 1.5c0-.326.24-.597.554-.643L1.49.85h3z" transform="translate(-641 -116) translate(230 88) translate(391 19) translate(20 9) translate(4 2) translate(0 .5) translate(7 7.5) matrix(1 0 0 -1 0 12) matrix(0 1 1 0 -.01 .01)"/>
+                                            </g>
+                                        </g>
+                                    </g>
+                                    <path fill="#343434" fill-rule="nonzero" d="M8.172 4.25C8.63 4.25 9 4.586 9 5c0 .38-.311.693-.715.743l-.113.007H3.828C3.37 5.75 3 5.414 3 5c0-.38.311-.693.715-.743l.113-.007h4.344zM7.172 7.25C7.63 7.25 8 7.586 8 8c0 .38-.311.693-.715.743l-.113.007H3.828C3.37 8.75 3 8.414 3 8c0-.38.311-.693.715-.743l.113-.007h3.344z" transform="translate(-641 -116) translate(230 88) translate(391 19) translate(20 9) translate(4 2) translate(0 .5)"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

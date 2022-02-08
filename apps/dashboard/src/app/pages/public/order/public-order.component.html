@@ -1,0 +1,17 @@
+<div class="order">
+  <div class="order-rows">
+    <div class="order-rows-row" *ngFor="let row of rows">
+      <div class="order-rows-row-key">{{ row.key }}:</div>
+      <div class="order-rows-row-value">{{ row.value }}</div>
+    </div>
+  </div>
+  <div class="order-grid">
+    <app-table
+      [dataSource]="order.orderLines"
+      [displayedColumns]="stockItemsDisplayedColumns"
+      [paginable]="false"
+      [selectable]="false"
+    >
+    </app-table>
+  </div>
+</div>

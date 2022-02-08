@@ -1,0 +1,60 @@
+<div class="w-100 h-100 d-flex flex-column">
+
+  <div class="d-flex align-items-center px-4 py-3" style="height: 80px;">
+    <button
+      class="btn btn-primary btn-add mr-3"
+      (click)="goToAdd()"
+    >
+      <span>დამატება</span>
+    </button>
+  </div>
+
+<app-table
+  *ngIf="datasource"
+  [displayedColumns]="displayedColumns"
+  [dataSource]="datasource"
+  [totalCount]="totalCount"
+  [state]="curTableState"
+  [actions]="{ editable: false, deletable: false }"
+  [selectable]="false"
+  [filterable]="true"
+  [paginable]="true"
+  [defaultSort]="'id'"
+  [defaultSortDirection]="'DESC'"
+  (stateChanged)="onTableStateChanged($event)"
+  class="table-business-types flex-grow-1 table-categories"
+  style="padding-bottom: 71px;"
+>
+  <ng-template
+    app-cell
+    let-cell="cell"
+    let-row="row"
+    name="custom-actions"
+  >
+    <div class="d-flex align-items-center justify-content-end">
+      <button
+      class="btn mr-2 px-1 bg-table-border-color py-0"
+      (click)="goToAddValues(row)"
+      style="width: 60px; height: 42px;"
+      >
+      <app-icon icon="add"></app-icon>
+     </button>
+      <button
+        class="btn mr-2 px-1 bg-table-border-color py-0"
+        (click)="goToEdit(row)"
+        style="width:60px; height: 42px;"
+      ><app-icon icon="edit-tbls"></app-icon>
+    </button>
+    <button
+        class="btn px-1 bg-table-border-color py-0"
+        (click)="deleteValue(row)"
+        style="width: 60px; height: 42px;"
+      >
+      <app-icon icon="trash-tbls"></app-icon>
+      </button>
+
+    </div>
+     
+  </ng-template>
+</app-table>
+</div>

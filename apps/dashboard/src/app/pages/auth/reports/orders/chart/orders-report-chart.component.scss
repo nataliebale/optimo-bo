@@ -1,0 +1,90 @@
+.orders-report {
+  &-chart {
+    margin-bottom: 3vh;
+
+    &-header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding-left: 77px;
+
+      &-legend {
+        justify-self: flex-start;
+        margin-right: auto;
+        display: flex;
+        flex-direction: row;
+        &-item {
+          display: flex;
+          flex-direction: row;
+          &-badge {
+            margin-right: 1vmin;
+            width: 5vmin;
+            height: 2vmin;
+          }
+          &-title {
+            margin-right: 2vmin;
+          }
+        }
+      }
+      &-filters {
+        justify-self: flex-end;
+        display: flex;
+        flex-direction: row;
+        &-period {
+          margin-right: 2vmin;
+          padding-top: 5px;
+        }
+
+        &-items {
+          margin-right: 2vmin;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: row;
+          &-all {
+            margin-left: 1vmin;
+          }
+        }
+      }
+      &-export {
+        justify-self: flex-end;
+        margin-right: 30px;
+        &-button {
+          height: 3.5vh;
+          border-radius: 1px;
+          border: solid 1px #17c37b;
+          color: #17c37b;
+          position: relative;
+        }
+        &-button::after {
+          content: '';
+          background: url('../../../../../../assets/images/icons/20px/excel.svg')
+            no-repeat center center;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          perspective: 1000;
+        }
+        &-button:hover {
+          background-color: #17c37b;
+          color: #fff;
+        }
+        &-button:hover::after {
+          filter: contrast(340) grayscale(1) brightness(2);
+        }
+      }
+    }
+    &-body {
+      height: 45vh;
+    }
+  }
+}
+
+.chart-div {
+  height: 100% !important;
+}

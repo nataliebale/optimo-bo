@@ -1,0 +1,141 @@
+<div class="w-100" style=" height: 100%;overflow: auto;">
+	<form *ngIf="form" [formGroup]="form">
+		<div class="container-fluid sticky-top bg-white  " style="height: 72px;">
+			<div class="row align-items-center h-100 border-bottom border-secondary">
+				<div class="col pl-0 h-100">
+					<button type="button" class="btn bg-white px-2 h-100 rounded-0" style="width: 102px;"
+						(click)="onCancel()">
+						<app-icon icon="close"></app-icon>
+					</button>
+				</div>
+				<div class="col-auto font-size-20 font-family-bold text-dark">
+					ფასის ცვლილების დამატება
+				</div>
+				<div class="col pr-4 h-100 d-flex align-items-center justify-content-end">
+					<button class="btn btn-primary font-size-14 font-family-bold text-white py-0 px-23px h-42px"
+						(click)="onSave()" [disabled]="requestIsSent">
+						შენახვა
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="w-100" *ngIf="isSubmited && isFormInvalid">
+			<div class="mx-auto bg-danger-bg   px-4  rounded text-center border  d-flex align-items-center border-danger-border mt-3"
+				style="max-width:960px;height: 54px;">
+				<div class="col-2 d-flex px-0">
+					<app-icon icon="alert"></app-icon>
+				</div>
+				<div class="col text-center font-size-14 font-color-dark font-family-regular">შეავსე გამორჩენილი ველები
+				</div>
+				<div class="col-2 px-0"></div>
+			</div>
+		</div>
+		<div [class.mt-70px]="!(isSubmited && isFormInvalid)" class="pt-20px px-0 pb-68px mx-auto"
+			style="max-width: 960px;">
+			<div class="no-validation-padding">
+				<div class="pb-30px">
+					<span class="font-size-20 font-color-dark font-family-bold">ზოგადი ინფორმაცია</span>
+				</div>
+				<div class="container-fluid px-0">
+					<div class="row">
+						<div class="col-6">
+							<div class="  form-group-lg">
+								<label for="pricesChangeType"
+									class="font-size-15 font-color-dark font-family-bold">ტიპი*</label>
+								<ng-select id="pricesChangeType"
+									class="custom-select-header form-control arrow-wrapper-padding"
+									[items]="mapOfPricesChangeTypes" formControlName="type" bindValue="value"
+									bindLabel="label" [searchable]="true" [clearable]="false" (change)="onTypeChange()">
+								</ng-select>
+							</div>
+
+							
+							<div class="form-group-lg position-relative">
+								<label for="pricesChangeDateFrom"
+								class="font-size-15 font-color-dark font-family-bold">დაწყების თარიღი*</label>
+								<div class="w-100 input-group-custom d-flex align-items-center">
+								  <input
+										id="pricesChangeDateFrom"
+										data-hj-allow
+										style="background-color: white;"
+										type="text" class="form-control input-left"
+										[value]="dateFrom | date"
+										readonly
+										(click)="onToggleDateFromPicker(); $event.stopPropagation()"
+										[class.ng-touched]="form.get('dateFrom').touched"
+										[class.ng-invalid]="form.get('dateFrom').invalid" />
+								<div class="input-section" style="right: 10px;">
+									<button type="button" class="btn p-0"
+										(click)="onToggleDateFromPicker(); $event.stopPropagation()">
+										<app-icon icon="calendar" fill="#0077ff"></app-icon>
+									</button>
+								</div>
+								</div>
+								<app-date-picker [isDatePickerVisible]="isDateFromPickerVisible"
+									(onIsDatePickerVisible)="isDateFromPickerVisible = $event"
+									[showActionsAndInput]="false" [isRangePicker]="false" [defaultDate]="dateFrom"
+									[minDate]="startOfToday" [maxDate]="dateTo" (dateChange)="onDateFromChange($event)"
+									class="date-picker-regular r-0 top-4px">
+								</app-date-picker>
+								<!-- date-picker-bottom -->
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="form-group form-group-lg">
+								<label for="pricesChangeCriteria"
+									class="font-size-15 font-color-dark font-family-bold">კრიტერიუმი*</label>
+								<ng-select id="pricesChangeCriteria" class="custom-select-header form-control"
+									[items]="mapOfPricesChangeCriterias" formControlName="criteria" bindValue="value"
+									bindLabel="label" [searchable]="true" [clearable]="false">
+								</ng-select>
+							</div>
+
+							
+							<div class="form-group-lg position-relative">
+								<label for="pricesChangeDateTo"
+								class="font-size-15 font-color-dark font-family-bold">დასრულების თარიღი*</label>
+								<div class="input-group-custom d-flex align-items-center">
+									<input
+										id="pricesChangeDateTo"
+										data-hj-allow
+										class="form-control readonly-setter input-left"
+										type="text"
+										[value]="dateTo | date"
+										[disabled]="form.controls.dateTo.disabled" readonly
+										(click)="onToggleDateToPicker(); $event.stopPropagation()"
+										[class.invalid]="!form.controls.dateTo.disabled && form.controls.dateTo.invalid"
+										[class.touched]="!form.controls.dateTo.disabled && form.controls.dateTo.touched" />
+								<div class="input-section" style="right: 10px;">
+									<button type="button" class="btn p-0"
+										(click)="onToggleDateToPicker(); $event.stopPropagation()"
+										[disabled]="form.controls.dateTo.disabled">
+										<app-icon icon="calendar" fill="#0077ff"></app-icon>
+									</button>
+
+								</div>
+								</div>
+								<app-date-picker [isDatePickerVisible]="isDateToPickerVisible"
+									[showActionsAndInput]="false"
+									(onIsDatePickerVisible)="isDateToPickerVisible = $event" [isRangePicker]="false"
+									[defaultDate]="dateTo" [minDate]="dateFrom || startOfToday"
+									(dateChange)="onDateToChange($event)" class="date-picker-regular r-0 top-4px">
+								</app-date-picker>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="mt-5 pt-42px">
+				<div class="font-size-20 font-color-dark font-family-bold pb-3">
+					{{ criteriasTitle }} დამატება
+				</div>
+				<div>
+					<app-prices-change-list [criteria]="getValue('criteria')" [type]="getValue('type')"
+						[dateFrom]="dateFrom" [dateTo]="dateTo" (changeValues)="changes = $event">
+					</app-prices-change-list>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

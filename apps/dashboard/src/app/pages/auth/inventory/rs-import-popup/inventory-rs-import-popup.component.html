@@ -1,0 +1,51 @@
+ 
+  <div class="d-flex align-items-center justify-content-between p-4">
+ 
+    <div class="font-size-18 font-family-bold font-color-dark">
+      {{ 'INVENTORY.RS_IMPORT' | translate }}
+    </div>
+    <button
+      class="btn bg-transparent rounded-0 p-0"
+      (click)="onDecline()"
+    >
+      <app-icon icon="close" class="icon-w-20px icon-h-20px"   style="cursor: pointer;"></app-icon>
+    </button>
+  </div>
+  <div class="pt-3 px-4  border-top">
+    <div class="font-size-14 mb-2 font-family-bold font-color-dark">
+      {{ 'INVENTORY.POPUPS.CHOOSE_TIME_INTERVAL' | translate }}
+    </div>
+    <ng-select
+      class="custom-select-header form-control"
+      [items]="ranges"
+      [(ngModel)]="selectedRange"
+      bindValue="value"
+      bindLabel="label"
+      [searchable]="true"
+      [clearable]="false"
+      dropdownPosition="bottom"
+    >
+    </ng-select>
+  </div>
+  <div class="d-flex justify-content-end pt-3 px-4 pb-4">
+    <button
+      class="btn bg-transparent px-4 mr-2 font-size-14 font-color-dark font-family-bold "
+      (click)="onDecline()"
+      style="height: 42px;"
+    >
+    {{ 'GENERAL.CANCEL' | translate }}
+    </button>
+    <button
+      class="btn btn-light-green px-4 font-size-14 font-color-white font-family-bold py-0 d-flex align-items-center"
+      [disabled]="!selectedRange && selectedRange !== 0"
+      (click)="onApprove()"
+      style="height: 42px;"
+    >
+    <app-icon icon="excel"></app-icon>
+    <span>
+      {{ 'GENERAL.DOWNLOAD' | translate }}
+    </span> 
+    </button>
+    
+  </div>
+ 

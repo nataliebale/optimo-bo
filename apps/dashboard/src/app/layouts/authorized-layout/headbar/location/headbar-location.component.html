@@ -1,0 +1,69 @@
+<div
+  (click)="onToggleExpanded(true, $event)"
+  class="header-profile pl-4 pr-4"
+  [class.active]="isExpanded"
+>
+  <span
+    class="font-family-bold font-size-14 text-dark text-truncate d-none d-sm-inline "
+    >{{ selectedLocation?.name }}</span
+  >
+  <app-icon
+    icon="arrow-down"
+    class="flex-shrink-0 d-none d-sm-inline ml-1"
+  ></app-icon>
+    <div
+      *ngIf="isExpanded && locations"
+      clickOutside
+      (clickOutside)="onToggleExpanded(false, $event)"
+      class="header-dropdown "
+    >
+      <div
+        class="dropdown-category-search border-bottom border-pagination-border"
+        *ngIf='locations.length > 1'
+      >
+        <input
+          type='text' class="dropdown-item py-2 px-3"
+          [placeholder]="'LOCATIONS.PLACEHOLDERS.SEARCH' |  translate "
+         (keyup)='search($event)'
+        >
+        <app-icon
+          icon="search"
+          class="search-icon flex-shrink-0 d-none d-sm-inline ml-1"
+        ></app-icon>
+      </div>
+      <div class="dropdown-item-wrapper m-h-480px">
+          <div
+            class="dropdown-item py-2 px-3"
+            (click)="onLocationChange(locationAll)"
+            *ngIf="locationsArrayLength!==0  && locations.length > 1  && allLocations && roleService.isUser(['BO'])"
+            [class.active]="selectedLocation?.id === 0"
+           >
+            <div class="font-family-regular font-size-14  font-color-dark  text-truncate col-11 px-0 d-flex align-items-center" style="height: 32px;">
+              {{'LOCATIONS.ALL_LOCATION' |  translate}}
+            </div>
+          </div>
+      <ng-container *ngFor="let location of sortByName(locations, searchName)">
+        <div
+          *ngIf="location"
+          (click)="onLocationChange(location)"
+          class="dropdown-item py-2 px-3"
+          [class.active]="selectedLocation?.id === location?.id"
+        >
+          <div class="font-family-regular font-size-14  font-color-dark  text-truncate col-11 px-0">
+            {{ location.name }}
+          </div>
+        </div>
+      </ng-container>
+      </div>
+      <div class="dropdown-nothing-found py-2 px-3" *ngIf="locationsArrayLength==0">
+        {{'LOCATIONS.NO_SUCH_LOCATION' |  translate}}
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
+

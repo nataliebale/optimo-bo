@@ -1,0 +1,21 @@
+<div *ngIf="lots$ | async as lots" class="mt-5 pt-42px pb-10px"  >
+  <div class="pb-30px">
+    <span class="font-size-20 font-color-dark font-family-bold">{{ "GENERAL.LOTS" | translate }}</span>
+  </div>
+    <div class="h-100 d-flex flex-column">
+      <app-table
+        [dataSource]="lots"
+        [displayedColumns]="displayedColumns"
+        [selectable]="false"
+        [staticData]="true"
+        [filterable]="false"
+        [sortable]="false"
+        [paginable]="false"
+        defaultSort="receiveDate"
+        defaultSortDirection="DESC"
+        [border]="false"
+        class="waybills-table-paddings table-dialogs table-lots"
+      >
+      </app-table>
+    </div>
+</div>

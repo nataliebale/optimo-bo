@@ -1,0 +1,24 @@
+.uploader-dashed-bg {
+    background-image: url(/assets/images/background/offers-img-upload-500x245.svg);
+    background-repeat: no-repeat;
+    @include transition;
+    background-size: 100%;
+}
+
+.uploader-305-bg {
+    .uploader-dashed-bg {
+        background-image: url(/assets/images/background/offers-img-upload.svg) !important;
+    }
+    &.invalid {
+        .uploader-dashed-bg {
+            background-image: url(/assets/images/background/upload-invalid.svg) !important;
+        }
+    }
+}
+
+.uploader-dashed-bg-960px {
+    background-image: url(/assets/images/background/upload-bg-960x200.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}

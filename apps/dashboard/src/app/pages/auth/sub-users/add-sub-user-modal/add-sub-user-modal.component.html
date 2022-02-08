@@ -1,0 +1,120 @@
+<div class="d-flex align-items-center justify-content-between border-bottom border-table-border-color px-4"
+    style="height: 60px;">
+    <div class="font-color-dark font-size-18 font-family-bold line-height-normal">
+        <span *ngIf="!data">
+            {{'SUB_USERS.EDIT.TITLE_ADD' | translate}}
+        </span>
+        <span *ngIf="data">
+            {{'SUB_USERS.EDIT.TITLE_EDIT' | translate}}
+        </span>
+    </div>
+    <button class="btn bg-transparent rounded-0 p-0" (click)="onClose()">
+        <app-icon icon="close" class="icon-w-20px icon-h-20px" style="cursor: pointer;"></app-icon>
+    </button>
+</div>
+<form *ngIf="getFormGroup" [formGroup]="getFormGroup" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
+    <div class="pt-3 px-4 ">
+        <div class="form-group line-height-minimal mb-20px">
+            <label for="" class="font-size-14 font-color-dark font-family-bold line-height-normal">{{'GENERAL.NAME_2' | translate}}*</label>
+            <input
+              id="firstName"
+              data-hj-allow
+              class="form-control"
+              type="text"
+              formControlName="firstName" />
+        </div>
+        <div class="form-group line-height-minimal mb-20px">
+            <label for="" class="font-size-14 font-color-dark font-family-bold line-height-normal">{{"GENERAL.LAST_NAME" | translate}}*</label>
+            <input
+              id="lastName"
+              data-hj-allow
+              class="form-control"
+              type="text"
+              formControlName="lastName" />
+        </div>
+        <div class="form-group line-height-minimal mb-20px">
+            <label for="" class="font-size-14 font-color-dark font-family-bold line-height-normal">{{'GENERAL.PHONE' | translate}}*</label>
+            <input
+              id="phoneNumber"
+              data-hj-allow
+              class="form-control"
+              type="text"
+              mask="9{22}"
+              formControlName="phoneNumber" />
+        </div>
+        <div class="form-group line-height-normal mb-20px">
+            <label for="" class="font-size-14 font-color-dark font-family-bold line-height-normal">{{'GENERAL.EMAIL' | translate}}</label>
+            <input
+              id="email"
+              data-hj-allow
+              class="form-control"
+              type="text"
+              placeholder=""
+              formControlName="email" />
+        </div>
+            <div class="form-group mb-0 line-height-normal">
+                <label for="addInventorySupplierIds"
+                    class="font-size-15 font-color-dark font-family-bold line-height-normal">{{'GENERAL.BRANCHES' | translate}}*</label>
+                <!-- <app-dynamic-select id="addInventorySupplierIds" class="add-inventory-item__dynamic-select"
+                    [dataGetter]="getLocations"  [multiple]="true"
+                    [closeOnSelect]="false" formControlName="permission">
+                </app-dynamic-select> -->
+                <ng-select
+                [(ngModel)]="selectedValues"
+                formControlName="permission"
+                [items]="locations"
+                bindValue="id"
+                bindLabel="name"
+                [multiple]="true"
+                [closeOnSelect]="false"
+                class="custom-select-header form-control"
+                [searchable]="false"
+                [clearable]="false"
+              >
+              <ng-template ng-multi-label-tmp let-items="items">
+                <div
+                  class="ng-value"
+                  *ngFor="let item of items | slice: 0:2; let last = last"
+                >
+                  <span class="ng-value-label">
+                    {{ item.name }}
+                    <ng-container *ngIf="!last">,&nbsp;</ng-container>
+                  </span>
+                </div>
+                <div class="ng-value" *ngIf="items.length > 2">
+                  <span class="ng-value-label"
+                    >,&nbsp;{{ items.length - 2 }} {{'SPECIAL_LABELS.OTHERS' | translate}}...</span
+                  >
+                </div>
+              </ng-template>              
+              <ng-template ng-option-tmp let-item="item" let-item$="item$">
+                <div class="custom-checkbox custom-checkbox-selected-blue mr-3">
+                  <input
+                    id="custom-checkbox-{{ item.id }}"
+                    data-hj-allow
+                    type="checkbox"
+                    class="custom-checkbox-control"
+                    [checked]="item$.selected"
+                  />
+                  <label
+                    (click)="$event.stopPropagation()"
+                    for="custom-checkbox-{{ item.id }}"
+                    class="custom-checkbox-label"
+                  ></label>
+                </div>
+                <span class="text-truncate">{{ item.name }}</span> 
+              </ng-template>              
+              </ng-select>                                
+            </div>
+    </div>
+    <div class="d-flex justify-content-end p-4">
+        <button class="btn bg-transparent mr-3 font-size-14 font-color-dark font-family-bold"
+            style="width: 113px;height: 42px;" type="button" (click)="onClose()">
+            {{'GENERAL.CANCEL' | translate}}
+        </button>
+        <button class="btn btn-primary font-color-white  font-size-14  font-family-bold"
+            style="width: 120px;height: 42px;" type="submit">
+            {{'GENERAL.SAVE' | translate}}
+        </button>
+    </div>
+</form>

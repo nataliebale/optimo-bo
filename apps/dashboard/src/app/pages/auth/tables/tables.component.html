@@ -1,0 +1,120 @@
+<div class="px-4 bg-white h-100 user-select-none">
+
+	<div class="ml-0 container-md d-flex justify-content-between px-0 py-3 align-items-center" style="height: 80px;">
+		<div class="d-flex flex-grow-1">
+			<div style="max-width: 270px;" class="w-100">
+				<ng-select id="selectSpace" class="form-control rounded-5 floors-select h-42px" [items]="spaces"
+					[(ngModel)]="selectedSpaceId" [notFoundText]="'ჩანაწერი არ მოიძებნა'" bindValue="id"
+					bindLabel="name" [clearable]="false" (change)="onSpaceitemChange($event)">
+					<ng-template ng-option-tmp let-item="item">
+						<div class="d-flex align-items-center justify-content-between w-100 spaceSelector "
+							style="height: 48px;">
+							<span class="floors-select__name flex-grow-1">{{item.name}}</span>
+							<span class="spaceSelector__spaceEdit mr-6px"
+								(click)="$event.stopPropagation(); spaceDetailsDialog(item)">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+									<g fill="none" fill-rule="evenodd">
+										<g fill="#343434">
+											<g>
+												<g>
+													<path
+														d="M14.215 18.506c.415 0 .75.335.75.75v.115c0 .414-.335.75-.75.75H6.75c-.414 0-.75-.336-.75-.75v-.115c0-.415.336-.75.75-.75h7.465zM15.5 4.5c.306 0 .591.114.806.32l1.768 1.704c.45.43.442 1.14-.016 1.578l-7.47 7.946-3.873 1.012c-.214.056-.433-.072-.488-.286-.018-.066-.018-.135 0-.2l.972-3.8 7.467-7.94c.22-.211.512-.33.819-.334h.015z"
+														transform="translate(-455 -214) translate(254 104) translate(201 110)" />
+												</g>
+											</g>
+										</g>
+									</g>
+								</svg>
+							</span>
+							<span class="spaceSelector__spaceDelete" *ngIf="spaces.length > 1"
+								(click)="$event.stopPropagation(); deleteSpace(item)">
+
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+									<g fill="none" fill-rule="evenodd">
+										<g>
+											<g>
+												<g>
+													<path d="M0 0H24V24H0z"
+														transform="translate(-485 -214) translate(254 104) translate(231 110)" />
+													<g>
+														<path fill="#343434"
+															d="M10.5 4.4c.276 0 .5.224.5.5v8.54c0 1.364-1.113 2.47-2.487 2.47H3.487C2.113 15.91 1 14.804 1 13.44V4.9c0-.276.224-.5.5-.5h9zM8.3.7c.387 0 .7.313.7.7v.4l-.004.049 2.304.001c.387 0 .7.313.7.7v.2c0 .387-.313.7-.7.7H.7c-.387 0-.7-.313-.7-.7v-.2c0-.387.313-.7.7-.7h2.302L3 1.8v-.4c0-.387.313-.7.7-.7h4.6z"
+															transform="translate(-485 -214) translate(254 104) translate(231 110) translate(6 2.6)" />
+													</g>
+												</g>
+											</g>
+										</g>
+									</g>
+								</svg>
+
+							</span>
+						</div>
+					</ng-template>
+					<ng-template ng-footer-tmp>
+						<ng-container>
+							<div (click)="spaceDetailsDialog()"
+								class="floors-select__add py-3 px-3 d-flex align-items-center justify-content-center">
+
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+									<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+										<g stroke="#343434" stroke-width="1.5">
+											<g>
+												<g>
+													<g>
+														<path d="M12 6v12V6z"
+															transform="translate(-309 -307) translate(254 107) translate(1 188) translate(54 12)" />
+														<path d="M12 6v12V6z"
+															transform="translate(-309 -307) translate(254 107) translate(1 188) translate(54 12) rotate(-90 12 12)" />
+													</g>
+												</g>
+											</g>
+										</g>
+									</g>
+								</svg>
+								<span class="font-size-14 font-family-bold pl-1">
+									 {{'TABLES.ADD_SPACE' | translate}}
+								</span>
+							</div>
+						</ng-container>
+					</ng-template>
+				</ng-select>
+			</div>
+		</div>
+		<button class="btn btn-primary btn-add " (click)="addTable()" [disabled]="disableAddTableButton">
+			<span class=" font-family-bold">
+				{{'GENERAL.ADD' | translate}}
+			</span>
+		</button>
+	</div>
+	<div class="tables-wrapper ml-0 rounded-5 position-relative" *ngIf="selectedSpace" [class.loadingMode]="loading">
+		<ng-container *ngFor="let table of tables; trackBy: trackByFn; let last = last">
+			<app-resizable-draggable [class.hitlightLastAddedTable]="last && hitlightLastAddedTable"
+				[arrangement]="table.arrangement" [containerWidth]="960" [containerHeight]="480" [name]="table.name"
+				[unitSize]="16" (updateBox)="updateTable($event, table.id)"
+				[busyTableNames]="getTableNames(tables)"
+				(sayTableError)="sayTableError()"
+				(showSaveHint)="showSaveHintChange($event)"
+				(deleteBox)="deleteTable(table.id, selectedSpace.id)" (onBoxTouch)="showHint = $event">
+			</app-resizable-draggable>
+		</ng-container>
+		<div class="loading" *ngIf="loading">
+			<app-icon icon="loader-big"></app-icon>
+		</div>
+	</div>
+	<!-- TO DO:: -->
+	<div class="pt-4 font-size-12 font-color-dark font-family-regular" *ngIf="showHint && !showSaveHint">
+		<span class="font-family-bold">მაგიდის ფორმის</span> 
+		შეცვლისთვის დააკლიკე მას ორჯერ, 
+		<span	class="font-family-bold">
+			მაგიდის ზომის 
+		</span>
+		 გასაზრდელად მოეჭიდე ქვედა მარჯვენა კუთხეში განთავსებულ ნიშნულს.
+		 <!-- {{'TABLES.WARNING_TO_CHANGE_TABLE_SHAPE' | translate}} -->
+	</div>
+	<div class="pt-4 font-size-12 font-color-dark font-family-regular" *ngIf="showSaveHint">
+		მაგიდის სახელის შესანახად დააჭირე 
+		<span class="font-family-bold">Enter</span>
+		-ს.
+	</div>
+	<!-- TO DO:: -->
+</div>

@@ -1,0 +1,1225 @@
+{
+  "HOME": {
+    "TITLE": "სახლის სათაური (for testing)",
+    "SELECT": "არჩევა (for testing)"
+  },
+  "DefaultApproveDialog": {
+    "title": "ნამდვილად გსურს გაუქმება?",
+    "titleForDelete": "ნამდვილად გსურს წაშლა?",
+    "message": "გაუქმების შემთხვევაში ცვლილებები არ შეინახება.",
+    "yes": "კი",
+    "no": "არა"
+  },
+  "BUTTON_LABELS": {
+    "SAVE": "შენახვა",
+    "YES": "კი",
+    "NO": "არა"
+  },
+  "SPECIAL_LABELS": {
+    "OTHERS": "სხვა"
+  },
+  "GENERAL": {
+    "NAME_SLASH_BARCODE": "დასახელება/ბარკოდი",
+    "CONFIRM": "დასტური",
+    "NAME": "დასახელება",
+    "NAME_2": "სახელი",
+    "LAST_NAME": "გვარი",
+    "SELECT": "აირჩიე",
+    "QUANTITY": "რაოდენობა",
+    "AMOUNT_OF_MONEY": "თანხა",
+    "INCOME": "შემოსავალი",
+    "PROFIT": "მოგება",
+    "PROFIT_PERCENT": "ფასნამატი (%)",
+    "CASH": "ნაღდი",
+    "CREDIT": "უნაღდო",
+    "CONSIGNATION": "კონსიგნაცია",
+    "MAIN": "მთავარი",
+    "PRODUCTS": "პროდუქტები",
+    "CATEGORIES": "კატეგორიები",
+    "TRANSPORTATIONS": "გადაზიდვები",
+    "INVENTORISATION": "ინვენტარიზაცია",
+    "SUPPLIERS": "მომწოდებლები",
+    "SUPPLIERS_HISTORY": "ისტორია",
+    "PURCHASES": "შესყიდვები",
+    "WAYBILLS": "ზედნადებები",
+    "LOTS": "პარტიები",
+    "ENITYT_SALES": "ი/პ გაყიდვები",
+    "SALES": "გაყიდვები",
+    "BUYERS": "მყიდველები",
+    "PRODUCTION": "წარმოება",
+    "INGREDIENTS": "ინგრედიენტები",
+    "RECEIPT_TEMPLATES": "პრეკერძები",
+    "RECEIPTS": "კერძები",
+    "PRODUCTION_ORDERS": "დამზადება",
+    "ACCOUNTING": "ბუღალტერია",
+    "STOCK_HOLDINGS": "ნაშთები",
+    "REPORTS": "რეპორტები",
+    "TRANSACTIONS": "ტრანზაქციები",
+    "SUPPLIES": "მარაგები",
+    "PRICES": "ფასები",
+    "WITHDRAWALS": "თანხის გაცემა",
+    "SHIFTS": "ცვლები",
+    "STATISTICS": "სტატისტიკა",
+    "GENERAL": "ზოგადი",
+    "ADMINSTRATION": "ადმინისტრირება",
+    "PROFILE": "პროფილი",
+    "WORKERS": "თანამშრომლები",
+    "BRANCHES": "ფილიალები",
+    "SUB_USERS": "ქვემომხმარებლები",
+    "HELP": "დახმარება",
+    "TABLES": "მაგიდები",
+    "ADD": "დამატება",
+    "DELETE": "წაშლა",
+    "EDIT": "რედაქტირება",
+    "SAVE": "შენახვა",
+    "RECEIVE": "მიღება",
+    "ORDER": "შეკვეთა",
+    "CANCEL": "გაუქმება",
+    "SIGN_OUT": "გამოსვლა",
+    "CONTINUE": "გაგრძელება",
+    "EMAIL": "ელ. ფოსტა",
+    "MARGIN": "ფასნამატი",
+    "VAT": "დღგ",
+    "DISTRIBUTOR": "მომწოდებელი",
+    "CATEGORY": "კატეგორია",
+    "APPROVE_DELETE": "ნამდვილად გსურს წაშლა?",
+    "DESCRIPTION": "აღწერა",
+    "QUANTITY_IN_STOCK": "რაოდენობა მარაგში",
+    "DOWNLOAD": "ჩამოტვირთვა",
+    "SYNC": "სინქრონიზაცია",
+    "FILL_IN_EMPTY_INPUTS": "შეავსე გამორჩენილი ველები",
+    "GENERAL_INFO": "ზოგადი ინფორმაცია",
+    "MIN_ACCEPTABLE_RESOLUTION": "მინიმალური დასაშვები ზომები",
+    "ADDITIONAL_INFO": "დამატებითი ინფორმაცია",
+    "IMEI_CODE": "სერიული კოდი",
+    "COLOR": "ფერი",
+    "SIZE": "ზომა",
+    "PRODUCT": "პროდუქტი",
+    "DATE": "თარიღი",
+    "BACK": "უკან დაბრუნება",
+    "IMPORT": "იმპორტი",
+    "PHONE_NUMBER": "ტელეფონის ნომერი",
+    "PHONE": "ტელეფონი",
+    "MANAGER": "მენეჯერი",
+    "ADDRESS": "მისამართი",
+    "BARCODE": "ბარკოდი",
+    "UNIT_PRICE": "გასაყიდი ფასი",
+    "INFORMATION": "ინფორმაცია",
+    "SHIPPING": "გადაზიდვა",
+    "STOCK": "მარაგი",
+    "UNIT": "ერთეული",
+    "COST": "ღირებულება",
+    "INGREDIENT": "ინგრედიენტი",
+    "TOTAL_COST": "ჯამური ღირებულება",
+    "BARCODE_SLASH_SKU": "ბარკოდი/SKU",
+    "BACKBTN": "დაბრუნება",
+    "STATUS": "სტატუსი",
+    "RECEIPT": "კერძი",
+    "USER": "მომხმარებელი",
+    "VAT_TYPE": "დღგ-ს ტიპი",
+    "TOTAL_VAT": "ჯამური დღგ",
+    "TYPE": "ტიპი"
+  },
+  "PLACEHOLDER": {
+    "TEXT_INPUT": "ჩაწერე",
+    "BACK": "უკან დაბრუნება",
+    "CONTINUE": "გაგრძელება",
+    "IMPORT": "იმპორტი",
+    "CONFIRM": "დასტური"
+  },
+  "MAIN": {
+    "TOTAL_COST": "ჯამური თვითღირებულება",
+    "TOTAL_PRICE": "ჯამური გასაყიდი ფასი",
+    "TOTAL_MARGIN": "ფასნამატი",
+    "CARDS": {
+      "TOTAL_INCOME": {
+        "TOTAL_INCOME": "მთლიანი შემოსავალი"
+      },
+      "PROFIT": {
+        "PROFIT": "მოგება"
+      },
+      "INCOME": {
+        "ACCORDING_TO_ACCOUNT": "ანგარიშსწორების მიხედვით"
+      },
+      "BOG_LOAN": {
+        "TEXT1": "მოითხოვე შენს ბიზნესზე",
+        "TEXT2": "მორგებული სესხი საქართველოს ბანკისგან",
+        "BUTTON_LABEL": "მოითხოვე სესხი"
+      },
+      "POPULAR_PRODUCTS": {
+        "TITLE": "პოპულარული პროდუქტები",
+        "TABLE": {
+          "NAME": "დასახელება",
+          "QUANTITY": "რაოდენობა",
+          "AMOUNT_OF_MONEY": "თანხა"
+        },
+        "SEE_MORE": "მეტის ნახვა"
+      },
+      "STOCK_HOLDINGS": {
+        "TITLE": "მარაგების მაჩვენებელი",
+        "TABLE": {
+          "NAME": "დასახელება",
+          "QUANTITY": "რაოდენობა"
+        },
+        "SEE_MORE": "მეტის ნახვა"
+      },
+      "UPCOMING_PURCHASE": {
+        "TITLE": "მომავალი შესყიდვები",
+        "TABLE": {
+          "NAME": "დასახელება",
+          "DISTRIBUTOR": "მომწოდებელი",
+          "TOTAL_AMOUNT": "ჯამური თანხა",
+          "DATE": "თარიღი"
+        }
+      }
+    }
+  },
+  "PROFILE": {
+    "CHANGE_PASSWORD": "პაროლის შეცვლა",
+    "RS_PARAMETERS": "RS-ის პარამეტრები",
+    "GENERAL_INFO": "ზოგადი ინფორმაცია",
+    "BRAND_NAME": "ბრენდული დასახელება",
+    "COMPANY_NAME": "კომპანიის დასახელება",
+    "IDENTIFICATION_NUMBER": "საიდენტიფიკაციო ნომერი",
+    "REGISTRATION_DATE": "რეგისტრაციის თარიღი",
+    "FIELD_OF_OPERATION": "საქმიანობის სფერო",
+    "VAT_PAYER": "დღგ-ის გადამხდელი",
+    "CONTACT_INFO": "საკონტაქტო ინფორმაცია",
+    "PHONE_NUMBER": "ტელეფონის ნომერი",
+    "LEGAL_ADDRESS": "იურიდიული მისამართი",
+    "REAL_ADDRESS": "ფაქტიური მისამართი",
+    "CONFIGURATION": "კონფიგურაცია",
+    "SERVICE_TAX_PERCENT": "იურიდიულ პირზე გაყიდვები",
+    "ENTITY_SALES": "მომსახურების პროცენტი",
+    "PASSWORD_CHANGE_SUCCESS": "პაროლი წარმატებით შეიცვალა",
+    "EXISTING_PASSWORD": "მიმდინარე პაროლი",
+    "NEW_PASSWORD": "ახალი პაროლი",
+    "REPEAT_NEW_PASSWORD": "დაადასტურე ახალი პაროლი",
+    "NAME": "სახელი",
+    "PASSWORD": "პაროლი"
+  },
+  "LOCATIONS": {
+    "NOTIFICATION": {
+      "RECORD_DELETE_SUCCESSFULLY": "ჩანაწერი წარმატებით წაიშალა"
+    },
+    "EDIT": {
+      "EDIT_LOCATION": "ფილიალის რედაქტირება",
+      "ADD_LOCATION": "ფილიალის დამატება",
+      "LOCATION_NAME": "ფილიალის სახელი",
+      "EXTRA_SALES": "ექსტრაზე გაყიდვა"
+    }
+  },
+  "INVENTORY": {
+    "UNIT_COST_SHORT": "შეს. ფასი",
+    "UNIT_PRICE": "გასაყიდი ფასი",
+    "SYNC_PRICES": "ფასების სინქრონიზაცია",
+    "CHANGE_PRICES": "ფასების ცვლილება",
+    "RS_IMPORT": "RS-დან ჩამოტვირთვა",
+    "UPLOAD_PRODUCTS": "პროდუქტების ატვირთვა",
+    "FORM_DOWNLOAD": "ფორმის ჩამოტვირთვა",
+    "FORM_UPLOAD": "ფორმის ატვირთვა",
+    "EXPORT_FOR_SCALE": "ექსპორტი სასწორისთვის",
+    "EXPORT_TO_EXCEL": "ექსელში ექსპორტი",
+    "PRINT_BARCODE": "ბარკოდის ბეჭდვა",
+    "ADD_TO_FAVORITES": "რჩეულებში დამატება",
+    "REMOVE_FROM_FAVORITES": "რჩეულებიდან წაშლა",
+    "PRODUCT_DOWNLOAD_IN_PROCESS": "მიმდინარეობს პროდუქტების ჩამოტვირთვა",
+    "DO_YOU_REALLY_WANT_TO_DEACTIVATE": "ნამდვილად გსურს დეაქტივაცია?",
+    "BUTTON_CONFIRM": "კი",
+    "BUTTON_DENY": "არა",
+    "POPUPS": {
+      "UPLOADING_PRODUCTS": "მიმდინარეობს პროდუქტების ატვირთვა",
+      "SOME_PRODUCTS_UPLOAD_FAILED": "ზოგიერთი პროდუქტი ვერ აიტვირთა",
+      "DOWNLOAD_FILL_REUPLOAD": "თუ გსურს, რომ ყველა პროდუქტი წარმატებით აიტვირთოს, ჩამოტვირთე თავიდან და შეავსე ფორმა.",
+      "DUPLICATED_PRODUCTS": "დუბლირებული პროდუქტები",
+      "ERRORED_PRODUCTS": "პროდუქტები, რომლებიც ვერ აიტვირთა",
+      "PRICE_CHANGED_PRODUCTS": "პროდუქტები, რომლებზეც ფასი შეიცვალა",
+      "SYNC_PRICES_WARNING": "ამ ფილიალში ყველა პროდუქტის გასაყიდი ფასი განახლდება არჩეული ფილიალის შესაბამისად.",
+      "IMPORT_NOTIFICATION_ERROR": "პროდუქტების ატვირთვა ვერ განხორციელდა",
+      "IMPORT_NOTIFICATION_SUCCESS": "ყველა პროდუქტი წარმატებით აიტვირთა",
+      "CHOOSE_TIME_INTERVAL": "აირჩიე პერიოდი"
+    },
+    "EDIT": {
+      "PRODUCT_EDIT_TITLE_PREFIX": "პროდუქტის",
+      "ADD_CATEGORY": "დაამატე კატეგორია",
+      "BARCODE_SLASH_SKU": "ბარკოდი/SKU",
+      "ADD_DISTRIBUTOR": "დაამატე მომწოდებელი",
+      "PRICES_AND_SUPPLIES": "ფასები და მარაგები",
+      "CURRENT_SUPPLY": "მიმდინარე მარაგი",
+      "MIN_SUPPLY_THRESHOLD": "მინიმალური მარაგი",
+      "UNIT_COST": "შესყიდვის ფასი",
+      "UNIT_PRICE": "გასაყიდი ფასი",
+      "PRICE_UPDATE_DATE": "ფასის განახლების თარიღი",
+      "PRICE_WILL_UPDATE_ON_NEXT_SYNC": "ფასი განახლდება შემდგომ სინქრონიზაციაზე",
+      "PRICE_WILL_UPDATE": "ფასი განახლდება",
+      "VAT_TYPE": "დღგ-ს ტიპი",
+      "SIZE_COLOR_GROUP_ID": "ზომა, ფერი, ჯგუფის ID",
+      "ADD_PRODUCT": "პროდუქტის დამატება",
+      "BARCODE_ALREADY_EXISTS_WARNING": "ბარკოდით უკვე არსებობს, გსურს გაგრძელება",
+      "SAVE_WARNING": "ნამდვილად გსურს შენახვა",
+      "PRODUCT_ADD_SUCCESS": "პროდუქტი წარმატებით დაემატა",
+      "PRODUCT_UPDATE_SUCCESS": "პროდუქტი წარმატებით განახლდა",
+      "CANCEL_TITLE": "ნამდვილად გსურს გაუქმება",
+      "CANCEL_MESSAGE": "გაუქმების შემთხვევაში ცვლილებები არ შეინახება",
+      "IMEI_ALREADY_EXISTS": "ესეთი კოდი უკვე არსებობს"
+    },
+    "IMEI": {
+      "POPUP_TITLE_PREFIX": "სერიული კოდის",
+      "WRITE_IMEI": "ჩაწერე კოდი"
+    },
+    "TOOLTIPS": {
+      "SELECT_PRICE_CHANGE_DATE": "აირჩიეთ ფასის განახლების თარიღი"
+    }
+  },
+  "CATEGORIES": {
+    "LIST": {
+      "TABLECOLUMNS": {
+        "TITLE": "დასახელება",
+        "TOTALUNITS": "ჯამური ერთეული",
+        "TOTALCOST": "ღირებულება",
+        "ASSORTMENT": "ასორტიმენტი"
+      }
+    },
+    "ITEM": {
+      "TABLECOLUMNS": {
+        "TITLE": "დასახელება",
+        "QUANTITY": "რაოდენობა",
+        "UNITCOST": "შეს. ფასი"
+      },
+      "CATEGORYATTRIBUTEITEMS": {
+        "TOTALQUANTITYONHAND": "ჯამური ერთეული",
+        "TOTALCOST": "ჯამ. ღირებულება",
+        "ASSORTMENT": "ასორტიმენტი"
+      }
+    },
+    "ADDOREDITMODAL": {
+      "ADDCATEGORY": "კატეგორიის დამატება",
+      "EDITCATEGORY": "კატეგორიის რედაქტირება",
+      "TITLE": "დასახელება",
+      "MINIMUMALLOWABLEDIMENSIONS": "მინიმალური დასაშვები ზომები"
+    }
+  },
+  "OPERATORS": {
+    "PERMISSIONS": "უფლებები",
+    "LAST_LOGIN_DATE": "ბოლო შესვლის თარიღი",
+    "GENERATE_CODE": "კოდის გენერირება",
+    "NOTIFICATIONS": {
+      "OPERATOR_CAN_BE_REMOVED_AFTER_SESSION_ENDS": "თანამშრომლის წაშლა შესაძლებელია სესიის დახურვის შემდეგ"
+    },
+    "VIEW": {
+      "ADD_OPERATOR": "თანამშრომლის დამატება",
+      "EDIT_OPERATOR": "თანამშრომლის რედაქტირება",
+      "OPERATOR_NAME": "თანამშრომლის სახელი",
+      "OPERATOR_CAN_DO": "თანამშრომელს შეუძლია",
+      "PIN_CODE": "PIN კოდი"
+    },
+    "TMP_PRIVILAGE": {
+      "PRODUCT_DELETE": "პროდუქტის წაშლის საშუალება",
+      "TEMPORARY_CODE": "დროებითი კოდი"
+    },
+    "PERMISSION_VALUES": {
+      "CanReceivePurchaseOrders": "შესყიდვის ნახვა",
+      "CanSetDiscount": "ფასდაკლება",
+      "CanChangePrice": "ფასის ცვლილება",
+      "CanDeleteFromBasket": "პროდუქტის შეკვეთიდან წაშლა",
+      "CanDeleteBasket": "შეკვეთის წაშლა",
+      "CanSeeAllOrders": "შეკვეთის ნახვა, შეცვლა",
+      "CanOrder": "გადახდა",
+      "CanOpenShift": "ცვლის გახსნა და დახურვა",
+      "CanSeeShiftSums": "ნავაჭრის ნახვა",
+      "CanWithdrawCash": "თანხის გაცემა",
+      "CanReturnOrder": "უკან დაბრუნება"
+    }
+  },
+  "SUPPLIERS": {
+    "PAYMENT_METHOD_BUTTON": "ანგარიშსწორება",
+    "RS_IMPORT_BUTTON": "RS-დან იმპორტი",
+    "LIST": {
+      "TABLE_COLUMNS": {
+        "TITLE": "დასახელება",
+        "CONTACT_NAME": "საკონტაქტო პირი",
+        "PHONE_NUMBER": "ტელეფონის ნომერი",
+        "EMAIL": "ელ. ფოსტა",
+        "BALANCE": "ბალანსი",
+        "BANK_ACCOUNT_NUMBER": "ანგარიშის ნომერი",
+        "IS_VAT_REGISTERED": "დღგ-ს გადამხდელი"
+      },
+      "FILTER_OPTIONS": {
+        "YES": "კი",
+        "NO": "არა"
+      }
+    },
+    "ITEM": {
+      "DETAILS": {
+        "ADD_SUPPLIER": "მომწოდებლის დამატება",
+        "EDIT_SUPPLIER": "მომწოდებლის რედაქტირება",
+        "GLOBAL_ERROR_MESSAGE": "შეავსე გამორჩენილი ველები",
+        "EMAIL_ERROR_MESSAGE": "შეიყვანეთ სწორი ელ.ფოსტის მისამართი",
+        "PHONE_ERROR_MESSAGE": "შეიყვანეთ მინიმუმ 9 ციფრი",
+        "BANK_ACCOUNT_ERROR_MESSAGE": "შეიყვანეთ მინიმუმ 22 ციფრი",
+        "GENERAL_INFO": "ზოგადი ინფორმაცია",
+        "TITLE": "დასახელება",
+        "INN": "საიდენტიფიკაციო კოდი",
+        "CONTACT_NAME": "საკონტაქტო პირი",
+        "PHONE_NUMBER": "ტელეფონის ნომერი",
+        "EMAIL": "ელ. ფოსტა",
+        "BANK_ACCOUNT_NUMBER": "ანგარიშის ნომერი",
+        "IS_VAT_REGISTERED": "დღგ-ს გადამხდელი",
+        "INITIAL_BALANCE": "საწყისი ბალანსი",
+        "ADD_PRODUCT": "პროდუქტის დამატება",
+        "STOCKITEMS_LIST": {
+          "LABEL": "აირჩიე პროდუქტი",
+          "TABLE_COLUMNS": {
+            "TITLE": "დასახელება",
+            "CATEGORY": "კატეგორია",
+            "UNIT_COST": "თვითღირებულება"
+          }
+        }
+      },
+      "LIST": {
+        "LABEL": "აირჩიე პროდუქტი",
+        "TABLE_COLUMNS": {
+          "TITLE": "დასახელება",
+          "QUANTITY": "რაოდენობა",
+          "UNIT_COST": "შეს. ფასი"
+        }
+      },
+      "ATTRIBUTES": {
+        "CONTACT_NAME": "საკონტრაქტო პირი",
+        "PHONE_NUMBER": "ტელეფონის ნომერი",
+        "EMAIL": "ელ. ფოსტა",
+        "INN": "საიდენტიფიკაციო კოდი",
+        "BANK_ACCOUNT_NUMBER": "ანგარიშის ნომერი",
+        "IS_VAT_REGISTERED": "დღგ-ს გადამხდელი",
+        "YES": "კი",
+        "NO": "არა"
+      }
+    },
+    "SUPPLIER_PRODUCTS": {
+      "ADD-SUPPLIER_PRODUCTS": "მომწოდებლის პროდუქტების დამატება",
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "TITLE": "დასახელება",
+          "UNIT_COST": "თვითღირებულება"
+        }
+      }
+    },
+    "SUPPLIER_IMPORT": {
+      "SUCCESS_MESSAGE": "მომწოდებლები წარმატებით დაემატა",
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "TITLE": "დასახელება",
+          "SELLER_IIN": "საიდენტიფიკაციო კოდი"
+        }
+      }
+    },
+    "TRANSACTIONS": {
+      "CASH": "ნაღდი ანგარიშსწორება",
+      "CARD": "უნაღდო ანგარიშსწორება",
+      "UPDATE_SUCCESSFULLY_MESSAGE": "ანგარიშსწორება წარმატებით განახლდა",
+      "ADDED_SUCCESSFULLY_MESSAGE": "ანგარიშსწორება წარმატებით დაემატა",
+      "PAYMENT": "ანგარიშსწორება",
+      "PAYMENT_TYPE": "ანგარიშსწორების ტიპი",
+      "ENTER_THE_AMOUNT": "ჩაწერე თანხა"
+    }
+  },
+  "SUPPLIERS_HISTORY": {
+    "PAYMENT_METHOD_BUTTON": "ანგარიშსწორება",
+    "RS_IMPORT_BUTTON": "RS-დან იმპორტი",
+    "LIST": {
+      "TABLE_COLUMNS": {
+        "TITLE": "დასახელება",
+        "STATUS": "სტატუსი",
+        "SUPPLIER": "მომწოდებელი",
+        "PAYMENT_METHOD": "გადახდის მეთოდი",
+        "TYPE": "ტიპი",
+        "TRANSFER_AMOUNT": "ცვლილება",
+        "BALANCE": "ბალანსი",
+        "DATE": "თარიღი"
+      }
+    }
+  },
+  "ORDERS": {
+    "DUPLICATE_ORDER": "შეკვეთის დუბლირება",
+    "RECEIVE_ORDER": "შეკვეთის მიღება",
+    "ROLLBACK": "ROLLBACK",
+    "EXPORT_LOADING_POPUP_TEXT": "მიმდინარეობს შესყიდვების ჩამოტვირთვა",
+    "EXPORT_ORDERS": "შესყიდვების ექსპორტი",
+    "LIST": {
+      "TABLE_COLUMNS": {
+        "TITLE": "დასახელება",
+        "COMPANY": "კომპანია",
+        "STATUS": "სტატუსი",
+        "QUANTITY": "რაოდენობა",
+        "TOTAL_COST": "ჯამური თანხა",
+        "IS_APPROVED": "საბუთი",
+        "DATE": "თარიღი",
+        "APPROVED": {
+          "YES": "კი",
+          "NO": "არა"
+        }
+      }
+    },
+    "ITEM": {
+      "DETAILS": {
+        "ADD_ORDER": "შესყიდვის დამატება",
+        "EDIT_ORDER": "შესყიდვის რედაქტირება",
+        "DUPLICATE_ORDER": "შესყიდვის დუბლირება",
+        "RECEIVE_ORDER": "შესყიდვის მიღება",
+        "GLOBAL_ERROR_MESSAGE": "შეავსე გამორჩენილი ველები",
+        "GENERAL_INFO": "ზოგადი ინფორმაცია",
+        "TITLE": "დასახელება",
+        "SUPPLIER": "მომწოდებელი",
+        "PAYMENT_TYPE": "გადახდის მეთოდი",
+        "ORDER_RECEIVE_DATE": "შესყიდვის მოტანის თარიღი",
+        "IS_APPROVED": "მაქვს საბუთი",
+        "ADD_PRODUCT": "პროდუქტის დამატება",
+        "ORDER_GENERATED_NAME_PREFIX": "შესყიდვა",
+        "ENTER_FUTURE_DATE": "შეიყვანეთ მომავალი თარიღი",
+        "SUPPLIER_CHANGE_DIALOG_TITLE": "მომწოდებლის შეცვლის შემთხვევაში უკვე არჩეული პროდუქტები არ შეინახება. გსურთ გაგრძელება?",
+        "LOADING_POPUP_TEXT": "მიმდინარეობს პროდუქტების ატვირთვა",
+        "UPLOAD_PRODUCTS": "პროდუქტების ატვირთვა",
+        "UPLOAD_FORM": "ფორმის ატვირთვა",
+        "CLEAR_FILE_SUCCESS_NOTIFICATION": "პროდუქტები წარმატებით წაიშალა",
+        "UPLOAD_FILE_SUCCESS_NOTIFICATION": "პროდუქტები წარმატებით აიტვირთა",
+        "UPLOAD_FAILED_DIALOG": {
+          "TITLE": "პროდუქტი ვერ აიტვირთა",
+          "BODY": "თუ გსურს, რომ ყველა პროდუქტი წარმატებით აიტვირთოს, ჩამოტვირთე თავიდან და შეავსე ფორმა.",
+          "DUPLICATED_PRODUCTS": "დუბლირებული პროდუქტები",
+          "ASSORTMENT_PRODUCTS": "ასორტიმენტის პროდუქტები",
+          "FAILED_TO_UPLOAD_PRODUCTS": "პროდუქტები, რომლებიც ვერ აიტვირთა",
+          "CANCEL_BUTTON_LABEL": "გაუქმება",
+          "DOWNLOAD_BUTTON_LABEL": "ჩამოტვირთვა"
+        },
+        "APPROVE_RECEIVE_DIALOG": {
+          "TITLE": "ნამდვილად გსურთ მიღება?",
+          "APPROVE_LABEL": "მიღება",
+          "DENY_LABEL": "გაუქმება"
+        },
+        "STOCKITEMS_LIST": {
+          "LABEL": "აირჩიე პროდუქტი",
+          "TOTAL_UNIT_COST": "ჯამური შესყიდვა",
+          "TABLE_COLUMNS": {
+            "TITLE": "დასახელება",
+            "QUANTITY": "მარაგი",
+            "ORDERED_QUANTITY": "რაოდენობა",
+            "UNIT_COST": "შეს. ფასი",
+            "TOTAL_COST": "ღირებულება",
+            "UNIT_PRICE": "გას. ფასი"
+          }
+        }
+      },
+      "LIST": {
+        "LABEL": "აირჩიე პროდუქტი",
+        "TABLE_COLUMNS": {
+          "TITLE": "დასახელება",
+          "QUANTITY": "რაოდენობა",
+          "UNIT_COST": "შეს. ფასი"
+        }
+      },
+      "ATTRIBUTES": {
+        "CONTACT_NAME": "საკონტრაქტო პირი",
+        "PHONE_NUMBER": "ტელეფონის ნომერი",
+        "EMAIL": "ელ. ფოსტა",
+        "INN": "საიდენტიფიკაციო კოდი",
+        "BANK_ACCOUNT_NUMBER": "ანგარიშის ნომერი",
+        "IS_VAT_REGISTERED": "დღგ-ს გადამხდელი",
+        "YES": "კი",
+        "NO": "არა"
+      }
+    },
+    "SUPPLIER_PRODUCTS": {
+      "ADD-SUPPLIER_PRODUCTS": "მომწოდებლის პროდუქტების დამატება",
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "TITLE": "დასახელება",
+          "UNIT_COST": "თვითღირებულება"
+        }
+      }
+    },
+    "SUPPLIER_IMPORT": {
+      "SUCCESS_MESSAGE": "მომწოდებლები წარმატებით დაემატა",
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "TITLE": "დასახელება",
+          "SELLER_IIN": "საიდენტიფიკაციო კოდი"
+        }
+      }
+    },
+    "TRANSACTIONS": {
+      "CASH": "ნაღდი ანგარიშსწორება",
+      "CARD": "უნაღდო ანგარიშსწორება",
+      "SUCCESS_MESSAGE": "ანგარიშსწორება წარმატებით განხორციელდა",
+      "PAYMENT": "ანგარიშსწორება",
+      "PAYMENT_TYPE": "ანგარიშსწორების ტიპი",
+      "ENTER_THE_AMOUNT": "ჩაწერე თანხა"
+    }
+  },
+  "WAYBILLS": {
+    "RECEIVED": "მიღებული",
+    "ISSUED": "გაცემული",
+    "LAST_DAYS": "ბოლო 3 დღე",
+    "ALL_ITEMS": "ყველა ჩანაწერი",
+    "CORRECTED": "დაკორექტირებული",
+    "RS_ERROR_MESSAGE": "RS: დაფიქსირდა შეცდომა",
+    "IMPORT_LOADING_FROM_RS": "მიმდინარეობს ზედნადების ჩამოტვირთვა",
+    "RECEIVED_WAYBILLS": {
+      "REGISTERED_ORDERS": "რეგისტრირებული შესყიდვები",
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "WAYBILL_NUMBER": "ზედნადებები",
+          "IS_CONFIRMED": "მდგომარეობა",
+          "STATUS": "სტატუსი",
+          "TYPE": "ტიპი",
+          "SELLER_NAME": "ორგანიზაცია",
+          "FULL_AMOUNT": "თანხა",
+          "ACTIVATE_DATE": "გააქტიურების თარიღი",
+          "DELIVERY_DATE": "ჩაბარების თარიღი",
+          "END_ADDRESS": "დას. მისამართი"
+        }
+      },
+      "ITEM": {
+        "CREATE_ORDER": "შესყიდვის შექმნა",
+        "CREATE": "შექმნა",
+        "CHOOSE": "არჩევა",
+        "TITLE": "დასახელება",
+        "EXPECTED_RECEIVE_DATE": "შესყიდვის მოტანის თარიღი",
+        "PAYMENT_METHOD": "გადახდის მეთოდი",
+        "BUY": "შესყიდვა",
+        "CONNECT_ORDER_MESSAGE": "თქვენ არ დაგიკავშირებიათ შესყიდვა. გსურთ რომ დააკავშიროთ?",
+        "EDIT_WAYBILL": "ზედნადების რედაქტირება",
+        "WAYBILL": "ზედნადები",
+        "ORDER": "შეკვეთა",
+        "SUPPLIER": "მომწოდებელი",
+        "ADD_SUPPLIER": "დაამატე მომწოდებელი",
+        "ERROR_MESSAGE": "ზედნადებში მოცემული პროდუქტის ერთეული განსხვავდება ოპტიმოსგან",
+        "ADD_PRODUCT": "დაამატე პროდუქტი",
+        "FULL_AMOUNT": "ჯამური თანხა",
+        "DETAILS": {
+          "LIST": {
+            "TABLE_COLUMNS": {
+              "ORDERS": "შესყიდვები",
+              "STATUS": "სტატუსი",
+              "WB_NAME": "დასახელება",
+              "WB_QUANTITY": "რაოდენობა",
+              "WB_UNIT_OF_MEASUREMENT": "ზომის ერთ.",
+              "WB_UNIT_COST": "ერთ. ფასი",
+              "WB_TOTAL_COST": "ჯამი",
+              "PO_NAME": "დასახელება",
+              "PO_QUANTITY": "რაოდენობა",
+              "PO_UNIT_OF_MEASUREMENT": "ზომის ერთ.",
+              "PO_UNIT_COST": "ერთ. ფასი",
+              "PO_TOTAL_COST": "ჯამი",
+              "PO_UNIT_PRICE": "გასაყიდი ფასი",
+              "PO_MARGIN": "ფასნამატი"
+            },
+            "WB_BOX_QUANTITY_TOOLTIP": "ყუთის ან შეკვრის დაშლისთვის მიუთითე ერთეულის რაოდენობა"
+          }
+        },
+        "LIST": {
+          "TABLE_COLUMNS": {
+            "BARCODE": "ბარკოდი",
+            "WB_NAME": "დასახელება",
+            "QUANTITY": "რაოდენობა",
+            "UNIT_OF_MEASUREMENT": "ზომის ერთ.",
+            "UNIT_PRICE": "ერთეულის ფასი",
+            "TOTAL_COST": "ჯამური ფასი",
+            "WAT_TYPE": "დაბეგვრა"
+          }
+        },
+        "ATTRIBUTES": {
+          "SELLER_NAME": "მომწოდებლის სახელი",
+          "SELLER_INN": "საიდენტიფიკაციო კოდი",
+          "END_ADDRESS": "დას. მისამართი"
+        }
+      }
+    },
+    "ISSUED_WAYBILLS": {
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "WAYBILL_NUMBER": "ზედნადებები",
+          "IS_CONFIRMED": "მდგომარეობა",
+          "STATUS": "სტატუსი",
+          "TYPE": "ტიპი",
+          "SELLER_NAME": "ორგანიზაცია",
+          "FULL_AMOUNT": "თანხა",
+          "ACTIVATE_DATE": "გააქტიურება",
+          "DELIVERY_DATE": "ჩაბარება",
+          "END_ADDRESS": "დას. მისამართი"
+        }
+      }
+    }
+  },
+  "LOTS": {
+    "GENERAL": "ზოგადი",
+    "PRODUCTS": "პროდუქტი",
+    "EXCEL_IMPORT": "ექსელში ექსპორტი",
+    "GENERAL_LOTS": {
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "TITLE": "დასახელება",
+          "SUPPLIER_NAME": "მომწოდებელი",
+          "RECEIVED_QUANTITY": "რაოდენობა შეკვეთაში",
+          "UNIT_COST": "შეს. ფასი",
+          "QUANTITY_ON_HAND": "მარაგი",
+          "DATE": "თარიღი"
+        }
+      }
+    },
+    "SPECIFIC_LOTS": {
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "SUPPLIER_NAME": "მომწოდებელი",
+          "RECEIVED_QUANTITY": "რაოდენობა შეკვეთაში",
+          "UNIT_COST": "შეს. ფასი",
+          "QUANTITY_ON_HAND": "მარაგი",
+          "DATE": "თარიღი"
+        }
+      },
+      "CARD": {
+        "CATEGORY": "კატეგორია",
+        "TOTAL_QUANTITY": "ჯამური რაოდენობა",
+        "UNIT_COST": "შესყიდვის ფასი",
+        "UNIT_PRICE": "გასაყიდი ფასი"
+      }
+    },
+    "ITEM": {
+      "DETAILS": {
+        "ADD_ORDER": "შესყიდვის დამატება",
+        "EDIT_ORDER": "შესყიდვის რედაქტირება",
+        "DUPLICATE_ORDER": "შესყიდვის დუბლირება",
+        "RECEIVE_ORDER": "შესყიდვის მიღება",
+        "GLOBAL_ERROR_MESSAGE": "შეავსე გამორჩენილი ველები",
+        "GENERAL_INFO": "ზოგადი ინფორმაცია",
+        "TITLE": "დასახელება",
+        "SUPPLIER": "მომწოდებელი",
+        "PAYMENT_TYPE": "გადახდის მეთოდი",
+        "ORDER_RECEIVE_DATE": "შესყიდვის მოტანის თარიღი",
+        "IS_APPROVED": "მაქვს საბუთი",
+        "ADD_PRODUCT": "პროდუქტის დამატება",
+        "STOCKITEMS_LIST": {
+          "LABEL": "აირჩიე პროდუქტი",
+          "TOTAL_UNIT_COST": "ჯამური შესყიდვები",
+          "TABLE_COLUMNS": {
+            "TITLE": "დასახელება",
+            "QUANTITY": "მარაგი",
+            "ORDERED_QUANTITY": "რაოდენობა",
+            "UNIT_COST": "შეს. ფასი",
+            "TOTAL_COST": "ღირებულება"
+          }
+        }
+      }
+    }
+  },
+  "ENTITY_CLIENTS": {
+    "RS_IMPORT": "RS-დან იმპორტი",
+    "IMPORT": "იმპორტი",
+    "ADD_TO_FAVORITES": "რჩეულებში დამატება",
+    "REMOVE_FROM_FAVORITES": "რჩეულებიდან წაშლა",
+    "DEACTIVATE_MESSAGE": "ნამდვილად გსურს დეაქტივაცია?",
+    "SUCCESS_MESSAGE": "კლიენტები წარმატებით დაემატა",
+    "YES": "კი",
+    "NO": "არა",
+    "LIST": {
+      "TABLE_COLUMNS": {
+        "TITLE": "დასახელება",
+        "CONTACT_PERSON": "საკონტაქტო პირი",
+        "PHONE_NUMBER": "ტელეფონის ნომერი",
+        "EMAIL": "ელ. ფოსტა"
+      }
+    },
+    "CLIENTS_IMPORT": {
+      "LIST": {
+        "TABLE_COLUMNS": {
+          "BUYER_NAME": "მყიდველი",
+          "BUYER_INN": "საიდენტიფიკაციო კოდი"
+        }
+      }
+    },
+    "ITEM": {
+      "DETAILS": {
+        "ADD_CLIENT": "მყიდველის დამატება",
+        "EDIT_CLIENT": "მყიდველის რედაქტირება",
+        "GLOBAL_ERROR_MESSAGE": "შეავსე გამორჩენილი ველები",
+        "GENERAL_INFO": "ზოგადი ინფორმაცია",
+        "TITLE": "დასახელება",
+        "CONTACT_PERSON": "საკონტაქტო პირი",
+        "ENTITY_IDENTIFIER": "საიდენტიფიკაციო კოდი",
+        "PHONE_NUMBER": "ტელეფონის ნომერი",
+        "EMAIL": "ელ. ფოსტა",
+        "IS_VAT_REGISTERED": "დღგ-ს გადამხდელი",
+        "BANK_ACCOUNT": "ანგარიშის ნომერი",
+        "EXISTING_ERROR": "მითითებული კოდი უკვე არსებობს"
+      },
+      "LIST": {
+        "LABEL": "აირჩიე პროდუქტი",
+        "TABLE_COLUMNS": {
+          "TITLE": "დასახელება",
+          "QUANTITY": "რაოდენობა",
+          "UNIT_COST": "შეს. ფასი"
+        }
+      },
+      "ATTRIBUTES": {
+        "CONTACT_NAME": "საკონტრაქტო პირი",
+        "PHONE_NUMBER": "ტელეფონის ნომერი",
+        "EMAIL": "ელ. ფოსტა",
+        "INN": "საიდენტიფიკაციო კოდი",
+        "BANK_ACCOUNT_NUMBER": "ანგარიშის ნომერი",
+        "IS_VAT_REGISTERED": "დღგ-ს გადამხდელი",
+        "YES": "კი",
+        "NO": "არა"
+      }
+    },
+    "TRANSACTIONS": {
+      "SUCCESS_MESSAGE": "ანგარიშსწორება წარმატებით განხორციელდა",
+      "PAYMENT": "ანგარიშსწორება"
+    }
+  },
+
+  "TABLES": {
+    "ADD_SPACE": "სივრცის დამატება",
+    "EDIT_SPACE": "სივრცის რედაქტირება",
+    "WARNING_MESSAGE": "ნამდვილად გსურთ სივრცის წაშლა?",
+    "GENERAL_ERROR": "ზოგადი შეცდომა",
+    "SPACE_DELETED_SUCCESSFULLY": "სივრცე წარმატებით წაიშალა",
+    "TABLE_DELETED_SUCCESSFULLY": "მაგიდა წარმატებით წაიშალა",
+    "SPACE_ADD_SUCCESSFULLY": "სივრცე წარმატებით დაემატა",
+    "TABLE_ADD_SUCCESSFULLY": "მაგიდა წარმატებით დაემატა",
+    "CHANGED_SUCCESSFULLY": "სივრცე წარმატებით შეიცვალა",
+    "CLOSE_THE_SHIFT_TO_DELETE_TABLE": "მაგიდის წაშლა შესაძლებელია ცვლის დახურვის შემდეგ",
+    "CLOSE_THE_SHIFT_TO_DELETE_SPACE": "სივრცის წაშლა შესაძლებელია ცვლის დახურვის შემდეგ",
+    "NAME_EXISTS": "მითითებული სახელი უკვე არსებობს",
+    "NAME_CHANGES_SUCCESSFULLY": "მაგიდის სახელი წარმატებით შეიცვალა",
+    "TITLE": "დასახელება"
+  },
+
+  "Shipping": {
+    "ShippingButton": "გადაზიდვა",
+    "List": {
+      "TableColumns": {
+        "name": "დასახელება",
+        "locationNameFrom": "ფილიალიდან",
+        "locationNameTo": "ფილიალში",
+        "status": "სტატუსი",
+        "orderDate": "თარიღი"
+      }
+    },
+    "Item": {
+      "List": {
+        "TableColumns": {
+          "stockItemName": "დასახელება",
+          "quantity": "რაოდენობა"
+        }
+      },
+      "Attributes": {
+        "locationNameFrom": "ფილიალიდან",
+        "locationNameTo": "ფილიალში"
+      },
+      "Details": {
+        "addShipping": "გადაზიდვის დამატება",
+        "editShipping": "გადაზიდვის რედაქტირება",
+        "globalErrorMessage": "შეავსე გამორჩენილი ველები",
+        "generalInfo": "ზოგადი ინფორმაცია",
+        "title": "დასახელება",
+        "locationNameFrom": "ფილიალიდან",
+        "locationNameTo": "ფილიალში",
+        "addProduct": "პროდუქტის დამატება",
+        "selectProduct": "აირჩიე პროდუქტი",
+        "uploadProducts": "პროდუქტების ატვირთვა",
+        "approveDialog": {
+          "title": "ნამდვილად გსურთ გადაზიდვა?",
+          "ship": "გადაზიდვა",
+          "cancel": "გაუქმება"
+        },
+        "notifications": {
+          "saveShippingSuccess": "გადაზიდვა წარმატებით შეიქმნა",
+          "productsUploadSuccess": "პროდუქტები წარმატებით აიტვირთა",
+          "productsClearSuccess": "პროდუქტები წარმატებით წაიშალა"
+        },
+        "excelUpload": {
+          "uploadProducts": "პროდუქტების ატვირთვა",
+          "uploadForm": "ფორმის ატვირთვა",
+          "clear": "წაშლა",
+          "uploadPopup": {
+            "uploadingText": "მიმდინარეობს პროდუქტების ატვირთვა",
+            "uploadFailed": "პროდუქტი ვერ აიტვირთა",
+            "uploadFailedText": "თუ გსურს, რომ ყველა პროდუქტი წარმატებით აიტვირთოს, ჩამოტვირთე თავიდან და შეავსე ფორმა.",
+            "duplicatedProducts": "დუბლირებული პროდუქტები",
+            "failedProducts": "პროდუქტები, რომლებიც ვერ აიტვირთა",
+            "cancelButton": "გაუქმება",
+            "downloadButton": "ჩამოტვირთვა"
+          }
+        },
+        "ProductList": {
+          "TableColumns": {
+            "name": "დასახელება",
+            "quantityOnHand": "მარაგი",
+            "quantity": "რაოდენობა"
+          }
+        }
+      }
+    }
+  },
+  "ReceiptTemlates": {
+    "edit": "პრეკერძის რედაქტირება",
+    "add": "პრეკერძის დამატება",
+    "addIngredients": "ინგრედიენტების დამატება"
+  },
+  "Receipts": {
+    "uploadRecepts": "კერძების ატვირთვა",
+    "uploadIngredients": "ინგრედიენტების ატვირთვა",
+    "UploadForm": "ფორმის ატვირთვა",
+    "DownloadReceiptsInProgress": "მიმდინარეობს კერძების ჩამოტვირთვა",
+    "UploadReceiptsInProgress": "მიმდინარეობს კერძების ატვირთვა",
+    "UploadReceiptsSuccess": "ყველა კერძი წარმატებით აიტვირთა",
+    "UploadReceiptsFail": "ზოგიერთი კერძის ატვირთვა ვერ განხორციელდა.",
+    "UploadReceiptsRetry": "თუ გსურთ, რომ ყველა კერძი წარმატებით აიტვირთოს, გთხოვთ, თავიდან ჩამოტვირთოთ და შეავსოთ ფორმა.",
+    "DownloadForm": "ფორმის ჩამოტვირთვა",
+    "DublicateReceiptsWarning": "ფორმაში არსებული დუბლირებული კერძები",
+    "ReceiptsThatCouldNotBeUploaded": "კერძები, რომლებიც ვერ აიტვირთა",
+    "ReceiptsThatChangedPrice": "კერძები, რომლებზეც ფასი შეიცვალა",
+    "ExportToExcel": "ექსელში ექსპორტი",
+    "UploadReceiptsFailMessage": "კერძების ატვირთვა ვერ განხორციელდა",
+    "ITEM": {
+      "edit": "კერძის რედაქტირება",
+      "add": "კერძის დამატება",
+      "addCategory": "დაამატე კატეგორია",
+      "priceUpdateDate": "ფასის განახლების თარიღი",
+      "priceUpdate": "ფასი განახლდება",
+      "onNextSync": "შემდგომ სინქრონიზაციაზე",
+      "addIngredient": "ინგრედიენტის დამატება",
+      "PRODUCT_UPDATE_SUCCESS": "პროდუქტი წარმატებით განახლდა",
+      "barcodeAlredyExist": "ბარკოდით უკვე არსებობს, გსურთ გაგრძელება?",
+      "saveWarning": "ნამდვილად გსურს შენახვა?"
+    }
+  },
+  "ProductionOrders": {
+    "prepare": "დამზადება",
+    "prepareApprove": "ნამდვილად გსურს დამზადება?",
+    "prepareSuccess": "დამზადება წარმატებით შესრულდა",
+    "deleteSuccess": "ჩანაწერი წარმატებით წაიშალა",
+    "shortTotalPrice": "ჯამ. ღირებულება",
+    "exportProductionOrdersLoadingPopupText": "მიმდინარეობს დამზადების ჩამოტვირთვა",
+    "exportReceiptsLoadingPopupText": "მიმდინარეობს დამზადების ჩამოტვირთვა",
+    "LIST": {
+      "TABLE_COLUMNS": {
+        "TOTAL_COST": "ჯამ. გასაყიდი ფასი"
+      }
+    },
+    "ITEM": {
+      "addReceipt": "კერძის დამატება",
+      "add": "დამზადების დამატება",
+      "edit": "დამზადების რედაქტირება"
+    }
+  },
+  "SalesHistory": {
+    "retail": "საცალო გაყიდვები",
+    "entity": "ი/პ გაყიდვები",
+    "exportToExcel": "ექსელში ექსპორტი",
+    "totalRevenue": "ჯამური თანხა",
+    "quantitySold": "გაყიდული რაოდენობა",
+    "unitExpense": "შესყიდვის ფასი",
+    "unitRevenue": "გასაყიდი ფასი",
+    "totalVATRate": "ჯამური დღგ"
+  },
+  "Stockholdings": {
+    "unitCost": "შესყიდვის ფასი",
+    "quantity": "ნაშთი",
+    "exportToExcel": "ექსელში ექსპორტი"
+  },
+  "OperatorsReport": {
+    "exportToExcel": "ექსელში ექსპორტი",
+    "TableColumns": {
+      "startOperatorName": "თანამშრომელი",
+      "endOperatorName": "თანამშრომელი",
+      "grandTotalTaxAmount": "საკომისიო",
+      "grandTotalOrderLinesPrice": "ღირებულება",
+      "dateBegin": "ცვლის გახსნა",
+      "cashBegin": "საწყისი ნაშთი",
+      "turnover": "ბრუნვა",
+      "cashWithdrawn": "გაცემული თანხა",
+      "dateEnd": "ცვლის დახურვა",
+      "cashEnd": "საბოლოო ნაშთი"
+    }
+  },
+  "WithdrawalsReport": {
+    "exportToExcel": "ექსელში ექსპორტი",
+    "TableColumns": {
+      "operatorName": "სახელი",
+      "reason": "მიზეზი",
+      "amount": "თანხა",
+      "withdrawalDate": "თარიღი"
+    }
+  },
+  "PricesHistory": {
+    "exportToExcel": "ექსელში ექსპორტი",
+    "TableColumns": {
+      "name": "დასახელება",
+      "priceType": "სტატუსი",
+      "unitPriceBefore": "საწყისი ფასი",
+      "unitPriceChange": "ცვლილება",
+      "unitPriceCurrent": "მიმდინარე ფასი",
+      "date": "ცვლილების თარიღი"
+    }
+  },
+  "SuppliesHistory": {
+    "exportToExcel": "ექსელში ექსპორტი",
+    "other": "სხვა",
+    "TableColumns": {
+      "stockItemName": "დასახელება",
+      "suppliers": "მომწოდებელი",
+      "categoryName": "კატეგორია",
+      "type": "სტატუსი",
+      "quantityBefore": "რაოდენობა",
+      "transactionQuantity": "ცვლადი რაოდ.",
+      "quantityAfter": "საბოლოო რაოდ",
+      "transactionDate": "თარიღი"
+    }
+  },
+  "Ingredients": {
+    "Ingredient": "ინგრედიენტი",
+    "BARCODE_ALREADY_EXISTS_WARNING": "ბარკოდით უკვე არსებობს, გსურს გაგრძელება",
+    "SAVE_WARNING": "ნამდვილად გსურს შენახვა",
+    "UploadIngredients": "ინგრედიენტების ატვირთვა",
+    "DownloadForm": "ფორმის ჩამოტვირთვა",
+    "DownloadInProgress": "მიმდინარეობს ინგრედიენტების ჩამოტვირთვა",
+    "UploadInProgress": "მიმდინარეობს ინგრედიენტების ატვირთვა",
+    "UploadIngredientsSuccess": "ყველა ინგრედიენტი წარმატებით აიტვირთა",
+    "UploadIngredienFail": "ზოგიერთი ინგრედიენტი ვერ აიტვირთა",
+    "UploadIngredienRetry": "თუ გსურს, რომ ყველა ინგრედიენტი წარმატებით აიტვირთოს, ჩამოტვირთე თავიდან და შეავსე ფორმა",
+    "DublicateIngredientsWarning": "დუბლირებული ინგრედიენტები",
+    "IngredientsThatCouldNotBeUploaded": "ინგრედიენტები, რომლებიც ვერ აიტვირთა",
+    "UploadIngredienFailMessage": "ინგრედიენტების ატვირთვა ვერ განხორციელდა",
+    "UploadForm": "ფორმის ატვირთვა",
+    "ExportToExcel": "ექსელში ექსპორტი",
+    "MoveProduct": "პროდუქტის გადმოტანა",
+    "ProductName": "პროდუქტის დასახელება",
+    "IngredientName": "ინგრედიენტის დასახელება",
+    "UpdatableStockType": "გასაახლებელი მარაგის ტიპი",
+    "List": {
+      "TableColumns": {
+        "name": "დასახელება",
+        "categoryName": "კატეგორია",
+        "supplierNames": "მომწოდებელი",
+        "quantity": "რაოდენობა",
+        "unitCost": "ღირებულება"
+      }
+    },
+    "Item": {
+      "Attributes": {
+        "name": "სახელი",
+        "categoryName": "კატეგორია",
+        "supplierNames": "მომწოდებელი",
+        "barcode": "ბარკოდი",
+        "description": "აღწერა",
+        "unitOfMeasurement": "რაოდენობა მარაგში",
+        "unitCost": "შეს. ფასი"
+      },
+      "addIngredients": "ინგრედიენტის დამატება",
+      "editIngredients": "ინგრედიენტის რედაქტირება",
+      "addCategory": "დაამატე კატეგორია",
+      "BARCODE_SLASH_SKU": "ბარკოდი/SKU",
+      "ADD_DISTRIBUTOR": "დაამატე მომწოდებელი",
+      "PRICES_AND_SUPPLIES": "ფასები და მარაგები",
+      "CURRENT_SUPPLY": "მიმდინარე მარაგი",
+      "MIN_SUPPLY_THRESHOLD": "მინიმალური მარაგი",
+      "UNIT_COST": "შესყიდვის ფასი",
+      "updateSuccessMessage": "ინგრედიენტი წარმატებით განახლდა",
+      "addSuccessMessage": "ინგრედიენტი წარმატებით დაემატა"
+    }
+  },
+  "SaleOrdersHistory": {
+    "retail": "საცალო გაყიდვები",
+    "entity": "ი/პ გაყიდვები",
+    "exportProducts": "პროდუქტების ექსპორტი",
+    "checks": "ქვითრები",
+    "products": "პროდუქტები",
+    "other": "სხვა",
+    "TableColumns": {
+      "receiptNumber": "ქვითრის ნომერი",
+      "receiptNumberEntity": "შეკვეთის ნომერი",
+      "transactionId": "ტრანზაქცია",
+      "paymentMethod": "გადახდის მეთოდი",
+      "paymentType": "გადახდის ტიპი",
+      "operatorName": "თანამშრომელი",
+      "imeIs": "სერიული კოდი",
+      "totalOrderLines": "ერთეული",
+      "totalOrderLinesEntity": "რაოდენობა",
+      "totalPrice": "ღირებულება",
+      "totalOrderLinesPrice": "ღირებულება",
+      "totalPriceEntity": "ჯამური თანხა",
+      "orderDate": "თარიღი",
+      "taxAmount": "საკომისიო",
+      "totalPriceHoreca": "გადახდილი თანხა",
+      "entityName": "კომპანიის დასახელება",
+      "entityIdentifier": "საიდენტიფიკაციო კოდი",
+      "status": "სტატუსი"
+    },
+    "View": {
+      "TableColumns": {
+        "stockItemName": "დასახელება",
+        "quantity": "რაოდენობა",
+        "totalPrice": "ღირებულება",
+        "totalPriceEntity": "ჯამ. ღირებულება",
+        "unitPrice": "გასაყიდი ფასი"
+      },
+      "Attributes": {
+        "operatorName": "მოლარე",
+        "paymentMethodDescription": "გადახდის ტიპი",
+        "orderDate": "თარიღი",
+        "paymentMethodDescriptionEntity": "გადახდის მეთოდი",
+        "startAddress": "საწყისი მისამართი",
+        "endAddress": "საბოლოო მისამართი",
+        "driverPIN": "მძღოლის პირადი ნომერი",
+        "driverName": "მძღოლის სახელი და გვარი",
+        "driverCarNumber": "მანქანის ნომერი",
+        "returnReason": "დაბრუნების მიზეზი",
+        "SaleOrderReturnReasons": {
+          "Damaged": "წუნდებული პროდუქცია",
+          "WrongPrice": "ფასის ცდომილება",
+          "WrongProduct": "არასწორი პროდუქცია",
+          "WrongQuantity": "არასწორი რაოდენობა",
+          "WrongRealization": "არასწორი რეალიზაცია",
+          "Other": "სხვა"
+        }
+      }
+    }
+  },
+  "Inventorisations": {
+    "UploadProducts": "პროდუქტების ატვირთვა",
+    "UploadForm": "ფორმის ატვირთვა",
+    "DownloadForm": "ფორმის ჩამოტვირთვა",
+    "Downloading": "მიმდინარეობს ჩამოტვირთვა",
+    "Uploading": "მიმდინარეობს ატვირთვა",
+    "SuccessMessageWithoutChange": "ინვენტარიზაცია დასრულდა ცვლილებების გარეშე",
+    "List": {
+      "TableColumns": {
+        "name": "დასახელება",
+        "type": "ტიპი",
+        "status": "სტატუსი",
+        "orderDate": "თარიღი"
+      }
+    },
+    "Item": {
+      "SuccessMessageForDelete": "ჩანაწერი წარმატებით წაიშალა",
+      "List": {
+        "TableColumns": {
+          "stockItemName": "დასახელება",
+          "quantityOnHand": "მარაგი",
+          "stocktakeQuantity": "არსებული მარაგი",
+          "mismatch": "სხვაობა",
+          "approvedQuantity": "დამოწმებული",
+          "unapprovedQuantity": "დაუმოწმებელი",
+          "reason": "მიზეზი"
+        }
+      },
+      "FullTypeAttributes": {
+        "type": "ტიპი",
+        "typeHardValue": "სრული",
+        "orderDate": "თარიღი"
+      },
+      "Attributes": {
+        "type": "ტიპი",
+        "criteria": "კრიტერიუმი",
+        "orderDate": "თარიღი",
+        "typeHardValue": "ნაწილობრივი"
+      },
+      "Details": {
+        "addInventorisation": "ინვენტარიზაციის დამატება",
+        "editInventorisation": "ინვენტარიზაციის რედაქტირება",
+        "globalErrorMessage": "შეავსე გამორჩენილი ველები",
+        "generalInfo": "ზოგადი ინფორმაცია",
+        "title": "დასახელება",
+        "type": "ტიპი",
+        "date": "თარიღი",
+        "criteria": "კრიტერიუმი",
+        "addCategory": "კატეგორიის დამატება",
+        "addProduct": "პროდუქტის დამატება",
+        "addSupplier": "მომწოდებლის დამატება",
+        "List": {
+          "Label_Category": "აირჩიე კატეგორია",
+          "Label_Products": "აირჩიე პროდუქტები",
+          "Label_Supplier": "აირჩიე მომწოდებელი",
+          "TableColumns": {
+            "name": "დასახელება",
+            "barcode": "ბარკოდი",
+            "phoneNumber": "ნომერი"
+          }
+        }
+      }
+    },
+    "Mismatches": {
+      "correct": "კორექტირება",
+      "confirm": "დასტური",
+      "deny": "გაუქმება",
+      "productWarningMessage": "ფორმაში არსებული შეუსაბამო პროდუქტები",
+      "assortmentWarningMessage": "ფორმაში არსებული ასორტიმენტის პროდუქტები",
+      "dublicateWarningMessage": "ფორმაში არსებული დუბლირებული პროდუქტები",
+      "productErrorMessage": "ატვირთულ ფაილში არსებული პროდუქტები არ შეესაბამება შენი პროდუქტების სიას.",
+      "globalErrorMessage": "შეავსე გამორჩენილი ველები",
+      "Carefully": "ყურადღებით",
+      "Download": "ჩამოტვირთვა",
+      "DownloadForm": "ფორმის ჩამოტვირთვა",
+      "Downloading": "მიმდინარეობს ჩამოტვირთვა",
+      "ApproveDialog": {
+        "title": "გსურს კორექტირების დადასტურება?",
+        "message": "დადასტურების შემთხვევაში თქვენი არსებული მარაგები შეიცვლება",
+        "yes": "კი",
+        "no": "არა"
+      },
+      "List": {
+        "TableColumns": {
+          "name": "დასახელება",
+          "quantityOnHand": "მარაგი",
+          "stocktakeQuantity": "არს. მარაგი",
+          "mismatch": "სხვაობა",
+          "approvedQuantity": "დამოწმებული",
+          "unapprovedQuantity": "დაუმოწმებელი",
+          "reason": "სხვაობის მიზეზი"
+        }
+      }
+    }
+  },
+  "HEADBAR": {
+    "MENU": {
+      "NO_NAME_ASSIGNED": "სახელი არ არის მითითებული"
+    }
+  },
+  "SUB_USERS": {
+    "LAST_LOGIN_DATE": "ბოლო შემოსვლის თარიღი",
+    "NOTIFICATIONS": {
+      "SUB_USER_ALREADY_EXISTS": "ქვემომხმარებელი უკვე არსებობს."
+    },
+    "EDIT": {
+      "TITLE_ADD": "ქვემომხმარებლის დამატება",
+      "TITLE_EDIT": "ქვემომხმარებლის რედაქტირება"
+    },
+    "CONFIRL_DIALOG": {
+      "CONFIRM_ADD_ALREADY_PRESENT_USER_TITLE": "ნამდვილად გსურს ამ მომხარებლის დამატება ?",
+      "CONFIRM_ADD_ALREADY_PRESENT_USER_MESSAGE": "მომხმარებელი ამ ნომრით უკვე არსებობს. ნამდვილად გსურს დამატება?"
+    }
+  },
+  "HELP": {
+    "TITLE": "მოძებნე შენთვის სასურველი ვიდეო გაკვეთილი"
+  },
+  "STATISTICS": {
+    "GENERAL": {
+      "POPULAR_PRODUCTS": "პოპულარული პროდუქტები",
+      "POPULAR_CATEGORIES": "პოპულარული კატეგორიები",
+      "AVARAGE_CHEQUE": "საშუალო ქვითარი",
+      "HOURS_AND_DAYS": "საათები და დღეები"
+    },
+    "PRODUCT": {
+      "NO_PRODUCT_SELECTED": "პროდუქტი არ არის არჩეული",
+      "UNIT_COST": "შეს. ფასი",
+      "CURRENT_SUPPLY": "მიმდინარე მარაგი"
+    },
+    "CATEGORY": {
+      "NO_CATEGORY_SELECTED": "კატეგორია არ არის არჩეული",
+      "ASSORTMENT": "ასორტიმენტი",
+      "TOTAL_COST": "ჯამური თვითღირებულება",
+      "TOTAL_PRICE": "ჯამური გასაყიდი ფასი",
+      "CATEGORY_POPULAR_PRODUCTS": "კატეგორიის პოპულარული პროდუქტები"
+    }
+  }
+}

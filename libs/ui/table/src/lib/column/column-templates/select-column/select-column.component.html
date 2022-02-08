@@ -1,0 +1,42 @@
+<app-column dataField="select" [sortable]="false" [sticky]="true">
+  <ng-template *ngIf="hasInsideSelectAll" #headerCell>
+    <div class="custom-checkbox">
+      <input
+        data-hj-allow
+        type="checkbox"
+        id="select-inside-all-{{ selectAllId }}"
+        class="custom-checkbox-control"
+        (click)="$event.stopPropagation()"
+        (change)="$event ? selectAllToggle.emit() : null"
+        [checked]="selection.hasValue() && isAllSelected"
+        [indeterminate]="selection.hasValue()"
+      />
+      <!-- indetermiante-aqa -->
+      <label
+        for="select-inside-all-{{ selectAllId }}"
+        class="custom-checkbox-label"
+      ></label>
+    </div>
+  </ng-template>
+  <ng-template #cell let-row="row">
+    <div 
+      *ngIf="hasAnyAction(row) || selectableCustomEnable(row)"
+      class="custom-checkbox"
+    >
+      <input
+        data-hj-allow
+        type="checkbox"
+        id="custom-checkbox-{{ hash(row | json) }}"
+        class="custom-checkbox-control"
+        (click)="$event.stopPropagation()"
+        (change)="$event ? rowToggle.emit(row) : null"
+        [checked]="selection.isSelected(row)"
+      />
+      <label
+        (click)="$event.stopPropagation()"
+        for="custom-checkbox-{{ hash(row | json) }}"
+        class="custom-checkbox-label"
+      ></label>
+    </div>
+  </ng-template>
+</app-column>

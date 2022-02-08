@@ -1,0 +1,36 @@
+<div class="   flex-grow-1">
+  <div class=" bg-white h-100">
+	<app-table
+	#tableInstance
+      [dataSource]="dataSource"
+      [totalCount]="totalCount"
+      [state]="currentState"
+      [selectable]="false"
+      [paginable]="true"
+      [hasColumnSelector]="true"
+      defaultSort="orderDate"
+      defaultSortDirection="DESC"
+      [displayedColumns]="isHorecaMode ? horecaDisplayedColumns : displayedColumns"
+      (stateChanged)="onTableStateChanged($event)"
+      (rowClick)="toQueryParam('saleOrderId', $event.id)"
+      class="table-sales-history"
+    >
+      <!-- class="table-inventory" -->
+
+      <ng-template app-cell let-cell="cell" name="imeIs">
+        <div
+		  
+          class="d-flex align-items-center font-family-medium"
+        >
+          <span class="text-truncate d-inline-block  flex-shrink-1" [matTooltip]="cell && cell[0]"
+		  #ref1 [matTooltipDisabled]="textIsTruncated(ref1)">
+            {{ getShortImeisText(cell) }}
+          </span>
+          <span *ngIf="cell && cell.length > 1" class="  flex-shrink-0 ml-1" [matTooltip]="getImeisText(cell)">
+            {{ cell.length - 1 }} {{'SaleOrdersHistory.other' | translate}}
+          </span>
+        </div>
+      </ng-template>
+    </app-table>
+  </div>
+</div>

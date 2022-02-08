@@ -1,0 +1,32 @@
+.video-container {
+  height: 100vh;
+  position: relative;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // background: url('#{$image-path}/video-bg.jpg') no-repeat center/cover;
+
+  .gradient {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    background-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0) 55%,
+      rgba(0, 0, 0, 0.5)
+    );
+  }
+
+  video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    background-color: black;
+    object-fit: cover;
+    z-index: -1;
+  }
+}

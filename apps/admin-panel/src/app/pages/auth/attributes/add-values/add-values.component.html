@@ -1,0 +1,105 @@
+<div class="d-flex align-items-center justify-content-between border-bottom border-table-border-color pl-4 pr-18px" style="height: 80px;">
+  <span class="font-color-dark font-size-18 font-family-bold line-height-normal">
+    ატრიბუტის დამატება
+  </span>
+  <span>
+    <button class="btn bg-transparent rounded-0 p-0"
+      (click)="dismissDialog()"
+    > <app-icon icon="close" class="icon-w-20px icon-h-20px"></app-icon>
+     </button>
+  </span>
+</div>
+<div class="w-100 h-100 d-flex flex-column"
+  
+>
+  <div class="p-4 d-flex align-items-end justify-content-between">
+    <div class="line-height-normal col-6 px-0">
+      <label for="attribute-value" class="font-size-14 font-color-dark font-family-bold line-height-normal">მნიშვნელობა</label>
+      <input
+          id="attribute-value"
+          type="text"
+          [formControl]="nameInputControl"
+          class="form-control"
+      >
+    </div>
+    <button
+      class="btn btn-primary font-color-white font-size-14 font-family-bold"
+      (click)="addAttributeValue()"
+      style="width: 120px; height: 42px;"
+    >
+        დამატება
+    </button>
+  </div>
+  <div style="max-height:565px;">
+    <app-table
+      *ngIf="datasource"
+      [displayedColumns]="displayedColumns"
+      [dataSource]="datasource"
+      [totalCount]="totalCount"
+      [state]="curTableState"
+      [actions]="{ editable: false, deletable: false }"
+      [selectable]="false"
+      [filterable]="true"
+      [paginable]="true"
+      [defaultSort]="'id'"
+      [defaultSortDirection]="'DESC'"
+      (stateChanged)="onTableStateChanged($event)"
+      class="table-statements flex-grow-1 table-categories table-footer-unfixed table-min-h-unset table-min-h-445px"
+      style="padding-bottom: 115px;"
+    >
+      <ng-template
+        app-cell
+        let-cell="cell"
+        let-row="row"
+        name="id"
+      >
+        <div class="d-flex align-items-center justify-content-end">
+          <button
+            class="btn mr-2 px-3 bg-table-border-color py-0"
+            (click)="editValue($event, row)"
+            style="width: 75px; height: 42px;"
+          ><app-icon icon="edit-tbls"></app-icon>
+        </button>
+        <button
+            class="btn px-3 bg-table-border-color py-0"
+            (click)="removeValue(row)"
+            style="width: 75px; height: 42px;"
+          >
+          <app-icon icon="trash-tbls"></app-icon>
+          </button>
+    
+        </div>
+      </ng-template>
+      <ng-template
+        app-cell
+        let-cell="cell"
+        let-row="row"
+        name="value"
+      >
+        <div
+          *ngIf="row?.editValue"
+          clickOutside
+          (clickOutside)="row?.editValue && onSubmitValue(row)"
+          class="d-flex align-items-center"
+        >
+          <input
+            type="text"
+            class="form-control"
+            [formControl]="row.editValue"
+            (keyup.enter)="onSubmitValue(row)"
+            style="height: 42px;"
+          />
+          <button
+            (click)="onResetRowInput(row)"
+            class="btn p-0 border-0 ml-2"
+          >
+            <app-icon
+              icon="filter-reset"
+            ></app-icon>
+          </button>
+        </div>
+        <span *ngIf="!row?.editValue">{{row.value}}</span>
+      </ng-template>
+    </app-table>
+  </div>
+</div>

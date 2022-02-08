@@ -1,0 +1,38 @@
+@mixin make-outer-grid {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 16px;
+  padding-left: 16px;
+
+  @include media-breakpoint-up(sm) {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  @include media-breakpoint-up(lg) {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    padding-left: 160px;
+    padding-right: 160px;
+  }
+}
+
+@mixin register-font-family($name) {
+  @font-face {
+    font-family: $name;
+    src: url($font-path + $name + '.eot'); /* IE9 Compat Modes */
+    src: url($font-path + $name + '.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url($font-path + $name + '.woff2') format('woff2'), /* Super Modern Browsers */
+    url($font-path + $name + '.woff') format('woff'), /* Pretty Modern Browsers */
+    url($font-path + $name + '.ttf') format('truetype'), /* Safari, Android, iOS */
+    url($font-path + $name + '.svg') format('svg'); /* Legacy iOS */
+  }
+}
+
+@mixin make-font-caps() {
+  -webkit-font-feature-settings: 'case';
+  font-feature-settings: 'case' on;
+}

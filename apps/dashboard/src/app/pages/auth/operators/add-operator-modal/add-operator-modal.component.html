@@ -1,0 +1,145 @@
+<div
+  class="d-flex align-items-center justify-content-between border-bottom border-table-border-color pl-4 pr-18px"
+  style="height: 60px;"
+>
+  <div class="font-color-dark font-size-18 font-family-bold line-height-normal">
+     
+    <span *ngIf="!data">
+      {{'OPERATORS.VIEW.ADD_OPERATOR' | translate}}
+    </span>
+    <span *ngIf="data">
+      {{'OPERATORS.VIEW.EDIT_OPERATOR' | translate}}
+    </span>
+  </div>
+  <button class="btn bg-transparent rounded-0 p-0" (click)="onClose()">
+    <app-icon
+      icon="close"
+      class="icon-w-20px icon-h-20px"
+      style="cursor: pointer;"
+    ></app-icon>
+  </button>
+</div>
+<form
+  *ngIf="operatorForm"
+  [formGroup]="operatorForm"
+  (ngSubmit)="onSubmit()"
+  (keydown.enter)="$event.preventDefault()"
+>
+  <div class="pt-3 px-4">
+    <div class="form-group">
+      <label
+        for=""
+        class="font-size-14 font-color-dark font-family-bold line-height-normal"
+      >
+        {{'OPERATORS.VIEW.OPERATOR_NAME' | translate}}
+        
+      </label>
+      <input
+        id="operatorName"
+        data-hj-allow
+        class="form-control"
+        type="text"
+        formControlName="name" />
+    </div>
+
+    <div class="form-group">
+      <label
+        for=""
+        class="font-size-14 font-color-dark font-family-bold line-height-normal"
+      >
+        {{'OPERATORS.VIEW.OPERATOR_CAN_DO' | translate}}
+      </label>
+      <ng-select
+        formControlName="permissions"
+        [items]="permissionsMap"
+        bindValue="value"
+        bindLabel="label"
+        [multiple]="true"
+        [closeOnSelect]="false"
+        class="custom-select-header form-control"
+        [searchable]="false"
+        [clearable]="false"
+      >
+        <ng-template ng-multi-label-tmp let-items="items">
+          <div
+            class="ng-value"
+            *ngFor="let item of items | slice: 0:2; let last = last"
+          >
+            <span class="ng-value-label">
+              {{ item.label }}
+              <ng-container *ngIf="!last">,&nbsp;</ng-container>
+            </span>
+          </div>
+          <div class="ng-value" *ngIf="items.length > 2">
+            <span class="ng-value-label"
+              >,&nbsp;{{ items.length - 2 }} სხვა...</span
+            >
+          </div>
+        </ng-template>
+        <ng-template ng-option-tmp let-item="item" let-item$="item$">
+          <div class="custom-checkbox custom-checkbox-selected-blue mr-3">
+            <input
+              id="custom-checkbox-{{ item.value }}"
+              data-hj-allow
+              type="checkbox"
+              class="custom-checkbox-control"
+              [checked]="item$.selected"
+            />
+            <label
+              (click)="$event.stopPropagation()"
+              for="custom-checkbox-{{ item.value }}"
+              class="custom-checkbox-label"
+            ></label>
+          </div>
+          <span class="text-truncate">{{ item.label }}</span> 
+        </ng-template>
+      </ng-select>
+    </div>
+    <div>
+      <label
+        class="font-size-14 font-color-dark font-family-bold line-height-normal">
+        {{'OPERATORS.VIEW.PIN_CODE' | translate}}
+      </label>
+      <div class="input-group-custom d-flex align-items-center">
+        <input
+          id="operatorPinCode"
+          data-hj-allow
+          class="form-control input-left"
+          type="text"
+          formControlName="pinCode"
+          (click)="onInputTypeNumberClick()"
+          [patterns]="customPattern"
+          mask="Z{4}"
+        />
+        <button
+          class="btn p-0 input-section"
+          style="right: 11px;"
+          type="button"
+          (click)="generateAndWritePincode($event)"
+        >
+          <app-icon icon="reload"></app-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-end pt-3 pb-4 px-4">
+    <button
+      class="btn bg-transparent mr-3 font-size-14 font-color-dark font-family-bold"
+      style="width: 120px; height: 42px;"
+      type="button"
+      (click)="onClose()"
+    >
+      გაუქმება
+    </button>
+    <button
+      class="btn btn-primary font-size-14 font-family-bold"
+      style="width: 113px; height: 42px;"
+      type="submit"
+      [disabled]="
+        operatorForm.invalid || operatorForm.pristine || requestIsSent
+      "
+    >
+      შენახვა
+    </button>
+  </div>
+</form>

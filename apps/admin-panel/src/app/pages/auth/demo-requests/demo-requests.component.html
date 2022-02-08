@@ -1,0 +1,17 @@
+<div class="pt-1">
+  <app-table
+    *ngIf="datasource"
+    [displayedColumns]="displayedColumns"
+    [dataSource]="datasource"
+    [totalCount]="totalCount"
+    [state]="curTableState"
+    [actions]="{ editable: false, deletable: false }"
+    [selectable]="false"
+    [filterable]="true"
+    [paginable]="true"
+    [defaultSort]="'id'"
+    [defaultSortDirection]="'DESC'"
+    (stateChanged)="onTableStateChanged($event)"
+    class="table-offers table-inventory first-th-bordered"
+  ></app-table>
+</div>

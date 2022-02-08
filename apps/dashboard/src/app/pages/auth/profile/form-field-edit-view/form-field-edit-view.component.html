@@ -1,0 +1,73 @@
+<div [formGroup]="form" clickOutside (clickOutside)="onClickOutside()" class="d-flex align-items-center">
+  <ng-container [ngSwitch]="fieldType">
+    <ng-container *ngSwitchCase="EFieldType.Number">
+      <span *ngIf="!editMode">{{value}}</span>
+      <input
+        id="fieldName_percentage"
+        type='number'
+        data-hj-allow
+        [formControlName]="fieldName"
+        *ngIf="editMode"  />
+    </ng-container>
+    <ng-container *ngSwitchCase="EFieldType.Percentage">
+      <span *ngIf="!editMode" class="font-size-14 font-color-dark font-family-regular">{{value}}%</span>
+      <!-- <input   /> -->
+      <div *ngIf="editMode" class="input-group-custom align-items-center" style="width: 131px;">   <!-- class.active -->
+        <input
+          id="fieldName_percentage"
+          data-hj-allow
+          class="form-control input-left "
+          type='number'
+          [formControlName]="fieldName">
+        <div class="font-size-14 font-color-dark font-family-regular input-section mt-n6px" style="top:20px;right: 16px;">%</div>
+      </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="EFieldType.Radio">
+      <span
+        *ngIf="!editMode"
+        class="font-size-14 font-color-dark font-family-regular">
+        {{(value  ? 'BUTTON_LABELS.YES' : 'BUTTON_LABELS.NO') | translate}}
+      </span>
+      <ng-container *ngIf="editMode">
+        <div class="custom-radio-wrapper ">
+          <input
+            id="EntitySalesYes"
+            data-hj-allow
+            type="radio"
+            [formControlName]="fieldName"
+            [value]="true">
+          <label for="EntitySalesYes" class="mb-0 ml-2" class="custom-radio-label pl-25px">
+            {{ 'BUTTON_LABELS.YES' | translate }}
+          </label>
+        </div>
+        <div class="custom-radio-wrapper ml-3 pr-2">
+          <input
+            id="EntitySalesNo"
+            data-hj-allow
+            type="radio"
+            [formControlName]="fieldName"
+            [value]="false">
+          <label for="EntitySalesNo" class="mb-0 ml-2" class="custom-radio-label pl-25px">
+            {{ 'BUTTON_LABELS.NO' | translate }}
+          </label>
+        </div>
+      </ng-container>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+        <span *ngIf="!editMode">{{value}}</span>
+        <input
+          data-hj-allow
+          class="form-control"
+          style="width: 131px;"
+          type='text'
+          [formControlName]="fieldName"
+          *ngIf="editMode"
+          />
+    </ng-container>
+  </ng-container>
+  <app-icon icon="edit-tbls" class="ml-2 icon-hover-opacity" (click)="switchToEditMode()" *ngIf="!editMode && !disabled"></app-icon>
+  <button class="btn btn-primary btn-add mr-3 ml-2" (click)="onSave()" *ngIf="editMode"
+    [disabled]="!form.get(fieldName).valid">
+    {{ 'BUTTON_LABELS.SAVE' | translate }}
+  </button>
+</div>

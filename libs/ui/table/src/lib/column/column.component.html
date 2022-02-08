@@ -1,0 +1,57 @@
+<ng-container
+  [cdkColumnDef]="dataField"
+  [sticky]="sticky"
+  [stickyEnd]="stickyEnd"
+>
+  <th
+    cdk-header-cell
+    *cdkHeaderCellDef
+    mat-sort-header
+    [disabled]="!sortable"
+    [ngClass]="{
+      active: sort?.active === dataField,
+      asc: sort?.active === dataField && sort?.direction === 'asc',
+      desc: sort?.active === dataField && sort?.direction === 'desc',
+      hidden: hidden,
+      'position-right': isHeaderRight
+    }"
+    [style.width.%]="widthPercent"
+  >
+    <ng-container *ngTemplateOutlet="headerCellTmpl"></ng-container>
+    <ng-container *ngIf="!headerCellTmpl">
+      <span #ref1 [matTooltipDisabled]="textIsTruncated(ref1)" [matTooltip]="caption | translate" >
+        {{ caption | translate }}
+      </span>
+      <div class="th-icons-sorting d-flex flex-column" *ngIf="sortable">
+        <app-icon *ngIf="sortable" [icon]="'sort-up'" style="line-height: 9px;" ></app-icon>
+        <app-icon *ngIf="sortable" [icon]="'sort-down'" style="line-height: 9px;" ></app-icon>
+      </div>
+    </ng-container>
+  </th>
+  <td cdk-cell *cdkCellDef="let row; let i = index" [class.hidden]="hidden">
+    <ng-container
+      *ngTemplateOutlet="cellTmpl; context: { row: row, i: i }"
+    ></ng-container>
+    <div *ngIf="!cellTmpl" style="line-height: 1.4;" class="d-flex"  >
+      <span
+		[matTooltip]="row[dataField]"
+		#ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+        [ngClass]="className"
+        class="mw-100 d-inline-block text-truncate font-family-regular font-color-dark"
+      >
+        {{ row[dataField] }}
+      </span>
+    </div>
+  </td>
+</ng-container>
+
+<ng-container [cdkColumnDef]="dataField + '__filter'">
+  <th
+    cdk-header-cell
+    *cdkHeaderCellDef
+    [style.width.%]="widthPercent"
+    [class.hidden]="hidden"
+  >
+    <ng-container *ngTemplateOutlet="filterCellTmpl"></ng-container>
+  </th>
+</ng-container>

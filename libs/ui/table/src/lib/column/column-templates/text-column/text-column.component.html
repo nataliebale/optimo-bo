@@ -1,0 +1,39 @@
+<app-column
+  [dataField]="col.dataField"
+  [caption]="col.caption"
+  [asyncCaption]="col.asyncCaption"         
+  [sortable]="col.sortable"
+  [widthPercent]="col.widthPercent"
+  [className]="col.className"
+  (cellClick)="cellClick.emit($event)"
+>
+  <ng-template *ngIf="headerCellTmpl" #headerCell>
+    <ng-container *ngTemplateOutlet="headerCellTmpl"></ng-container>
+  </ng-template>
+
+  <ng-template *ngIf="cellTmpl" #cell let-row="row" let-i="i">
+    <ng-container
+      *ngTemplateOutlet="
+        cellTmpl;
+        context: { cell: row[col.dataField], row: row, i: i }
+      "
+    ></ng-container>
+  </ng-template>
+
+  <ng-template *ngIf="col.filterable" #filterCell>
+    <form [formGroup]="filterForm">
+      <div class="d-flex align-items-center">
+        <input
+          data-hj-allow
+          type="text"
+          class="table-form-control"
+          placeholder="ჩაწერე"
+          formControlName="filter"
+          autocomplete="off"
+          (keyup)="onSubmit()"
+        />
+        <app-icon [icon]="'search'" class="th-icon"></app-icon>
+      </div>
+    </form>
+  </ng-template>
+</app-column>

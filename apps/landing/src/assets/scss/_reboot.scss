@@ -1,0 +1,40 @@
+html {
+  height: 100%;
+}
+
+body {
+  position: relative;
+  min-height: 100%;
+  background-color: $offers-bg;
+}
+
+main {
+  padding-bottom: $footer-height;
+  //padding-top: $header-height;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.underline {
+  position: relative;
+  &::before {
+    content: '';
+    display: block;
+    width: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 1px;
+    background-color: $text-muted;
+    position: absolute;
+    top: 63%;
+  }
+}
+
+.form-control.ng-invalid {
+  &.ng-dirty,
+  &.ng-touched {
+    border-color: $red;
+  }
+}

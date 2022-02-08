@@ -1,0 +1,76 @@
+.icon {
+  &-light {
+    svg path {
+      fill: rgba($white, .7);
+    }
+  }
+  &-gel-12px{
+      svg{
+        width: 12px !important;
+        height: 12px  !important;
+        margin-top: -2px;
+
+      }
+    
+  }
+  &-down {
+    //animation: 1.2s slideInUp linear infinite;
+
+    &-holder {
+      width: 48px;
+      height: 48px;
+      background-color: rgba($black, .3);
+      @include transition;
+
+      @include border-radius(50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba($black, .6);
+      }
+    }
+  }
+
+  &-gel-sm {
+    svg {
+      transform: scale(.9);
+    }
+  }
+}
+
+.primary {
+  svg path {
+    fill: $primary;
+  }
+}
+
+.info {
+  svg path {
+    fill: $info;
+    opacity: .1;
+  }
+}
+
+// keyframes
+@keyframes slideInUp {
+  0% {
+    -webkit-transform: translate3d(0, 0%, 0);
+    transform: translate3d(0, 0%, 0);
+    visibility: visible;
+  }
+
+  50% {
+    -webkit-transform: translate3d(0, 50%, 0);
+    transform: translate3d(0, 50%, 0);
+    visibility: visible;
+  }
+
+  100% {
+    -webkit-transform: translate3d(0, 0%, 0);
+    transform: translate3d(0, 0%, 0);
+    visibility: visible;
+  }
+}

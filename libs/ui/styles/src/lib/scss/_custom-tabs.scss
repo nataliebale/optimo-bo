@@ -1,0 +1,22 @@
+.custom-tabs {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  margin-bottom: 8px;
+  width: 100%;
+  @include media-breakpoint-up(sm) {
+    flex-grow: 0;
+    margin-bottom: 0;
+    width: auto;
+  }
+
+  button, a {
+    &:first-child {
+      @include border-right-radius(0);
+    }
+
+    &:last-child {
+      @include border-left-radius(0);
+    }
+  }
+}

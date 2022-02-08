@@ -1,0 +1,186 @@
+<ng-container *ngIf="entitySale$ | async as entitySale">
+  <div
+    class="d-flex align-items-center border-bottom pl-4 pr-28px border-table-border-color"
+    style="height: 88px;"
+  >
+    <div
+      class="col-3 d-flex align-items-center px-0"
+    >
+      <button
+        *ngIf="entitySale.status === ENTITY_SALE_STATUS.Draft"
+        class="btn-view-action-rounded"
+        style="width: 36px;height: 36px;"
+        (click)="onEdit(entitySale.id)"
+      >
+        <app-icon [icon]="'edit-tbls'"  ></app-icon>
+      </button>
+      <button
+        *ngIf="entitySale.status === ENTITY_SALE_STATUS.Draft"
+        class="btn-view-action-rounded"
+        style="width: 36px;height: 36px;"
+        (click)="onDelete(entitySale.id)"
+      >
+        <app-icon
+          [icon]="'trash-tbls'"
+          fill="#fc3c2d"
+        >
+        </app-icon>
+      </button>
+      <button
+        *ngIf="entitySale.status === ENTITY_SALE_STATUS.Draft"
+        class="btn-view-action-rounded"
+        style="width: 36px;height: 36px;"
+        (click)="onDraftFinish(entitySale.id)"
+      >
+        <app-icon
+          [icon]="'sell-filled'"
+          fill="#fc3c2d"
+        >
+        </app-icon>
+      </button>
+      <button
+        *ngIf="entitySale.status === ENTITY_SALE_STATUS.Sold"
+        class="btn-view-action-rounded"
+        style="width: 36px;height: 36px;"
+        (click)="onRsUpload(entitySale.id)"
+      >
+        <app-icon
+          [icon]="'import'"
+          fill="#fc3c2d"
+        >
+        </app-icon>
+      </button>
+    </div>
+    <span class="font-size-20 font-family-bold text-dark col text-center text-truncate"
+      >{{ entitySale.entityName }}
+    </span>
+    <div class="col-3 text-right px-0">
+      <app-icon
+        (click)="onBack()"
+        [icon]="'close'"
+        class="ml-auto icon-close-dark"
+        style="cursor: pointer;"
+      ></app-icon>
+    </div>
+  </div>
+  <div
+    style="height: 450px; overflow-y: auto;"
+    class="custom-view-scroll d-flex flex-column border-right border-transparent border-width-2px"
+  >
+    <div
+      class="container-fluid py-27px border-bottom border-table-border-color px-3"
+    >
+      <optimo-view-attributes [items]="entitySaleAttributeItems(entitySale)">
+      </optimo-view-attributes>
+      <!-- <div class="row align-items-center pt-4"  >
+        <div class="col line-height-normal"  >
+          <div class="font-family-bold font-size-14 text-dark">
+            გადახდის მეთოდი
+          </div>
+          <div class="font-size-14 font-family-regular text-dark mt-1">
+            {{ entitySale.paymentMethodDescription }}
+          </div>
+        </div>
+        <div class="col line-height-normal">
+          <div class="font-family-bold font-size-14 text-dark">
+            თარიღი
+          </div>
+          <div class="font-size-14 font-family-regular text-dark mt-1">
+            {{ entitySale.orderDate | date }}
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center pt-4"  >
+        <div class="col line-height-normal"  >
+          <div class="font-family-bold font-size-14 text-dark">
+            საწყისი მისამართი
+          </div>
+          <div class="font-size-14 font-family-regular text-dark mt-1">
+            {{ entitySale.startAddress }}
+          </div>
+        </div>
+        <div class="col line-height-normal">
+          <div class="font-family-bold font-size-14 text-dark">
+            საბოლოო მისამართი
+          </div>
+          <div class="font-size-14 font-family-regular text-dark mt-1">
+            {{ entitySale.endAddress }}
+          </div>
+        </div>
+      </div>
+      <div
+        *ngIf="entitySale.hasTransportation"
+        class="row align-items-center pt-4"
+         
+      >
+        <div class="col-4 line-height-normal"  >
+          <div class="font-family-bold font-size-14 text-dark">
+            მძღოლის პირადი ნომერი
+          </div>
+          <div class="font-size-14 font-family-regular text-dark mt-1">
+            {{ entitySale.driverPIN }}
+          </div>
+        </div>
+        <div class="col-4 line-height-normal">
+          <div class="font-family-bold font-size-14 text-dark">
+            მძღოლის სახელი და გვარი
+          </div>
+          <div class="font-size-14 font-family-regular text-dark mt-1">
+            {{ entitySale.driverName }}
+          </div>
+        </div>
+        <div class="col-4 line-height-normal">
+          <div class="font-family-bold font-size-14 text-dark">
+            მანქანის ნომერი
+          </div>
+          <div class="font-size-14 font-family-regular text-dark mt-1">
+            {{ entitySale.driverCarNumber }}
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <div class="waybills-table-paddings flex-grow-1">
+      <app-table
+        *ngIf="entitySale.orderLines"
+        [dataSource]="entitySale.orderLines"
+        [displayedColumns]="displayedColumns"
+        [paginable]="false"
+        [selectable]="false"
+        [filterable]="false"
+        [staticData]="true"
+        class="table-dialogs table-view"
+      >
+        <ng-template
+          app-cell
+          let-cell="cell"
+          let-row="row"
+          name="stockItemName"
+        >
+          <div class="d-flex flex-column">
+            <span
+			  [matTooltip]="row.stockItemName"
+			  #ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+              class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1"
+            >
+              {{ row.stockItemName }}
+            </span>
+
+            <span
+			  [matTooltip]="row.stockItemBarcode"
+			  #ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+              class="text-truncate mw-100 d-inline-block table-text-dark"
+            >
+              {{ row.stockItemBarcode }}
+            </span>
+          </div>
+        </ng-template>
+      </app-table>
+    </div>
+  </div>
+  <div
+    class="d-flex align-items-center px-4 justify-content-end border-top border-table-border-color"
+    style="height: 85px;"
+  >
+    <!-- <app-paginator></app-paginator> -->
+  </div>
+</ng-container>

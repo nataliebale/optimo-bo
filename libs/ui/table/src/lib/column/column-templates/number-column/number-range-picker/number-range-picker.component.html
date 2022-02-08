@@ -1,0 +1,70 @@
+<div class="filter-dialog filter-dialog-type-number active">
+  <form [formGroup]="filterForm">
+    <div class="form-group pt-12px mb-10px">
+      <div class="row mx-0">
+        <div class="col pl-3 pr-0">
+          <label
+          for="numberFilterFrom"
+          class="font-family-bold font-size-13 font-color-dark line-height-normal mb-6px"
+          
+          >მინ.</label
+        >
+        </div>
+        <div class="col pr-3 pl-0">
+          <label
+            for="numberFilterTo"
+            class="font-family-bold font-size-13 font-color-dark line-height-normal mb-6px"
+             
+            >მაქს.</label
+          >
+        </div>
+      </div>
+        <div class="w-100 px-3  d-flex">
+          <input
+            data-hj-allow
+            id="numberFilterFrom"
+            type="number"
+            class="form-control rounded  form-control-sm input-left-custom-focus col"
+            style="height: 42px;"
+            placeholder="ჩაწერე"
+            autocomplete="off"
+            formControlName="from"
+            (ngModelChange)="from = $event"
+          />
+          <input
+            data-hj-allow
+            id="numberFilterTo"
+            type="number"
+            class="form-control rounded   form-control-sm input-right-custom-focus  col" 
+            style="height: 42px;"
+            placeholder="ჩაწერე"
+            autocomplete="off"
+            formControlName="to"
+            (ngModelChange)="to = $event"
+          />
+        </div>
+        <!-- <div class="divider divider-vertical"></div> -->
+        <div class="col pr-3 pl-0">
+          
+          
+        </div>
+       
+    </div>
+     
+    <div class="w-100 px-3 pb-12px">
+       
+      
+        <button
+          [disabled]="
+            (!from && from !== 0 && !to && to !== 0) ||
+            (from && to && from > to)
+          "
+          type="submit"
+          class="btn btn-primary btn-sm btn-block px-0 w-100 font-family-bold font-color-white font-size-14"
+        >
+          დასტური
+        </button>
+      
+    </div>
+  </form>
+</div>

@@ -1,0 +1,155 @@
+.floors-select {
+  &__name {
+    color: #3a3e56;
+  }
+  &__add {
+    border-top: 1px solid #dee0e9;
+    cursor: pointer;
+  }
+  .ng-dropdown-panel::before {
+    width: 100% !important;
+  }
+  .ng-dropdown-panel-items {
+    padding: 0px !important;
+  }
+  .ng-select .ng-option-selected {
+    color: #3a3e56 !important;
+  }
+  .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+    padding-right: 16px !important;
+    padding-left: 16px !important;
+    @include transition;
+    &:hover {
+      background-color: #f6f6f6;
+    }
+
+    span.floors-select__name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    &.ng-option-disabled {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+  }
+  .ng-dropdown-panel:not(.ng-select-top) {
+    padding-top: 0px !important;
+  }
+  .ng-option {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+}
+
+.tables {
+  &-wrapper {
+    max-width: 960px !important;
+    width: 100%;
+    height: 480px;
+    background: url('/assets/images/background/Rectangle.svg');
+    flex-wrap: wrap;
+    border: 1px solid $table-border-color;
+  }
+}
+
+.single-table {
+  &-wrapper {
+    position: absolute;
+    &:hover {
+      .single-table-close-btn {
+        &:not(.active) {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+      cursor: grab;
+    }
+    &.move {
+      cursor: grabbing;
+    }
+  }
+  $root: &;
+  width: 100%;
+  height: 100%;
+  background-color: $pagination-border;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+  #{$root}-name {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+  }
+  #{$root}-close-btn {
+    @include transition;
+    right: -12px;
+    top: -12px;
+    opacity: 0;
+
+    span {
+      cursor: pointer;
+    }
+    &:hover {
+      opacity: 1;
+      pointer-events: all;
+    }
+    &.active {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+  &-input {
+    width: 80px;
+    height: 42px;
+    padding-right: 5px;
+    padding-left: 5px;
+    text-align: center;
+  }
+  .resize-action-wrapper {
+    @include transition;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    opacity: 0;
+    pointer-events: none;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .resize-action {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 0 8px 8px;
+      border-color: transparent transparent $dark transparent;
+      opacity: 0.35;
+    }
+    &.active {
+      pointer-events: all;
+      opacity: 1;
+      cursor: se-resize;
+    }
+  }
+}
+
+.hitlightLastAddedTable {
+  .single-table {
+    animation-name: colorChange;
+    animation-duration: 3s;
+  }
+}
+@keyframes colorChange {
+  from {
+    background-color: #808080;
+  }
+  to {
+    background-color: #d6d6d6;
+  }
+}

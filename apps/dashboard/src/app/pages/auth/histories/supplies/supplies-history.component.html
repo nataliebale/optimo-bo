@@ -1,0 +1,71 @@
+<div class="h-100">
+	<div class=" d-flex flex-column h-100" style="padding-bottom: 71px;">
+		<div class="d-flex align-items-center py-3 px-4" style="height: 80px;">
+			<button class="btn rounded bg-excel-export p-0 mr-2" (click)="onExport()" [matTooltip]="'SuppliesHistory.exportToExcel' | translate"
+				style="width: 64px; height: 42px;">
+				<app-icon icon="excel"></app-icon>
+			</button>
+			<app-date-picker class="date-picker-regular ml-auto only-range-picker" [maxDate]="endOfToday" (dateChange)="onDateChanged($event)"
+				[defaultDate]="dateRange">
+			</app-date-picker>
+		</div>
+		<div class="bg-white flex-grow-1 d-flex">
+			<app-table #tableInstance [dataSource]="dataSource" [totalCount]="totalCount" [state]="currentState" [selectable]="false"
+				[paginable]="true" defaultSort="dateModified" [hasColumnSelector]="true" defaultSortDirection="DESC"
+				[displayedColumns]="displayedColumns" (stateChanged)="onTableStateChanged($event)"
+				class="table-sales-history table-last-td-pr-21px d-flex flex-grow-1">
+				<ng-template app-cell let-cell="cell" name="suppliers">
+					<div class="d-flex align-items-center font-family-regular table-text-dark">
+						<span class="text-truncate d-inline-block flex-shrink-1 table-link" (click)="
+                toQueryParam('supplierId', cell && cell[0]?.id);
+                $event.stopPropagation()
+              " style="cursor: pointer;" [matTooltip]="cell && cell[0].name" #ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+			  >
+							{{ getShortSuppliersName(cell) }}
+						</span>
+						<span *ngIf="cell && cell.length > 1" class="flex-shrink-0 ml-1" [matTooltip]="getSuppliersName(cell)">
+							{{ cell?.length - 1 }} {{'SuppliesHistory.other' | translate}}
+						</span>
+					</div>
+				</ng-template>
+
+				<ng-template app-cell let-cell="cell" let-row="row" name="categoryName">
+					<div>
+						<span [matTooltip]="cell" #ref2 [matTooltipDisabled]="textIsTruncated(ref2)" (click)="
+                toQueryParam('categoryId', row.categoryId);
+                $event.stopPropagation()
+              " class="font-family-regular text-truncate mw-100 d-inline-block table-link" style="cursor: pointer;">
+							{{ cell }}
+						</span>
+					</div>
+				</ng-template>
+
+				<ng-template app-cell let-cell="cell" let-row="row" name="transactionQuantity">
+					<div class="text-truncate text-right">
+						<span [ngClass]="{
+                'text-danger': getSign(row) === '-',
+                'text-success': getSign(row) === '+'
+              }">
+							{{ getSign(row) }}
+							{{ cell | number: '1.4-4':'en' }}
+							{{getUMOAcronym(row.unitOfMeasurement)}}
+						</span>
+					</div>
+				</ng-template>
+				<ng-template app-cell let-cell="cell" let-row="row" name="stockItemName">
+					<div class="line-height-normal translate-t-1px">
+						<span [matTooltip]="row.stockItemName" #ref3 [matTooltipDisabled]="textIsTruncated(ref3)"
+							class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1">
+							{{ row.stockItemName }}
+						</span>
+						<br>
+						<span [matTooltip]="row.stockItemBarcode" #ref4 [matTooltipDisabled]="textIsTruncated(ref4)"
+							class="text-truncate mw-100 d-inline-block table-text-dark">
+							{{ row.stockItemBarcode }}
+						</span>
+					</div>
+				</ng-template>
+			</app-table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,216 @@
+<div class="w-100 mx-auto pt-20px" style="max-width: 750px;">
+  <form *ngIf="form" [formGroup]="form">
+    <div class="font-size-18 font-family-bold font-color-dark border-bottom border-pagination-border pb-4  ">
+      {{ 'PROFILE.GENERAL_INFO' | translate }}
+    </div>
+    <div class="pt-3 pb-4">
+      <div class="row align-items-center mb-1" style="height: 48px;">
+        <div class="col-6  ">
+          <div class="font-size-14 font-family-bold font-color-dark">
+            {{ 'PROFILE.BRAND_NAME' | translate }}
+          </div>
+        </div>
+        <div class="col-6  ">
+          <div class="font-family-regular font-size-14  text-dark">
+            <app-form-field-edit-view [form]="form" [fieldType]="EFieldType.Text" [value]="form.get('brandName').value"
+              (save)="onSave($event)" [fieldName]="'brandName'">
+            </app-form-field-edit-view>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center mb-1" style="height: 48px;">
+        <div class="col-6  ">
+          <div class="font-size-14 font-family-bold font-color-dark">
+            {{ 'PROFILE.COMPANY_NAME' | translate }}
+          </div>
+        </div>
+        <div class="col-6  ">
+          <div class="font-family-regular font-size-14  text-dark">
+            {{ userDetails?.companyName }}
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center mb-1" style="height: 48px;">
+        <div class="col-6  ">
+          <div class="font-size-14 font-family-bold font-color-dark">
+            {{ 'PROFILE.IDENTIFICATION_NUMBER' | translate }}
+          </div>
+        </div>
+        <div class="col-6  ">
+          <div class="font-family-regular font-size-14  text-dark">
+            {{
+            userDetails?.identificationNumber
+            }}
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center mb-1" style="height: 48px;">
+        <div class="col-6  ">
+          <div class="font-size-14 font-family-bold font-color-dark">
+            {{ 'PROFILE.REGISTRATION_DATE' | translate }}
+          </div>
+        </div>
+        <div class="col-6  ">
+          <div class="font-family-regular font-size-14  text-dark">
+            {{
+            userDetails?.creationDate | date
+            }}
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row align-items-center mb-1" style="height: 48px;">
+        <div class="col-6  ">
+          <div class="font-size-14 font-family-bold font-color-dark">
+            {{ 'PROFILE.FIELD_OF_OPERATION' | translate }}
+          </div>
+        </div>
+        <div class="col-6  ">
+          <div class="font-family-regular font-size-14  text-dark">
+            {{ businessTypeName }}
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center mb-1" style="height: 48px;">
+        <div class="col-6  ">
+          <div class="font-size-14 font-family-bold font-color-dark">
+            {{ 'PROFILE.VAT_PAYER' | translate }}
+          </div>
+        </div>
+        <div class="col-6  ">
+          <div class="font-family-regular font-size-14  text-dark">
+            {{
+            userDetails?.isWATRegistered ? 'კი' : 'არა'
+            }}
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="font-size-18 font-family-bold font-color-dark border-bottom border-pagination-border pb-4  ">
+      {{ 'PROFILE.CONTACT_INFO' | translate }}
+    </div>
+    <div class="pt-3 pb-4">
+      <div class="row align-items-center mb-2" style="height: 48px;">
+        <div class="col-6">
+          <div class="font-size-14 font-family-bold font-color-dark">
+            {{ 'GENERAL.EMAIL' | translate }}
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="font-family-regular font-size-14  text-dark">
+            {{ userDetails?.email }}
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center mb-2" style="height: 48px;">
+        <div class="col-6">
+          <div class="font-size-14 font-family-bold font-color-dark">
+            {{ 'PROFILE.PHONE_NUMBER' | translate }}
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="font-family-regular font-size-14  text-dark">
+            {{
+            userDetails?.phoneNumber | mask: '+000 000 000 000'
+            }}
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center mb-2" style="height: 48px;">
+        <div class="col-6  ">
+          <div class="font-size-14 font-family-bold font-color-dark">
+            {{ 'PROFILE.LEGAL_ADDRESS' | translate }}
+          </div>
+        </div>
+        <div class="col-6  ">
+          <div class="font-family-regular font-size-14  text-dark">
+            {{ userDetails?.legalAddress }}
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center mb-2" style="height: 48px;">
+        <div class="col-6  ">
+          <div class="font-size-14 font-family-bold font-color-dark">
+            {{ 'PROFILE.REAL_ADDRESS' | translate }}
+          </div>
+        </div>
+        <div class="col-6  ">
+          <div class="font-family-regular font-size-14  text-dark">
+            {{ userDetails?.address }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="font-size-18 font-family-bold font-color-dark border-bottom border-pagination-border pb-4  ">
+      {{ 'PROFILE.CONFIGURATION' | translate }}
+    </div>
+    <div class="pt-4 pb-40">
+      <div class="row align-items-center mb-2" style="height: 48px;" *ngIf="isHorecaMode">
+        <div class="col-6">
+          <div class="font-size-14 font-family-bold font-color-dark">
+            {{ 'PROFILE.SERVICE_TAX_PERCENT' | translate }}
+          </div>
+        </div>
+        <div class="col-6">
+          <app-form-field-edit-view [form]="form" [fieldType]="EFieldType.Percentage"
+            [value]="form.get('taxRate').value" (save)="onSave($event)" [fieldName]="'taxRate'">
+          </app-form-field-edit-view>
+        </div>
+      </div>
+      <div class="row align-items-center mb-2" style="height: 48px;">
+        <div class="col-6">
+          <div class="font-size-14 font-family-bold font-color-dark">
+            {{ 'PROFILE.ENTITY_SALES' | translate }}
+          </div>
+        </div>
+        <div class="col-6">
+          <app-form-field-edit-view [form]="form" [fieldType]="EFieldType.Radio"
+            [value]="form.get('isEntitySaleEnabled').value" (save)="onSave($event)" [fieldName]="'isEntitySaleEnabled'">
+          </app-form-field-edit-view>
+        </div>
+      </div>
+      <div class="row align-items-center mb-2" style="height: 48px;">
+        <div class="col-6">
+          <div class="font-size-14 font-family-bold font-color-dark">
+            {{ 'PROFILE.GLOVO_INTEGRATION' | translate }}
+          </div>
+        </div>
+        <div class="col-6">
+          <app-form-field-edit-view [form]="form" [fieldType]="EFieldType.Radio" [isIntegration]="true"
+            [value]="form.get('isActive').value" (save)="onGlovoSave('isActive')" [fieldName]="'isActive'">
+          </app-form-field-edit-view>
+        </div>
+      </div>
+      <ng-container *ngIf="glovoProvider">
+          <div class="row align-items-center mb-2" style="height: 48px;">
+            <div class="col-6">
+              <div class="font-size-14 font-family-bold font-color-dark">
+                {{ 'PROFILE.GLOVO_PERCENT' | translate }}
+              </div>
+            </div>
+            <div class="col-6">
+              <app-form-field-edit-view [form]="form" [fieldType]="EFieldType.Percentage"
+                [value]="form.get('providerFeePercent').value" (save)="onGlovoSave('providerFeePercent')" [disabled]="!((launchedByViewAs$ | async) || isAdmin)" [fieldName]="'providerFeePercent'">
+              </app-form-field-edit-view>
+            </div>
+          </div>
+          <div class="row align-items-center mb-2" style="height: 48px;">
+            <div class="col-6">
+              <div class="font-size-14 font-family-bold font-color-dark">
+                {{ 'PROFILE.OPTIMO_PERCENT' | translate }}
+              </div>
+            </div>
+            <div class="col-6">
+              <app-form-field-edit-view [form]="form" [fieldType]="EFieldType.Percentage"
+                [value]="form.get('optimoFeePercent').value" (save)="onGlovoSave('optimoFeePercent')" [disabled]="!((launchedByViewAs$ | async) || isAdmin)" [fieldName]="'optimoFeePercent'">
+              </app-form-field-edit-view>
+            </div>
+          </div>
+      </ng-container>
+    </div>
+  </form>
+</div>
+<!-- nothing  -->

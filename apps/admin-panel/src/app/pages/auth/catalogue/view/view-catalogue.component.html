@@ -1,0 +1,56 @@
+<div class="d-flex align-items-center border-bottom border-table-border-color pl-4 pr-20px" style="height: 88px;">
+  <div
+    *ngIf="stockItem?.id"
+    class="col-2 d-flex align-items-center px-0"
+  >
+    <button
+      (click)="onEdit()"
+      class="btn-view-action-rounded mr-2"
+      style="width: 36px;height: 36px;"
+    >
+      <app-icon [icon]="'edit-tbls'" ></app-icon>
+    </button>
+    <button
+      (click)="onDelete()"
+      class="btn-view-action-rounded"
+      style="width: 36px;height: 36px;"
+    >
+      <app-icon
+        [icon]="'trash-tbls'"
+        fill="#fc3c2d"
+      ></app-icon>
+    </button>
+  </div>
+  <span
+    class="font-size-20 font-family-bold text-dark col text-center   text-truncate"
+    >{{ stockItem?.name }}</span
+  >
+  <div class="col-2 text-right px-0">
+    <app-icon
+      (click)="close()"
+      [icon]="'close'"
+      class="ml-auto icon-close-dark"
+      style="cursor: pointer;"
+    ></app-icon>
+  </div>
+</div>
+<div
+  *ngIf="rows"
+  class="py-3"
+  style="height: 390px; overflow-y: auto"
+>
+  <div
+    class="py-10px d-flex pr-4 pl-28px"
+    *ngFor="let row of rows; let last = last"
+    [class.mb-1]="!last"
+  >
+    <div class="col-5 pr-3 pl-0 font-family-bold font-size-14 text-dark">
+      {{ row.key }}
+    </div>
+    <div class="col-7 px-10px font-family-regular font-size-14 text-dark pr-4">
+      {{ row.value }}
+    </div>
+  </div>
+</div>
+
+ 

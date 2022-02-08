@@ -1,0 +1,29 @@
+<div class="border-top border-bottom border-pagination-border " style="height: 100px;">
+  <div class="nav nav-tabs-custom  h-100 px-4">
+    <div class="nav-item d-flex flex-column col m-0 cursor-pointer pt-4" [class.active]="tab.type === activeTabType"
+      *ngFor="let tab of reportTabs" (click)="reportTabClickHandler.emit(tab)">
+      <span class="title font-size-14 font-family-regular pb-2">{{tab.title | translate}}</span>
+      <ng-container [ngSwitch]="tab.type">
+        <ng-container *ngSwitchCase="EReportType.TotalIncome">
+          <span class="value">{{ tab.value  | number:'1.2-2':'en'  }}<span class="money">&nbsp;₾</span><span
+              class="pl-1 percentage font-size-14 font-family-regular">&nbsp;({{ tab.sumPercentage  | number:'1.2-2':'en'  }}%)
+            </span>
+          </span>
+          
+        </ng-container>
+        <ng-container *ngSwitchCase="EReportType.TotalOrders">
+          <span class="value">{{ tab.value | number:'1.0-0':'en'}}</span>
+        </ng-container>
+        <ng-container *ngSwitchCase="EReportType.TotalCustomers">
+          <span class="value">{{ tab.value | number:'1.2-2':'en' }}</span>
+        </ng-container>
+        <ng-container *ngSwitchCase="EReportType.AvgOrderRevenue">
+          <span class="value">{{ tab.value | number: '1.2-2':'en' }}&nbsp;₾</span>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+          <span class="value">{{ tab.value | number:'1.2-2':'en' }}<span class="money">&nbsp;₾</span></span>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</div>

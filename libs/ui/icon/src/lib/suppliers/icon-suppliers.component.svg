@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <path id="4cein1xrla" d="M11.5 11.5c0 .171.017.339.05.5h-4.1c.033-.161.05-.329.05-.5 0-.261-.04-.513-.114-.75h4.228c-.074.237-.114.489-.114.75zM11.2 0c.552 0 1 .448 1 1v1h2.6c.739 0 1.417.407 1.765 1.059l1.317 2.47c.078.145.118.307.118.471v4c0 .946-.657 1.74-1.54 1.947.026-.145.04-.295.04-.447 0-.295-.051-.578-.145-.84.207-.11.355-.316.388-.558L16.75 10V6.063l-1.288-2.416c-.114-.214-.323-.357-.56-.39L14.8 3.25h-3.85l-.001-2H3c-.918 0-1.671.707-1.744 1.606L1.25 3v7c0 .38.282.693.648.743L2 10.75h.614c-.074.237-.114.489-.114.75 0 .171.017.339.05.5H2c-1.105 0-2-.895-2-2V3c0-1.657 1.343-3 3-3h8.2z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g transform="translate(-16 -336) translate(0 328) translate(16 8)">
+                    <g>
+                        <path d="M0 0H24V24H0z"/>
+                        <g>
+                            <path d="M0 0H24V24H0z"/>
+                            <g transform="translate(3 4)">
+                                <path class="fill-change" fill="#343434" fill-rule="nonzero" d="M17.172 5.85c.457 0 .828.291.828.65 0 .33-.311.601-.715.644l-.113.006H.828C.37 7.15 0 6.859 0 6.5c0-.33.311-.601.715-.644l.113-.006h16.344z"/>
+                                <g>
+                                    <use class="fill-change" fill="#343434" fill-rule="nonzero" xlink:href="#4cein1xrla"/>
+                                </g>
+                                <path class="fill-change" fill="#343434" fill-rule="nonzero" d="M14.172 3c.457 0 .828.291.828.65 0 .33-.311.601-.715.644l-.113.006H8.828C8.37 4.3 8 4.009 8 3.65c0-.33.311-.601.715-.644L8.828 3h5.344z" transform="rotate(90 11.5 3.65)"/>
+                                <circle class="stroke-change" cx="13.5" cy="11.5" r="1.85" stroke="#343434" stroke-width="1.3"/>
+                            </g>
+                        </g>
+                    </g>
+                    <circle class="stroke-change" cx="7.5" cy="15.5" r="1.85" stroke="#343434" stroke-width="1.3"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

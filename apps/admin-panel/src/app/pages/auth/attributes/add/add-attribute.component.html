@@ -1,0 +1,35 @@
+<div
+  class="d-flex align-items-center justify-content-between border-bottom border-table-border-color pl-4 pr-18px"
+  style="height: 60px;">
+  <span
+    class="font-color-dark font-size-18 font-family-bold line-height-normal">
+    ატრიბუტის {{isEditMode ? 'რედაქტირება' : 'დამატება'}}
+  </span>
+  <span>
+    <button class="btn bg-transparent rounded-0 p-0" (click)="dismissDialog()">
+      <app-icon icon="close" class="icon-w-20px icon-h-20px"></app-icon>
+    </button>
+  </span>
+</div>
+
+<div *ngIf="form" [formGroup]="form" class="mb-0 p-4 no-validation-padding">
+  <div class="mb-20px line-height-normal">
+    <label for="attribute-name"
+      class="font-size-14 font-color-dark font-family-bold line-height-normal">სახელი</label>
+    <input id="attribute-name" type="text" formControlName="name"
+      class="form-control">
+  </div>
+  <div class="form-group-lg line-height-normal">
+    <label for="attribute-category"
+      class="font-size-14 font-color-dark font-family-bold line-height-normal">კატეგორია</label>
+    <app-dynamic-select id="attribute-category" formControlName="categoryId"
+      placeholder="აირჩიე" [dataGetter]="getAttributeCategories"
+      [itemGetterById]="getAttributeCategoryById"></app-dynamic-select>
+  </div>
+  <div class="d-flex justify-content-end">
+    <button
+      class="btn btn-primary font-color-white font-size-14 font-family-bold"
+      (click)="onSubmit()" style="width: 120px; height: 42px;">
+      {{isEditMode ? 'შენახვა' : 'დამატება'}}</button>
+  </div>
+</div>

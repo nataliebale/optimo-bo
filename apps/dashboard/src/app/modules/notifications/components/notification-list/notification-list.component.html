@@ -1,0 +1,26 @@
+<div class="notification-list-wrapper px-2">
+  <div class="px-sm-3 px-2 pt-sm-4 pt-1 pb-sm-18px pb-6px font-size-18 font-family-bold line-height-normal">
+    შეტყობინებები</div>
+  <div class="notification-list-item-wrapper w-100 px-sm-3 px-2 py-3 cursor-pointer"
+    *ngFor="let notification of notifications" infiniteScroll [scrollWindow]="false" (scrolled)="onScroll.emit(true)">
+    <div class="notification-list-item d-flex" (click)="openNotification.emit(notification)">
+      <div class="d-flex align-items-start">
+        <app-icon icon="yellow-flag" class="mr-1 mt-n3px" *ngIf="notification.isImportant"
+          matTooltip='მნიშვნელოვანი შეტყობინება'></app-icon>
+      </div>
+      <div class="notification-text-wrapper" [class.ml-20px]="!notification.isImportant">
+        <div class="font-size-14 font-family-regular font-color-dark notification-text">{{notification.name}}
+        </div>
+        <div class="d-flex pt-1">
+          <span class="font-size-12 font-family-regular font-color-dark line-height-normal">{{notification.sendDate
+						| date: 'dd.MM.yy HH:mm' }}</span>
+
+        </div>
+      </div>
+      <div style="min-width: 10px;" class="ml-2 d-flex align-items-center">
+        <span class="bg-blue rounded-circle" *ngIf="!notification.read" style="width: 10px;height: 10px;">
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

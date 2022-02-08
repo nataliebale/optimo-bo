@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://optimo.ge/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://optimo.ge/packages</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://optimo.ge/request-demo</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://optimo.ge/request</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://optimo.ge/faq/general</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://optimo.ge/faq/packages</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://optimo.ge/faq/managers</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://optimo.ge/faq/operators</loc>
+    <priority>0.8</priority>
+  </url>
+</urlset>

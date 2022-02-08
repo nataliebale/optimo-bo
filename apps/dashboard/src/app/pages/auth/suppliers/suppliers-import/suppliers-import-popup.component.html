@@ -1,0 +1,52 @@
+<div class="d-flex align-items-center border-bottom px-4 border-table-border-color " style="height: 90px;">
+  <div class="col-1 px-0"></div>
+  <span class="font-size-20 font-family-bold text-dark col text-center text-truncate">
+    {{'SUPPLIERS.RS_IMPORT_BUTTON' | translate}}
+  </span
+  >
+  <div class="col-1  px-0 text-right">
+    <app-icon
+      (click)="onClose()"
+      [icon]="'close'"
+      class="ml-auto icon-close-dark"
+      style="cursor: pointer;"
+    ></app-icon>
+  </div>
+</div>
+<div style="height: 427px; overflow-y: auto; " class="custom-view-scroll d-flex flex-column">
+  <app-table
+    [dataSource]="dataSource"
+    [totalCount]="dataSource?.length"
+    [displayedColumns]="columns"
+    [selectable]="true"
+    [selectableCustomEnable]="alwaysEnabled"
+    [paginable]="false"
+    [filterable]="false"
+    [staticData]="false"
+    [hasInsideSelectAll]="true"
+    defaultSort="sellerName"
+    defaultSortDirection="DESC"
+    (selectionChanged)="onSelectionChanged($event)"
+    class="table-dialogs table-view first-th-no-border flex-grow-1 d-flex flex-column w-100 table-first-th-td-55p"
+  >
+  </app-table>
+</div>
+
+<div
+  class="d-flex align-items-center justify-content-center border border-table-border-color px-4"
+  style="height: 80px;"
+>
+  <button
+    (click)="onImport()"
+    class="btn btn-primary px-37px"
+    style="height: 42px;"
+    [disabled]="!selectedRows || selectedRows.length === 0"
+  >
+    <span class="color-white font-family-14px font-weight-bold">
+      {{'GENERAL.IMPORT' | translate}}
+    </span>
+  </button>
+<!-- <app-paginator></app-paginator> -->
+
+
+</div>

@@ -1,0 +1,49 @@
+<div class="flex-grow-1">
+  <div class="bg-white h-100">
+    <app-table #tableInstance [dataSource]="dataSource" [totalCount]="totalCount" [state]="currentState" [selectable]="false"
+      [paginable]="true" [hasColumnSelector]="true" defaultSort="stockItemId" defaultSortDirection="DESC"
+      [displayedColumns]="displayedColumns" (stateChanged)="onTableStateChanged($event)" class="table-sales-history last-th-unbordered before-last-th-bordered last-td-pr-24px">
+      <ng-template app-cell let-cell="cell" let-row="row" name="stockItemName">
+        <div class="line-height-normal translate-t-1px">
+		  <span [matTooltip]="cell"
+		  #ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+            class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1">
+            {{ cell }}
+          </span>
+          <br>
+		  <span [matTooltip]="row.stockItemBarcode"
+		  #ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+            class="text-truncate mw-100 d-inline-block table-text-dark">
+            {{ row.stockItemBarcode }}
+          </span>
+        </div>
+      </ng-template>
+      <ng-template app-cell let-cell="cell" name="suppliers">
+        <div 
+          class="d-flex align-items-center font-family-regular">
+          <span class="text-truncate d-inline-block flex-shrink-1 font-color-dark table-link" (click)="
+              toQueryParam('supplierId', cell && cell[0].id);
+              $event.stopPropagation()
+			" style="cursor: pointer;"
+			[matTooltip]="cell && cell[0].name" #ref3 [matTooltipDisabled]="textIsTruncated(ref3)">
+            {{ getShortSuppliersName(cell) }}
+          </span>
+          <span *ngIf="cell && cell.length > 1" class="flex-shrink-0 ml-1" [matTooltip]="getSuppliersName(cell)">
+            {{ cell.length - 1 }} სხვა
+          </span>
+        </div>
+      </ng-template>
+
+      <ng-template app-cell let-cell="cell" let-row="row" name="categoryName">
+        <div>
+          <span [matTooltip]="cell" #ref4 [matTooltipDisabled]="textIsTruncated(ref4)" (click)="
+              toQueryParam('categoryId', row.categoryId);
+              $event.stopPropagation()
+            " class="font-family-medium text-truncate mw-100 d-inline-block" style="cursor: pointer;">
+            {{ cell }}
+          </span>
+        </div>
+      </ng-template>
+    </app-table>
+  </div>
+</div>

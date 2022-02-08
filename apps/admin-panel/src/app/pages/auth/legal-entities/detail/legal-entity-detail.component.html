@@ -1,0 +1,300 @@
+<form
+  *ngIf="form"
+  [formGroup]="form"
+  (submit)="onSubmit()"
+  class="offer-detail"
+>
+<div class="container-fluid sticky-top bg-white mb-42px" style="height: 72px;">
+  <div class="row align-items-center h-100 border-bottom border-secondary">
+    <div class="col pl-0 h-100">
+      <button type="button" class="btn bg-white px-2 h-100 rounded-0" style="width: 102px;"
+        (click)="onClose()">
+        <app-icon icon="close"></app-icon>
+      </button>
+    </div>
+    <div class="col-auto font-size-20 font-family-bold text-dark">
+      კომპანიის {{ title }}
+    </div>
+    <div class="col pr-4 h-100 d-flex align-items-center justify-content-end">
+      <button class="btn btn-primary font-size-14 font-family-bold text-white py-0 px-23px h-42px"
+        type="submit">
+        შენახვა
+      </button>
+    </div>
+  </div>
+</div>
+   
+ 
+  <div class="w-100 pb-4" *ngIf="alreadyExists">
+    <div class="mx-auto bg-danger-bg px-4 rounded text-center border d-flex align-items-center border-danger-border mt-3"
+      style="max-width: 960px;height: 54px;">
+      <div class="col-2 d-flex px-0">
+        <app-icon icon="alert"></app-icon>
+      </div>
+      <div class="col text-center font-size-14 font-color-dark font-family-regular">
+        {{ errorText }}
+      </div>
+      <div class="col-2 px-0"></div>
+    </div>
+  </div>
+  <div class="w-100 pb-4" *ngIf="isSubmited && form?.invalid">
+    <div class="mx-auto bg-danger-bg px-4 rounded text-center border d-flex align-items-center border-danger-border mt-3"
+      style="max-width: 960px;height: 54px;">
+      <div class="col-2 d-flex px-0">
+        <app-icon icon="alert"></app-icon>
+      </div>
+      <div class="col text-center font-size-14 font-color-dark font-family-regular">
+        შეავსე გამორჩენილი ველები
+      </div>
+      <div class="col-2 px-0"></div>
+    </div>
+  </div>
+  <div class="container-md pt-5">
+    <div class="pb-30px font-size-20 font-color-dark font-family-bold">ზოგადი ინფორმაცია</div>
+    <div class="row m-0">
+      <div class="col-6 pl-0 d-flex flex-column mb-4">
+        <label class="font-size-15 font-color-dark font-family-bold"
+          >კომპანიის ტიპი*</label
+        >
+        <app-dynamic-select
+          id="companyType"
+          class="add-inventory-item__dynamic-select"
+          [dataGetter]="getCompanyTypes"
+          [itemGetterById]="getCompanyTypeById"
+          [closeOnSelect]="true"
+          formControlName="companyType"
+          (change)="onLegalEntityChange($event)"
+        >
+        </app-dynamic-select>
+      </div>
+      <div class="col-6 pr-0 d-flex flex-column mb-4">
+        <label class="font-size-15 font-color-dark font-family-bold">
+          <ng-container *ngIf="INN">საიდენტიფიკაციო ნომერი*</ng-container>
+          <ng-container *ngIf="!INN">პირადი ნომერი*</ng-container>
+        </label>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="identificationNumber"
+        />
+      </div>
+      <div class="col-6 pl-0 d-flex flex-column mb-4">
+        <label class="font-size-15 font-color-dark font-family-bold"
+          >კომპანიის დასახელება*</label
+        >
+        <input class="form-control" type="text" formControlName="companyName" />
+      </div>
+      <div class="col-6 pr-0 d-flex flex-column mb-4">
+        <label class="font-size-15 font-color-dark font-family-bold"
+          >ბრენდის დასახელება*</label
+        >
+        <input class="form-control" type="text" formControlName="brandName" />
+      </div>
+      <div class="col-6 pl-0 d-flex flex-column mb-4">
+        <label class="font-size-15 font-color-dark font-family-bold"
+          >მისამართი*</label
+        >
+        <input class="form-control" type="text" formControlName="address" />
+      </div>
+      <div class="col-6 pr-0 d-flex flex-column mb-4">
+        <label class="font-size-15 font-color-dark font-family-bold"
+          >ლეგალური მისამართი*</label
+        >
+        <input
+          class="form-control"
+          type="text"
+          formControlName="legalAddress"
+        />
+      </div>
+      <div class="col-6 pl-0 d-flex flex-column mb-4">
+        <label class="font-size-15 font-color-dark font-family-bold"
+          >პაკეტის ტიპი*</label
+        >
+        <app-dynamic-select
+          id="packageType"
+          class="add-inventory-item__dynamic-select"
+          [dataGetter]="getPackageTypes"
+          [itemGetterById]="getPackageTypeById"
+          [closeOnSelect]="true"
+          formControlName="packageType"
+        >
+        </app-dynamic-select>
+      </div>
+      <div class="col-6 pr-0 d-flex flex-column mb-4">
+        <label class="font-size-15 font-color-dark font-family-bold"
+          >ბიზნესის ტიპი*</label
+        >
+        <app-dynamic-select
+          id="businessType"
+          class="add-inventory-item__dynamic-select"
+          [dataGetter]="getBusinessTypes"
+          [itemGetterById]="getBusinessTypeById"
+          [closeOnSelect]="true"
+          formControlName="businessType"
+        >
+        </app-dynamic-select>
+      </div>
+      <div class="col-6 pl-0 d-flex flex-column mb-4">
+        <label class="font-size-15 font-color-dark font-family-bold"
+          >პროდუქტის ტიპი*</label
+        >
+        <app-dynamic-select
+          id="ProductType"
+          class="add-inventory-item__dynamic-select"
+          [dataGetter]="getProductTypes"
+          [itemGetterById]="getProductTypeById"
+          [closeOnSelect]="true"
+          [sortableByField]="false"
+          formControlName="productType"
+        >
+        </app-dynamic-select>
+      </div>
+      <div class="col-6 pr-0 d-flex flex-column position-relative mb-4">
+        <div class="font-size-15 font-color-dark font-family-bold pb-2">
+          დოკუმენტი*
+        </div>
+        <div
+          class="form-control d-flex py-0 pl-14 pr-0 overflow-hidden"
+          [class.invalid]="
+            form.controls['fileName'].invalid &&
+            (form.controls['fileName'].dirty ||
+              form.controls['fileName'].touched)
+          "
+        >
+          <div class="d-flex align-items-center w-100 py-2 pl-0" style="max-width:65%;">
+            <div
+              class="selected-custom-blue d-flex py-1 px-1 text-truncate align-items-center font-size-14 font-color-dark font-family-regular"
+            >
+              {{ fileUrl || form.get('fileName').value }}
+            </div>
+          </div>
+          <div
+            class="col overflow-hidden bg-sidebar-gray border-left border-table-border-color position-relative"
+          >
+            <label for="offerDetailIcon"></label>
+            <app-file-uploader
+              class="h-100"
+              [uploadEndpoint]="'uploads/files'"
+              [hideDefaultLabel]="true"
+              [customAcceptTypes]="'.pdf, .ppt, .pptx'"
+              (uploaded)="onFileUpload($event)"
+            >
+            </app-file-uploader>
+            <div
+              class="w-100 d-flex justify-content-center align-items-center h-100 bg-sidebar-gray position-absolute"
+              style="top: 0px; left: 0px; pointer-events: none;"
+            >
+              <app-icon icon="import"></app-icon>
+              <span class="font-size-14 font-color-dark font-family-bold pl-1"
+                >ატვირთვა</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex">
+				<div class="col-auto custom-checkbox custom-checkbox-selected-blue pl-0 pr-40">
+					<input type="checkbox" id="custom-checkbox-IsWATRegistered" class="custom-checkbox-control"
+          formControlName="isWATRegistered" />
+					<label for="custom-checkbox-IsWATRegistered" class="custom-checkbox-label">
+						<span class="ml-3">IsVATRegistered* </span>
+					</label>
+				</div>
+
+				<div class="col-auto custom-checkbox custom-checkbox-selected-blue pl-0">
+          <input type="checkbox" id="custom-checkbox-isForTesting" formControlName="isForTesting"
+           class="custom-checkbox-control" />
+					<label for="custom-checkbox-isForTesting" class="custom-checkbox-label">
+						<span class="ml-3">სატესტო*</span>
+					</label>
+				</div>
+			</div>
+      
+      <div
+        class="w-100 d-flex flex-column pb-32px pt-5 mt-42px"
+        *ngIf="!form.get('createNewUser').value"
+      >
+      <div class="col-6 pl-0">
+
+        <div class="font-size-20 font-family-bold font-color-dark mb-30px">
+          მომხმარებელი
+        </div>
+  
+          <label class="font-size-15 font-color-dark font-family-bold"
+            >აირჩიე მომხმარებელი*</label
+          >
+          <app-dynamic-select
+            #userIdSelect
+            id="userId"
+            class="custom-select-item-add"
+            [dataGetter]="getUsers"
+            [itemGetterById]="getUsersById"
+            [closeOnSelect]="true"
+            formControlName="userId"
+            [additionalSearchKey]="'phoneNumber'"
+          >
+            <ng-template app-dynamic-select-footer-tmp>
+              <a
+                  class="text-decoration-none border-top border-table-border-color w-100 d-flex align-items-center justify-content-center cursor-pointer"
+                  style="height: 54px;"
+                  (click)="userIdSelect.close(); onLegalEntityAdd()"
+                >
+                  <app-icon [icon]="'add'"></app-icon>
+                  <span class="font-family-bold font-size-14 text-dark ml-2"
+                    >მომხმარებლის დამატება</span
+                  >
+                </a>
+            </ng-template>
+
+            <ng-template app-dynamic-select-option-tmp let-item="item">
+              <div
+                class="d-flex flex-column"
+              >
+                <div class="font-size-14 font-color-dark font-family-bold pb-1 line-height-normal text-truncate">
+                  {{ item.name }}
+                </div>
+                <div class="font-size-14 font-color-dark font-family-regular  line-height-normal text-truncate">
+                  {{ item.phoneNumber }}
+                </div>
+              </div>
+            </ng-template>
+          
+          </app-dynamic-select>
+
+      </div>
+      
+      </div>
+      <ng-container *ngIf="form.get('createNewUser').value">
+        <div class="w-100 d-flex flex-column pb-32px">
+          <label class="font-size-15 font-color-dark font-family-bold"
+            >სახელი*</label
+          >
+          <input class="form-control" type="text" formControlName="firstName" />
+        </div>
+        <div class="w-100 d-flex flex-column pb-32px">
+          <label class="font-size-15 font-color-dark font-family-bold"
+            >გვარი*</label
+          >
+          <input class="form-control" type="text" formControlName="lastName" />
+        </div>
+        <div class="w-100 d-flex flex-column pb-32px">
+          <label class="font-size-15 font-color-dark font-family-bold"
+            >ტელეფონი*</label
+          >
+          <input
+            class="form-control"
+            type="text"
+            formControlName="phoneNumber"
+          />
+        </div>
+        <div class="w-100 d-flex flex-column pb-32px">
+          <label class="font-size-15 font-color-dark font-family-bold"
+            >ელ. ფოსტა*</label
+          >
+          <input class="form-control" type="text" formControlName="email" />
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</form>

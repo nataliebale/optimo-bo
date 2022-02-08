@@ -1,0 +1,32 @@
+<app-table
+  [dataSource]="dataSource"
+  [displayedColumns]="columns"
+  [totalCount]="totalCount"
+  [selectable]="false"
+  [paginable]="false"
+  [filterable]="false"
+  [border]="false"
+  [indexable]="true"
+  [defaultSort]="defaultSort"
+  [defaultSortDirection]="defaultSortDirection"
+  (stateChanged)="onTableStateChanged($event)"
+  class="table-dashboard"
+>
+  <ng-template app-cell let-cell="cell" let-row="row" name="stockItemName">
+    <div>
+      <span
+        [matTooltip]="row.stockItemName"
+        class="font-family-medium text-truncate mw-100 d-inline-block table-text-dark"
+      >
+        {{ row.stockItemName }}
+      </span>
+      <br />
+      <span
+        [matTooltip]="row.stockItemBarcode"
+        class="text-truncate mw-100 d-inline-block table-text-muted"
+      >
+        {{ row.stockItemBarcode }}
+      </span>
+    </div>
+  </ng-template>
+</app-table>

@@ -1,0 +1,58 @@
+<div>
+  <div class="d-flex align-items-center border-bottom px-4 border-table-border-color " style="height: 90px;">
+    <div class="col-1 px-0"></div>
+    <span class="font-size-20 font-family-bold text-dark col text-center text-truncate"
+      >
+      {{'WAYBILLS.RECEIVED_WAYBILLS.REGISTERED_ORDERS'| translate}}
+      </span
+    >
+    <div class="col-1  px-0 text-right">
+      <app-icon
+        (click)="onClose()"
+        [icon]="'close'"
+        class="ml-auto icon-close-dark"
+        style="cursor: pointer;"
+      ></app-icon>
+    </div>
+  </div>
+  <div style="height: 427px; overflow-y: auto; " class="custom-view-scroll d-flex flex-column">
+    <app-table
+      [dataSource]="dataSource"
+      [totalCount]="dataSource?.length"
+      [displayedColumns]="columns"
+      [selectable]="true"
+      [selectableCustomEnable]="isRowSelectable"
+      [paginable]="false"
+      [filterable]="false"
+      [staticData]="true"
+      [multipleSelect]="false"
+      [sortable]="false"
+      defaultSort="sellerName"
+      defaultSortDirection="DESC"
+      (selectionChanged)="onSelectionChanged($event)"
+      class="table-dialogs table-view first-th-no-border flex-grow-1 table-first-th-td-55p"
+    >
+    </app-table>
+  </div>
+  <div class="d-flex justify-content-end py-20px  px-4 border-top border-table-border-color">
+    <button
+      class="btn bg-transparent mr-3 font-size-14 font-color-dark font-family-bold"
+      style="width:161px; height: 42px;"
+      type="button"
+      (click)="onBack()"
+    >
+    {{'GENERAL.BACK'|translate}}
+    </button>
+    <button
+      class="btn btn-primary font-color-white font-size-14 font-family-bold"
+      style="width: 138px; height: 42px;"
+      type="submit"
+      (click)="onNextStep()"
+      [disabled]="!purchaseOrderId"
+    >
+    {{'GENERAL.CONTINUE'|translate}}
+    </button>
+  </div>
+
+   
+</div>

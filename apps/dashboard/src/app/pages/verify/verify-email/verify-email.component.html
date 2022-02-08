@@ -1,0 +1,20 @@
+<div class="verify-email">
+  <div class="verify-email__overlay"></div>
+
+  <div class="verify-email__form-container">
+    <div style="text-align: center;">
+      <img alt="Logo" src="../../../assets/images/logo/area-logo.svg" />
+
+      <h1 class="verify-email__heading">შეტყობინება გამოგზავნილია</h1>
+      <h1 class="verify-email__heading">მისამართზე: {{ email }}</h1>
+    </div>
+
+    <div>
+      <div class="verify-email__single-input verify-email__resend">
+        <a class="verify-email__resend-button" (click)="onResend()">
+          თავიდან გამოგზავნა
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,126 @@
+<form *ngIf="form" [formGroup]="form" (submit)="onSubmit()">
+  <div class="container-fluid sticky-top bg-white" style="height: 72px;">
+    <div class="row align-items-center h-100 border-bottom border-secondary">
+      <div class="col pl-0 h-100">
+        <button
+          type="button"
+          class="btn bg-white px-2 h-100 rounded-0"
+          style="width: 102px;"
+          (click)="onCancel()"
+        >
+          <app-icon icon="close"></app-icon>
+        </button>
+      </div>
+      <div class="col-auto font-size-20 font-family-bold text-dark">
+        {{ title | translate}}
+      </div>
+      <div class="col pr-4 h-100 d-flex align-items-center justify-content-end">
+        <button
+          class="btn btn-primary font-size-14 font-family-bold text-white py-0 px-23px h-42px"
+          type="submit"
+          [disabled]="requestIsSent"
+        >
+          {{'GENERAL.SAVE' | translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="w-100" *ngIf="isSubmited && form?.invalid">
+    <div
+      class="mx-auto bg-danger-bg px-4 rounded text-center border d-flex align-items-center border-danger-border mt-3"
+      style="max-width: 960px;height: 54px;"
+    >
+      <div class="col-2 d-flex px-0"><app-icon icon="alert"></app-icon></div>
+      <div
+        class="col text-center font-size-14 font-color-dark font-family-regular"
+      >
+        {{'GENERAL.FILL_IN_EMPTY_INPUTS' | translate}}
+      </div>
+      <div class="col-2 px-0"></div>
+    </div>
+  </div>
+  <div
+    [class.mt-70px]="!(isSubmited && form?.invalid)"
+    class="pt-20px px-0 pb-50px mx-auto"
+    style="max-width: 960px;"
+  >
+    <div id="addInventoryModalBodyId">
+      <div class="no-validation-padding">
+        <div class="font-size-20 font-color-dark font-family-bold pb-30px">
+			{{'GENERAL.GENERAL_INFO' | translate}}
+        </div>
+        <div class="container-fluid px-0">
+          <div class="row align-items-stretch">
+            <div class="col-6">
+              <div class="w-100">
+                <div class="form-group">
+                  <label
+                    for="addInventoryName"
+                    class="font-size-15 font-color-dark font-family-bold"
+                    > {{'GENERAL.NAME' | translate}}*</label
+                  >
+                  <input
+                    id="addInventoryName"
+                    data-hj-allow
+                    type="text"
+                    class="form-control w-100"
+                    formControlName="name"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <label
+                for="addInventoryUnitOfMeasurement"
+                class="font-size-15 font-color-dark font-family-bold"
+                > {{'GENERAL.UNIT' | translate}}*</label
+              >
+              <ng-select
+                id="addInventoryUnitOfMeasurement"
+                formControlName="unitOfMeasurement"
+                [items]="mapOfMeasurementUnits"
+                bindValue="value"
+                bindLabel="label"
+                class="custom-select-header form-control"
+                [searchable]="true"
+                [clearable]="false"
+              >
+              </ng-select>
+            </div>
+            <div class="col-12">
+              <label
+                for="addInventoryDescription"
+                class="font-size-15 font-color-dark font-family-bold"
+                >{{'GENERAL.DESCRIPTION' | translate}}</label
+              >
+              <textarea
+                id="addInventoryDescription"
+                data-hj-allow
+                class="form-control"
+                formControlName="description"
+                style="height: 130px; resize: none;"
+                autocomplete="off"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div
+          class="w-100 font-size-20 font-color-dark font-family-bold pb-30px pt-5 mt-42px"
+        >
+          {{'ReceiptTemlates.addIngredients' | translate}}
+        </div>
+        <div class="p-0">
+          <app-ingredients-list
+            [editId]="editId"
+            (changeReceiptTemplates)="onReceiptTemplatesChange($event)"
+            [editable]="
+              editMode !== editModes.Edit || editMode === editModes.Edit
+            "
+          ></app-ingredients-list>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

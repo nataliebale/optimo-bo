@@ -1,0 +1,35 @@
+<div class="sidebar" [class.active]="active">
+  <div class="sidebar-header">
+    <div class="d-md-none d-flex justify-content-between align-items-center w-100">
+      <div class="col-2 pl-sm-4 pl-3">
+        <button class="btn border-0 py-1px px-1px" (click)="onToggleActive()"> 
+          <app-icon icon="close"></app-icon>
+        </button>
+      </div>
+      <div class="col d-flex justify-content-end font-size-14 px-0"> 
+        <!-- <app-headbar-location></app-headbar-location> tu ramea aq chavsvat dabal rezoluciaze -->
+      </div>
+       
+    </div>
+    <div class="header__logo pl-3 text-left d-md-flex align-items-center d-none">
+      <app-icon
+        class="header-burger d-lg-inline d-none "
+        style="cursor: pointer;"
+        icon="burger"
+        (click)="onToggleFold()"
+      ></app-icon>
+      <app-icon
+        class="header-burger d-md-inline d-lg-none "
+        style="cursor: pointer;"
+        icon="burger"
+        (click)="onToggleFoldMedium()"
+      ></app-icon>
+      <a routerLink="/" routerLinkActive="router-link-active" >
+        <img src="/assets/images/logo.svg" alt="" style="height: 24px;"/>
+      </a>
+    </div>
+  </div>
+  <app-nested-menu
+    [menu]="MENU_TREE"
+  ></app-nested-menu>
+</div>

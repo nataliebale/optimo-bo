@@ -1,0 +1,27 @@
+.reset-password {
+  background-color: #f6f7fb;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin-top: -72px;
+
+  &-holder {
+    width: 628px;
+    margin-top: 13.13%;
+  }
+
+  &-padding {
+    padding: 68px 94px 68px;
+  }
+
+  &-link {
+    &:hover {
+      color: #0077ff !important;
+    }
+  }
+
+  &-btn {
+    height: 48px;
+  }
+}

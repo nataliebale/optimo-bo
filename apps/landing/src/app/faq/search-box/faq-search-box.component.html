@@ -1,0 +1,16 @@
+<ng-select
+  [items]="suggestions$ | async"
+  bindValue="id"
+  [bindLabel]="bindLabel"
+  [trackByFn]="trackByFn"
+  [loading]="suggestionLoading"
+  [clearable]="false"
+  [hideSelected]="true"
+  [typeahead]="suggestionInput$"
+  (change)="onSelectFAQ($event)"
+  class="form-control faq-search"
+  [placeholder]="'GENERAL.Search' | translate"
+  [notFoundText]="'GENERAL.NotFoundText' | translate"
+  [typeToSearchText]="'GENERAL.TypeToSearchText' | translate"
+>
+</ng-select>

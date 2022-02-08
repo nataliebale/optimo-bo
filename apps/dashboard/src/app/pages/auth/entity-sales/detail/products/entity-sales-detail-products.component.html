@@ -1,0 +1,163 @@
+<div class="d-flex justify-content-between align-items-center">
+  <div class="w-100 pb-4" style="max-width: 468px;">
+    <div class="font-size-15 font-color-dark font-family-bold mb-2">
+      აირჩიე პროდუქტი
+    </div>
+    <app-dynamic-select
+      #dynamicSelector="ngModel"
+      [dataGetter]="getProducts"
+      [itemGetterById]="getProductById"
+      additionalSearchKey="barcode"
+      [showClearButton]="false"
+      [multiple]="true"
+      [showLabel]="false"
+      [closeOnSelect]="false"
+      [(ngModel)]="selectedProductIds"
+      [ngModelOptions]="{ standalone: true }"
+      id="entity-sales-detail-products-choose-product"
+    ></app-dynamic-select>
+  </div>
+  <div
+    *ngIf="productsDataSource && !productsDataSource[0]?.placeholder"
+    style="max-width: 468px;"
+    class="w-100 d-flex align-items-center justify-content-end"
+  >
+    <div *ngIf="!hasTaxRate" class="d-flex align-items-center row w-100 mx-0">
+      <span style="max-width: 68%;" class="pr-1 w-100 font-family-regular font-size-14 text-dark text-right">
+        ჯამური ღირებულება: 
+      </span>
+      <span class="font-family-bold text-dark font-size-18 text-truncate col text-right pl-0 pr-4">
+        {{ totalUnitPrice | number: '1.4-4':'en' }} ₾
+      </span>
+    </div>
+
+    <div *ngIf="hasTaxRate" class="w-100">
+      <div class="d-flex align-items-center row w-100 mx-0 pb-6px">
+        <span style="max-width: 68%;" class="pr-1 w-100  font-family-regular font-size-14 text-dark text-right">
+        შეკვეთის ჯამი:
+      </span>
+      <span class="font-family-bold text-dark font-size-14 text-truncate col text-right pl-0 pr-4">
+        {{ totalUnitPrice | number: '1.4-4':'en' }} ₾
+      </span>
+      </div>
+      
+       <div class="d-flex align-items-center row w-100 mx-0 pb-6px">
+         <span style="max-width: 68%;" class="pr-1 w-100  font-family-regular font-size-14 text-dark text-right">
+        მომსახურების საკომისიო:
+        </span>
+        <span class="font-family-bold text-dark font-size-14 text-truncate col text-right pl-0 pr-4">
+          {{ getTaxAmount | number: '1.4-4':'en' }} ₾
+        </span> 
+       </div>
+         
+       <div class="d-flex align-items-center row w-100 mx-0 pb-4">
+         <span style="max-width: 68%;" class="pr-1 w-100  font-family-bold font-size-18 text-dark text-right line-height-normal">
+        სულ გადასახდელი:
+      </span>
+      <span class="font-family-bold text-dark font-size-18 text-truncate col text-right pl-0 pr-4 line-height-normal">
+        {{ ( getTaxAmount + totalUnitPrice) | number: '1.4-4':'en' }} <span class="font-size-14">₾</span>
+      </span> 
+       </div>
+               
+    </div>
+  </div>
+</div>
+<app-table
+  [dataSource]="productsDataSource"
+  [totalCount]="productsDataSource?.length"
+  [selectable]="false"
+  [filterable]="false"
+  [paginable]="false"
+  [indexable]="true"
+  [displayedColumns]="displayedColumns"
+  [staticData]="true"
+  class="table-add-order first-th-centered"
+  [class.disabled]="productsDataSource && productsDataSource[0]?.placeholder"
+>
+  <ng-template app-cell let-cell="cell" let-row="row" name="name">
+    <div class="pt-1 line-height-normal">
+      <span
+		[matTooltip]="row.name"
+		#ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+        class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1"
+      >
+        {{ row.name }}
+      </span>
+      <br>
+      <span
+		[matTooltip]="row.barcode"
+		#ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+        class="text-truncate mw-100 d-inline-block table-text-dark"
+      >
+        {{ row.barcode }}
+      </span>
+    </div>
+  </ng-template>
+  <ng-template app-cell let-row="row" name="unitPrice">
+    <input
+      id="unitPrice"
+      data-hj-allow
+      class="form-control mx-auto"
+      style="width: 88px;"
+      *ngIf="!row.placeholder"
+      #unitPrice="ngModel"
+      type="text"
+      autocomplete="off"
+      required
+      appMoreThan="0"
+      [ngModel]="row.unitPrice.toString()"
+      (change)="row.unitPrice = parseFloatWithCommas($event.target.value)"
+      mask="separator.4"
+      thousandSeparator=","
+    />
+    <div *ngIf="row.placeholder">
+      <!-- {{ row.unitPrice | number: '1.4-4':'en' }} -->
+    </div>
+  </ng-template>
+  <ng-template app-cell let-row="row" name="quantity">
+    <input
+      id="quantity"
+      data-hj-allow
+      class="form-control mx-auto"
+      *ngIf="!row.placeholder"
+      #quantity="ngModel"
+      type="text"
+      autocomplete="off"
+      required
+      appMoreThan="0"
+      [ngModel]="row.quantity.toString()"
+      (change)="row.quantity = parseFloatWithCommas($event.target.value)"
+      style="width: 88px;"
+      mask="separator.4"
+      thousandSeparator=","
+    />
+    <div *ngIf="row.placeholder">
+      {{ row.quantity }}
+    </div>
+  </ng-template>
+  <ng-template app-cell let-row="row" name="totalPrice">
+    <div class="d-flex justify-content-end">
+      <div class="text-dark pr-40 mw-100 d-flex align-items-center w-100 text-truncate justify-content-end" style="max-width: 98px;">
+        <span class="pr-2px text-truncate"> 
+        <ng-container *ngIf="!row.placeholder">
+          {{ row.unitPrice * row.quantity | number: '1.4-4':'en' }}
+        </ng-container>
+      </span>
+      <ng-container *ngIf="!row.placeholder">
+        <div class="d-flex align-items-center">
+          ₾
+        </div>
+      </ng-container>
+      </div>
+      <app-icon
+          [matTooltip]="'წაშლა'"
+          [icon]="'trash-tbls'"
+          fill="#e6ecf5"
+          (click)="onRemoveProduct(row)"
+          style="cursor: pointer;"
+        >
+        </app-icon>
+    </div>
+ 
+  </ng-template>
+</app-table>

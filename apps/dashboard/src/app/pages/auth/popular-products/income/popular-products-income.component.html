@@ -1,0 +1,15 @@
+<div class=" flex-grow-1">
+  <div  class=" bg-white h-100">
+    <app-table
+      [dataSource]="dataSource"
+      [totalCount]="totalCount"
+      [state]="currentState"
+      [selectable]="false"
+      [filterable]="false"
+      [displayedColumns]="displayedColumns"
+      (stateChanged)="onTableStateChanged($event)"
+      class="table-inventory"
+    >
+    </app-table>
+  </div>
+</div>

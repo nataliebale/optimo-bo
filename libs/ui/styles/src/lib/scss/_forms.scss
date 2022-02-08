@@ -1,0 +1,130 @@
+.form-control{
+border-color:#d6d6d6;
+box-shadow: none !important;
+&:focus{
+  border: 2px solid $blue;
+}
+
+// &.ng-dirty.ng-valid.ng-touched{
+//   border: 1px solid $blue;
+//   &:focus{
+//     border: 2px solid $blue;
+//   }
+// }
+// &.ng-pristine.ng-invalid.ng-touched{
+//   border: 1px solid $red-form-control;
+
+//   &:focus{
+//     border: 2px solid $red-form-control;
+    
+//   }
+// }
+// // 
+&.invalid{
+  border: 1px solid $red-form-control;
+}
+// &.valid{
+//   border: 1px solid $blue;
+// }
+&:disabled{
+  background-color: #f6f6f6;
+  color: rgba(52, 52, 52, 0.5);
+  &.disabled-unstyle{
+    background-color:unset;
+    color: unset;
+  }
+  & + div {
+    app-icon{
+      opacity: 0.3;
+        }
+   }
+}
+&.h-42px {
+  height: 42px;
+  padding-top: 8.5px;
+  padding-bottom: 8.5px;
+}
+}
+
+
+.form-control::placeholder {
+  color: #c0c5d2;
+  opacity: 1;
+}
+
+.form-control:-ms-input-placeholder {
+  color: #c0c5d2;
+}
+
+.form-control::-ms-input-placeholder {
+  color: #c0c5d2;
+}
+
+.form-group-lg {
+  margin-bottom: 24px;
+}
+
+.form-validation {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+.mat-tooltip.tooltip-validation {
+  background-color: $red !important;
+  color: $white !important;
+  font-size: 14px !important;
+
+  &::before {
+    border-bottom-color: $red !important;
+  }
+}
+
+.form-control.readonly-setter:not(:disabled){
+  background-color: white;
+}
+
+app-password-edit-box {
+  @extend .form-control;
+  padding: 0;
+border: none;
+  input[type=password], input[type=text] {
+    // border: none;
+    width: 100%;
+    height: 100%;
+    padding-left: $input-padding-x;
+    padding-right: 52px;
+    @include border-radius($input-border-radius);
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+
+
+.loader-pt-3px { 
+.ng-spinner-loader{
+ 
+  margin-top: 3px !important;
+
+} 
+}
+
+.form-control.no-arrow{
+  .ng-arrow-wrapper{
+display: none ;
+  }
+  .ng-value-container{
+display: flex;
+justify-content: center;
+align-items: center;
+  }
+}
+.form-control[readonly]{
+  background-color: white;
+}

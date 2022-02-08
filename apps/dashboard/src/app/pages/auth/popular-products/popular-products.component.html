@@ -1,0 +1,27 @@
+<div class="d-flex flex-column h-100">
+	<div class="bg-white d-block d-sm-flex align-items-sm-center  product-header">
+		<div class="nav-tabs nav-tabs-two"
+			 [class.first-load]="firstLoad"
+			 (mouseover)="firstLoad = false">
+			<a class="nav-item"  [routerLink]="['revenue']"
+				routerLinkActive="active" [preserveQueryParams]="true">
+			 	  {{'GENERAL.INCOME' | translate}}
+				 <span>{{'GENERAL.INCOME' | translate}}</span>
+			</a>
+			<a class="nav-item"  [routerLink]="['income']"
+				routerLinkActive="active" #rla="routerLinkActive" [preserveQueryParams]="true">
+				  {{'GENERAL.PROFIT' | translate}}
+				<span>{{'GENERAL.PROFIT' | translate}}</span>
+			</a>
+		</div>
+
+		<app-date-picker class="date-picker-regular ml-auto only-range-picker" [maxDate]="endOfToday" (dateChange)="onDateChanged($event)"
+			[defaultDate]="dateRange">
+		</app-date-picker>
+	</div>
+	<div class="flex-grow-1 pt-12px" style="padding-bottom: 115px;">
+		<div class="d-flex flex-column h-100 table-height-100 table-popular-products border-top">
+			<router-outlet></router-outlet>
+		</div>
+	</div>
+</div>

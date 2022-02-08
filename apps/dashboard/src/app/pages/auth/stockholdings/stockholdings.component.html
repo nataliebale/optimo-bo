@@ -1,0 +1,35 @@
+<div class="h-100" style="padding-bottom: 71px;">
+	<div class=" d-flex flex-column">
+		<div class="px-4 py-3 d-flex align-items-center" style="height: 80px;">
+			<button class="btn rounded bg-excel-export p-0 mr-2" style="width: 64px; height: 42px;" (click)="onExport()"
+				[matTooltip]="'Stockholdings.exportToExcel' | translate">
+				<app-icon icon="excel"></app-icon>
+			</button>
+			<app-date-picker 
+					[maxDate]="endOfToday" (dateChange)="onDateChanged($event)" [defaultDate]="date"
+					[isRangePicker]="false" class="date-picker-regular ml-auto"></app-date-picker>
+		</div>
+		<div class="bg-white">
+			<app-table #tableInstance [dataSource]="dataSource" [totalCount]="totalCount" [state]="currentState" [selectable]="false"
+				[paginable]="true" [hasColumnSelector]="true" defaultSort="stockItemName" defaultSortDirection="DESC"
+				[displayedColumns]="displayedColumns" (stateChanged)="onTableStateChanged($event)"
+				class="table-stockholdings">
+				<ng-template app-cell let-cell="cell" let-row="row" name="stockItemName">
+					<div class="line-height-normal translate-t-1px">
+						<span [matTooltip]="cell"
+						#ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+							class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1">
+							{{ cell }}
+						</span>
+						<br>
+						<span [matTooltip]="row.stockItemBarcode"
+						#ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+							class="text-truncate mw-100 d-inline-block table-text-dark">
+							{{ row.stockItemBarcode }}
+						</span>
+					</div>
+				</ng-template>
+			</app-table>
+		</div>
+	</div>
+</div>

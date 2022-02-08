@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'assets/scss/styles';
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+.dialog-overflow-visible .mat-dialog-container {
+    overflow: visible !important;
+  }
+  
+  .mat-dialog-container {
+    padding: 0 !important;
+    
+    overflow-x: hidden !important;
+  }
+  
+  .mat-tooltip {
+    white-space: pre-line !important;
+  }
+  
+  

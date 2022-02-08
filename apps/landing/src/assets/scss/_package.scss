@@ -1,0 +1,85 @@
+.package {
+  padding: 36px 16px 30px;
+  @include media-breakpoint-up(sm) {
+    padding: 36px 22px 30px;
+  }
+  background-color: $white;
+  box-shadow: 0 8px 35px -1px rgba(10, 31, 68, 0.05);
+  max-width: 349px;
+  display: inline-block;
+  width: 100%;
+  @include media-breakpoint-up(lg) {
+    max-width: unset;
+  }
+
+  &-basic {
+    @include border-left-radius(10px);
+    min-height: 714px;
+  }
+
+  &-standart {
+    @include border-radius(10px);
+  }
+
+  &-info {
+    display: inline-block;
+    padding: 6px 12px;
+    font: 12px $font-semibold, $font-semibold-georgian;
+    @include border-radius;
+
+    &.success {
+      background-color: rgba($green, 0.1);
+    }
+
+    &.info {
+      background-color: rgba($purple, 0.1);
+    }
+
+    &.primary {
+      background-color: rgba($primary, 0.1);
+    }
+  }
+
+  &-premium {
+    min-height: 714px;
+    position: relative;
+
+    @include border-right-radius(10px);
+
+    .coming-soon {
+      background-color: $purple;
+      width: 67px;
+      height: 34px;
+      border-top-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+      color: white;
+      font: 12px $font-semibold-georgian;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  &-standard {
+    @include media-breakpoint-up(sm) {
+      width: 410px;
+      padding-left: 45px;
+      padding-right: 45px;
+    }
+    padding-left: 16px;
+    padding-right: 16px;
+
+    @include media-breakpoint-up(lg) {
+      transform: translateY(-58px);
+      margin-left: -$grid-gutter-width/2;
+    }
+
+    min-height: 780px;
+    border-top: 18px solid $blue;
+    padding-top: 30px;
+    @include border-radius(10px);
+  }
+}

@@ -1,0 +1,54 @@
+<!-- Form -->
+<form
+  class="h-100 rounded uploader-dashed-bg"
+  [ngClass]="{
+    'file-uploader__form--validate': showValidationMessage,
+    'is-invalid': error
+  }"
+  enctype="multipart/form-data"
+>
+  <label
+    for="file-upload-{{ id }}"
+    class="custom-file-label mb-0"
+    (dragover)="$event.preventDefault()"
+    (drop)="drop($event)"
+    [ngClass]="{ 'file-uploader__no-border': shownImage }"
+    
+    
+  >
+ 
+     <div 
+     *ngIf="shownImage || hideDefaultLabel"
+     class="image-custom-sizes overflow-hidden w-100 h-100 rounded "
+    
+     [ngStyle]="shownImage && { 'background-image': 'url(' + shownImage + ')' }"
+     >
+     <!-- style="
+     width: 272px;
+     height: 229px;
+     border-radius: 4.5px;
+     background: no-repeat center;
+    background-size: contain;" -->
+
+    </div>
+ 
+    <ng-container *ngIf="!shownImage && !hideDefaultLabel">
+      
+      <app-icon [icon]="'photo-camera'"></app-icon>
+      <span class="pt-2 font-size-16 font-color-dark font-family-regular"
+        >სურათის ატვირთვა</span
+      >
+ 
+    </ng-container>
+    
+ 
+  </label>
+
+  <input
+    type="file"
+    id="file-upload-{{ id }}"
+    class="custom-file-input"
+    [accept]="customAcceptTypes"
+    (change)="handleFileInput($event.target.files)"
+  />
+</form>

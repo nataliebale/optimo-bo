@@ -1,0 +1,12 @@
+<ng-select
+  [items]="years"
+  class="custom-select-header form-control"
+  [searchable]="true"
+  (blur)="onTouched()"
+  [(ngModel)]="value"
+  [clearable]="false"
+  [disabled]="isDisabled"
+>
+  <ng-template ng-label-tmp let-item="item"> {{ item }} წელი </ng-template>
+  <ng-template ng-option-tmp let-item="item"> {{ item }} წელი </ng-template>
+</ng-select>

@@ -1,0 +1,75 @@
+<header class="header fixed-top header-{{ theme }}" [class.position-absolute]="!isFixed">
+  <div class="flex-grow-1 d-flex align-items-center">
+    <a [routerLink]="'/' + translateService.currentLang" class="header-logo">
+      <img src="/assets/images/logo/{{
+        theme === 'light' ? 'color' : 'white'
+      }}_text.svg" width="151" alt="" />
+    </a>
+
+    <div class="language-select-wrapper">
+      <app-language-switcher></app-language-switcher>
+    </div>
+
+  </div>
+
+
+  <nav class="nav align-items-center d-none d-lg-flex">
+    <ng-container *ngFor="let item of navItems; let last = last">
+      <a *ngIf="item.url" [routerLink]="'/'+translateService.currentLang+item.url" class="nav-item nav-link font-size-16" [class.pr-0]="last">
+        {{ item.title | translate}}
+      </a>
+      <a *ngIf="item.externalUrl" href="{{ item.externalUrl }}" class="nav-item nav-link font-size-16 pr-0"
+        [attr.target]="item.target">
+        {{ item.title | translate}}
+      </a>
+    </ng-container>
+    <a *ngIf="requestButtonVisibility" href="https://adopter.typeform.com/to/PWX3mDCB" target="_blank"
+      (click)="onRequestDemo()"
+      class="btn-request font-family-medium btn-request-custom-hover btn btn-outline-primary px-4 py-11 ml-40">
+      {{'GENERAL.BecomeDealer' | translate}}
+    </a>
+    <a *ngIf="requestButtonVisibility" [routerLink]="'/' + translateService.currentLang+'/request-demo'"
+      (click)="onRequest()"
+      class="btn-request font-family-medium btn-request-custom-hover btn btn-primary px-4 py-11 ml-4">
+      {{'GENERAL.RequestDemo' | translate}}
+      <app-icon icon="arrow-right" class="icon-light ml-2"></app-icon>
+    </a>
+  </nav>
+  <div class="d-inline-block d-lg-none cursor-pointer" (click)="toggleBurger()">
+    <app-icon icon="burger"></app-icon>
+  </div>
+</header>
+<div class="burger d-flex d-lg-none" *ngIf="burgerActive">
+  <div class="burger-header border-bottom">
+    <img src="assets/images/burger-logo.svg" alt="" />
+    <app-icon icon="close" (click)="toggleBurger()"></app-icon>
+  </div>
+  <div class="burger-body flex-grow-1">
+    <nav>
+      <ng-container *ngFor="let item of navItems">
+        <a class="font-size-14 text-dark text-decoration-none font-family-medium d-block mb-32" [routerLink]="'/'+translateService.currentLang+item.url"
+          *ngIf="item.url">{{ item.title | translate}}</a>
+      </ng-container>
+    </nav>
+    <div class="border-top">
+      <nav>
+        <a class="font-size-14 text-decoration-none d-block my-32" style="color: #888ea8;"
+          [routerLink]="'/' + translateService.currentLang+'/faq/general'">{{'GENERAL.FAQ' | translate}}</a>
+      </nav>
+    </div>
+  </div>
+  <div class="burger-footer py-32 px-64 text-center">
+    <a [routerLink]="'/' + translateService.currentLang+'/request-demo'" (click)="onRequest()"
+      class="btn btn btn-primary btn-block font-size-14 d-flex align-items-center justify-content-center"
+      style="height: 48px;">
+      {{'GENERAL.JoinUs' | translate}}
+    </a>
+    <a class="font-size-14 text-dark text-decoration-none font-family-medium d-block mt-3"
+      href="https://dashboard.optimo.ge" target="_blank">
+      {{'GENERAL.Login' | translate}}
+    </a>
+  </div>
+</div>
+<ng-container *ngIf="burgerActive">
+  <div class="burger-backdrop d-block d-md-none" (click)="toggleBurger()"></div>
+</ng-container>

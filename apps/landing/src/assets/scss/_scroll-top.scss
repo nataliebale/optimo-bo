@@ -1,0 +1,20 @@
+.scroll-top {
+  display: none;
+  @include media-breakpoint-up(sm) {
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 10px 21px -1px rgba(10, 31, 68, 0.1);
+    background-color: $white;
+    @include border-radius(50%);
+    position: fixed;
+    bottom: 0;
+    transform: translateY(-50%);
+    right: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1;
+  }
+}
+

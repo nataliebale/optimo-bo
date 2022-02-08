@@ -1,0 +1,75 @@
+<app-column
+  [dataField]="col.dataField"
+  [caption]="col.caption"
+  [asyncCaption]="col.asyncCaption"
+  [sortable]="col.sortable"
+  [widthPercent]="col.widthPercent"
+  [isHeaderRight]="data.isHeaderRight"
+  (cellClick)="cellClick.emit($event)"
+>
+  <ng-template *ngIf="headerCellTmpl" #headerCell>
+    <ng-container *ngTemplateOutlet="headerCellTmpl"></ng-container>
+  </ng-template>
+
+  <ng-template #cell let-row="row">
+    <ng-container
+      *ngTemplateOutlet="
+        cellTmpl;
+        context: { cell: row[col.dataField], row: row }
+      "
+    ></ng-container>
+    <div *ngIf="!cellTmpl" class="text-truncate text-right">
+      <!-- <ng-container *ngIf="data?.statusFieldName">
+        <span
+          class="align-middle rounded-circle d-inline-block"
+          style="width: 6px;height: 6px; margin-right: 10px;"
+          [ngClass]="row[data.statusFieldName] ? 'bg-danger' : 'bg-success'"
+        >
+        </span>
+      </ng-container> -->
+      <span
+        class="align-middle d-inline-block font-color-dark text-truncate mw-100"
+        [ngClass]="classNameArr(row)"
+        style="min-width: 36px;"
+		    [matTooltip]="getShownNumber(row)"
+		    #ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+        >{{ getShownNumber(row) }}
+      </span>
+    </div>
+  </ng-template>
+
+  <ng-template *ngIf="col.filterable" #filterCell>
+    <div class="d-flex align-items-center" (click)="onToggleFilter($event)">
+      <input
+        data-hj-allow
+        type="text"
+        class="table-form-control"
+        placeholder="აირჩიე"
+        readonly
+        [value]="displayedFilter"
+      />
+      <app-icon
+        [icon]="'arrow-down'"
+        *ngIf="!displayedFilter"
+        class="th-icon"
+        style="cursor: pointer;"
+      ></app-icon>
+    </div>
+    <button
+      *ngIf="displayedFilter"
+      type="reset"
+      class="filter-reset"
+      (click)="filterForm.reset(); onSubmit(true)"
+    >
+    <app-icon icon="filter-reset"></app-icon>
+    </button>
+    <app-number-range-picker
+      *ngIf="isFilterVisible"
+      clickOutside
+      (clickOutside)="onToggleFilter()"
+      [filterForm]="filterForm"
+      (submit)="onSubmit()"
+      (reset)="onSubmit(true)"
+    ></app-number-range-picker>
+  </ng-template>
+</app-column>

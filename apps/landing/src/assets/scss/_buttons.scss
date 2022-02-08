@@ -1,0 +1,25 @@
+.btn {
+  &-request {
+    @include media-breakpoint-between(sm, md) {
+      width: 450px;
+      display: inline-block;
+      font-family:$font-medium,$font-medium-georgian !important;
+    }
+
+    &-custom-hover {
+      &.request-demo {
+        border-color: $white;
+        color: $white;
+
+        &:hover {
+          color: $blue;
+          background-color: $white;
+        }
+      }
+
+      &:hover {
+        background-color: #2944d6;
+      }
+    }
+  }
+}

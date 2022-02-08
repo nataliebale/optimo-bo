@@ -1,0 +1,78 @@
+<ng-container *ngIf="(item.isVisibleForAllLocations || locationId) && isGlovoIntegration(item)">
+  <!-- <ng-container *ngIf="isGlovoIntegration(item)"> -->
+    <ng-container
+      *ngIf="
+        (!item.decisionField || (userDetails && userDetails[item.decisionField]))
+      "
+    >
+      <!-- *ngIf="item.isVisibleForAllLocations || locationId" -->
+      <div 
+        class="sidebar-menu-item" 
+        [class.active-hover]="mouseIsOver ? true : false"
+        (mouseover)="mouseOverItem.next(true)"
+        (mouseleave)="mouseOverItem.next(false)"
+        [class.has-route]="item.path">
+        <a
+          *ngIf="item.path"
+          [class.has-route]="item.path"
+          [routerLink]="item.path"
+          routerLinkActive="active"
+          [matTooltip]="item.alt"
+          matTooltipPosition="right"
+          matTooltipClass="mat-tooltip-position-right"
+          class="nested-menu-item nested-menu-link"
+        >
+          <app-icon *ngIf="item.icon" [icon]="item.icon" class="mr-2 item-icon nested-menu-icon"></app-icon>
+          <span  class="ml-1 py-1 text-truncate">
+            {{ item.text | translate }}
+          </span>
+        </a>
+
+        <ng-container *ngIf="!item.path">
+          <div
+            [matTooltip]="item.alt"
+            matTooltipPosition="right"
+            matTooltipClass="mat-tooltip-position-right"
+            class="nested-menu-item nested-menu-link"
+            (click)="toggleSubNav()"
+            [class.navigated-to-child]="navigatedToChild"
+          >
+            <app-icon *ngIf="item.icon" [icon]="item.icon" class="mr-2 nested-menu-icon"></app-icon>
+            <span class="ml-1 text-nowrap">
+              {{ item.text | translate }}
+            </span>
+            <app-icon
+              [icon]="'arrow-down-sidebar'"
+              class="ml-auto text-nowrap icon-arrow-down-sidebar-admin icon-arrow-down-sidebar"
+              [class.active]="active"
+            ></app-icon>
+          </div>
+        </ng-container>
+      </div>
+
+      <ng-container *ngIf="item.children?.length > 0">
+        <div class="subnav-wrapper"
+          (mouseover)="mouseOverItem.next(true)"
+          (mouseleave)="mouseOverItem.next(false)"
+          [class.active-hover]="mouseIsOver ? true : false"
+          [class.active]="active"
+          (click)="mouseOverItem.next(false)">
+          <div 
+          class="subnav"
+          
+          >
+          <span class="subnav-menu-heading d-none">
+            {{ item.text | translate }}
+          </span>
+          <app-menu-item
+            *ngFor="let child of item.children"
+            [item]="child"
+            [level]="level + 1"
+          ></app-menu-item>
+          </div>
+        </div>
+        
+      </ng-container>
+    </ng-container>
+  <!-- </ng-container> -->
+</ng-container>

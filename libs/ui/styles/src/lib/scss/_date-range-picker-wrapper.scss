@@ -1,0 +1,50 @@
+.date-range-picker {
+  $root: &;
+  &-wrapper {
+    overflow:  visible !important;
+    #{$root} {
+      &-actions {
+        display: flex;
+        align-items: center;
+        height: 42px;
+        .section {
+          &-center {
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 155px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            height: 100%;
+            input {
+              width: 100px;
+              height: 100%;
+              border: 0px;
+              outline: none;
+              padding-right: 10px;
+              padding-left: 0px;
+              font: 14px $font-regular;
+              color: $dark;
+            }
+            border-top: 1px solid $pagination-border;
+            border-bottom: 1px solid $pagination-border;
+            // border-radius: 5px;
+          }
+        }
+        .right-arrow-btn,
+        .left-arrow-btn {
+          width: 36px;
+          padding: 0px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          border: 1px solid $pagination-border;
+        }
+      }
+    }
+  }
+}

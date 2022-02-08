@@ -1,0 +1,35 @@
+@-webkit-keyframes rotation {
+    from {
+            -webkit-transform: rotate(0deg);
+    }
+    to {
+            -webkit-transform: rotate(180deg);
+    }
+}
+
+
+
+.loader-loading {
+        -webkit-animation-name: loading;
+        animation-name: loading;
+        -webkit-animation-duration: 0.6s;
+        animation-duration: 0.6s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-timing-function: linear;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        -webkit-animation-iteration-count: infinite;
+      }
+      
+      @keyframes loading {
+        0% {
+          transform: rotate(0);
+        }
+        50% {
+          transform: rotate(-180deg);
+        }
+        0% {
+          transform: rotate(-360deg);
+        }
+      }

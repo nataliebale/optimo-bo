@@ -1,0 +1,183 @@
+<div class="h-100 d-flex flex-column" style="padding-bottom: 71px;">
+  <div class="d-flex align-items-center py-3 px-4" style="height:80px;">
+    <div
+      class="d-flex align-items-center"
+      *ngIf="selectedRows && selectedRows.length === 0"
+    >
+      <a class="btn btn-primary btn-add mr-3" routerLink="/orders/add">
+        <span>{{ 'GENERAL.ADD' | translate}}</span>
+      </a>
+      
+      <div style="width: 1px; background-color: #e7e7e7; height: 32px;" class="mr-3 d-sm-block d-none"></div>
+    </div>
+    
+
+    <div
+      class="position-relative"
+      *ngIf="selectedRows && selectedRows.length === 0">
+      <div
+        [matTooltip]="'ORDERS.EXPORT_ORDERS' | translate"
+        class="btn bg-table-border-color bg-excel-export rounded px-0 mr-2 position-relative d-flex align-items-center"
+        (click)="isExcelDropdownActive = !isExcelDropdownActive; $event.stopPropagation()"
+        style="
+          height: 42px;
+          cursor: pointer;
+        "
+      >
+        <app-icon icon="excel" class="px-20px"></app-icon>
+        <span
+          class="px-7px border-left d-block border-divider-border">
+        <app-icon
+          icon="arrow-down"
+          style="height: 24px; filter:invert(100%) contrast(200%);"
+        ></app-icon>
+      </span>
+        <!-- filter:invert(100%) contrast(200%); -->
+      </div>
+
+      <div
+        *ngIf="isExcelDropdownActive"
+        clickOutside
+        (clickOutside)="isExcelDropdownActive = false"
+        class="filter-dialog filter-dialog-type-number px-0 py-1 text-left active no-before"
+        style="width: 195px; top: 109%; right: unset;"
+      >
+        <div
+          (click)="
+            isExcelDropdownActive = false;
+            onExportOrders();
+          "
+          class="custom-select-option"
+          style="cursor: pointer;"
+        >
+	      	{{'GENERAL.PURCHASES' | translate}}
+        </div>
+        <div
+          (click)="
+            isExcelDropdownActive = false;
+            onExportProducts();
+          "
+          class="custom-select-option"
+          style="cursor: pointer;"
+        >
+		      {{'GENERAL.PRODUCTS' | translate}}
+        </div>
+      </div>
+    </div>
+    <button
+      class="btn p-0 mr-2 bg-table-border-color"
+      (click)="goToEdit()"
+      [matTooltip]="'GENERAL.EDIT' | translate"
+      *ngIf="selectedRows && selectedRows.length === 1 && selectedRows[0].status === orderStatuses.Draft"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon [icon]="'edit'"></app-icon>
+    </button>
+    <button
+      class="btn mr-2 p-0 bg-table-border-color"
+      (click)="openRemovalDialog()"
+      [matTooltip]="'GENERAL.DELETE' | translate"
+      *ngIf="selectedRows && selectedRows.length >= 1 && isAllDraft"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon [icon]="'trash'"></app-icon>
+    </button>
+
+    <button
+      class="btn p-0 mr-2 bg-table-border-color"
+      (click)="goToReceive()"
+      [matTooltip]="'ORDERS.RECEIVE_ORDER' | translate"
+      *ngIf="
+        selectedRows &&
+        selectedRows.length === 1 &&
+        (selectedRows[0].status === orderStatuses.Ordered ||
+          selectedRows[0].status === orderStatuses.Delayed)
+      "
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon icon="order-receive"></app-icon>
+    </button>
+
+    <button
+      class="btn p-0 mr-2 bg-table-border-color"
+      (click)="duplicateSelected()"
+      [matTooltip]="'ORDERS.DUPLICATE_ORDER' | translate"
+      *ngIf="selectedRows && selectedRows.length === 1 && canDuplicate(selectedRows[0])"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon icon="order-dublicate"></app-icon>
+    </button>
+
+    <button
+    *ngIf="isAdmin"
+      style="height: 42px;"
+      class="btn p-0 mr-2 bg-table-border-color px-20px font-family-regular font-color-dark"
+      (click)="onCancel()"
+      [disabled]="
+        !selectedRows ||
+        selectedRows.length !== 1 ||
+        selectedRows[0].status != orderStatuses.Received
+      "
+    >
+      {{ 'ORDERS.ROLLBACK' | translate }}
+    </button>
+  </div>
+
+  <div class="bg-white flex-grow-1">
+    <app-table
+      #table
+      [dataSource]="dataSource"
+      [totalCount]="totalCount"
+      [state]="currentState"
+      [selectable]="true"
+      [selectableCustomEnable]="isRowReceived"
+      [paginable]="true"
+      [actions]="{ editable: isRowEditable, deletable: isRowDeletable }"
+      [hasColumnSelector]="true"
+      defaultSort="id"
+      defaultSortDirection="DESC"
+      [displayedColumns]="displayedColumns"
+      (stateChanged)="onTableStateChanged($event)"
+      (selectionChanged)="onSelectionChanged($event)"
+      (rowEdit)="goToEdit($event)"
+      (rowDelete)="openRemovalDialog($event)"
+      (rowClick)="toQueryParam('orderId', $event.id)"
+      class="table-orders"
+    >
+      <ng-template
+        app-cell
+        let-cell="cell"
+        let-row="row"
+        name="expectedTotalCost"
+      >
+        <div class="text-truncate text-right">
+          <span
+            *ngIf="row.status === orderStatuses.Received; else default"
+			[matTooltip]="(row.receivedTotalCost | number: '1.4-4':'en') + ' ₾'"
+			#ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+          >
+            {{ row.receivedTotalCost | number: '1.4-4':'en' }} ₾
+          </span>
+          <ng-template #default>
+            <span [matTooltip]="(cell | number: '1.4-4':'en') + ' ₾'" #ref2 [matTooltipDisabled]="textIsTruncated(ref2)">
+              {{ cell | number: '1.4-4':'en' }} ₾
+            </span>
+          </ng-template>
+        </div>
+      </ng-template>
+      <ng-template app-cell let-cell="cell" let-row="row" name="status">
+        <span
+          [ngClass]="{
+            'late': isRowDelayed(row),
+            'draft': isRowDraft(row)
+          }"
+          class="text-truncate cell-status"
+		  [matTooltip]="statusData[cell]"
+		  #ref3 [matTooltipDisabled]="textIsTruncated(ref3)"
+        >
+          {{ statusData[cell] }}
+        </span>
+      </ng-template>
+    </app-table>
+  </div>
+</div>

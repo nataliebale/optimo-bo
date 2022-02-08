@@ -1,0 +1,64 @@
+.landing {
+  &-body {
+    padding-top: $header-height;
+  }
+
+  &-img {
+    @include media-breakpoint-down(md) {
+      @include img-fluid;
+    }
+
+    &.operators-bg {
+      @include media-breakpoint-only(lg) {
+        width: 820px;
+      }
+    }
+
+    &.video-1 {
+      width: 814px;
+    }
+
+    &.video-2 {
+      width: 770px;
+    }
+
+    &.video-3 {
+      width: 856px;
+    }
+
+    &.video-4 {
+      width: 635px;
+    }
+
+    &.landing-img {
+      @include media-breakpoint-only(lg) {
+        width: 750px;
+      }
+    }
+  }
+}
+
+.business-content {
+  margin-bottom: 80px;
+}
+
+.gadget-content {
+  margin-top: 80px;
+}
+
+@include media-breakpoint-up(lg) {
+  .business-content {
+    margin-bottom: 185px;
+    margin-top: 152px;
+  }
+
+  .operators-content {
+    margin-top: 220px;
+    margin-bottom: 200px;
+  }
+
+  .gadget-content {
+    margin-top: 170px;
+    margin-bottom: 200px;
+  }
+}

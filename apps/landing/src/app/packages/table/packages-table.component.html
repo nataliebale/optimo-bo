@@ -1,0 +1,62 @@
+<ul class="col-12 pl-15 list-group mb-40">
+  <li
+    class="list-group-item px-15 px-sm-4"
+    style="padding-top: 27px; padding-bottom: 25px;"
+  >
+    <div class="row font-family-semibold text-dark">
+      <div class="col col-sm-6">{{ data.title | translate}}</div>
+      <div
+        class="col-auto col-sm-2 text-center font-family-semibold d-none d-sm-block"
+      >
+        {{'GENERAL.Basic' | translate}}
+      </div>
+      <div class="col-auto col-sm-2 text-center font-family-semibold d-none d-sm-block"
+      >
+      {{'GENERAL.Standart' | translate}}
+      </div>
+      <div class="col-auto col-sm-2 text-center d-none d-sm-block">
+        <span style="opacity: .15;"> {{'GENERAL.Premium' | translate}}</span>
+        <span
+          class="position-absolute font-size-12 text-info font-family-regular"
+          style="left: 50%; transform: translateX(-50%); bottom: -18px;"
+        > {{'GENERAL.Soon' | translate}}</span
+        >
+      </div>
+    </div>
+  </li>
+  <li
+    *ngFor="let row of data.rows"
+    class="list-group-item px-15 px-sm-4"
+    style="padding-top: 27px; padding-bottom: 25px;"
+  >
+    <div class="row text-dark align-items-center">
+      <div class="col col-sm-6">{{ row.title | translate}}</div>
+      <div [ngClass]="{'d-none d-sm-block': !isCollShown(packageType.Basic)}" class="col-auto col-sm-2 text-center">
+        <ng-container *ngIf="isIcon(row, 'basic'); else basicText">
+          <app-icon *ngIf="row.basic" icon="ok"></app-icon>
+        </ng-container>
+        <ng-template #basicText>
+          {{ row.basic | translate}}
+        </ng-template>
+      </div>
+      <div class="col-auto col-sm-2 text-center"
+           [ngClass]="{'d-none d-sm-block': !isCollShown(packageType.Standard)}">
+        <ng-container *ngIf="isIcon(row, 'standard'); else standardText">
+          <app-icon *ngIf="row.standard"
+                    icon="ok" class="primary"></app-icon>
+        </ng-container>
+        <ng-template #standardText>
+          <span class="font-size-14 font-size-sm-16">{{ row.standard | translate}}</span>
+        </ng-template>
+      </div>
+      <div [ngClass]="{'d-none d-sm-block': !isCollShown(packageType.Premium)}" class="col-auto col-sm-2 text-center">
+        <ng-container *ngIf="isIcon(row, 'premium'); else premiumText">
+          <app-icon *ngIf="row.premium" icon="ok" class="info"></app-icon>
+        </ng-container>
+        <ng-template #premiumText>
+          {{ row.premium | translate}}
+        </ng-template>
+      </div>
+    </div>
+  </li>
+</ul>

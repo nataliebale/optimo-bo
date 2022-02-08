@@ -1,0 +1,175 @@
+.ng-select {
+  .ng-placeholder {
+    color: $input-placeholder-color;
+  }
+
+  .ng-arrow {
+    width: 16px !important;
+    height: 16px !important;
+    background: no-repeat center
+      url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICAgIDxwYXRoIGZpbGw9IiM4ODhFQTgiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTggOS45NEwzLjUzIDUuNDdhLjc1Ljc1IDAgMCAwLTEuMDYgMS4wNmw1IDVhLjc1Ljc1IDAgMCAwIDEuMDYgMGw1LTVhLjc1Ljc1IDAgMCAwLTEuMDYtMS4wNkw4IDkuOTR6Ii8+Cjwvc3ZnPgo=');
+    @include transition;
+
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &-opened {
+    .ng-arrow {
+      transform: rotate(-180deg);
+    }
+
+    &:not(.ng-select-top) {
+      .ng-dropdown-panel {
+        box-shadow: $custom-select-box-shadow;
+        display: block;
+      }
+    }
+
+    &.ng-select-top {
+      .ng-dropdown-panel {
+        box-shadow: $custom-select-top-box-shadow;
+        display: block;
+      }
+    }
+
+    &:not(.ng-select-top) {
+      @include border-bottom-radius(0);
+    }
+
+    &.ng-select-top {
+      @include border-top-radius(0);
+    }
+  }
+
+  &:not(.ng-select-top) {
+    .ng-dropdown-panel {
+      top: 100%;
+      border-top: 0;
+      padding: 8px 0 0;
+      @include border-bottom-radius($border-radius);
+      @include border-top-radius(0);
+
+      &::before {
+        top: 0;
+      }
+    }
+  }
+
+  &.ng-select-top {
+    .ng-dropdown-panel {
+      top: 0;
+      transform: translateY(-100%);
+      border-bottom: 0;
+      padding: 0 0 8px;
+      @include border-top-radius($border-radius);
+      @include border-bottom-radius(0);
+
+      &::before {
+        bottom: 0;
+      }
+    }
+  }
+
+  .ng-dropdown-panel {
+    display: none;
+    padding: 14px 16px;
+    position: absolute;
+    top: 40px;
+    right: -7px;
+    background-color: $white;
+    border: $border-width solid $border-color;
+    z-index: 110;
+    @include border-radius($border-radius);
+
+    width: calc(100% + 2px) !important;
+    left: -1px;
+
+    &::before {
+      width: calc(100% - 16px);
+      left: 50%;
+      transform: translateX(-50%);
+      content: '';
+      height: 1px;
+      background-color: #e6ecf5;
+      display: block;
+      position: absolute;
+      z-index: 1;
+    }
+
+    &-items {
+      padding-left: 16px;
+      padding-right: 16px;
+      max-height: 155px !important;
+
+      .scrollable-content {
+        padding-right: 16px;
+        padding-left: 16px;
+      }
+    }
+  }
+
+  .ng-option {
+    font-size: 14px;
+    color: #c0c5d2;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    @include transition;
+
+    &:hover {
+      color: #515366;
+    }
+  }
+}
+
+.ng-has-value {
+  .ng-placeholder {
+    display: none;
+  }
+}
+
+.faq-search {
+  .ng-select-focused {
+    .ng-value {
+      opacity: 0;
+    }
+  }
+
+  .ng-dropdown-panel-items {
+    padding-left: 40px;
+  }
+
+  .ng-select-opened {
+    .ng-arrow {
+      transform: unset;
+    }
+  }
+
+  .ng-arrow {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCIgdmlld0JveD0iMCAwIDE0IDE0Ij4KICAgIDxwYXRoIGZpbGw9IiM0NTYyRkYiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTExLjI3NyAxMC4yNjJsMi41MTMgMi41MTJhLjcxOC43MTggMCAwIDEtMS4wMTYgMS4wMTZsLTIuNTEyLTIuNTEzYS43MTguNzE4IDAgMSAxIDEuMDE1LTEuMDE1ek01Ljc0NCAwYTUuNzQ0IDUuNzQ0IDAgMSAxIDAgMTEuNDg3QTUuNzQ0IDUuNzQ0IDAgMCAxIDUuNzQ0IDB6bTAgMS40MzZhNC4zMDggNC4zMDggMCAxIDAgMCA4LjYxNSA0LjMwOCA0LjMwOCAwIDAgMCAwLTguNjE1eiIvPgo8L3N2Zz4K');
+  }
+
+  .ng-select-container {
+    display: flex;
+    flex-direction: row-reverse;
+    height: 23px;
+  }
+
+  .ng-input {
+    padding-left: 32px;
+    padding-right: 50px;
+  }
+
+  .ng-placeholder {
+    margin-left: 18px;
+  }
+
+  .ng-spinner-loader {
+    bottom: -3px;
+    top: unset;
+    left: 650px;
+  }
+}

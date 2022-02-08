@@ -1,0 +1,15 @@
+<div class="d-flex flex-column h-100">
+  <app-lots-history-card [stockItemId]="stockItemId"></app-lots-history-card>
+  <div class="flex-grow-1">
+    <div class="h-100 bg-white rounded">
+      <app-table #tableInstance [dataSource]="dataSource" [totalCount]="totalCount" [state]="currentState"
+        [selectable]="false" defaultSort="date" defaultSortDirection="DESC" [displayedColumns]="displayedColumns"
+        [hasColumnSelector]="true" (stateChanged)="onTableStateChanged($event)"
+        class="table-inventory first-th-bordered d-flex h-100">
+        <ng-template app-cell let-cell="cell" let-row="row" name="unitCost">
+          <div class="text-truncate text-right">{{ cell }} ₾</div>
+        </ng-template>
+      </app-table>
+    </div>
+  </div>
+</div>

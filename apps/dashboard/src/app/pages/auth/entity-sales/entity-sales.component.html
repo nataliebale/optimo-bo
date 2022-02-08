@@ -1,0 +1,182 @@
+<div class="h-100 d-flex flex-column" style="padding-bottom: 71px;">
+  <div class="d-flex align-items-center py-3 px-4" style="height: 80px;">
+    <div
+      class="d-flex align-items-center pr-3"
+      *ngIf="selectedRows && selectedRows.length === 0"
+    >
+      <a class="btn btn-primary btn-add" routerLink="/entity-sales/add">
+        <span>დამატება</span>
+      </a>
+      <!-- <div style="width: 1px; background-color: #e7e7e7; height: 32px;"></div> -->
+    </div>
+    <button
+      class="btn p-0 mr-2 bg-table-border-color"
+      (click)="onEdit()"
+      matTooltip="რედაქტირება"
+      *ngIf="selectedRows && selectedRows.length === 1 && isSelectedsDraft"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon [icon]="'edit'"></app-icon>
+    </button>
+
+    <button
+      class="btn mr-2 p-0 bg-table-border-color"
+      (click)="onDelete()"
+      matTooltip="წაშლა"
+      *ngIf="selectedRows && selectedRows.length >= 1 && isSelectedsDraft"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon [icon]="'trash'"></app-icon>
+    </button>
+    <!-- zuras vutxari am buttonze  -->
+    <button
+    class="btn mr-2 p-0 bg-table-border-color"
+      (click)="onSellDraft()"
+      matTooltip="გაყიდვა"
+      *ngIf="selectedRows && selectedRows.length === 1 && isSelectedsDraft"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon icon="sell"></app-icon>
+
+    </button>
+
+    <button
+      (click)="onRSUpload()"
+      *ngIf="
+        selectedRows && selectedRows.length === 1 && isAnySold && !requestIsSent
+      "
+      matTooltip="RS-ზე ატვირთვა"
+      style="width: 64px; height: 42px;"
+      class="btn mr-2 p-0 bg-table-border-color"
+    >
+      <app-icon icon="import"></app-icon>
+
+    </button>
+    <div
+    *ngIf="selectedRows && selectedRows.length === 0"
+    style="width: 1px; background-color: #e7e7e7; height: 32px;">
+  </div>
+    <button
+    matTooltip='ექსელში ექსპორტი'
+    class="btn rounded bg-excel-export p-0 ml-3"
+    (click)="onExport()"
+    *ngIf="selectedRows && selectedRows.length === 0"
+    style="width: 64px; height: 42px;"
+  >
+    <app-icon icon="excel"> </app-icon>
+  </button>
+  </div>
+
+  <div class="bg-white flex-grow-1">
+    <app-table
+      [dataSource]="dataSource"
+      [totalCount]="totalCount"
+      [state]="currentState"
+      [selectable]="true"
+      [paginable]="true"
+      [actions]="{ editable: isRowDraft, deletable: isRowDraft }"
+      [hasColumnSelector]="true"
+      defaultSort="id"
+      defaultSortDirection="DESC"
+      [displayedColumns]="isHorecaMode ? horecaDisplayColumns : displayedColumns"
+      (stateChanged)="onTableStateChanged($event)"
+      (selectionChanged)="onSelectionChanged($event)"
+      (rowEdit)="onEdit($event)"
+      (rowDelete)="onDelete($event)"
+      (rowClick)="toQueryParam('entitySaleId', $event.id)"
+      [selectableCustomEnable]="isRowSold"
+      class="table-orders th-span-w-100"
+    >
+      <ng-template app-cell let-cell="cell" let-row="row" name="status">
+        <span
+          [ngClass]="{
+            'draft': isRowDraft(row)
+          }"
+          class="text-truncate cell-status"
+          [matTooltip]="entitySaleStatusMap[cell]"
+          #ref3 [matTooltipDisabled]="textIsTruncated(ref3)"
+        >
+          {{ entitySaleStatusMap[cell] }}
+        </span>
+      </ng-template>
+    <ng-template app-cell let-cell="cell" let-row="row" name="entityNameOrIdentifier">
+      <div class="line-height-normal">
+        <span
+    [matTooltip]="cell" #ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+          class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1"
+    >
+
+          {{ row.entityName }}
+        </span>
+        <br>
+        <span [matTooltip]="row.entityIdentifier" #ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+          class="text-truncate mw-100 d-inline-block table-text-dark"
+        >
+          {{ row.entityIdentifier }}
+        </span>
+      </div>
+  </ng-template>
+
+
+  <ng-template
+    app-cell
+    let-cell="cell"
+    let-row="row"
+    name="totalPrice">
+      <div class="text-truncate text-right">
+        <span> {{ cell | number: '1.2-2':'en' }} ₾ </span>
+      </div>
+  </ng-template>
+
+  <ng-template
+    app-cell
+    let-cell="cell"
+    let-row="row"
+    name="income">
+      <div class="text-truncate text-right">
+        <span> {{ cell | number: '1.2-2':'en' }} ₾ </span>
+      </div>
+  </ng-template>
+
+
+  <ng-template
+    app-cell
+    let-cell="cell"
+    let-row="row"
+    name="taxAmount">
+      <div class="text-truncate text-right">
+        <span> {{ cell | number: '1.2-2':'en' }} ₾ </span>
+      </div>
+  </ng-template>
+
+
+  <ng-template
+    app-cell
+    let-cell="cell"
+    let-row="row"
+    name="totalOrderLinesPrice">
+      <div class="text-truncate text-right">
+        <span>{{ cell | number: '1.2-2':'en' }} ₾ </span>
+      </div>
+  </ng-template>
+
+	<!-- <ng-template app-cell let-cell="cell" let-row="row" name="entityName">
+        <div class="pt-1 line-height-normal">
+          <span
+            [matTooltip]="cell"
+            class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1"
+          >
+            {{ cell }}
+          </span>
+          <br>
+          <span
+            [matTooltip]="row.entityIdentifier"
+            class="text-truncate mw-100 d-inline-block table-text-dark"
+          >
+            {{ row.entityIdentifier }}
+          </span>
+        </div>
+      </ng-template> -->
+    </app-table>
+  </div>
+</div>

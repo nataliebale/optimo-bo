@@ -1,0 +1,12 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="26" viewBox="0 0 32 26">
+    <g fill="none" fill-rule="evenodd">
+        <rect width="32" height="25.6" fill="#FFE5C1" rx="1.6"/>
+        <path fill="#FFAA31" d="M1.6 0h28.8A1.6 1.6 0 0 1 32 1.6v1.6H0V1.6A1.6 1.6 0 0 1 1.6 0z"/>
+        <g fill="#FFAA31" transform="translate(3.5 6.5)">
+            <rect width="25.2" height="3.2" rx=".4"/>
+            <rect width="25.2" height="3.2" y="5.6" rx=".4"/>
+            <rect width="25.2" height="3.2" y="11.6" rx=".4"/>
+        </g>
+    </g>
+</svg>

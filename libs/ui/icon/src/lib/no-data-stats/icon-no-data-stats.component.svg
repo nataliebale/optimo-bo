@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="42" height="28" viewBox="0 0 42 28">
+    <defs>
+        <filter id="dslptr7d3a">
+            <feColorMatrix in="SourceGraphic" values="0 0 0 0 0.203922 0 0 0 0 0.203922 0 0 0 0 0.203922 0 0 0 1.000000 0"/>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <path fill="#343434" fill-rule="nonzero" d="M37 0c2.761 0 5 2.239 5 5v7h-2.201l.001-7c0-1.49-1.162-2.707-2.63-2.795L37 2.2H5c-1.49 0-2.707 1.162-2.795 2.63L2.2 5v18c0 1.49 1.162 2.707 2.63 2.795L5 25.8h21V28H5c-2.761 0-5-2.239-5-5V5c0-2.761 2.239-5 5-5h32z" transform="translate(-1043 -358) translate(961 358) translate(82)"/>
+                    <g stroke="#343434" stroke-linecap="round" stroke-width="2">
+                        <g>
+                            <path d="M0 8.095L5.354 2.608 9.194 6.631 15.523 0" transform="translate(-1043 -358) translate(961 358) translate(82) translate(9 9) translate(.858 .925)"/>
+                            <path stroke-linejoin="round" d="M15.789 4.869L15.789 0 11.015 0" transform="translate(-1043 -358) translate(961 358) translate(82) translate(9 9) translate(.858 .925)"/>
+                        </g>
+                    </g>
+                    <g   transform="translate(-1043 -358) translate(961 358) translate(82) translate(28 14)">
+                        <path fill="#343434" d="M11.121 8.293c.39-.39 1.024-.39 1.415 0 .36.36.388.928.083 1.32l-.083.094-2.829 2.829c-.39.39-1.024.39-1.414 0-.36-.361-.388-.928-.083-1.32l.083-.095 2.828-2.828z" transform="matrix(1 0 0 -1 0 20.828)"/>
+                        <circle cx="5.5" cy="5.5" r="4.6" stroke="#343434" stroke-width="1.8"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

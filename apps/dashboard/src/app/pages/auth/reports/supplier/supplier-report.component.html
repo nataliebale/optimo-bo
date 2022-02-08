@@ -1,0 +1,19 @@
+<div class="supplier-select">
+  <app-dynamic-select
+    placeholder="მომწოდებელი"
+    [dataGetter]="getSuppliers"
+    [itemGetterById]="getSupplierById"
+    [(ngModel)]="supplierId"
+  ></app-dynamic-select>
+</div>
+
+<app-supplier-report-cards
+  [supplierId]="supplierId"
+></app-supplier-report-cards>
+
+<app-supplier-report-chart [supplierId]="supplierId">
+</app-supplier-report-chart>
+
+<app-supplier-report-grids
+  [supplierId]="supplierId"
+></app-supplier-report-grids>

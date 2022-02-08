@@ -1,0 +1,38 @@
+.dropdown {
+  $root: &;
+  &-item {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    @include transition;
+    cursor: pointer;
+    color: $dark;
+    font-size: 14px;
+    font-family: $font-regular;
+
+    &:hover {
+      background-color: #f6f6f6 !important;
+    }
+  }
+
+  &-text {
+    color: #c0c5d2;
+    @include transition;
+  }
+
+  &-custom {
+    #{$root}-item {
+      @include hover-focus() {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+.view-dropdown {
+  width: 283px;
+  box-shadow: 0 5px 16px -10px #c8c8c8;
+  z-index: 1;
+  right: 12px;
+  top: 40px;
+}

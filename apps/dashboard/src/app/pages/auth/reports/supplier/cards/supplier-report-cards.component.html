@@ -1,0 +1,51 @@
+<div class="supplier-report-cards">
+  <div class="supplier-report-cards-card">
+    <div class="supplier-report-cards-card-row">
+      <div class="supplier-report-cards-card-row-key">პროდუქტები:</div>
+      <div class="supplier-report-cards-card-row-value">
+        {{ supplierItemsCount }} ც
+      </div>
+    </div>
+  </div>
+
+  <div class="supplier-report-cards-card">
+    <div class="supplier-report-cards-card-header">წელი {{ lastYear }}</div>
+    <div class="supplier-report-cards-card-row">
+      <div class="supplier-report-cards-card-row-key">შემოსავალი:</div>
+      <div class="supplier-report-cards-card-row-value">
+        ₾ {{ lastYearRevenueData?.totalRevenue }}
+      </div>
+    </div>
+    <div class="supplier-report-cards-card-row">
+      <div class="supplier-report-cards-card-row-key">მარჟა:</div>
+      <div class="supplier-report-cards-card-row-value">
+        ₾ {{ lastYearRevenueData?.totalIncome }}
+      </div>
+    </div>
+  </div>
+
+  <div class="supplier-report-cards-card">
+    <div class="supplier-report-cards-card-header">წელი {{ currentYear }}</div>
+    <div class="supplier-report-cards-card-row">
+      <div class="supplier-report-cards-card-row-key">შემოსავალი:</div>
+      <div class="supplier-report-cards-card-row-value">
+        ₾ {{ currentYearRevenueData?.totalRevenue }}
+      </div>
+    </div>
+    <div class="supplier-report-cards-card-row">
+      <div class="supplier-report-cards-card-row-key">მარჟა:</div>
+      <div class="supplier-report-cards-card-row-value">
+        ₾ {{ currentYearRevenueData?.totalIncome }}
+      </div>
+    </div>
+  </div>
+
+  <div class="supplier-report-cards-card">
+    <div class="supplier-report-cards-card-row">
+      <div class="supplier-report-cards-card-row-key">უახლოესი შესყიდვა:</div>
+      <div class="supplier-report-cards-card-row-value">
+        {{ closestPurchaseDate | date: 'd MMM yy' }}
+      </div>
+    </div>
+  </div>
+</div>

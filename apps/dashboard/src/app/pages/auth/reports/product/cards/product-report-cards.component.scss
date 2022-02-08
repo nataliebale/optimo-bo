@@ -1,0 +1,57 @@
+.product-report {
+  &-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-left: 77px;
+    padding-right: 30px;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+
+    &-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1.4vmin;
+      width: 27vmin;
+      border-radius: 4px;
+      background-color: #fff;
+      border: solid 1px #c0c5d2;
+      margin-top: 2vh;
+      height: 15vmin;
+
+      &-header {
+        font-weight: 500;
+        font-size: 1.7vmin;
+        color: #4f4f4f;
+        margin-bottom: 1.8vmin;
+      }
+
+      &-row {
+        margin-bottom: 1.7vmin;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+
+        &-key {
+          font-weight: 500;
+          font-size: 1.5vmin;
+          color: #4f4f4f;
+          margin-right: 1.5vmin;
+          vertical-align: middle;
+          display: flex;
+          align-items: center;
+          width: 38%;
+        }
+
+        &-value {
+          color: #a0a5b2;
+          font-size: 2.2vmin;
+        }
+      }
+    }
+  }
+}

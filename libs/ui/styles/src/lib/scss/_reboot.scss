@@ -1,0 +1,104 @@
+html {
+  height: 100%;
+}
+
+body {
+  // position: relative;
+  min-height: 100%;
+  padding-top: $header-height;
+}
+.table{
+  color: $dark;
+}
+label {
+  font-size: 14px;
+  line-height: 1.36;
+  color: $dark;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.approve-dialog-close {
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+:not(.no-validation-padding) {
+  &.ng-touched:not(form),
+  &.ng-dirty:not(form) {
+    &.ng-invalid {
+      @extend .is-invalid;
+      // padding-right: 0px !important; validation padding 16px
+      padding-right: 16px !important;
+      background-image: none !important;
+      &.has-error-message {
+        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyNCAyNCI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0iYSIgZD0iTTAgMi4zMDRoMjMuODY2VjIyLjgxSDB6Ii8+CiAgICA8L2RlZnM+CiAgICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxwYXRoIGZpbGw9IiNGQzNDMkQiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTExLjkzMyAxNy4wNzlhMS4xMDQgMS4xMDQgMCAxIDEtMS4xMDMgMS4xMDZjMC0uNjExLjQ5NC0xLjEwNiAxLjEwMy0xLjEwNk0xMS43ODUgMTUuMzE2YS42MDguNjA4IDAgMCAwIC42MDgtLjYwOVY4LjkyNGEuNjA4LjYwOCAwIDEgMC0xLjIxNiAwdjUuNzgzYzAgLjMzNi4yNzMuNjA5LjYwOC42MDkiLz4KICAgICAgICA8bWFzayBpZD0iYiIgZmlsbD0iI2ZmZiI+CiAgICAgICAgICAgIDx1c2UgeGxpbms6aHJlZj0iI2EiLz4KICAgICAgICA8L21hc2s+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZDM0MyRCIgZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNMjEuNzQ0IDIxLjU5MUgyLjExYy0uNTgtLjAwNy0uOTE1LS42NzUtLjYyLTEuMTc1bDkuMjY4LTE1LjcwMmMuNDcyLS43NTcuNzgyLTEuMjA3IDEuMTc1LTEuMjA3LjM4MyAwIC43NDcuNTcgMS4xNjggMS4yMmw5LjI3NSAxNS42ODdjLjI5Ni41LS4wMzggMS4xNy0uNjE5IDEuMTc3aC0uMDEzek0xNC4xNDggNC4xMTRsLS4wMjgtLjA0M2MtLjU2Mi0uODY4LTEuMTQ0LTEuNzY3LTIuMTg3LTEuNzY3LTEuMDg3IDAtMS42NTUuOTEyLTIuMjA2IDEuNzkzbC0uMDIyLjAzNi05LjYyIDE2LjMzMmMtLjA1Ni4wOTQtLjA4NS4xNDMtLjA4NS4yNTEgMCAxLjE4Ni45NTIgMi4wOTMgMi4xMjMgMi4wOTNoMTkuNjJjMS4xNzIgMCAyLjEyMy0uOTA3IDIuMTIzLTIuMDkzYS41MTIuNTEyIDAgMCAwLS4wODMtLjI4TDE0LjE0OCA0LjExNHoiIG1hc2s9InVybCgjYikiLz4KICAgIDwvZz4KPC9zdmc+Cg==') !important;
+        background-repeat: no-repeat !important;
+        background-position: center right 16px !important;
+        background-size: auto !important;
+      }
+    }
+  }
+}
+
+app-dynamic-select:not(.no-validation-padding) {
+  &.ng-touched:not(form),
+  &.ng-dirty:not(form) {
+    &.ng-invalid {
+      padding-right: 0 !important;
+    }
+  }
+}
+
+.charts-card {
+
+  height: 214px;
+
+  @include media-breakpoint-up(sm) {
+    height: 304px;
+  }
+
+  @include media-breakpoint-up(md) {
+    height: 427px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    height: 548px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    height: 655px;
+  }
+}
+
+.tutorials-modal-close {
+  .icon-close {
+    fill: $white;
+
+    &:hover {
+      fill: $white;
+    }
+  }
+}
+
+
+// for arrow wrapper invalid padding
+
+.arrow-wrapper-padding:not(.no-validation-padding) {
+  &.ng-touched:not(form),
+  &.ng-dirty:not(form) {
+    &.ng-invalid{
+      .ng-arrow-wrapper{
+        // padding-right: 12.5px;
+      }
+
+    }
+
+  }
+}

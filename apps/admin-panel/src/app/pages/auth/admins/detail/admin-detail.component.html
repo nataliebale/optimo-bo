@@ -1,0 +1,104 @@
+<form
+  *ngIf="form"
+  [formGroup]="form"
+  (submit)="onSubmit()"
+  class="offer-detail"
+>
+   
+<div class="container-fluid sticky-top bg-white mb-42px" style="height: 72px;">
+  <div class="row align-items-center h-100 border-bottom border-secondary">
+    <div class="col pl-0 h-100">
+      <button type="button" class="btn bg-white px-2 h-100 rounded-0" style="width: 102px;"
+        (click)="onClose()">
+        <app-icon icon="close"></app-icon>
+      </button>
+    </div>
+    <div class="col-auto font-size-20 font-family-bold text-dark">
+      ადმინის {{ title }}
+    </div>
+    <div class="col pr-4 h-100 d-flex align-items-center justify-content-end">
+      <button class="btn btn-primary font-size-14 font-family-bold text-white py-0 px-23px h-42px"
+        type="submit">
+        შენახვა
+      </button>
+    </div>
+  </div>
+</div>
+   
+
+  <div
+    *ngIf="error"
+    class="mt-1 container-md border border-danger-border bg-danger-bg rounded px-4 d-flex py-20px align-items-center"
+  >
+    <div class="col-1 px-0">
+      <app-icon icon="alert-admin"></app-icon>
+    </div>
+    <div
+      class="col text-center font-size-14 font-color-dark font-family-regular"
+    >
+      {{ this.errorText }}
+    </div>
+
+    <div class="col-1 px-0"></div>
+  </div>
+
+  <div class="container-md d-flex pt-5">
+    <div class="pl-0 col-12">
+      <div class="w-100 d-flex flex-column pb-32px" *ngIf="!editId">
+        <label class="font-size-15 font-color-dark font-family-bold"
+          >UserName</label
+        >
+        <input class="form-control" type="text" formControlName="userName" />
+      </div>
+      <div class="w-100 d-flex flex-column pb-32px">
+        <label class="font-size-15 font-color-dark font-family-bold"
+          >სახელი</label
+        >
+        <input class="form-control" type="text" formControlName="firstName" />
+      </div>
+      <div class="w-100 d-flex flex-column pb-32px">
+        <label class="font-size-15 font-color-dark font-family-bold"
+          >გვარი</label
+        >
+        <input class="form-control" type="text" formControlName="lastName" />
+      </div>
+
+      <div class="w-100 d-flex flex-column pb-32px">
+        <label class="font-size-15 font-color-dark font-family-bold" for="role"
+          >როლი</label
+        >
+        <ng-select
+          id="role"
+          formControlName="role"
+          [items]="roles"
+          bindValue="value"
+          bindLabel="label"
+          [searchable]="false"
+          [clearable]="false"
+          class="form-control"
+        >
+        </ng-select>
+      </div>
+      <div class="w-100 d-flex flex-column pb-32px">
+        <label class="font-size-15 font-color-dark font-family-bold"
+          >პაროლი</label
+        >
+        <input
+          class="form-control"
+          type="password"
+          formControlName="password"
+        />
+      </div>
+      <div class="w-100 d-flex flex-column pb-32px">
+        <label class="font-size-15 font-color-dark font-family-bold"
+          >გაიმეორეთ პაროლი</label
+        >
+        <input
+          class="form-control"
+          type="password"
+          formControlName="confirmPassword"
+        />
+      </div>
+    </div>
+  </div>
+</form>

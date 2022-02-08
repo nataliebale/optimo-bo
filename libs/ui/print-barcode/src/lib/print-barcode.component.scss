@@ -1,0 +1,42 @@
+@media screen {
+  .print {
+    display: none;
+  }
+}
+@media print {
+  * {
+    visibility: hidden;
+    // height: 0;
+  }
+  .print {
+    visibility: visible;
+    * {
+      visibility: visible;
+      // height: inherit;
+      // margin-top: 10px;
+    }
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: black;
+
+    .barcode {
+      margin-top: 0px;
+      // svg {
+      //   margin-top: 0px;
+      // }
+    }
+  }
+
+  // text {
+  //   letter-spacing: 7px;
+  // }
+}

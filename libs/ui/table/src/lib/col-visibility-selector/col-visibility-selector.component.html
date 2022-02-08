@@ -1,0 +1,35 @@
+<div class="custom-select" [class.active]="active">
+  <div #selectHeader class="custom-select-header col-visibility-selector" (click)="toggleSelect()">
+    <!-- <app-icon icon="more-dots"></app-icon> -->
+    <app-icon icon="column-add"></app-icon>
+  </div>
+  <ng-container *ngIf="active">
+    <div class="custom-select-body  " style="right: 13px;top: 120%;left: unset;" clickOutside
+      (clickOutside)="toggleSelect($event)">
+      <div
+        *ngFor="let col of visibilityManagableColumns"
+        class="custom-select-option"
+        [class.disabled]="col.canNotChangeVisibility"
+        >
+        <div class="custom-checkbox custom-checkbox-selected-blue justify-content-start">
+          <input data-hj-allow type="checkbox" [id]="col.dataField" class="custom-checkbox-control"
+            [disabled]="col.canNotChangeVisibility" [checked]="!col.hidden" (change)="onVisibleChange(col)" />
+          <label [for]="col.dataField" class="custom-checkbox-label">
+            <span class="custom-select-text ml-2 pl-1">
+              <ng-container
+                *ngIf="col.asyncCaption"
+              >
+                {{ col.asyncCaption | async | translate}}
+              </ng-container>
+              <ng-container
+                *ngIf="!col.asyncCaption"
+              >
+                {{ col.caption | translate}}
+              </ng-container>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

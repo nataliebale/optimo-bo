@@ -1,0 +1,106 @@
+<div class="container-fluid" style="margin-top: -72px;">
+  <div
+    *ngIf="error"
+    class="code-mismatch-error mt-4 d-flex align-items-center justify-content-between mx-auto mb-4 px-4"
+  >
+    <app-icon icon="close" class="mr-1"> </app-icon>
+    <span class="font-family-regular font-size-14">
+      SMS კოდი არასწიროა, გთხოვთ სცადოთ თავიდან.</span
+    >
+
+    <button (click)="onClearError()" class="btn p-0">
+      <app-icon icon="close" class="mr-1"> </app-icon>
+    </button>
+  </div>
+
+  <div class="contract-pdf-background mx-auto position-relative mt-4 position-relative d-flex justify-content-center align-items-baseline">
+    <!-- <div class="w-100 pdf-top-border" style="background-color: red;height: 20px;">
+
+    </div> -->
+
+    <div class="pdf-viewer-container mx-auto position-absolute mb-2" style="height: 1000px;">
+      <pdf-viewer
+        [src]="{ url: contract?.url, httpHeaders: headers }"
+        [fit-to-page]="true"
+      >
+      </pdf-viewer>
+    </div>
+
+    <div class="btn-pdf-dwnload-wrapper w-100 position-sticky" >
+      <button
+        (click)="onPDFDonwload()"
+        class="btn-pdf-dwnload position-absolute font-family-semibold font-size-14 btn px-4"
+      >
+        <app-icon icon="download" class="mr-1"> </app-icon>
+        <span class="pr-2">გადმოწერა</span>
+      </button>
+      <div class="pdf-bottom-border w-100">
+
+      </div>
+    </div>
+    
+  </div>
+
+  <div
+    class="contract-sms-info font-family-regular font-size-14 mx-auto text-center pt-4 mt-3"
+  >
+    SMS კოდის შეყვანის შემთხვევაში ხელშეკრულება ჩაითვლება გაფორმებულად.
+     
+  </div>
+
+  <div
+    class="sms-code-wrapper d-flex justify-content-center pt-4 mt-3 flex-column align-items-center"
+  >
+    <button
+      (click)="onSendCode()"
+      [disabled]="!canSend"
+      class="btn  btn-primary font-family-semibold font-size-14 btn-sms-code p-0"
+    >
+      <app-icon icon="reload" class="mr-2  icon-reload-blue" ></app-icon>
+
+      <span *ngIf="canSend">
+        SMS კოდის მიღება
+      </span>
+      <span *ngIf="!canSend"> {{ timer$ | async }} </span>
+    </button>
+
+    <form
+      [formGroup]="form"
+      (submit)="onSubmit()"
+      class="pt-4 mt-3 position-relative"
+    >
+      <div class="input-sms-code-wrapper">
+        <input
+          data-hj-allow
+          #input
+          type="text"
+          mask="0000"
+          (input)="onCodeChange($event.target.value)"
+          (focus)="inputIsFocused = true"
+          (blur)="inputIsFocused = false"
+          formControlName="code"
+          class="input-sms-code font-family-semibold font-size-30 position-absolute"
+        />
+        <div class="code-borders-wrapper">
+          <div
+            *ngFor="let char of codeCharsArray; let i = index"
+            class="code-border font-family-semibold font-size-30 d-flex justify-content-center align-items-center"
+            [class.active]="
+              char || ((!i || codeCharsArray[i - 1]) && inputIsFocused)
+            "
+          >
+            {{ char }}
+          </div>
+        </div>
+      </div>
+
+      <button
+        *ngIf="codeIsFilled && !loading"
+        type="submit"
+        class="position-absolute btn btn-code-filled d-flex justify-content-center align-items-center p-0"
+      >
+        <app-icon icon="next-step"></app-icon>
+      </button>
+    </form>
+  </div>
+</div>

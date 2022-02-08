@@ -1,0 +1,49 @@
+<div class="h-100 d-flex flex-column" style="padding-bottom: 71px;">
+  <div class="d-flex align-items-center py-3 px-4" style="height: 80px;">
+  </div>
+  <div class="bg-white flex-grow-1">
+  <app-table
+    *ngIf="datasource"
+    [displayedColumns]="displayedColumns"
+    [dataSource]="datasource"
+    [totalCount]="totalCount"
+    [state]="curTableState"
+    [selectable]="false"
+    [filterable]="true"
+    [paginable]="true"
+    [defaultSort]="'id'"
+    [defaultSortDirection]="'DESC'"
+    (stateChanged)="onTableStateChanged($event)"
+    class="table-inventory before-last-th-bordered last-td-pr-24px"
+    style="padding-bottom: 71px;"
+  >
+
+
+  <ng-template app-cell let-cell="cell" let-row="row" name="stockItemNameOrBarcode">
+    <div class="line-height-normal translate-t-1px">
+      <span
+        [matTooltip]="row.stockItemName" #ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+        class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1"
+      >
+        {{ row.stockItemName }}
+      </span>
+      <br />
+      <span
+        [matTooltip]="row.stockItemBarcode" #ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+        class="text-truncate mw-100 d-inline-block table-text-dark"
+      >
+        {{ row.stockItemBarcode }}
+      </span>
+    </div>
+  </ng-template>
+
+  <ng-template app-cell let-cell="cell" let-row="row" name="stockItemPhotoUrl">
+    <div
+      class="table-stock-item-photo"
+      [ngStyle]="{ 'background-image': 'url(' + row.stockItemPhotoUrl + ')' }"
+      [class.no-stock-img]="!row.stockItemPhotoUrl"
+    ></div>
+  </ng-template>
+  </app-table>
+</div>
+</div>

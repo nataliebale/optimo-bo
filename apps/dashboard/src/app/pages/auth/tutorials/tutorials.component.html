@@ -1,0 +1,64 @@
+<div class="tutorials">
+  <div
+    class="tutorials-text text-dark font-size-22 font-family-bold text-center" style="margin-bottom:56px;"
+  >
+    {{ 'HELP.TITLE' | translate }}
+  </div>
+  <div class="tutorials-items">
+    <div class="row">
+      <ng-container *ngIf="tutorials$ | async as tutorials">
+        <div *ngFor="let item of tutorials" class="col-lg-3 col-sm-6 col-xs-6 col-12">
+          <div
+            (click)="onClick(item)"
+            style="cursor: pointer;"
+            class="tutorial mb-5 text-decoration-none text-dark"
+          >
+            <div class="tutorial-img bg-secondary rounded overflow-hidden">
+              <iframe
+                (click)="onClick()"
+                class="w-100 h-100 position-absolute"
+                [src]="item.src"
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+              <div class="w-100 h-100 position-absolute"></div>
+            </div>
+            <div class="tutorial-text font-size-14 font-family-bold mt-3">
+              {{ item.title }}
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+<ng-container *ngIf="selectedTutorial">
+  <div class="tutorials-modal">
+    <div class="tutorials-modal-backdrop" (click)="closeModal()"></div>
+    <div class="tutorials-modal-body">
+      <div class="d-flex align-items-center" style="padding-bottom: 30px;">
+        <div class="col-1 px-0">
+        </div>
+        <div class="col text-center font-size-20 font-family-bold font-color-dark line-height-normal">{{selectedTutorial.title}}</div>
+        <div class="col-1 d-flex justify-content-end px-0">
+          <button (click)="closeModal()" class="btn bg-transparent outline-none p-0">
+            <app-icon icon="close"></app-icon>
+          </button>
+        </div>
+
+      </div>
+      <div class="embed-responsive embed-responsive-16by9 rounded">
+        <iframe
+          [src]="selectedTutorial.src"
+          frameborder="0"
+          width="700"
+          height="400"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          class="embed-responsive-item"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</ng-container>

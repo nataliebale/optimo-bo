@@ -1,0 +1,41 @@
+<div
+  class="bg-white rounded"
+  style="box-shadow: 0 30px 30px 0 rgba(0, 0, 0, 0.1);"
+>
+<div
+    class="d-flex align-items-center justify-content-between border-bottom border-table-border-color   container-fluid pl-4"
+    style="height:60px;"
+  >
+      <span class="text-dark font-size-18 font-family-bold"
+        >უმოქმედობის გამო სისტემა იხურება
+      </span>
+      <app-icon
+      (click)="onContinue()"
+        [icon]="'close'"
+        class="icon-w-20px icon-h-20px pr-6px"
+        style="cursor: pointer;  "
+      ></app-icon>
+  </div>
+  <div class="p-4 d-flex align-items-center font-size-14 font-family-regular font-color-dark line-height-normal">
+     <span>უმოქმედობის გამო სისტემიდან გამოხვალთ 
+    <span style="width: 18px;" class="text-center d-inline-block">{{countDown}}</span>
+     წამში.</span>
+  </div>
+  <div class="d-flex px-4 justify-content-end pb-4">
+    <button
+      class="btn mr-2 font-family-bold px-4"
+      style="height: 42px;"
+      type="button"
+      (click)="onLogout()"
+    >
+    გასვლა
+    </button>
+    <button
+      class="btn btn-primary font-family-bold px-4"
+      style=" height: 42px;"
+      (click)="onContinue()"
+    >
+    დარჩენა
+    </button>
+  </div>
+</div>

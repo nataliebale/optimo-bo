@@ -1,0 +1,379 @@
+<form *ngIf="form" [formGroup]="form">
+  <div class="container-fluid sticky-top bg-white" style="height: 72px;">
+    <div class="row align-items-center h-100 border-bottom border-secondary">
+      <div class="col pl-0 h-100">
+        <button
+          type="button"
+          class="btn bg-white px-2 h-100 rounded-0"
+          style="width: 102px;"
+          (click)="onCancel()"
+        >
+          <app-icon icon="close"></app-icon>
+        </button>
+      </div>
+      <div class="col-auto font-size-20 font-family-bold text-dark">
+        გაყიდვის {{ title }}
+      </div>
+      <div class="col pr-4 h-100 d-flex align-items-center justify-content-end">
+        <button
+          class="btn bg-table-border-color font-size-14 font-family-bold text-dark py-0 px-23px h-42px mr-3"
+          (click)="createOrder(entitySaleStatus.Draft)"
+          [disabled]="requestIsSent"
+        >
+          შენახვა
+        </button>
+        <button
+          class="btn btn-primary font-size-14 font-family-bold text-white py-0 px-23px h-42px"
+          (click)="createOrder(entitySaleStatus.Sold)"
+          [disabled]="requestIsSent"
+        >
+          გაყიდვა
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="w-100 mt-3" style="height: 54px;">
+    <div class="w-100" *ngIf="isSubmited && form?.invalid || isSubmited && isFormInvalid">
+      <div
+        class="mx-auto bg-danger-bg px-4 rounded text-center border d-flex align-items-center border-danger-border"
+        style="max-width: 960px;height: 54px;"
+      >
+        <div class="col-2 d-flex px-0"><app-icon icon="alert"></app-icon></div>
+        <div
+          class="col text-center font-size-14 font-color-dark font-family-regular"
+        >
+          შეავსე გამორჩენილი ველები
+        </div>
+        <div class="col-2 px-0"></div>
+      </div>
+    </div>
+  </div>
+  <!--  [class.mt-70px]="!(isSubmited && form?.invalid)" -->
+  <div
+    class="pt-20px px-0 pb-50px mx-auto"
+    style="max-width: 960px;"
+  >
+    <div>
+      <div class="font-size-20 font-color-dark font-family-bold pb-30px">
+        ზოგადი ინფორმაცია
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <label
+            for="entitySalesDetailEntityName"
+            class="font-size-15 font-color-dark font-family-bold"
+            >დასახელება*</label
+          >
+          <div class="form-group form-group-lg d-flex">
+            <ng-select
+              id="entitySalesDetailEntityName"
+              class="custom-select-header form-control ng-optiong-py-2 ng-dropdown-panel-py-0 max-h-325px"
+              [items]="clients$ | async"
+              bindLabel="entityName"
+              [addTag]="false"
+              required
+              [loading]="clientsLoading"
+              typeToSearchText="ჩაწერეთ მინიმუმ ერთი სიმბოლო"
+              [typeahead]="clientsInput$"
+              [(ngModel)]="selectedClient"
+              formControlName="entityName"
+              [clearable]="false"
+          >
+              <!-- [ngModelOptions]="{ standalone: true }" -->
+            <ng-template ng-option-tmp let-item="item" let-item$="item$">
+              <div class="d-flex flex-column font-color-dark font-size-14 w-100">
+                <span class="pb-6px font-family-bold text-truncate">{{item.entityName}}</span>
+                <span class="text-truncate">{{item.entityIdentifier}}</span>          
+              </div>
+            </ng-template>          
+          </ng-select>
+          </div>
+
+
+          <div class="form-group form-group-lg">
+            <label
+              for="entitySalesDetailPaymentMethod"
+              class="font-size-15 font-color-dark font-family-bold"
+              >გადახდის მეთოდი*</label
+            >
+            <ng-select
+              id="entitySalesDetailPaymentMethod"
+              class="custom-select-header form-control"
+              [items]="paymentMethods"
+              formControlName="paymentMethod"
+              bindValue="value"
+              bindLabel="label"
+              [searchable]="true"
+              [clearable]="false"
+            >
+            </ng-select>
+          </div>          
+        </div>
+        <div class="col-6">
+          <label
+            for="entitySalesDetailStartAddress"
+            class="font-size-15 font-color-dark font-family-bold"
+            >საწყისი მისამართი*</label
+          >
+          <div class="form-group form-group-lg">
+            <div class="form-group form-group-lg d-flex">
+              <input
+                id="shippingLocationIdFrom"
+                data-hj-allow
+                class="form-control"
+                formControlName="startAddress"
+                type="text"
+              />
+            </div>
+          </div>          
+          <!-- <label
+            for="entitySalesDetailEntityType"
+            class="font-size-15 font-color-dark font-family-bold"
+            >კომპანიის ტიპი</label
+          >
+          <div class="form-group form-group-lg d-flex">
+            <ng-select
+              id="entitySalesDetailEntityType"
+              class="custom-select-header form-control"
+              [items]="entityTypes"
+              formControlName="entityType"
+              bindValue="value"
+              bindLabel="label"
+              [searchable]="true"
+              [clearable]="false"
+            >
+            </ng-select>
+          </div> -->
+        </div>
+        <div class="col-12">
+          <label
+            for="entitySalesDetailComment"
+            class="font-size-15 font-color-dark font-family-bold"
+            >აღწერა</label
+          >
+          <textarea
+            id="entitySalesDetailComment"
+            data-hj-allow
+            class="form-control"
+            formControlName="comment"
+            style="height: 130px; resize: none;"
+            autocomplete="off"
+          ></textarea>
+          <div class="d-flex w-100 align-items-center  mt-4 mb-4">
+            <div
+            class=" custom-checkbox custom-checkbox-selected-blue"
+            style="justify-content: left; padding: 0;"
+          >
+            <input
+              id="hasTransportation"
+              data-hj-allow
+              class="custom-checkbox-control"
+              type="checkbox"
+              name="hasTransportation"
+              (change)="onHasTransportationToggle()"
+              formControlName="hasTransportation"
+            />
+            <label for="hasTransportation" class="custom-checkbox-label">
+              <span style="margin-left: 12px;">ტრანსპორტირებით</span>
+            </label>
+          </div>
+          <div
+            *ngIf="isHoreca"
+            class="ml-5 custom-checkbox custom-checkbox-selected-blue"
+            style="justify-content: left; padding: 0;"
+          >
+            <input
+              id="taxRate"
+              data-hj-allow
+              type="checkbox"
+              class="custom-checkbox-control"
+              name="taxRate"
+              formControlName="taxRate"
+            />
+            <label for="taxRate" class="custom-checkbox-label">
+              <span style="margin-left: 12px;">საკომისიო</span>
+            </label>
+          </div>
+
+          </div>
+          
+        </div>
+
+        <ng-container
+          *ngIf="getValue('hasTransportation')"
+        >
+          <div
+            class="w-100 font-size-20 font-color-dark font-family-bold pb-30px pt-5 mt-42px px-12px"
+          >
+            ტრანსპორტირება
+          </div>
+          <div class="col-6">
+            
+            <label
+              for="driverIsForeignСitizen"
+              class="font-size-15 font-color-dark font-family-bold"
+              >ტრანსპორტირების მეთოდი</label
+            >
+            <div class="form-group form-group-lg d-flex">
+              <ng-select
+                id="driverIsForeignСitizen"
+                class="custom-select-header form-control"
+                [items]="transportationTypes"
+                formControlName="transportationType"
+                bindValue="value"
+                bindLabel="label"
+                [searchable]="false"
+                [clearable]="false"
+                (change)="onTransportationChange()"
+              >
+              </ng-select>
+            </div>
+          </div>
+
+          
+          <ng-container *ngIf="getValue('transportationType') === TransportationMethod.Other">
+            <div class="col-6">
+              <label
+                for="transportName"
+                class="font-size-15 font-color-dark font-family-bold"
+                >
+                სხვა ტრანსპორტი*
+              </label>
+              <div class="form-group form-group-lg d-flex">
+                <input
+                  id="transportName"
+                  data-hj-allow
+                  type="text"
+                  class="form-control"
+                  formControlName="transportName"
+                />
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="getValue('transportationType') === TransportationMethod.RoadTransportation">
+            <div class="col-6">
+
+              <label
+                for="driverName"
+                class="font-size-15 font-color-dark font-family-bold"
+                >მძღოლის სახელი და გვარი*</label
+              >
+              <div class="form-group form-group-lg d-flex">
+                <input
+                  id="driverName"
+                  data-hj-allow
+                  type="text"
+                  class="form-control"
+                  formControlName="driverName"
+                />
+              </div>
+              <!-- <label for="driverPIN" class="font-size-15 font-color-dark font-family-bold">მძღოლის პირადი ნომერი*</label>
+                <div class=" d-flex">
+                  <input
+                    id="driverPIN"
+                    type="text"
+                  
+                    class="form-control"
+                    formControlName="driverPIN"
+                    [mask]="entityIdentifierMask"
+                  />
+                </div> -->
+
+            </div>
+            <div class="col-6">
+              <label
+                for="driverIsForeignСitizen"
+                class="font-size-15 font-color-dark font-family-bold"
+                >მოქალაქეობა*</label
+              >
+              <div class="form-group form-group-lg d-flex">
+                <ng-select
+                  id="driverIsForeignСitizen"
+                  class="custom-select-header form-control"
+                  [items]="citizenships"
+                  formControlName="driverIsForeignСitizen"
+                  bindValue="value"
+                  bindLabel="label"
+                  [searchable]="false"
+                  [clearable]="false"
+                  (change)="onCitizenshipChange()"
+                >
+                </ng-select>
+              </div>
+            </div>
+            <div class="col-6">
+              <label
+                for="driverPIN"
+                class="font-size-15 font-color-dark font-family-bold"
+                >მძღოლის პირადი ნომერი*</label
+              >
+              <div class="form-group form-group-lg d-flex">
+                <input
+                  id="driverPIN"
+                  data-hj-allow
+                  type="text"
+                  class="form-control"
+                  formControlName="driverPIN"
+                  [mask]="entityIdentifierMask"
+                />
+              </div>
+
+            </div>
+            <div class="col-6">
+              <label
+                for="driverCarNumber"
+                class="font-size-15 font-color-dark font-family-bold"
+                >ავტომობილი ნომერი*</label
+              >
+              <div class="d-flex">
+                <input
+                  id="driverCarNumber"
+                  data-hj-allow
+                  type="text"
+                  class="form-control"
+                  formControlName="driverCarNumber"
+                />
+              </div>
+            </div>
+          </ng-container>
+
+          <div class="col-6">
+            <label
+              for="entitySalesDetailEndAddress"
+              class="font-size-15 font-color-dark font-family-bold"
+              >
+              საბოლოო მისამართი*
+            </label>
+            <div class="form-group form-group-lg d-flex">
+              <input
+                id="entitySalesDetailEndAddress"
+                data-hj-allow
+                type="text"
+                class="form-control"
+                formControlName="endAddress"
+              />
+            </div>            
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div>
+      <div
+        class="w-100 font-size-20 font-color-dark font-family-bold pb-30px pt-5 mt-42px"
+      >
+        პროდუქტის დამატება
+      </div>
+      <div>
+        <app-entity-sales-detail-products
+          [orderLines]="item?.orderLines"
+          [hasTaxRate]="getValue('taxRate')"
+          [taxAmount]="taxRate"
+          (changeOrderLines)="orderLines = $event"
+        ></app-entity-sales-detail-products>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,223 @@
+.product {
+
+  &-header {
+    padding: 16px 16px;
+    min-height: 80px;
+    align-items:center ;
+    @include media-breakpoint-up(sm) {
+      padding-left: 24px;
+      padding-right: 13px;
+      
+    }
+
+    .product-search {
+      @include media-breakpoint-up(sm) {
+        margin-right: 12px;
+      }
+    }
+  }
+
+  &-search {
+    display: flex;
+    align-items: center;
+
+    app-dynamic-select {
+      border-top: none;
+      border-left: none;
+      border-bottom: none;
+      border-right-style: none;
+      @include media-breakpoint-only(xs) {
+        border-right: 0;
+      }
+      height: 42px;
+      // width: calc(100% - 13px);
+      font-size: 14px;
+      @include border-radius(0);
+
+      .dynamic-select {
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+      &-container {
+        color: $text-muted !important;
+        font-size: 16px
+      }
+    }
+
+    .ng-placeholder {
+      color: $text-muted;
+    }
+  }
+
+  &-select {
+    position: relative;
+
+    .ng-select {
+      position: static;
+    }
+  }
+
+  &-year-select {
+    display: flex;
+    align-items: center;
+    @include media-breakpoint-up(sm) {
+      width: 320px;
+    }
+
+    &-icon {
+      border: $border-width solid $border-color;
+      border-left: 0;
+      @include border-right-radius($border-radius);
+      height: 42px;
+      width: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .ng-select {
+      height: 42px;
+      padding-top: 9px;
+      padding-bottom: 9px;
+      @include border-right-radius(0);
+    }
+  }
+
+  &-image {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+    &.bg-cover{
+      background-size: cover !important;
+
+    }
+
+    &::before {
+      @include media-breakpoint-only(xs) {
+        content: '';
+        display: block;
+        padding-top: 100% * 168 / 272;
+      }
+    }
+      max-width: 64px;
+      height: 54px;
+    // @include media-breakpoint-up(md) {
+    //   max-width: 224px;
+    // }
+    // @include media-breakpoint-up(lg) {
+    //   max-width: 176px;
+    //   height: 132px;
+    // }
+    border: 1px solid $pagination-border;
+    border-radius: 4px;
+
+  }
+
+  &-calendar {
+    width: 202px;
+    flex-grow: 1;
+    cursor: pointer;
+    @include media-breakpoint-up(sm) {
+      width: 42px;
+    }
+
+    @include media-breakpoint-only(sm) {
+      .input-group-append {
+        @include transition;
+        @include border-radius;
+
+        @include hover-focus() {
+          background-color: #e6ecf5;
+        }
+      }
+
+      .input-group-text {
+        @include transition;
+        @include hover-focus {
+          border-color: $blue;
+        }
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      width: 320px;
+    }
+
+    @include media-breakpoint-down(md) {
+      .filter-dialog {
+        left: 0;
+
+        &::before {
+          right: unset;
+          left: 10px;
+        }
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+      .filter-dialog {
+        width: 304px;
+        left: -25px;
+
+        &::before {
+          left: 37px;
+        }
+      }
+    }
+
+    .form-control {
+      height: 42px;
+    }
+
+    .input-group-text {
+      width: 42px;
+      height: 42px;
+      padding-left: 5px;
+      padding-right: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include media-breakpoint-only(sm) {
+        border-top-left-radius: $border-radius !important;
+        border-bottom-left-radius: $border-radius !important;
+
+      }
+    }
+  }
+
+  &-select {
+    
+      // border: 1px solid $pagination-border;
+      // border-radius: 5px;
+     
+  }
+
+  &-cards {
+    &-margin {
+      margin-top: 0;
+      margin-bottom: 0;
+      @include media-breakpoint-up(sm) {
+        margin-top: 32px;
+        margin-bottom: 24px;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-only(xs) {
+  .product-row {
+    margin-left: -8px;
+    margin-right: -8px;
+  }
+
+  .product-row {
+    [class^="col-"], .col {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+  }
+}

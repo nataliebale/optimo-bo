@@ -1,0 +1,36 @@
+<div
+  class="d-flex align-items-center justify-content-between border-bottom border-table-border-color pl-4 pr-18px"
+  style="height: 60px;"
+>
+  <div class="font-color-dark font-size-18 font-family-bold line-height-normal">
+    {{'WAYBILLS.RECEIVED_WAYBILLS.ITEM.BUY' | translate}}
+  </div>
+  <button class="btn bg-transparent rounded-0 p-0" (click)="onClose()">
+    <app-icon
+      icon="close"
+      class="icon-w-20px icon-h-20px"
+      style="cursor: pointer;"
+    ></app-icon>
+  </button>
+</div>
+<div class="p-4 font-color-dark font-size-14 font-family-regular line-height-normal">
+  {{'WAYBILLS.RECEIVED_WAYBILLS.ITEM.CONNECT_ORDER_MESSAGE' | translate}}   
+</div>
+<div class="d-flex justify-content-end  pb-4 px-4">
+  <button
+    class="btn bg-transparent mr-3 font-size-14 font-color-dark font-family-bold"
+    style="width: 99px; height: 42px;"
+    type="button"
+    (click)="on('existing')"
+  >
+  {{'WAYBILLS.RECEIVED_WAYBILLS.ITEM.CHOOSE' | translate}}   
+  </button>
+  <button
+    class="btn btn-primary font-color-white font-size-14 font-family-bold"
+    style="width: 99px; height: 42px;"
+    type="submit"
+    (click)="on('new')"
+  >
+  {{'WAYBILLS.RECEIVED_WAYBILLS.ITEM.CREATE' | translate}}   
+  </button>
+</div>

@@ -1,0 +1,73 @@
+<div class="d-flex flex-column h-100" style="padding-bottom: 71px;">
+  <div
+    class="bg-white d-block d-sm-flex align-items-sm-center product-header pr-4"
+  >
+    <div class="nav-tabs nav-tabs-two mr-3"
+         [class.first-load]="firstLoad"    
+         (mouseover)="firstLoad = false">
+         
+      <a
+        class="nav-item"
+        [routerLink]="['general']"
+        routerLinkActive="active"
+        [preserveQueryParams]="true"
+       
+      >
+        {{'LOTS.GENERAL' | translate}}
+        <span>{{'LOTS.GENERAL' | translate}}</span>
+      </a>
+      <a
+        class="nav-item"
+         
+        [routerLink]="['specific']"
+        routerLinkActive="active"
+        #rla="routerLinkActive"
+        [preserveQueryParams]="true"
+        
+      >
+      {{'LOTS.PRODUCTS' | translate}}
+      <span>{{'LOTS.PRODUCTS' | translate}}</span>
+      </a>
+    </div>
+    <div
+        class="mr-3"
+        style="width: 1px; background-color: #e7e7e7; height: 32px;"
+      ></div>
+    <button
+      [hidden]="rla.isActive"
+      [matTooltip]="'LOTS.EXCEL_IMPORT' | translate"
+      class="btn rounded bg-excel-export p-0 mr-2"
+      (click)="onExport()"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon icon="excel"> </app-icon>
+    </button>
+
+    <div
+      [hidden]="!rla.isActive"
+      class="product-select product-search flex-grow-1 mb-3 mb-sm-0 w-100  border rounded border-pagination-border "
+      style="max-width: 600px;height: 42px;"
+    >
+      <app-dynamic-select
+        [dataGetter]="getStockitems"
+        additionalSearchKey="barcode"
+        [itemGetterById]="getStockitemById"
+        [(ngModel)]="stockItemId"
+        class="flex-grow-1 mw-100 font-size-14"
+        (change)="onStockitemChange($event)"
+        class="h-37px"
+      ></app-dynamic-select>
+    </div>
+    
+	<app-date-picker
+        (dateChange)="onDateChanged($event)"
+        [defaultDate]="dateRange"
+        class="date-picker-regular ml-auto only-range-picker"
+      ></app-date-picker>
+  </div>
+  <div class=" flex-grow-1">
+    <div class="d-flex flex-column h-100 table-height-100 app-lots-history-specific-h-100">
+      <router-outlet (activate)="onChildChanged($event)"></router-outlet>
+    </div>
+  </div>
+</div>

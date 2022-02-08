@@ -1,0 +1,61 @@
+.notifier__container {
+  $root: &;
+  #{$root}-list {
+    .notifier__notification--material {
+      will-change: unset;
+      border-radius: 5px;
+      box-shadow: none;
+      padding: 8px 15px !important;
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+
+      @include media-breakpoint-down(sm) {
+        padding-right: 14px !important;
+        right: 16px;
+      }
+
+      .notifier__notification-message {
+        font-size: 14px;
+        font-family: $font-regular;
+        color: $dark;
+        @include media-breakpoint-down(sm) {
+          line-height: 17px;
+          padding-left: 15px;
+        }
+      }
+      &.notifier__notification--error {
+        background-color: $red-bg-notifier;
+        border: 1px solid $red-border-notifier;
+        &:before {
+          content: '';
+          background-image: url($notifier-alert-icon-bg) !important;
+          width: 20px;
+          height: 20px;
+          margin-right: 8px;
+        }
+      }
+      &.notifier__notification--success {
+        background-color: $green-bg-notifier;
+        border: 1px solid $green-border-notifier;
+        &:before {
+          content: '';
+          background-image: url($notifier-success-icon-bg) !important;
+          width: 20px;
+          height: 20px;
+          margin-right: 8px;
+          min-width: 20px;
+          @include media-breakpoint-down(sm) {
+            margin-right: 0px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// $root: &;
+
+//   #{$root}-control {

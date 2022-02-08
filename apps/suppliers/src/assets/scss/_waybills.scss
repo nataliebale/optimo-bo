@@ -1,0 +1,83 @@
+.waybills {
+  &-table {
+    th, td {
+      padding-left: 16px !important;
+      padding-right: 16px !important;
+    }
+
+   
+
+    &-paddings {
+      .table td:first-child, table th:first-child {
+        padding-left: 32px;
+      }
+
+      .table td:last-child, .table th:last-child {
+        padding-right: 32px;
+      }
+
+      th {
+        border-right: 0 !important;
+        font-size: 16px;
+      }
+
+      td {
+        font-size: 16px;
+      }
+
+      .rounded {
+        border-radius: 0 !important;
+      }
+
+      .mat-sort-header-button {
+        padding-left: 0 !important;
+      }
+    }
+  }
+
+  &-choose-table {
+    .table {
+      margin-bottom: 0;
+      th {
+        border: none;
+        padding-left:16px;
+        padding-right:16px;
+      }
+      td {
+        height: 69px;
+      }
+      &-content{
+        min-height: unset !important;
+      }
+    }
+
+    // .h-100 {
+    //   height: auto !important;
+    // }
+
+    .border {
+      border: 0 !important;
+    }
+  }
+
+  &-calendar {
+    .filter-dialog {
+      top: 0;
+      bottom: 0;
+      left: calc(100% + 16px);
+      width: 331px;
+
+      &::before {
+        top: 50%;
+        transform: rotate(-135deg) translateY(-50%);
+        left: -3px;
+      }
+    }
+  }
+
+  &-dialog {
+    .mat-dialog-container {
+      overflow: unset !important;
+    }
+  }
+}

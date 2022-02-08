@@ -1,0 +1,37 @@
+<ng-container>
+  <div class="font-family-bold font-size-14 text-dark pl-2 text-truncate">
+    {{ item.title | translate }}
+  </div>
+  <div class="font-size-14 font-family-regular text-dark mt-1 pl-2 text-truncate">
+    <ng-container
+      *ngIf="
+        !item.type ||
+        item.type === attributeTypes.text ||
+        item.type === attributeTypes.number
+      "
+    >
+      {{ item?.value || '-' | translate}}
+    </ng-container>
+    <ng-container *ngIf="item.type === attributeTypes.decimalDot2">
+      {{ item?.value | number: '1.2-2':'en' || '-' }}
+    </ng-container>
+    <ng-container *ngIf="item.type === attributeTypes.decimalDot4">
+      {{ item?.value | number: '1.4-4':'en' || '-' }}
+    </ng-container>
+    <ng-container *ngIf="item.type === attributeTypes.date">
+      {{ item?.value | date: 'd MMM yy' || '-' }}
+    </ng-container>
+    <ng-container *ngIf="item.type === attributeTypes.longDate">
+      {{ item?.value | date: 'd MMMM yy' || '-' }}
+    </ng-container>
+    <ng-container *ngIf="item.type === attributeTypes.dateTime">
+      {{ item?.value | date: 'd MMM yy, HH:mm' || '-' }}
+    </ng-container>
+    <ng-container *ngIf="item.type === attributeTypes.longDateTime">
+      {{ item?.value | date: 'd MMMM yyyy, HH:mm' || '-' }}
+    </ng-container>
+    <ng-container *ngIf="item.type === attributeTypes.currency">
+      {{ item?.value | number: '1.4-4':'en' || '-' }} ₾
+    </ng-container>
+  </div>
+</ng-container>

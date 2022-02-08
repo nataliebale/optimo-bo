@@ -1,0 +1,175 @@
+<div
+  class="d-flex justify-content-between align-items-center"
+>
+  <div class="pb-3" style="width: 468px;">
+    <app-dynamic-select
+      #dynamicSelector
+      #dynamicSelectorModel="ngModel"
+      [dataGetter]="getProducts"
+      additionalSearchKey="barcode"
+      [itemGetterById]="getProductById"
+      [showClearButton]="false"
+      [multiple]="criteria === PricesChangeCriteria.StockItem"
+      [showLabel]="criteria !== PricesChangeCriteria.StockItem"
+      [closeOnSelect]="criteria !== PricesChangeCriteria.StockItem"
+      [ngModel]="
+        criteria === PricesChangeCriteria.StockItem
+          ? selectedProductIds
+          : selectedProductIds[0]
+      "
+      [disabled]="
+        !dateFrom || (type !== PricesChangeType.PriceChange && !dateTo)
+      "
+      (ngModelChange)="selectedProductIds = $event"
+      (add)="onStockItemAdd($event)"
+      (remove)="onStockItemRemove($event)"
+    ></app-dynamic-select>
+  </div>
+</div>
+<app-table
+  *ngIf="displayedColumns"
+  [dataSource]="productsDataSource"
+  [totalCount]="productsDataSource?.length"
+  [selectable]="false"
+  [filterable]="false"
+  [paginable]="false"
+  childrenField="children"
+  [displayedColumns]="displayedColumns"
+  [staticData]="true"
+  class="table-add-order table-prices-change first-td-d-table-cell first-tr-regular"
+  [class.disabled]="productsDataSource && productsDataSource[0]?.placeholder"
+>
+  <ng-template app-cell let-i="i" let-row="row" name="__expand">
+    <button
+      *ngIf="
+        criteria !== PricesChangeCriteria.StockItem && row.children;
+        else index
+      "
+      (click)="onRowExpansionToggle({ row: row, index: i })"
+    >
+      <span
+        *ngIf="row.__expanded; else expand"
+        style="-webkit-transform: rotate(-180deg); transform: rotate(-180deg);"
+      ></span>
+      <ng-template #expand>
+        <span></span>
+      </ng-template>
+    </button>
+
+    <ng-template #index>
+      <ng-container *ngIf="!row.placeholder && i > 0">
+        {{ i }}
+      </ng-container>
+    </ng-template>
+  </ng-template>
+
+  <ng-template app-cell let-cell="cell" let-row="row" name="name" class="reeee">
+    <div class="d-flex align-items-center justify-content-between">
+      <!-- <span
+        [matTooltip]="cell"
+        class="mw-100 d-inline-block text-truncate ml-2 mt-1"
+      >
+        {{ cell }}
+      </span> -->
+      <div class="d-flex flex-column text-truncate line-height-normal">
+        <span
+		  [matTooltip]="row.name"
+		  #ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+          class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1"
+        >
+          {{ row.name }}
+        </span>
+        <!-- <br *ngIf="row.barcode"/> -->
+        <span
+		  [matTooltip]="row.barcode"
+		  #ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+          class="text-truncate mw-100 d-inline-block table-text-dark"
+        >
+          {{ row.barcode }}
+        </span>
+      </div>
+      <div
+        *ngIf="row.prices && row.prices.length"
+	      [matTooltip]="getConflictedChangeDates(row.prices)"
+      >
+      <app-icon icon="alert-price"  > </app-icon>
+    </div>
+    </div>
+  </ng-template>
+
+  <ng-template app-cell let-row="row" let-cell="cell" let-i="i" name="changeRate">
+    <ng-container *ngIf="!row.placeholder">
+      <div class="position-relative input-group-wrapper w-100 mr-auto" style="max-width: 150px;">
+        <div class="input-group-custom-bordered d-flex align-items-center whole-input">
+          <input
+            [id]="'changeRate_row_' + i"
+            data-hj-allow
+            class="form-control input-left"
+            type="text"
+            #changeRate="ngModel"
+            autocomplete="off"
+            required
+            [ngModel]="row.changeRate.toString()"
+            (change)="onChangeRateChange($event.target.value, row)"
+            (blur)="onFocus()"
+            (focus)="onFocus(row.id)"
+            mask="separator.4"
+            thousandSeparator=","
+            [allowNegativeNumbers]="true"
+            [validation]="false"
+            [dropSpecialCharacters]="false"
+          />
+          <div
+            class="input-section bg-sidebar-gray border-right border-top border-bottom border-pagination-border rounded-right"
+            (click)="onTogglePriceChangeType(row)"
+            >
+            <span class="font-size-14 text-dark">
+              {{ row.priceChangeType === 'Percent' ? '%' : '₾' }}
+            </span>
+          </div>
+        </div> 
+        <div class="divider-icon border-0 half-bordered">
+          <app-icon
+            *ngIf="row.priceChangeType === 'Percent'"
+            [icon]="'toggle-gel'"
+            (click)="onTogglePriceChangeType(row)"
+            class="bg-transparent"
+            [class.icon-rotate-percent]="row.priceChangeType === 'Percent'" 
+          >
+          </app-icon>
+          <app-icon
+            *ngIf="row.priceChangeType === 'Static'"
+            [icon]="'toggle-gel'"
+            (click)="onTogglePriceChangeType(row)"
+            class="bg-transparent"
+            [class.icon-rotate-static]="row.priceChangeType === 'Static'"  
+          >
+          </app-icon>
+        </div>
+      </div>
+    </ng-container>
+
+    <span *ngIf="row.placeholder" [matTooltip]="cell" #ref4 [matTooltipDisabled]="textIsTruncated(ref4)">
+      {{ cell }}
+    </span>
+  </ng-template>
+
+  <ng-template app-cell let-cell="cell" let-row="row" name="changedPrice">
+    <div class="d-flex justify-content-end">
+      <span
+        class="text-truncate"
+        [class.text-danger]="!row.placeholder && cell < row.cost"
+      >
+        {{ row.placeholder ? cell : (cell | number: '1.2-2':'en') }}
+      </span>
+      <app-icon
+        [matTooltip]="'წაშლა'"
+        icon="trash-tbls"
+        fill="#515366"
+        (click)="onRemoveProduct(row)"
+        style="cursor: pointer; margin-left: 32px;"
+      >
+      </app-icon>
+    </div>
+  </ng-template>
+</app-table>

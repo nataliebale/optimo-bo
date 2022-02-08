@@ -1,0 +1,49 @@
+.custom-file {
+  position: relative;
+
+  &-input {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &-label {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+
+    border-radius: 4.5px;
+
+    &.file-uploader__no-border {
+      border: 1px solid $pagination-border;
+    }
+    .image-custom-sizes {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+
+  .is-invalid {
+    border-color: $red !important;
+  }
+}
+
+.image-custom-sizes-active {
+  .custom-file-label {
+    &.file-uploader__no-border {
+      border: 0px;
+    }
+    .image-custom-sizes {
+      width: 272px !important;
+      height: 229px !important;
+      background-size: contain;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+// .profile {
+//   &-control {
+//     display: flex;
+//     padding: 11px 16px;
+//     background-color: transparent;
+//     @include border-radius;
+//     width:131px;
+//     color: $dark;
+//     @include transition;
+//     border: 1px solid $pagination-border;
+//     @include text-truncate;
+//     height: 48px;
+
+//     &:focus {
+//       border-color: $blue;
+//       outline: none;
+//       color: $dark;
+//       border-width: 2px;
+//       ~ app-icon {
+//         visibility: visible;
+//         opacity: 1;
+//       }
+//     }
+     
+//   }
+// }
+app-profile-edit-box {
+  width: 100%;
+}
+
+
+ 

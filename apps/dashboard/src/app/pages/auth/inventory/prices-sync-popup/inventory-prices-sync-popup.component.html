@@ -1,0 +1,66 @@
+<div class="approve-dialog">
+  <div
+    class="d-flex align-items-center justify-content-between border-bottom border-table-border-color pl-4 pr-18px"
+     style="height: 60px;"
+  >
+     
+ 
+      <span class="font-color-dark font-size-18 font-family-bold line-height-normal">
+        {{ 'INVENTORY.SYNC_PRICES' | translate }}
+      </span>
+    
+    <button
+      class="btn bg-transparent rounded-0 p-0"
+      (click)="onDecline()"
+    >
+      <app-icon icon="close" class="icon-w-20px icon-h-20px"   style="cursor: pointer;"></app-icon>
+    </button>
+   
+      
+  </div>
+  <div class="form-group pt-12px px-4">
+     
+      <label   class="font-size-14 font-color-dark font-family-bold line-height-normal ">აირჩიე ფილიალი</label>
+      <ng-select
+      class="custom-select-header form-control"
+      [items]="locations"
+      [(ngModel)]="selectedLocationId"
+      bindValue="id"
+      bindLabel="name"
+      placeholder="ფილიალიდან"
+      [searchable]="true"
+      [clearable]="false"
+      dropdownPosition="bottom"
+    >
+    </ng-select>
+  </div>
+   <div class="d-flex px-4">
+    <app-icon icon="warn" class="mr-2"></app-icon>
+
+
+    <div class="font-size-14 font-color-dark font-family-regular line-height-normal  " style="line-height: 1.5;">
+      {{ 'INVENTORY.POPUPS.SYNC_PRICES_WARNING' | translate }}
+    </div>
+
+   </div>
+ 
+   <div class="d-flex justify-content-end pt-4 pb-4 px-4">
+    <button
+    class="btn bg-transparent mr-3 font-size-14 font-color-dark font-family-bold"   
+    style="width: 120px;height: 42px;"
+    type="button"
+    (click)="onDecline()"
+  >
+    {{ 'GENERAL.CANCEL' | translate }}
+  </button>
+    <button
+      class="btn btn-primary font-color-white  font-size-14  font-family-bold"
+      style="width: 168px;height: 42px;"
+      [disabled]="(!selectedLocationId && selectedLocationId !== 0) || submited"
+      (click)="onApprove()"
+    >
+      {{ 'GENERAL.SYNC' | translate }}
+    </button>
+   
+  </div>
+</div>

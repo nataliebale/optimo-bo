@@ -1,0 +1,21 @@
+<div class="  h-100">
+	<div class=" d-flex flex-column h-100" style="padding-bottom: 71px;">
+		<div class="d-flex align-items-center px-4 py-3" style="height: 80px;">
+			<button class="btn rounded bg-excel-export p-0 mr-2" (click)="onExport()" [matTooltip]="'WithdrawalsReport.exportToExcel' | translate"
+				style="width: 64px; height: 42px;">
+				<app-icon icon="excel"></app-icon>
+
+			</button>
+			<app-date-picker class="date-picker-regular ml-auto only-range-picker" [maxDate]="endOfToday" (dateChange)="onDateChanged($event)"
+				[defaultDate]="dateRange">
+			</app-date-picker>
+		</div>
+		<div class="bg-white flex-grow-1">
+			<app-table #tableInstance [dataSource]="dataSource" [totalCount]="totalCount" [state]="currentState" [selectable]="false"
+				[paginable]="true" [hasColumnSelector]="true" defaultSort="withdrawalDate" defaultSortDirection="DESC"
+				[displayedColumns]="displayedColumns" (stateChanged)="onTableStateChanged($event)"
+				class="table-sales-history before-last-th-bordered table-last-td-pr-25px">
+			</app-table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,81 @@
+<div class="add-supplier-products">
+  <div class="add-supplier-products__title">
+    {{'SUPPLIERS.SUPPLIER_PRODUCTS.ADD_SUPPLIER_PRODUCTS' | translate}}
+  </div>
+
+  <form
+    [formGroup]="supplierProductsForm"
+    (keydown.enter)="$event.preventDefault()"
+  >
+    <div>
+      <ng-container *ngIf="options">
+        <mat-form-field class="add-supplier-products__full-width-input">
+          <input
+            data-hj-allow
+            type="text"
+            #trigger="matAutocompleteTrigger"
+            placeholder="პროდუქტის დამატება"
+            matInput
+            formControlName="addProduct"
+            [formControl]="addProductInput"
+            [matAutocomplete]="auto"
+            (keyup.enter)="onEnter()"
+          />
+
+          <mat-autocomplete
+            #auto="matAutocomplete"
+            (optionSelected)="onOptionSelect($event)"
+          >
+            <mat-option
+              *ngFor="let option of filteredOptions | async"
+              [value]="option.name"
+              (onSelectionChange)="onSelectionChange($event, option)"
+              [disabled]="!optionVar ? 'disabled' : null"
+            >
+              {{ option.name }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </ng-container>
+
+      <div class="">
+        <div>
+          <button
+            class="add-supplier-products__delete"
+            mat-stroked-button
+            color="warn"
+            type="button"
+            (click)="deleteSupplierProducts()"
+          >
+           {{'GENERAL.DELETE' | translate}}
+          </button>
+        </div>
+
+        <app-table
+          [dataSource]="supplierProducts"
+          [totalCount]="supplierProducts.length"
+          [displayedColumns]="stockItemsDiplayedColumns"
+          [selectable]="true"
+          [filterable]="false"
+          [staticData]="true"
+          (selectionChanged)="onSelectionChanged($event)"
+        >
+        </app-table>
+      </div>
+    </div>
+
+    <div class="add-supplier-products__button">
+      <button
+        mat-stroked-button
+        color="warn"
+        class="add-supplier-products__back"
+        type="button"
+        (click)="onBackButtonClick()"
+      >
+      {{'GENERAL.BACK' | translate}}
+      </button>
+    </div>
+
+    <div class="clear"></div>
+  </form>
+</div>

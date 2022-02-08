@@ -1,0 +1,10 @@
+@import 'libs/ui/styles/src/lib/scss/variables';
+@import 'libs/ui/styles/src/lib/scss/bootstrap-override';
+@import '~bootstrap/scss/mixins/breakpoints';
+
+.btn-profile {
+  @include media-breakpoint-up(sm) {
+    margin-left: 95px;
+    max-width: 219px;
+  }
+}

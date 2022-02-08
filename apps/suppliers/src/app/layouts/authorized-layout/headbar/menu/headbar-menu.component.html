@@ -1,0 +1,24 @@
+<div
+  (click)="onToggleMenu($event)"
+  class="header-profile ml-auto"
+  [class.active]="isMenuVisible"
+>
+  <div class="avatar avatar-sm flex-shrink-0   ">OP</div>
+
+  <div class="pl-2 pr-1 font-size-14 font-color-dark font-family-bold">optimo</div>
+  <app-icon
+    icon="arrow-down-tbls"
+    class="flex-shrink-0 d-none d-sm-inline mr-4 ml-auto"
+  ></app-icon>
+</div>
+<div
+  *ngIf="isMenuVisible"
+  clickOutside
+  (clickOutside)="onToggleMenu()"
+  class="header-dropdown border rounded"
+>
+  <div (click)="logout.emit()" style="padding: 20px; cursor:pointer;">
+    <app-icon icon="logout-new" class="mr-3"></app-icon>
+    <span class="font-size-14 font-family-medium text-danger">გამოსვლა</span>
+  </div>
+</div>

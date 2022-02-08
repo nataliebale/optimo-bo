@@ -1,0 +1,8 @@
+@function image-url($image-name, $image-type: svg) {
+  @return url('#{$image-path}/#{$image-name}.#{$image-type}');
+}
+
+@function rem($size) {
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}

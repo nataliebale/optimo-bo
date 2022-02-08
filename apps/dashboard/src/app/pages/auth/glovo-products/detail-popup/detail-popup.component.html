@@ -1,0 +1,75 @@
+
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+  *ngIf="form"
+>
+  <div class="d-flex align-items-center justify-content-between border-bottom border-table-border-color pl-4 pr-18px"
+       style="height: 60px;"
+  >
+    <span class="font-color-dark font-size-18 font-family-bold line-height-normal">
+      {{title | translate}}
+      </span>
+    <button
+      class="btn bg-transparent rounded-0 p-0"
+      type="button"
+      (click)="onCancel()"
+    >
+      <app-icon icon="close" class="icon-w-20px icon-h-20px"   style="cursor: pointer;"></app-icon>
+    </button>
+  </div>
+  <div
+    class="px-4 pt-3"
+   
+  >
+  <label for="product" class="font-size-14 font-color-dark font-family-bold pt-20px line-height-normal">
+    {{ "GLOVO_PRODUCTS.LIST.TABLE_COLUMNS.PRODUCT" | translate}}
+  </label>
+  <app-dynamic-select id="product"
+    class="add-inventory-item__dynamic-select ng-option-selected-marked" [dataGetter]="getStockItems"
+    [itemGetterById]="getStockItemById" (change)="onChangeStockItem($event)"
+    formControlName="product">
+  </app-dynamic-select>
+  
+  <label for="subCategoryId" class="font-size-14 font-color-dark font-family-bold pt-20px line-height-normal">
+    {{ "GLOVO_PRODUCTS.LIST.TABLE_COLUMNS.SUBCATEGORY" | translate}}
+  </label>
+  <app-dynamic-select #dynamicSelector id="subCategoryId"
+    class="add-inventory-item__dynamic-select ng-option-selected-marked" [dataGetter]="getSubCategories"
+    [itemGetterById]="getSubCategoryById" [growable]="false"
+    formControlName="subCategoryId">
+  </app-dynamic-select>
+  
+  <label class="font-size-14 font-color-dark font-family-bold pt-3 line-height-normal" for="detail-popup-name">
+    {{ "GLOVO_PRODUCTS.LIST.TABLE_COLUMNS.CATEGORY" | translate}}
+  </label>
+  <input
+    data-hj-allow
+    class="form-control"
+    type="text"
+    autocomplete="off"
+    formControlName="category"
+    id="detail-popup-name"
+    [placeholder]="'PLACEHOLDER.TEXT_INPUT' | translate"
+    disabled
+  />
+  </div>
+  <div class="d-flex justify-content-end pt-4 pb-4 px-4">
+    <button
+    class="btn bg-transparent mr-3 font-size-14 font-color-dark font-family-bold"   
+    style="width: 120px;height: 42px;"
+    type="button"
+    (click)="onCancel()"
+  >
+    {{'GENERAL.CANCEL' | translate}}
+  </button>
+    <button
+      class="btn btn-primary font-color-white  font-size-14  font-family-bold"
+      style="width: 113px;height: 42px;"
+      type="submit"
+      [disabled]="isSubmited"
+    >
+      {{'GENERAL.SAVE' | translate}}
+    </button>
+  </div>
+</form>

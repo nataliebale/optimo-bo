@@ -1,0 +1,11 @@
+.page-loading {
+  position: fixed;
+  width: calc(100% - var(--sidebar-width));
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  background-color: rgba(white, .7);
+  top: 0;
+}

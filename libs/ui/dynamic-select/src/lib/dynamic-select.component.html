@@ -1,0 +1,79 @@
+<ng-select
+  #dynamicselec
+  [items]="dataSource"
+  bindValue="id"
+  [bindLabel]="sortField"
+  class="custom-select-header dynamic-select"
+  [class.permanent-placeholder]="!showLabel"
+  [multiple]="multiple"
+  [closeOnSelect]="closeOnSelect"
+  [maxSelectedItems]="maxSelectedItems"
+  [searchable]="true"
+  [clearSearchOnAdd]="true"
+  [clearable]="showClearButton"
+  [virtualScroll]="true"
+  [placeholder]="placeholder"
+  [loading]="isLoading"
+  [searchFn]="searchFn"
+  notFoundText="შედეგი არ მოიძებნა"
+  loadingText="იძებნება"
+  (search)="onSearch($event)"
+  (blur)="onTouched()"
+  (scrollToEnd)="onScrollToEnd()"
+  (clear)="onClear()"
+  (open)="onOpen()"
+  (close)="closed.emit()"
+  (add)="add.emit($event)"
+  (remove)="remove.emit($event)"
+  [(ngModel)]="value"
+  [disabled]="isDisabled"
+  dropdownPosition="auto"
+  (change)="dynamicselec.blur()"
+>
+  <ng-template ng-multi-label-tmp let-items="items">
+    <ng-container *ngIf="showLabel">
+      <div
+        class="ng-value"
+        *ngFor="let item of items | slice: 0:2; let last = last"
+      >
+        <span class="ng-value-label">
+          {{ item[sortField]
+          }}<ng-container *ngIf="!last">,&nbsp;</ng-container>
+        </span>
+      </div>
+      <div class="ng-value" *ngIf="items.length > 2">
+        <span class="ng-value-label"
+          >,&nbsp;{{ items.length - 2 }} სხვა...</span
+        >
+      </div>
+    </ng-container>
+  </ng-template>
+  <ng-template ng-option-tmp let-item="item" let-item$="item$">
+    <ng-container *ngIf="!optionTemplate">
+      <div
+        *ngIf="multiple"
+        class="custom-checkbox custom-checkbox-selected-blue mr-3"
+      >
+        <input
+          data-hj-allow
+          type="checkbox"
+          id="custom-checkbox-{{ item.id }}"
+          class="custom-checkbox-control"
+          [checked]="item$.selected"
+        />
+        <label
+          (click)="$event.stopPropagation()"
+          for="custom-checkbox-{{ item.id }}"
+          class="custom-checkbox-label"
+        ></label>
+      </div>
+      <span class="text-truncate">{{ item[sortField] }}</span>
+    </ng-container>
+    <ng-container
+      *ngTemplateOutlet="optionTemplate; context: { item: item }"
+    ></ng-container>
+  </ng-template>
+  <ng-template ng-footer-tmp>
+    <ng-container [ngTemplateOutlet]="footerTemplate"></ng-container>
+  </ng-template>
+</ng-select>

@@ -1,0 +1,111 @@
+<div class="h-100 d-flex flex-column" style="padding-bottom: 71px;">
+  <div class="d-flex align-items-center py-3 px-4" style="height: 80px;">
+    <button
+    *ngIf="selectedRows && selectedRows.length > 1"
+    [matTooltip]="'მინიმალური მარაგის პროდუქტების ჩამოტვირთვა'"
+    class="btn rounded bg-excel-export p-0 mr-2"
+    style="width: 64px; height: 42px;"
+    (click)="export(true)"
+  >
+    <app-icon icon="excel"> </app-icon>
+  </button>
+  <div
+      class="position-relative"
+      *ngIf="selectedRows && selectedRows.length === 1">
+      <div
+        class="btn bg-table-border-color bg-excel-export rounded px-0 mr-2 position-relative d-flex align-items-center"
+        (click)="isExcelDropdownActive = !isExcelDropdownActive; $event.stopPropagation()"
+        style="
+          height: 42px;
+          cursor: pointer;
+        "
+      >
+        <app-icon icon="excel" class="px-20px"></app-icon>
+        <span
+          class="px-7px border-left d-block border-divider-border">
+        <app-icon
+          icon="arrow-down"
+          style="height: 24px; filter:invert(100%) contrast(200%);"
+        ></app-icon>
+      </span>
+      </div>
+      <div
+        *ngIf="isExcelDropdownActive"
+        clickOutside
+        (clickOutside)="isExcelDropdownActive = false"
+        class="filter-dialog filter-dialog-type-number px-0 py-1 text-left active no-before"
+        style="width: 377px; top: 109%; right: unset;"
+      >
+        <div
+          (click)="
+            isExcelDropdownActive = false;
+            export(false);
+          "
+          class="custom-select-option"
+          style="cursor: pointer;"
+        >
+	      	ფილიალის პროდუქტების ჩამოტვირთვა
+        </div>
+        <div
+          (click)="
+            isExcelDropdownActive = false;
+            export(true);
+          "
+          class="custom-select-option"
+          style="cursor: pointer;"
+        >
+		      მინიმალური მარაგის პროდუქტების ჩამოტვირთვა
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-white flex-grow-1">
+    <app-table
+    *ngIf="datasource"
+    [displayedColumns]="displayedColumns"
+    [dataSource]="datasource"
+    [totalCount]="totalCount"
+    [state]="curTableState"
+    [selectable]="true"
+    [filterable]="true"
+    [paginable]="true"
+    [actions]="{
+      customActions: [{
+        tooltip: 'ფილიალზე გადასვლა',
+        icon: 'go-to-branch',
+        onClick: onRowClick
+      }]
+    }"
+    [defaultSort]="'LegalEntityId'"
+    [defaultSortDirection]="'DESC'"
+    [pageSizeOptions] = "[10, 25]"
+    [hasColumnSelector]="true"
+    [selectableCustomEnable]="customEnableSelect"
+    (selectionChanged)="onSelectionChanged($event)"
+    (rowClick)="onRowClick($event)"
+    (stateChanged)="onTableStateChanged($event)"
+    class="table-orders"
+    style="padding-bottom: 71px;"
+  >
+  <ng-template app-cell let-cell="cell" let-row="row" name="managerNameOrPhoneNumber">
+    <div class="line-height-normal translate-t-1px">
+      <span
+        [matTooltip]="row.locationManagerName"
+        #ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+        class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1"
+      >
+        {{ row.locationManagerName }}
+      </span>
+      <br />
+      <span
+        [matTooltip]="row.locationPhoneNumber"
+        #ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+        class="text-truncate mw-100 d-inline-block table-text-dark"
+      >
+        {{ row.locationPhoneNumber }}
+      </span>
+    </div>
+  </ng-template>
+  </app-table>
+  </div>
+</div>

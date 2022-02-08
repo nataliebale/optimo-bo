@@ -1,0 +1,77 @@
+.custom-checkbox {
+  $root: &;
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  &-selected-blue {
+    #{$root}-control {
+      &:not(:disabled):checked ~ label::before {
+        background: {
+          image: url($custom-checkbox-selected-blue-bg);
+          color: $blue;
+          position: 2px 4px;
+        }
+      }
+    }
+  }
+
+  &-control {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+
+    &:checked ~ label::before {
+      background: url($custom-checkbox-selected-blue-bg) no-repeat center $blue;
+      // background-size: 96%;
+      border-color: $blue;
+
+    }
+    &:indeterminate ~ label::before {
+      background: url($custom-checkbox-indeterminate-blue-bg) no-repeat center $blue;
+      border-color: $blue;
+    }
+
+    &:disabled {
+      ~ label {
+        cursor: not-allowed;
+        color: #c0c5d2;
+        &::before {
+          background-color: #f6f6f6;
+          border: 1px solid $pagination-border;
+        }
+      }
+
+      &:checked {
+        ~ label::before {
+          background-image: url($custom-checkbox-disabled-bg);
+          background-position: 2px 4px;
+        }
+      }
+    }
+  }
+
+  &-label {
+    $checkbox-label: &;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    cursor: pointer;
+    position: relative;
+    color: $body-color;
+
+    &::before {
+      content: '';
+      display: block;
+      width: $custom-checkbox-width;
+      min-width: $custom-checkbox-width;
+      height: $custom-checkbox-height;
+      border-radius: 3px;
+      // box-shadow: $custom-checkbox-box-shadow;
+      background-color: $white;
+      // border: 2px solid $border-color;
+      border: solid 1px #d6d6d6;
+      // @include border-radius($border-radius);
+    }
+  }
+}

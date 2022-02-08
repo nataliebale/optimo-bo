@@ -1,0 +1,149 @@
+<div *ngIf="!contractDocument" class="login d-flex flex-row">
+  <div class="w-100 bg-white pt-20px pt-custsm-4 px-3 px-custsm-32px px-lg-5 h-100 overflow-overlay login-inner-wrapper">
+    <a href="https://optimo.ge" target="_blank" class="login-logo">
+      <img src="/assets/images/logo.svg" alt="" />
+    </a>
+    <form
+      class="pt-lg-5 mt-lg-5"
+      [formGroup]="loginForm"
+      (submit)="onSubmit()"
+    >
+      <div class="font-size-20 font-family-bold font-color-dark pt-5 mt-custsm-5 mt-lg-2 mt-4">
+        შესვლა
+      </div>
+      <ng-container *ngIf="!legalEntities; else chooseLegalEntities">
+        <div class="form-group-lg pt-4">
+          <label for="" class="font-size-14 font-family-regular font-color-dark"
+            >ტელეფონი ან ელ. ფოსტა</label
+          >
+          <input
+            id="userName"
+            data-hj-allow
+            class="form-control h-u-lg-42px"
+            formControlName="userName"
+            type="text"/>
+        </div>
+        <div class="form-group">
+          <div class="d-flex justify-content-between">
+            <label
+              for=""
+              class="font-size-14 font-family-regular font-color-dark line-height-normal"
+              >პაროლი</label
+            >
+            <a
+              routerLink="/reset-password"
+              class="text-decoration-none font-size-14 font-family-bold font-color-dark line-height-normal"
+              >დაგავიწყდა პაროლი?</a
+            >
+          </div>
+
+          <div
+            class="form-group-lg input-group-custom d-flex align-items-center"
+          >
+            <input
+              id="password"
+              data-hj-allow
+              class="form-control input-left h-u-lg-42px"
+              formControlName="password"
+              [type]="fieldTextType ? 'text' : 'password'"
+            />
+            <button
+              class="btn p-0 input-section"
+              style="right: 11px;"
+              (click)="fieldTextType = !fieldTextType"
+              type="button"
+            >
+              <app-icon icon="eye"></app-icon>
+            </button>
+          </div>
+        </div>
+        <!-- <div
+          class="form-group d-flex align-items-center justify-content-between flex-wrap text-center"
+        >
+          <div class="custom-checkbox custom-checkbox-selected-blue mb-4">
+            <input
+              type="checkbox"
+              id="custom-checkbox-remember-me"
+              class="custom-checkbox-control"
+              formControlName="rememberMe"
+            />
+            <label
+              for="custom-checkbox-remember-me"
+              class="custom-checkbox-label"
+            >
+              <span class="ml-3">დამახსოვრება</span>
+            </label>
+          </div>
+          
+        </div> -->
+      </ng-container>
+
+      <ng-template #chooseLegalEntities>
+        <div class="form-group pt-3 mb-4">
+          <label
+            for=""
+            class="font-size-14 font-family-regular font-color-dark"
+          >
+            აირჩიე კომპანია
+          </label>
+          <ng-select
+            id="legalEntityId"
+            class="custom-select-header form-control arrow-wrapper-padding h-u-lg-42px"
+            [items]="legalEntities"
+            formControlName="legalEntityId"
+            bindValue="id"
+            bindLabel="companyName"
+            [searchable]="false"
+            [clearable]="false"
+          >
+          </ng-select>
+        </div>
+      </ng-template>
+      <button
+        [disabled]="loginForm.dirty && loginForm.invalid"
+        class="btn btn-primary btn-block mb-lg-5 mb-32px h-u-lg-42px font-family-bold"
+        style="height: 48px;"
+        type="submit"
+      >
+        <span
+          *ngIf="loading"
+          class="spinner-border text-white spinner-border-sm mr-2"
+        ></span>
+        <span *ngIf="!loading">გაგრძელება</span>
+      </button>
+      <div  class="pt-4 border-top border-table-border-color  " *ngIf="!legalEntities">
+        <span class="font-size-14 font-family-bold font-color-dark">
+          არ გაქვს ანგარიში?
+          
+           </span>
+        <a
+          href="https://optimo.ge/request-demo"
+          target="_blank"
+          class="text-decoration-none font-size-14 font-family-bold font-color-blue"
+        >
+         შეავსე   განაცხადი
+        </a>
+      </div>
+      <div class="pt-4 border-top border-table-border-color" *ngIf="legalEntities">
+        <a
+          routerLink="/login"
+          class="text-decoration-none font-size-14 font-family-bold font-color-dark"
+          (click)="legalEntities = undefined; createForm()"
+        >
+          <app-icon
+            class="d-inline-block"
+            icon="arrow-down"
+            style="transform: rotate(90deg);"
+          ></app-icon>
+          დაბრუნება
+        </a>
+      </div>
+    </form>
+  </div>
+  <div class="login-cover-img"></div>
+</div>
+<app-contract
+  *ngIf="contractDocument"
+  [accessToken]="accessToken"
+  [contract]="contractDocument"
+></app-contract>

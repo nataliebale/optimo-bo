@@ -1,0 +1,62 @@
+<div class="revenues-report__cards">
+  <div class="revenues-report__cards-card">
+    <div class="revenues-report__cards-card-header">წელი {{ lastYear }}</div>
+    <div class="revenues-report__cards-card-row">
+      <div class="revenues-report__cards-card-row-key">შემოსავალი</div>
+      <div class="revenues-report__cards-card-row-value">
+        ₾ {{ lasyYearRevenueData?.totalRevenue }}
+      </div>
+    </div>
+    <div class="revenues-report__cards-card-row">
+      <div class="revenues-report__cards-card-row-key">მოგება</div>
+      <div class="revenues-report__cards-card-row-value">
+        ₾ {{ lasyYearRevenueData?.totalIncome }}
+      </div>
+    </div>
+  </div>
+  <div class="revenues-report__cards-card">
+    <div class="revenues-report__cards-card-header">წელი {{ currentYear }}</div>
+    <div class="revenues-report__cards-card-row">
+      <div class="revenues-report__cards-card-row-key">შემოსავალი</div>
+      <div class="revenues-report__cards-card-row-value">
+        ₾ {{ currentYearRevenueData?.totalRevenue }}
+      </div>
+    </div>
+    <div class="revenues-report__cards-card-row">
+      <div class="revenues-report__cards-card-row-key">მოგება</div>
+      <div class="revenues-report__cards-card-row-value">
+        ₾ {{ currentYearRevenueData?.totalIncome }}
+      </div>
+    </div>
+  </div>
+  <div class="revenues-report__cards-card">
+    <div class="revenues-report__cards-card-header">გუშინ</div>
+    <div class="revenues-report__cards-card-row">
+      <div class="revenues-report__cards-card-row-key">შემოსავალი</div>
+      <div class="revenues-report__cards-card-row-value">
+        ₾ {{ lastDayRevenueData?.totalRevenue }}
+      </div>
+    </div>
+    <div class="revenues-report__cards-card-row">
+      <div class="revenues-report__cards-card-row-key">დღეს</div>
+      <div class="revenues-report__cards-card-row-value">
+        ₾ {{ lastDayRevenueData?.totalIncome }}
+      </div>
+    </div>
+  </div>
+  <div class="revenues-report__cards-card">
+    <div class="revenues-report__cards-card-header">დღეს</div>
+    <div class="revenues-report__cards-card-row">
+      <div class="revenues-report__cards-card-row-key">შემოსავალი</div>
+      <div class="revenues-report__cards-card-row-value">
+        ₾ {{ currentDayRevenueData?.totalRevenue }}
+      </div>
+    </div>
+    <div class="revenues-report__cards-card-row">
+      <div class="revenues-report__cards-card-row-key">მოგება</div>
+      <div class="revenues-report__cards-card-row-value">
+        ₾ {{ currentDayRevenueData?.totalIncome }}
+      </div>
+    </div>
+  </div>
+</div>

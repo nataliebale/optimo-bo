@@ -1,0 +1,101 @@
+{
+  "npmScope": "optimo",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "dashboard": {
+      "tags": []
+    },
+    "admin-panel": {
+      "tags": []
+    },
+    "landing": {
+      "tags": []
+    },
+    "core": {
+      "tags": []
+    },
+    "ui-table": {
+      "tags": []
+    },
+    "ui-icon": {
+      "tags": []
+    },
+    "ui-date-picker": {
+      "tags": []
+    },
+    "util-click-outside": {
+      "tags": []
+    },
+    "ui-year-select": {
+      "tags": []
+    },
+    "ui-slider": {
+      "tags": []
+    },
+    "ui-loader-bar": {
+      "tags": []
+    },
+    "ui-file-uploader": {
+      "tags": []
+    },
+    "ui-dynamic-select": {
+      "tags": []
+    },
+    "ui-chart": {
+      "tags": []
+    },
+    "ui-circle-progress": {
+      "tags": []
+    },
+    "ui-nested-menu": {
+      "tags": []
+    },
+    "ui-print-barcode": {
+      "tags": []
+    },
+    "ui-password-edit-box": {
+      "tags": []
+    },
+    "ui-bottom-sheet-dispacher": {
+      "tags": []
+    },
+    "ui-popups-approve-dialog": {
+      "tags": []
+    },
+    "ui-styles": {
+      "tags": []
+    },
+    "ui-view-attributes": {
+      "tags": []
+    },
+    "util-text-is-truncated": {
+      "tags": []
+    },
+    "ui-notification-view": {
+      "tags": []
+    },
+    "mixpanel": {
+      "tags": []
+    },
+    "suppliers": {
+      "tags": []
+    }
+  }
+}

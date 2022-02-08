@@ -1,0 +1,212 @@
+<div class="position-relative d-flex flex-column flex-grow-1">
+  <div
+    class="table-content rounded overflow-hidden h-100 d-flex flex-column wrapper flex-grow-1"
+    
+    style="min-height: 565px;"
+  >
+  <!-- [class.border]="border" -->
+    <table
+      cdk-table
+      [dataSource]="dataSource"
+      matSort
+      (matSortChange)="onSortChange($event)"
+      class="table table-hover mb-0 flex-shrink-0"
+      style="table-layout: fixed; overflow-y: auto;"
+      [class.table-loading-opacity]="loading"
+      [class.table-placeholder]="!dataSource?.data?.length && !loading"
+    >
+      <ng-container *ngFor="let col of displayedColumns">
+        <app-index-column
+          *ngIf="col.columnType === columnType.Index"
+          [startIndex]="paginator?.pageIndex * paginator?.pageSize"
+        ></app-index-column>
+
+        <app-select-column
+          *ngIf="col.columnType === columnType.Select"
+          [actions]="actions"
+          [selection]="selection"
+          [hasInsideSelectAll]="hasInsideSelectAll"
+          [isAllSelected]="isAllSelected"
+          [selectableCustomEnable]="selectableCustomEnable"
+          (rowToggle)="onRowSelectionToggle($event)"
+          (selectAllToggle)="onSelectAllToggle()"
+        ></app-select-column>
+
+        <app-number-column
+          *ngIf="col.columnType == columnType.Number"
+          [col]="col"
+          [state]="state"
+          [cellTmpl]="getCellTmpl(col.dataField)"
+          [headerCellTmpl]="getHeaderCellTmpl(col.dataField)"
+          (changeFilter)="onChangeFilter($event)"
+        ></app-number-column>
+
+        <app-text-column
+          *ngIf="col.columnType == columnType.Text"
+          [col]="col"
+          [state]="state"
+          [cellTmpl]="getCellTmpl(col.dataField)"
+          [headerCellTmpl]="getHeaderCellTmpl(col.dataField)"
+          (changeFilter)="onChangeFilter($event)"
+        ></app-text-column>
+
+        <app-date-column
+          *ngIf="col.columnType == columnType.Date"
+          [col]="col"
+          [state]="state"
+          [cellTmpl]="getCellTmpl(col.dataField)"
+          [headerCellTmpl]="getHeaderCellTmpl(col.dataField)"
+          (changeFilter)="onChangeFilter($event)"
+        ></app-date-column>
+
+        <app-dropdown-column
+          *ngIf="col.columnType == columnType.Dropdown"
+          [col]="col"
+          [state]="state"
+          [dropdownKeyForStaticValueSelector]="dropdownKeyForStaticValueSelector"
+          [cellTmpl]="getCellTmpl(col.dataField)"
+          [headerCellTmpl]="getHeaderCellTmpl(col.dataField)"
+          (changeFilter)="onChangeFilter($event)"
+        ></app-dropdown-column>
+
+        <app-actions-column
+          *ngIf="col.columnType === columnType.Actions"
+          [actions]="actions"
+          [editingRow]="editingRow"
+          [inlineEdit]="inlineEdit"
+          (rowActivateToggle)="rowActivate.emit($event)"
+          (rowEditToggle)="onRowEditToggle($event)"
+          (rowEditSave)="onRowEditSave($event)"
+          (rowDelete)="onRowDelete($event)"
+          (rowViewAs)="onRowViewAs($event)"
+          (showHideToggle)="onRowShowHide($event)"
+        ></app-actions-column>
+
+        <app-dropdown-multiselect-column
+          *ngIf="col.columnType == columnType.DropdownMultiselect"
+          [col]="col"
+          [state]="state"
+          [dropdownKeyForStaticValueSelector]="dropdownKeyForStaticValueSelector"
+          [cellTmpl]="getCellTmpl(col.dataField)"
+          [headerCellTmpl]="getHeaderCellTmpl(col.dataField)"
+          (changeFilter)="onChangeFilter($event)"
+        >
+        </app-dropdown-multiselect-column>
+
+        <!-- <app-column
+          *ngIf="
+            col.columnType !== columnType.Select &&
+            col.columnType !== columnType.Number &&
+            col.columnType !== columnType.Text &&
+            col.columnType !== columnType.Date &&
+            col.columnType !== columnType.Dropdown &&
+            col.columnType !== columnType.Actions
+          "
+          [dataField]="col.dataField"
+          [caption]="col.caption"
+          [sortable]="col.sortable"
+        >
+          <ng-template
+            let-headerCellTmpl
+            [ngIf]="getHeaderCellTmpl(col.dataField)"
+          >
+            <ng-template #headerCell>
+              <ng-container *ngTemplateOutlet="headerCellTmpl"></ng-container>
+            </ng-template>
+          </ng-template>
+
+          <ng-template let-cellTmpl [ngIf]="getCellTmpl(col.dataField)">
+            <ng-template #cell let-row="row">
+              <ng-container
+                *ngTemplateOutlet="
+                  cellTmpl;
+                  context: { cell: row[col.dataField], row: row }
+                "
+              ></ng-container>
+            </ng-template>
+          </ng-template>
+        </app-column> -->
+      </ng-container>
+
+      <ng-container *ngIf="!headerRowDefTmpl">
+        <tr cdk-header-row *cdkHeaderRowDef="displayedColumnNames"></tr>
+      </ng-container>
+      <ng-container *ngIf="filterable">
+        <tr
+          [ngClass]="hovered"
+          (mouseover)="hovered = 'hovered'"
+          (mouseout)="hovered = ''"
+          cdk-header-row
+          *cdkHeaderRowDef="displayedColumnFilterNames"
+        ></tr>
+      </ng-container>
+
+      <ng-container *ngIf="!rowDefTmpl">
+        <tr
+          cdk-row
+          [ngClass]="hovered"
+          (mouseover)="hovered = 'hovered'"
+          (mouseout)="hovered = ''"
+          *cdkRowDef="let row; columns: displayedColumnNames"
+          [class.selected]="rowIsSelected(row)"
+          [class.hidden]="rowIsHidden(row)"
+          (click)="onRowClick(row)"
+        ></tr>
+      </ng-container>
+    </table>
+
+    <div class="loading" *ngIf="loading">
+      <app-icon   icon="loader-big"></app-icon>
+    </div>
+
+    <div
+      *ngIf="!dataSource?.data?.length && !loading"
+      class="table-no-data flex-grow-1 border-top border-table-border-color"
+    >
+      <app-icon icon="no-data"></app-icon>
+      <span class="font-size-14 mt-2 color-dark font-family-bold"  
+        >
+          {{'GENERAL.THE_DATA_IS_EMPTY' | translate}}
+        </span
+      >
+    </div>
+  </div>
+
+  <app-col-visibility-selector
+    class="custom-select-wrapper"
+    *ngIf="hasColumnSelector"
+    [columns]="displayedDateColumns"
+  ></app-col-visibility-selector>
+</div>
+
+<div
+  *ngIf="!_externalPaginator && paginable"
+  class="table-footer"
+  style="
+  padding-right: 24px;
+  padding-left: 24px;"
+>
+  <app-paginator
+    [pageSizeOptions]="pageSizeOptions"
+    [length]="totalCount"
+    showFirstLastButtons="false"
+  ></app-paginator>
+</div>
+<ng-container *ngIf="inlineEdit">
+  <ng-container *ngFor="let col of displayedDateColumns">
+    <ng-template app-cell let-row="row" let-cell="cell" [name]="col.dataField">
+      <ng-container *ngIf="isFieldEditable(row, col.dataField)">
+        <mat-form-field>
+          <input
+            data-hj-allow
+            matInput
+            [value]="cell"
+            [formControl]="getFormControl(col.dataField)"
+        /></mat-form-field>
+      </ng-container>
+      <ng-container *ngIf="!isFieldEditable(row, col.dataField)">
+        {{ cell }}
+      </ng-container>
+    </ng-template>
+  </ng-container>
+</ng-container>

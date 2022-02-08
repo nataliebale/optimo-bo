@@ -1,0 +1,16 @@
+<div
+  class="btn border mr-2 custom-checkbox custom-checkbox-selected-blue bg-white" style="height: 48px;"
+>
+  <input
+    data-hj-allow
+    type="checkbox"
+    id="select-all"
+    [checked]="table?.isAllSelected"
+    (click)="table?.onSelectAllToggle()"
+    class="custom-checkbox-control"
+    [disabled]="!table.dataSource?.data?.length"
+  />
+  <label for="select-all" class="custom-checkbox-label">
+    <span class="ml-4">ყველას მონიშვნა</span>
+  </label>
+</div>

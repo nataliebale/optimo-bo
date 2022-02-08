@@ -1,0 +1,33 @@
+<div clickOutside (clickOutside)="isDatePickerVisible ? onToggleDatePicker(false): null"
+	class="date-range-picker-wrapper position-relative">
+	<ng-container *ngIf="showActionsAndInput">
+		<div class="date-range-picker-actions">
+			<button class="left-arrow-btn btn rounded-right-0" (click)="goToNextOrPrev(false)">
+				<app-icon icon="arrow-down" class="icon-arrow-left"></app-icon>
+			</button>
+		<div class="section-center" (click)="onToggleDatePicker(); $event.stopPropagation()">
+			<input data-hj-allow *ngIf="isRangePicker" type="text" placeholder="არჩიე პერიოდი"
+				value="{{ defaultDate[0] | date }} - {{ defaultDate[1] | date }}" readonly />
+
+			<input data-hj-allow *ngIf="!isRangePicker" type="text" placeholder="არჩიე თარიღი" class="pl-md-0 pl-sm-2" value="{{ defaultDate | date }}"
+				readonly />
+			<app-icon [icon]="'calendar'" [fill]="'#0077ff'" class="pr-md-0 pr-sm-2"></app-icon>
+		</div>
+			<button (click)="goToNextOrPrev(true)" class="right-arrow-btn btn rounded-left-0">
+				<app-icon icon="arrow-down" class="icon-arrow-right"></app-icon>
+			</button>
+		</div>
+	</ng-container>
+	<div class="range-picker-wrapper" [class.d-flex]="isDatePickerVisible">
+	<div class="filter-dialog filter-dialog-type-number" [class.active]="isDatePickerVisible">
+		<div #datepicker></div>
+	</div>
+	<div class="filter-by-days" *ngIf="isDatePickerVisible && isRangePicker">
+			<div *ngFor="let item of myCustomRanges" (click)="selectCustomRange(item)" class="filter-days"
+				[class.isActiveRange]="isActive(item.ranges)">
+				{{ item.title }}
+			</div>
+	</div>
+  </div>
+
+</div>

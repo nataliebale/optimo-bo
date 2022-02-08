@@ -1,0 +1,15 @@
+<div class="d-flex flex-column">
+  <app-headbar
+    class="flex-grow-0 flex-shrink-0"
+    (logout)="onLogout()"
+    [sidebarComponent]="sidebar"
+  ></app-headbar>
+  <div class="authorized-layout">
+    <div class="sidebar">
+      <app-sidebar #sidebar></app-sidebar>
+    </div>
+    <div class="authorized-layout-container">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<app-header class="header-offers" [requestButtonVisibility]="true" [isFixed]="false"></app-header>
+<!-- <app-header class="packages-header" [requestButtonVisibility]="true"></app-header> -->
+<div class="offers-wrapper  w-100 px-3 bg-offer-bg">
+  <div class="w-100 text-center font-family-semibold font-size-24 text-dark ">
+    შეთავაზებები
+  </div>
+  <div class="w-100 pt-4 text-center font-family-medium font-size-14 text-muted pb-sm-20">
+    შეარჩიე ოპტიმალური შეთავაზებები შენი ბიზნესითვის
+  </div>
+
+
+  <div *ngFor="let offer of offers" class="offers-benefit">
+<div (click)="onClickMore(offer)" class="whole-wrapper w-100 h-100 " >
+
+</div>
+    <div class="offers-benefit-image flex-grow-1  order-2  h-100"
+      [ngStyle]="{ 'background-image': 'url(' + offer.photoUrl + ')' }">
+    </div>
+    <div class="offers-benefit-info order-1">
+      <div class="offers-benefit-hover ">
+        <div class="opacity-effect d-flex justify-content-center">
+          
+        </div>
+        <a (click)="onClickMore(offer)" class="font-color-white font-family-medium read-more">
+          მეტის ნახვა </a>
+      </div>
+      <div class="w-100 d-flex">
+        <div class="offeror-benefactor-logo" [ngStyle]="{
+            'background-image' : 'url(' + offer.logoUrl + ')'
+          }"> </div>
+        <div class="pl-sm-3 pl-2 pt-lg-2 pt-sm-1">
+          <div class="font-family-semibold font-size-16 text-dark pb-1">
+            {{offer.companyName}}
+          </div>
+          <div class="font-family-semibold font-size-sm-13 font-size-12 text-muted offerror-small-intro text-truncate">
+            {{offer.category}}
+          </div>
+        </div>
+      </div>
+      <div class="w-100 offeror-benefactor-text-wrapper text-muted  ">
+        <span
+          class=" font-family-medium font-size-sm-14 font-size-13  line-height-171 line-height-under-sm-185 letter-spacing-under-sm-m3"
+          [innerHTML]="offer.text">
+        </span>
+
+
+      </div>
+    </div>
+  </div>
+</div>

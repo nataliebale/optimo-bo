@@ -1,0 +1,37 @@
+:root {
+  --sidebar-width: 230px;
+  @include media-breakpoint-up(xs) {
+    --sidebar-width: 56px;
+  }
+  @include media-breakpoint-down(custmd) {
+    body.sidebar-fold-medium {
+      --sidebar-width: 230px;
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    --sidebar-width: 0px;
+    body {
+      &.modal-open {
+        overflow: hidden !important;
+      }
+      &.sidebar-fold-medium,
+      &.sidebar-fold {
+        --sidebar-width: 0px;
+      }
+    }
+  }
+  @include media-breakpoint-up(lg) {
+    --sidebar-width: 230px;
+    body.sidebar-fold {
+      --sidebar-width: 56px;
+      overflow: hidden !important;
+    }
+  }
+  --header-height: 72px;
+  @include media-breakpoint-up(sm) {
+    --header-height: 84px;
+  }
+  @include media-breakpoint-up(lg) {
+    --header-height: 88px;
+  }
+}

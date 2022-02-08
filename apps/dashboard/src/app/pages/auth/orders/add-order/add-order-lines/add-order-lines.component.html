@@ -1,0 +1,144 @@
+<div
+  class="d-flex justify-content-between align-items-center no-validation-padding"
+  formArrayName="orderLines"
+>
+  <div class="pb-4" style="width: 468px;">
+    <div class="font-size-15 font-color-dark font-family-bold mb-2">
+      {{ 'ORDERS.ITEM.DETAILS.STOCKITEMS_LIST.LABEL' | translate}}
+    </div>
+    <app-dynamic-select
+      [dataGetter]="getSupplierProducts"
+      [itemGetterById]="getProductById"
+      additionalSearchKey="barcode"
+      [showClearButton]="false"
+      [multiple]="true"
+      [closeOnSelect]="false"
+      [showLabel]="false"
+      [formControl]="selectControl"
+      (change)="onSelectChange($event)"
+      id="add-order-lines-choose-product"
+    ></app-dynamic-select>
+    <!-- (change)="addProductToOrderr($event)" -->
+    <!-- [disabled]="hasSelectAll && isSelectedAll" -->
+  </div>
+  <div
+    *ngIf="productsDataSource && !productsDataSource[0]?.placeholder"
+    class="pr-3 d-flex align-items-center w-100 justify-content-end"
+    style="max-width: 468px;"
+  >
+    <span class="font-family-regular font-size-14 text-dark pr-2"
+      >
+      {{ 'ORDERS.ITEM.DETAILS.STOCKITEMS_LIST.TOTAL_UNIT_COST' | translate}}:
+    </span>
+    <span class="font-family-bold text-dark font-size-18 text-truncate">{{
+      totalUnitCost | number: '1.4-4':'en'
+    }} ₾</span>
+  </div>
+</div>
+<app-table
+  [dataSource]="productsDataSource"
+  [totalCount]="productsDataSource.length"
+  [selectable]="false"
+  [filterable]="false"
+  [paginable]="false"
+  [indexable]="true"
+  [displayedColumns]="displayedColumns"
+  [staticData]="true"
+  class="table-add-order first-th-centered"
+  [class.disabled]="productsDataSource && productsDataSource[0]?.placeholder"
+>
+
+  <ng-template app-cell let-cell="cell" let-i="i" let-row="row" name="name">
+    <div class="pt-1 line-height-normal">
+      <span
+        #ref1
+        [matTooltip]="row.stockItemName"
+        [matTooltipDisabled]="textIsTruncated(ref1)"
+        class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1"
+      >
+        {{ row.stockItemName }}
+      </span>
+      <br>
+      <span
+        #ref2
+        [matTooltip]="row.stockItemBarcode"
+        [matTooltipDisabled]="textIsTruncated(ref2)"
+        class="text-truncate mw-100 d-inline-block table-text-dark"
+      >
+        {{ row.stockItemBarcode }}
+      </span>
+    </div>
+  </ng-template>
+
+  <ng-template app-cell let-row="row" name="quantity">
+    <div class="text-truncate text-right">
+      <span class="align-middle d-inline-block" style="min-width: 36px;">
+        <ng-container *ngIf="!row.placeholder">
+          {{ row.stockItemQuantity | number: '1.4-4':'en' }}
+          {{getUMOAcronym(row.unitOfMeasurement)}}
+        </ng-container>
+      </span>
+    </div>
+  </ng-template>
+
+  <ng-template app-cell let-row="row" let-i="i" name="unitCost">
+    <input
+      [id]="'unitCost_row_' + i"
+      hj-data-allow
+      class="form-control text-center"
+      style="width: 89px;"
+      [formControl]="row.controlGroup.controls.unitCost"
+      mask="separator.4"
+      thousandSeparator=","
+    >
+  </ng-template>
+
+  <ng-template app-cell let-row="row" let-i="i" name="orderedQuantity">
+    <input
+      [id]="'orderedQuantity_row_' + i"
+      data-hj-allow
+      class="form-control text-center"
+      style="width: 89px;"
+      [formControl]="row.controlGroup.controls.orderedQuantity"
+      mask="separator.4"
+      thousandSeparator=","
+    >
+  </ng-template>
+
+  <ng-template app-cell let-row="row" let-i="i" name="totalCost">
+    <div class="d-flex justify-content-end">
+      <span class="text-truncate">
+        {{ getOrderLineTotalCost(row) | number: '1.4-4':'en' }} ₾
+      </span>
+    </div>
+  </ng-template>
+
+  <ng-template app-cell let-row="row" let-i="i" name="unitPrice">
+    <input
+      [id]="'unitPrice_row_' + i"
+      data-hj-allow
+      class="form-control text-center"
+      style="width: 89px;"
+      *ngIf="row.unitPrice"
+      [formControl]="row.controlGroup.controls.unitPrice"
+      mask="separator.4"
+      thousandSeparator=","
+    >
+  </ng-template>
+
+  <ng-template app-cell let-row="row" let-i="i" name="id">
+    <div class="d-flex w-100 justify-content-end">
+      <app-icon
+      *ngIf="editable"
+      [matTooltip]="'GENERAL.DELETE' | translate"
+      icon="trash-tbls"
+      fill="#515366"
+      (click)="onRemove(row.stockItemId)"
+      style="cursor: pointer;"
+       
+    >
+    </app-icon>
+
+    </div>
+  </ng-template>
+</app-table>

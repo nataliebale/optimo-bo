@@ -1,0 +1,33 @@
+@import 'variables';
+@import 'functions';
+@import 'mixins';
+@import 'bootstrap-override';
+@import 'bootstrap-imports';
+@import 'reboot';
+@import 'root';
+@import 'burger';
+@import 'buttons';
+@import 'custom-switch';
+@import 'faq';
+@import 'footer';
+@import 'header';
+@import 'icons';
+@import 'landing';
+@import 'ng-select';
+@import 'package';
+@import 'packages';
+@import 'request';
+@import 'scroll-top';
+@import 'video-container';
+@import 'utilities';
+@import 'offers';
+@import 'dialog';
+@import 'cdk';
+
+
+_
+// @import '~aos/src/sass/aos';
+
+[data-aos='slide-up'] {
+  transform: translate3d(0, 200px, 0);
+}

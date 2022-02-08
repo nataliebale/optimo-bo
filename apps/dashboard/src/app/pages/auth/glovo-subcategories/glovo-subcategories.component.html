@@ -1,0 +1,58 @@
+<div class="h-100 d-flex flex-column" style="padding-bottom: 71px;">
+  <div class="d-flex align-items-center py-3 px-4" style="height: 80px;">
+    <div
+      class="d-flex align-items-center pr-3"
+      *ngIf="selectedRows && selectedRows.length === 0"
+    >
+      <button
+        class="btn btn-primary btn-add mr-3"
+        (click)="onOpenDetailPopup()"
+      >
+        <span> {{'GENERAL.ADD' | translate}}</span>
+      </button>
+      <div
+        *ngIf="!(selectedRows && selectedRows.length === 0)"
+        class=""
+        style="width: 1px; background-color: #e7e7e7; height: 32px;"
+      ></div>
+    </div>
+    <button
+      class="btn p-0 mr-2 bg-table-border-color"
+      (click)="onOpenDetailPopup()"
+      [matTooltip]="'GENERAL.EDIT' | translate"
+      *ngIf="selectedRows && selectedRows.length === 1"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon [icon]="'edit'"></app-icon>
+    </button>
+    <button
+      class="btn mr-2 p-0 bg-table-border-color"
+      (click)="removeItems()"
+      [matTooltip]="'GENERAL.DELETE' | translate"
+      *ngIf="selectedRows && selectedRows.length >= 1 "
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon [icon]="'trash'"></app-icon>
+    </button>
+  </div>
+
+  <div class="flex-grow-1 bg-white">
+    <app-table
+      #table
+      [dataSource]="dataSource"
+      [totalCount]="totalCount"
+      [state]="currentState"
+      [selectable]="true"
+      [paginable]="true"
+      [actions]="{ editable: true, deletable: true }"
+      defaultSort="subCategoryId"
+      defaultSortDirection="DESC"
+      [displayedColumns]="displayedColumns"
+      (stateChanged)="onTableStateChanged($event)"
+      (selectionChanged)="onSelectionChanged($event)"
+      (rowEdit)="onOpenDetailPopup($event)"
+      (rowDelete)="removeItems($event)"
+      class="table-categories category-span-link suppliers-span-link"
+    ></app-table>
+  </div>
+</div>

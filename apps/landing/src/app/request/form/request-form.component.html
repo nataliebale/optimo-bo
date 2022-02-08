@@ -1,0 +1,207 @@
+<div class="request-form">
+  <div
+    class="mb-32 text-center text-dark font-family-semibold font-size-18 font-size-sm-24"
+  >
+    {{'GENERAL.JoinUs' | translate}}
+  </div>
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <div class="form-group mb-3 mb-sm-4">
+      <div class="form-row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+          <input
+            data-hj-allow
+            type="text"
+            [placeholder]="'GENERAL.FirstName' | translate"
+            name="firstName"
+            formControlName="firstName"
+            class="form-control"
+          />
+        </div>
+        <div class="col-sm-6">
+          <input
+            data-hj-allow
+            type="text"
+            [placeholder]="'GENERAL.LastName' | translate"
+            name="lastName"
+            formControlName="lastName"
+            class="form-control"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="form-group mb-3 mb-sm-4">
+      <div class="form-row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+          <input
+            data-hj-allow
+            type="text"
+            [placeholder]="'GENERAL.TelNumber' | translate"
+            name="phoneNumber"
+            formControlName="phoneNumber"
+            class="form-control"
+            mask="9{22}"
+          />
+        </div>
+        <div class="col-sm-6">
+          <input
+            data-hj-allow
+            type="text"
+            [placeholder]="'GENERAL.Email' | translate"
+            name="email"
+            formControlName="email"
+            class="form-control"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="form-group mb-3 mb-sm-4">
+      <div class="form-row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+          <ng-select
+            class="form-control"
+            [placeholder]="'GENERAL.CompanyType' | translate"
+            bindLabel="text"
+            bindValue="value"
+            [searchable]="false"
+            [clearable]="false"
+            formControlName="companyType"
+          >
+          <ng-option [value]="item.value" *ngFor="let item of companyTypes">
+            {{item.text | translate}}
+        </ng-option>
+          </ng-select>
+        </div>
+        <div class="col-sm-6">
+          <input
+            data-hj-allow
+            type="text"
+            [placeholder]="'GENERAL.CompanyName' | translate"
+            name="companyName"
+            formControlName="companyName"
+            class="form-control"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="form-group mb-3 mb-sm-4">
+      <div class="form-row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+          <input
+            data-hj-allow
+            type="text"
+            [placeholder]="(getControlValue('companyType') === 0 ? 'GENERAL.PersonalNumber' : 'GENERAL.IdentificationCode') | translate"
+            name="identificationNumber"
+            formControlName="identificationNumber"
+            class="form-control"
+          />
+        </div>
+        <div class="col-sm-6">
+          <input
+            data-hj-allow
+            type="text"
+            [placeholder]="'GENERAL.ActualAddress' | translate"
+            name="address"
+            formControlName="address"
+            class="form-control"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="form-group mb-3 mb-sm-4">
+      <div class="form-row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+          <ng-select
+            class="form-control"
+            [placeholder]="'GENERAL.FieldOfBusiness' | translate"
+            [items]="businessTypes"
+            bindLabel="name"
+            bindValue="id"
+            [searchable]="false"
+            [clearable]="false"
+            formControlName="businessType"
+          >
+          </ng-select>
+        </div>
+        <div class="col-sm-6">
+          <ng-select
+            class="form-control"
+            [placeholder]="'GENERAL.ChooseAPackage' | translate"
+            bindLabel="text"
+            bindValue="value"
+            [searchable]="false"
+            [clearable]="false"
+            formControlName="packageType"
+          >
+          <ng-option [value]="item.value" *ngFor="let item of packageTypes">
+            {{item.text | translate}}
+        </ng-option>
+          </ng-select>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="text-muted mt-2 mb-20 text-center text-lg-left font-size-14 font-size-sm-16"
+    >
+      {{'RequestPage.Form.DoYouUseInventoryAccountingSoftware' | translate}}
+    </div>
+    <div class="mb-4 text-center text-lg-left">
+      <div class="custom-control custom-radio custom-control-inline">
+        <input
+          data-hj-allow
+          type="radio"
+          id="isUsingManagementSoftwareYes"
+          name="isUsingManagementSoftware"
+          formControlName="isUsingManagementSoftware"
+          class="custom-control-input"
+          [value]="true"
+        />
+        <label
+          class="custom-control-label text-muted font-size-14 font-size-sm-16"
+          for="isUsingManagementSoftwareYes"
+          >{{'GENERAL.Yes' | translate}}</label
+        >
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input
+          data-hj-allow
+          type="radio"
+          id="isUsingManagementSoftwareNo"
+          name="isUsingManagementSoftware"
+          formControlName="isUsingManagementSoftware"
+          class="custom-control-input"
+          [value]="false"
+        />
+        <label
+          class="custom-control-label text-muted font-size-14 font-size-sm-16"
+          for="isUsingManagementSoftwareNo"
+          >{{'GENERAL.No' | translate}}</label
+        >
+      </div>
+    </div>
+    <div class="mb-40 mb-sm-32">
+      <textarea
+        data-hj-allow
+        #textAreaElement
+        [placeholder]="(getControlValue('isUsingManagementSoftware')
+            ? 'RequestPage.Form.WhichAccountingSoftwareDoYouUse'
+            : 'RequestPage.Form.HowDoYouRecordProducts') | translate
+        "
+        id="currentManagementSolutionDescription"
+        name="currentManagementSolutionDescription"
+        formControlName="currentManagementSolutionDescription"
+        class="form-control"
+        style="height: 95px; resize: none;"
+      ></textarea>
+    </div>
+    <div class="mb-40 mb-lg-0 text-center">
+      <button
+        type="submit"
+        class="btn btn-primary btn-block py-12 btn-request"
+        [disabled]="form.invalid"
+      >
+        {{'GENERAL.Send' | translate}}
+      </button>
+    </div>
+  </form>
+</div>

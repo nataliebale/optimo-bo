@@ -1,0 +1,36 @@
+<app-column [dataField]="col.dataField" [caption]="col.caption" [asyncCaption]="col.asyncCaption" [sortable]="col.sortable"
+  [widthPercent]="col.widthPercent" (cellClick)="cellClick.emit($event)">
+  <ng-template *ngIf="headerCellTmpl" #headerCell>
+    <ng-container *ngTemplateOutlet="headerCellTmpl"></ng-container>
+  </ng-template>
+
+  <ng-template #cell let-row="row">
+    <ng-container *ngTemplateOutlet="
+        cellTmpl;
+        context: { cell: row[col.dataField], row: row }
+      "></ng-container>
+    <div *ngIf="!cellTmpl" [ngClass]="col.className">
+      <span  [matTooltip]="getStaticPermissionsData(col, row)" class="mw-100  text-truncate text-dark" #ref1 [matTooltipDisabled]="textIsTruncated(ref1)">
+        {{ getStaticPermissionsData(col, row) | translate}}
+      </span>
+    </div>
+  </ng-template>
+
+  <ng-template *ngIf="col.filterable" #filterCell>
+    <div class="d-flex align-items-center" (click)="onToggleFilter($event)">
+      <input data-hj-allow type="text" class="table-form-control text-truncate" placeholder="აირჩიე" readonly
+        [value]="(col.data[selectedKey] | translate) || ''" [class.pr-12px]="selectedKey" />
+      <app-icon [icon]="'arrow-down'" *ngIf="!selectedKey" class="th-icon" style="cursor: pointer;"></app-icon>
+    </div>
+    <button *ngIf="selectedKey" type="reset" class="filter-reset outline-none" (click)="filterForm.reset(); onSubmit(true)">
+      <app-icon icon="filter-reset"></app-icon>
+    </button>
+    <div *ngIf="isFilterVisible" clickOutside (clickOutside)="onToggleFilter()"
+      class="filter-dialog filter-dialog-type-dropdown active">
+      <div class="dropdown-item  " *ngFor="let key of objectKeys(col.data)"
+        [class.active]="selectedKey === key" (click)="onSelectionChange(key)">
+       <span class="text-truncate font-family-regular"> {{ col.data[key] | translate }} </span> 
+      </div>
+    </div>
+  </ng-template>
+</app-column>

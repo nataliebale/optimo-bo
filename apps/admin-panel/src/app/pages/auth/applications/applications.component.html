@@ -1,0 +1,24 @@
+<div class="w-100 h-100 d-flex flex-column">
+<app-table
+  *ngIf="datasource"
+  [displayedColumns]="displayedColumns"
+  [dataSource]="datasource"
+  [totalCount]="totalCount"
+  [state]="curTableState"
+  [defaultSort]="curTableState.sortField"
+  [defaultSortDirection]="curTableState.sortOrder"
+  [filterable]="true"
+  [paginable]="true"
+  [selectable]="false"
+  (stateChanged)="onTableStateChanged($event)"
+  class="table-offers table-statements flex-grow-1 pt-1" 
+>
+  <ng-template app-cell let-cell="cell" let-row="row" name="createDate">
+    <div class="text-truncate text-right">
+      <span [matTooltip]="row.createDate | date: 'd MMM yy, HH:mm'">
+        {{ row.createDate | date: 'd MMM yy, HH:mm' }}
+      </span>
+    </div>
+  </ng-template>
+</app-table>
+</div>

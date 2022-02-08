@@ -1,0 +1,13 @@
+<div
+  *ngIf="loading"
+  [style.width.%]="progress"
+  [ngStyle]="{
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    height: '3px',
+    'background-color': color || '#0077ff',
+    'z-index': 99999,
+    transition: speed + 's cubic-bezier(.70, 0, 0, 1)'
+  }"
+></div>

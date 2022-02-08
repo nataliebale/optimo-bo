@@ -1,0 +1,46 @@
+<div class="bg-white border rounded d-flex align-items-stretch p-4 my-4">
+  <div
+    class="rounded mr-4"
+    style="
+      width: 100%;
+      max-width: 176px;
+      flex: 0 0 176px;
+      height: 132px;
+      background: no-repeat center / contain;
+    "
+    [ngStyle]="{ 'background-image': 'url(' + imgSrc + ')' }"
+  ></div>
+  <div class="ml-2 flex-grow-1">
+    <div class="font-family-semibold font-size-28 text-dark">
+      {{ category?.name }}
+    </div>
+    <div class="container-fluid mt-4 pt-2">
+      <div class="row">
+        <div class="col-2 pl-0">
+          <div class="font-family-regular font-size-14" style="color: #898da8;">
+            ჯამური ერთეული
+          </div>
+          <div
+            class="font-family-medium font-size-16 text-dark   text-truncate mw-100 d-inline-block"
+             
+            [matTooltip]="categorysummary?.totalQuantityOnHand"
+          >
+            {{ categorysummary?.totalQuantityOnHand | number: '1.4-4':'en' }}
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="font-family-regular font-size-14" style="color: #898da8;">
+            ჯამური ღირებულება
+          </div>
+          <div
+            class="font-family-medium font-size-16 text-dark   text-truncate mw-100 d-inline-block"
+             
+            [matTooltip]="categorysummary?.totalCost"
+          >
+            {{ categorysummary?.totalCost | number: '1.2-2':'en' }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

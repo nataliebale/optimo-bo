@@ -1,0 +1,10 @@
+@each $breakpoint in map_keys($grid-breakpoints) {
+  $infix: breakpoint-infix($breakpoint);
+  @include media-breakpoint-up($breakpoint) {
+    @each $prop, $value in $font-sizes {
+      .font-size#{$infix}-#{$prop} {
+        font-size: $value;
+      }
+    }
+  }
+}

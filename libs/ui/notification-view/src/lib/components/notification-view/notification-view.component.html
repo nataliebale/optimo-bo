@@ -1,0 +1,35 @@
+<div class="d-flex flex-column h-100">
+	<div class="d-flex align-items-center justify-content-between border-sm-bottom border-table-border-color pl-4 
+              pr-sm-20px pr-14 pt-sm-14 pt-28px pb-sm-15px pb-14">
+		<div class="d-flex align-items-center w-100 justify-content-sm-start justify-content-center ml-sm-0 ml-1">
+			<span class="font-color-dark font-size-sm-18 font-size-14 font-family-bold line-height-normal pr-2">
+				შეტყობინება
+			</span>
+			<app-icon icon="yellow-flag" *ngIf="data.isImportant" class="mt-n2px"></app-icon>
+		</div>
+		<button class="btn bg-transparent rounded-0 p-1" (click)="onClose()">
+			<app-icon icon="close" class="icon-w-20px icon-h-20px" style="cursor: pointer;"></app-icon>
+		</button>
+	</div>
+	<div class="custom-scroll-1 px-sm-4 px-3 max-h-u-sm-unset pb-4" style="max-height: 620px;">
+		<div class="font-color-dark font-size-lg-20 font-size-18 font-family-bold pt-sm-3 pb-2">{{data.name}}</div>
+		<div class="font-color-dark font-size-12 font-family-regular pb-lg-20px pb-3 line-height-normal">
+			{{data.sendDate | date: 'dd.MM.yy HH:mm' }}
+		</div>
+		<div  class="overflow-hidden ql-snow">
+			<div class="text-break ql-editor p-0" [innerHTML]="data.description | safeHtml">
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+<!-- <span class="title">შეტყობინება <span class="flag" *ngIf="data.isImportant">flag</span></span>
+<span class="close" (click)="onClose()">close</span> -->
+<!-- <span class="name">{{data.name}}</span> -->
+<!-- <span class="sendDate"></span> -->

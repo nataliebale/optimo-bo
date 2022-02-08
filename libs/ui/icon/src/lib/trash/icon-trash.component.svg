@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="icon icon-trash" [attr.fill]="fill || '#E6ECF5'">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <path d="M0 0H24V24H0z" transform="translate(-346 -116) translate(230 88) translate(24 19) translate(72) translate(20 9)"/>
+                            <g>
+                                <path fill="#343434" d="M10.5 5.5c.276 0 .5.224.5.5v9.04c0 1.364-1.113 2.47-2.487 2.47H3.487C2.113 17.51 1 16.404 1 15.04V6c0-.276.224-.5.5-.5h9zm-.9 1.399H2.4v8.14c0 .55.422 1.006.968 1.064l.119.007h5.026c.563 0 1.022-.42 1.08-.954l.007-.117V6.9zM8.3 1.8c.387 0 .7.313.7.7v.4l-.004.049 2.304.001c.387 0 .7.313.7.7v.2c0 .387-.313.7-.7.7H.7c-.387 0-.7-.313-.7-.7v-.2c0-.387.313-.7.7-.7h2.302L3 2.9v-.4c0-.387.313-.7.7-.7h4.6z" transform="translate(-346 -116) translate(230 88) translate(24 19) translate(72) translate(20 9) translate(6 2)"/>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

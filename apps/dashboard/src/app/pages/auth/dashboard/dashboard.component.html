@@ -1,0 +1,60 @@
+<div
+  class="d-md-flex justify-content-between align-items-center bg-white flex-wrap pt-md-0 pt-2"
+>
+  <ng-container>
+    <div class="px-3 px-sm-4 pb-3 pb-md-0">
+      <div class="col-12 col-md px-0 d-md-flex align-items-center">
+        <div style="max-width: 250px;" class="mw-u-sm-unset">
+          <div class="font-size-14 font-family-regular line-height-normal">
+            {{ 'MAIN.TOTAL_COST' | translate }}
+          </div>
+          <div class="font-size-16 font-size-sm-18 font-family-bold mt-2 line-height-normal text-truncate">
+            <span
+              *ngIf="stockholdingstotals"
+              class="font-color-blue">
+              {{ stockholdingstotals.totalCost | number: '1.2-2':'en' }} ₾</span
+            >
+          </div>
+        </div>
+        <div class="pl-md-4 pt-md-0 pt-3 mw-u-sm-unset" style="max-width: 250px;">
+          <div class="font-size-14 font-family-regular line-height-normal">
+            {{ 'MAIN.TOTAL_PRICE' | translate }}
+          </div>
+          <div class="font-size-16 font-size-sm-18 font-family-bold mt-2 line-height-normal text-truncate font-color-blue">
+            <span
+              *ngIf="stockholdingstotals">
+              {{
+                stockholdingstotals.totalPrice | number: '1.2-2':'en'
+              }} ₾</span>
+					</div>
+				</div>
+        <div class="pl-md-4 pt-md-0 pt-3 mw-u-sm-unset" style="max-width: 150px;">
+          <div class="font-size-14 font-family-regular line-height-normal">
+            {{ 'MAIN.TOTAL_MARGIN' | translate }}
+          </div>
+          <div class="font-size-16 font-size-sm-18 font-family-bold mt-2 line-height-normal text-truncate font-color-blue">
+            <span
+              *ngIf="stockholdingstotals">
+              {{
+                (stockholdingstotals.totalPrice - stockholdingstotals.totalCost)/stockholdingstotals.totalCost *100 | number: '1.2-2':'en'
+              }} %</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ng-container>
+
+   <div class="pr-md-4 ml-auto"> 
+     <app-date-picker [maxDate]="endOfToday" (dateChange)="onDateChanged($event)"
+		[defaultDate]="dateRange[0]" [isRangePicker]="false" class="date-picker-regular dashboard-date-picker-u-md"></app-date-picker>
+   </div>
+	
+</div>
+<div class="px-3 px-sm-4">
+	<div class="dashboard">
+		
+		<app-dashboard-cards [dateRange]="dateRange"></app-dashboard-cards>
+		<app-dashboard-grids [dateRange]="dateRange"></app-dashboard-grids>
+
+	</div>
+</div>

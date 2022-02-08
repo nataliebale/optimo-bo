@@ -1,0 +1,19 @@
+.revenues-report {
+  &__pie-charts {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    &-chart {
+      height: 30vh;
+      width: 45%;
+    }
+  }
+}
+
+#revenue-pie-chart {
+  height: 100%;
+}
+
+#profit-pie-chart {
+  height: 100%;
+}

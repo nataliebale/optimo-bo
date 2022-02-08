@@ -1,0 +1,41 @@
+<div class="  d-flex flex-column h-100" style="padding-bottom: 71px;">
+	<div class="d-flex align-items-center py-3 px-4" style="height: 80px;">
+		<button class="btn rounded bg-excel-export p-0 mr-2" (click)="onExport()" [matTooltip]="'OperatorsReport.exportToExcel' | translate"
+			style="width: 64px; height: 42px;">
+			<app-icon icon="excel"></app-icon>
+		</button>
+		<app-date-picker class="date-picker-regular ml-auto only-range-picker" [maxDate]="endOfToday" (dateChange)="onDateChanged($event)"
+			[defaultDate]="dateRange">
+		</app-date-picker>
+
+	</div>
+	<div class="bg-white flex-grow-1">
+		<app-table #tableInstance [dataSource]="dataSource" [totalCount]="totalCount" [state]="currentState" [selectable]="false"
+			[paginable]="true" [hasColumnSelector]="true" defaultSort="dateBegin" defaultSortDirection="DESC"
+			[displayedColumns]="isHorecaMode ? horecaDisplayedColumns : displayedColumns"
+			(stateChanged)="onTableStateChanged($event)"
+			class="table-sales-history before-last-th-bordered last-th-unbordered table-last-td-pr-25px datepicker-left-0 dropdown-select-overflow-scroll table-u-lg">
+			<ng-template app-cell let-cell="cell" let-row="row" name="cashBegin">
+				<div class="text-truncate text-right">
+					<span [ngClass]="{
+                'text-danger':
+                  row.previousCashEnd && cell < row.previousCashEnd,
+                'text-success':
+                  row.previousCashEnd && cell > row.previousCashEnd
+              }" [matTooltip]="cell | number: '1.4-4':'en'" #ref1 [matTooltipDisabled]="textIsTruncated(ref1)">
+						{{ cell | number: '1.4-4':'en' }} ₾
+					</span>
+				</div>
+			</ng-template>
+			<ng-template app-cell let-cell="cell" let-row="row" name="cashEnd">
+				<div class="text-truncate text-right">
+					<span [ngClass]="{
+                'text-danger': cashSumIsValid(row)
+              }" [matTooltip]="cell | number: '1.4-4':'en'" #ref2 [matTooltipDisabled]="textIsTruncated(ref2)">
+						{{ cell | number: '1.4-4':'en' }} ₾
+					</span>
+				</div>
+			</ng-template>
+		</app-table>
+	</div>
+</div>

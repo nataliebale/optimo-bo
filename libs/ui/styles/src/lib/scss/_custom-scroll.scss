@@ -1,0 +1,12 @@
+.custom{
+    &-view-scroll{
+        overflow: overlay;
+        &::-webkit-scrollbar {
+            width:5px !important;
+          }
+        &::-webkit-scrollbar-thumb {
+            background: rgba(52, 52, 52, 0.5) !important; 
+            border-radius: 4px !important;
+          }
+    }
+}

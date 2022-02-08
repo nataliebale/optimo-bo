@@ -1,0 +1,131 @@
+<div class="h-100 d-flex flex-column" style="padding-bottom: 71px;">
+  <div class="d-flex align-items-center py-3 px-4" style="height: 80px;">
+    <div
+      class="d-flex align-items-center pr-3"
+      *ngIf="selectedRows && selectedRows.length === 0"
+    >
+      <button
+        class="btn btn-primary btn-add mr-3"
+        routerLink="/production-orders/add"
+      >
+        <span>{{'GENERAL.ADD' | translate}}</span>
+      </button>
+      <div style="width: 1px; background-color: #e7e7e7; height: 32px;"></div>
+    </div>
+    
+    <button
+    class="btn p-0 mr-2 bg-table-border-color"
+      (click)="onEdit()"
+      [matTooltip]="'GENERAL.EDIT' | translate"
+      *ngIf="selectedRows && selectedRows.length === 1 && !isAnySucceeded"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon [icon]="'edit'"></app-icon>
+    </button>
+    <button
+    class="btn mr-2 p-0 bg-table-border-color"
+      (click)="onDelete()"
+      [matTooltip]="'GENERAL.DELETE' | translate"
+      *ngIf="selectedRows && selectedRows.length >= 1 && !isAnySucceeded"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon [icon]="'trash'"></app-icon>
+    </button>
+    <button
+    class="btn mr-2 p-0 bg-table-border-color"
+      (click)="onDraftFinish()"
+      [matTooltip]="'ProductionOrders.prepare' | translate"
+      *ngIf="selectedRows && selectedRows.length === 1 && isSelectedsDraft"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon icon="sell"></app-icon>
+    </button>
+    <div
+      class="position-relative"
+      *ngIf="selectedRows && selectedRows.length === 0">
+      <div
+        [matTooltip]="'ProductionOrders.exportProductionOrders' | translate"
+        class="btn bg-table-border-color bg-excel-export rounded px-0 mr-2 position-relative d-flex align-items-center"
+        (click)="isExcelDropdownActive = !isExcelDropdownActive; $event.stopPropagation()"
+        style="
+          height: 42px;
+          cursor: pointer;
+        "
+      >
+        <app-icon icon="excel" class="px-20px"></app-icon>
+        <span
+          class="px-7px border-left d-block border-divider-border">
+        <app-icon
+          icon="arrow-down"
+          style="height: 24px; filter:invert(100%) contrast(200%);"
+        ></app-icon>
+      </span>
+        <!-- filter:invert(100%) contrast(200%); -->
+      </div>
+
+      <div
+        *ngIf="isExcelDropdownActive"
+        clickOutside
+        (clickOutside)="isExcelDropdownActive = false"
+        class="filter-dialog filter-dialog-type-number px-0 py-1 text-left active no-before"
+        style="width: 195px; top: 109%; right: unset;"
+      >
+        <div
+          (click)="
+            isExcelDropdownActive = false;
+            onExportProductionOrders();
+          "
+          class="custom-select-option"
+          style="cursor: pointer;"
+        >
+	      	{{'GENERAL.PRODUCTION_ORDERS' | translate}}
+        </div>
+        <div
+          (click)="
+            isExcelDropdownActive = false;
+            onExportReceipts();
+          "
+          class="custom-select-option"
+          style="cursor: pointer;"
+        >
+		      {{'GENERAL.RECEIPTS' | translate}}
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="bg-white flex-grow-1">
+    <app-table
+      [dataSource]="dataSource"
+      [totalCount]="totalCount"
+      [state]="currentState"
+      [selectable]="true"
+      [paginable]="true"
+      [actions]="{ editable: isRowDraft, deletable: isRowDraft }"
+      [hasColumnSelector]="true"
+      defaultSort="orderDate"
+      defaultSortDirection="DESC"
+      [displayedColumns]="displayedColumns"
+      (stateChanged)="onTableStateChanged($event)"
+      (selectionChanged)="onSelectionChanged($event)"
+      (rowEdit)="onEdit($event)"
+      (rowDelete)="onDelete($event)"
+      (rowClick)="toQueryParam('productionOrderId', $event.id)"
+      class="table-orders"
+    >
+      <ng-template app-cell let-cell="cell" let-row="row" name="status">
+        <span
+          [ngClass]="{
+            'draft': isRowDraft(row)
+          }"
+          class="text-truncate cell-status"
+          [matTooltip]="productionOrderStatusMap[cell]"
+          optimoShowMatTooltipIfTruncated
+        >
+          {{ productionOrderStatusMap[cell] }}
+        </span>
+      </ng-template>
+    </app-table>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+<form
+  *ngIf="form"
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="modal-header py-4 align-items-center">
+    <div class="col"></div>
+    <div
+      class="modal-title font-family-semibold font-size-18 text-primary col-auto text-center"
+    >
+      {{"ENTITY_CLIENTS.TRANSACTIONS.PAYMENT" |translate}}
+    </div>
+    <div class="col">
+      <button
+        type="button"
+        class="close"
+        style="font-size: 28px;"
+        (click)="onCancel()"
+      >
+        <span>&times;</span>
+      </button>
+    </div>
+  </div>
+  <div
+    class="modal-body mx-auto px-0"
+    style="width: 400px; padding-top: 40px;padding-bottom: 40px;"
+  >
+    <ng-select
+      class="custom-select-header form-control"
+      [items]="paymentMethods"
+      placeholder="აირჩიე"
+      bindValue="value"
+      bindLabel="label"
+      [searchable]="true"
+      [clearable]="false"
+      formControlName="paymentMethod"
+    >
+    </ng-select>
+    <input
+      id="transactionAmount"
+      data-hj-allow
+      class="form-control mt-4"
+      min="0"
+      placeholder="0"
+      type="number"
+      autocomplete="off"
+      formControlName="transactionAmount"
+    />
+  </div>
+  <div class="modal-footer justify-content-center py-4">
+    <button
+      type="submit"
+      class="btn btn-primary mr-3 py-3"
+      style="padding-left: 67px; padding-right: 67px;"
+      [disabled]="!form.valid ? 'disabled' : null"
+    >
+      {{'GENERAL.SAVE'| translate}}
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-primary py-3"
+      style="padding-left: 63px; padding-right: 63px;"
+      (click)="onCancel()"
+    >
+    {{'GENERAL.CANCEL'| translate}}
+    </button>
+  </div>
+</form>

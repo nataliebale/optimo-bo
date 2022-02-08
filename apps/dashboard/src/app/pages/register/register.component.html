@@ -1,0 +1,152 @@
+<div class="register">
+  <div class="register__overlay"></div>
+
+  <div >
+    <div style="text-align: center;">
+      <img alt="Logo" src="../../../assets/images/logo/area-logo.svg" />
+    </div>
+
+    <form
+      [formGroup]="registerForm"
+      (submit)="onSubmit()"
+    >
+      <div class="register__two-inputs">
+        <mat-form-field>
+          <input
+            data-hj-allow
+            matInput
+            placeholder="სახელი"
+            formControlName="firstName"
+            (input)="onNameChange()"
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            data-hj-allow
+            matInput
+            placeholder="გვარი"
+            formControlName="lastName"
+            (input)="onNameChange()"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="register__single-input">
+        <mat-form-field>
+          <mat-select
+            placeholder="კომპანიის ტიპი"
+            formControlName="companyType"
+            (selectionChange)="onCompanyTypeChange($event)"
+          >
+            <mat-option *ngFor="let type of companyTypes" [value]="type.value">
+              {{ type.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div
+        class="register__single-input"
+        *ngIf="activeCompanyType !== undefined"
+      >
+        <mat-form-field>
+          <input
+            data-hj-allow
+            matInput
+            [placeholder]="idString"
+            formControlName="identificationNumber"
+            [maxlength]="idMaxLength"
+            [minlength]="idMinLength"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="register__single-input">
+        <mat-form-field>
+          <input
+            data-hj-allow
+            matInput
+            placeholder="კომპანიის სახელი"
+            formControlName="companyName"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="register__single-input">
+        <mat-form-field>
+          <mat-select placeholder="სფერო" formControlName="businessType">
+            <mat-option value="1">
+              სფერო 1
+            </mat-option>
+
+            <mat-option value="2">
+              სფერო 2
+            </mat-option>
+
+            <mat-option value="3">
+              სფერო 3
+            </mat-option>
+
+            <mat-option value="4">
+              სფერო 4
+            </mat-option>
+
+            <mat-option value="5">
+              სფერო 5
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="register__single-input">
+        <mat-form-field>
+          <input
+            data-hj-allow
+            matInput
+            placeholder="ელ. ფოსტა ან ტელეფონის ნომერი"
+            formControlName="userName"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="register__single-input">
+        <mat-form-field>
+          <input
+            data-hj-allow
+            matInput
+            type="password"
+            [placeholder]="'პაროლი ' + passwordStrength"
+            formControlName="password"
+            (input)="onPasswordChange($event.target.value)"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="register__single-input">
+        <mat-form-field>
+          <input
+            data-hj-allow
+            matInput
+            type="password"
+            placeholder="გაიმეორე პაროლი"
+            formControlName="repeatPassword"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="register__single-item">
+        <mat-checkbox formControlName="terms">
+          ვეთანხმები <a routerLink="\">გამოყენების პირობებს</a> და
+          <a routerLink="\">კონფიდენციალურობის პოლიტიკას</a>
+        </mat-checkbox>
+      </div>
+
+      <div class="register__single-item register__centered">
+        <button mat-raised-button [disabled]="!registerForm.value.terms">
+          რეგისტრაცია
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

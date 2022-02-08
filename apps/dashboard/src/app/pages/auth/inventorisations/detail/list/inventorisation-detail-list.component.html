@@ -1,0 +1,81 @@
+<div
+  class="d-flex justify-content-between align-items-center"
+   
+>
+  <div class="pb-4" style="width: 468px;">
+    <div class="font-size-15 font-color-dark font-family-bold mb-2">{{selectLabelTranslateKey | translate}}</div>
+    <app-dynamic-select
+      #dynamicSelector
+      #dynamicSelectorModel="ngModel"
+      id="inventorisation-detail-list-choose-category" 
+      [dataGetter]="getProducts"
+      [itemGetterById]="getProductById"
+      additionalSearchKey="barcode"
+      [showClearButton]="false"
+      [multiple]="true"
+      [showLabel]="false"
+      [closeOnSelect]="false"
+      [(ngModel)]="selectedProductIds"
+      [ngModelOptions]="{ standalone: true }"
+    ></app-dynamic-select>
+  </div>
+</div>
+<app-table
+  *ngIf="displayedColumns"
+  [dataSource]="productsDataSource"
+  [totalCount]="productsDataSource?.length"
+  [selectable]="false"
+  [filterable]="false"
+  [paginable]="false"
+  [indexable]="true"
+  [displayedColumns]="displayedColumns"
+  [staticData]="true"
+  class="table-add-order first-th-centered"
+  [class.disabled]="productsDataSource && productsDataSource[0]?.placeholder"
+>
+  <ng-template app-cell let-cell="cell" let-row="row" name="name">
+    <div class="d-flex justify-content-between align-items-center pr-3">
+      <span class="text-truncate">{{ cell }}</span> 
+
+      <app-icon
+        *ngIf="criteria === InventorisationCriteria.Category"
+        [matTooltip]="'GENERAL.DELETE' | translate"
+        icon="trash-tbls"
+        fill="#515366"
+        (click)="onRemoveProduct(row)"
+        style="cursor: pointer; margin-left: 32px;"
+      >
+      </app-icon>
+    </div>
+  </ng-template>
+  <ng-template app-cell let-cell="cell" let-row="row" name="barcode">
+    <div class="d-flex justify-content-between align-items-center">
+      {{ cell }}
+
+      <app-icon
+        [matTooltip]="'GENERAL.DELETE' | translate"
+        icon="trash-tbls"
+        fill="#515366"
+        (click)="onRemoveProduct(row)"
+        style="cursor: pointer; margin-left: 32px;"
+      >
+      </app-icon>
+    </div>
+  </ng-template>
+  <ng-template app-cell let-cell="cell" let-row="row" name="phoneNumber">
+    <div class="d-flex justify-content-between align-items-center">
+      <span>
+        {{ cell }}
+      </span>
+
+      <app-icon
+        [matTooltip]="'GENERAL.DELETE' | translate"
+        icon="trash-tbls"
+        fill="#515366"
+        (click)="onRemoveProduct(row)"
+        style="cursor: pointer; margin-left: 32px;"
+      >
+      </app-icon>
+    </div>
+  </ng-template>
+</app-table>

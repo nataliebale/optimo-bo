@@ -1,0 +1,90 @@
+$font-family-base: $font-regular-georgian, $font-regular;
+
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 768px,
+  md: 1023px,
+  lg: 1365px,
+  xl: 1620px,
+) !default;
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+$container-max-widths: (
+  md: 1022px,
+  lg: 1140px,
+) !default;
+
+// Color system
+$blue: #4562ff;
+$dark: #44454e;
+$text-muted: #627381;
+$border-color: #e6ecf5;
+$light: #f6f8fb;
+$green: #27d3a2;
+$yellow: #ffaa31;
+$purple: #713ac9;
+$info: $purple;
+$offers-bg: #f6f7fb;
+
+$theme-colors: (
+  'blue': $blue,
+  'white': white,
+  'offers-bg': $offers-bg,
+);
+
+@each $name, $value in $theme-colors {
+  .font-color-#{$name} {
+    color: $value !important;
+  }
+}
+// Navs
+$nav-link-padding-x: 20px;
+
+$spacers: (
+  11: 11px,
+  12: 12px,
+  13: 13px,
+  15: 15px,
+  16: 16px,
+  17: 17px,
+  20: 20px,
+  28: 28px,
+  31: 31px,
+  32: 32px,
+  40: 40px,
+  50: 50px,
+  60: 60px,
+  64: 64px,
+  70: 70px,
+  78: 78px,
+  80: 80px,
+  98: 98px,
+  100: 100px,
+);
+
+// Hr
+$hr-border-color: #e6ecf5;
+$hr-margin-y: 50px;
+
+//Forms
+$input-height: auto;
+$input-padding-y: 13px;
+$input-padding-x: 1rem;
+$input-font-size: 14px;
+$input-border-color: #e6ecf5;
+$input-placeholder-color: #c0c5d2;
+$form-group-margin-bottom: 24px;
+$form-grid-gutter-width: 24px;
+$input-focus-box-shadow: none;
+$input-focus-border-color: $blue;
+
+// List
+$list-group-border-color: $border-color;

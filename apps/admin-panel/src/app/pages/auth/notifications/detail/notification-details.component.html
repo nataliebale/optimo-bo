@@ -1,0 +1,111 @@
+<form *ngIf="form" [formGroup]="form" (submit)="onSubmit()" class="offer-detail">
+	<div class="container-fluid sticky-top bg-white mb-42px" style="height: 72px;">
+		<div class="row align-items-center h-100 border-bottom border-secondary">
+			<div class="col pl-0 h-100">
+				<button type="button" class="btn bg-white px-2 h-100 rounded-0" style="width: 102px;"
+					(click)="onCancel()">
+					<app-icon icon="close"></app-icon>
+				</button>
+			</div>
+			<div class="col-auto font-size-20 font-family-bold text-dark">
+				{{editId ? 'შეტყობინების რედაქტირება' : 'შეტყობინების დამატება'}}
+			</div>
+			<div class="col pr-4 h-100 d-flex align-items-center justify-content-end">
+				<button type="button" (click)="openNotification(); $event.stopPropagation()"
+					class="btn bg-table-border-color font-size-14 font-family-bold text-dark py-0 px-23px h-42px mr-3">
+					გადახედვა
+				</button>
+				<button class="btn btn-primary font-size-14 font-family-bold text-white py-0 px-23px h-42px"
+					type="submit">
+					გაგზავნა
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="w-100" *ngIf="isSubmited && form?.invalid">
+		<div class="mx-auto bg-danger-bg px-4 rounded text-center border d-flex align-items-center border-danger-border mt-3"
+			style="max-width: 960px;height: 54px;">
+			<div class="col-2 d-flex px-0">
+				<app-icon icon="alert"></app-icon>
+			</div>
+			<div class="col text-center font-size-14 font-color-dark font-family-regular">
+				შეავსე გამორჩენილი ველები
+			</div>
+			<div class="col-2 px-0"></div>
+		</div>
+	</div>
+
+
+	<div class="container-md d-flex justify-content-center pt-5 pb-4">
+		<div class="px-1 col-8">
+
+			<div class="w-100 d-flex flex-column pb-32px">
+				<label for="notificationName" class="font-size-15 font-color-dark font-family-bold">დასახელება*</label>
+				<input class="form-control" id="notificationName" type="text" formControlName="name" />
+			</div>
+
+
+			<div class="w-100 d-flex flex-column pb-32px">
+				<label class="font-size-15 font-color-dark font-family-bold">ბიზნესის ტიპები*</label>
+				<div class="col-auto custom-checkbox custom-checkbox-selected-blue pl-0 position-absolute" [ngStyle]="{'right': 0}">
+					<input type="checkbox" id="custom-checkbox-allBusinessTypes" formControlName="allBusinessTypes"
+						class="custom-checkbox-control" />
+					<label for="custom-checkbox-allBusinessTypes" class="custom-checkbox-label">
+						<span class="ml-2">ყველა</span>
+					</label>
+				</div>
+				<app-dynamic-select id="businessType" class="add-inventory-item__dynamic-select"
+					[dataGetter]="getBusinessTypes" [itemGetterById]="getBusinessTypeById" [closeOnSelect]="false"
+					[multiple]="true" formControlName="businessTypes">
+				</app-dynamic-select>
+			</div>
+
+
+			<div class="pb-32px">
+				<label class="font-size-15 font-color-dark font-family-bold">აღწერა*</label>
+				<quill-editor [styles]="{minHeight: '120px'}" [modules]="editor_modules" (onFocus)="editorFocused = true"
+					(onBlur)="editorFocused = false" formControlName="description" class="quill-editor-control"
+					[ngClass]="{
+			  'focus': editorFocused,
+			  'invalid': form.get('description').invalid && form.get('description').touched,
+			  'valid': form.get('description').valid
+			}" (onContentChanged)="updateQuillValidity()">
+
+				</quill-editor>
+			</div>
+
+			<div class="d-flex">
+				<div class="col-auto custom-checkbox custom-checkbox-selected-blue pl-0 pr-40">
+					<input type="checkbox" id="custom-checkbox-isImportant" class="custom-checkbox-control"
+						formControlName="isImportant" />
+					<label for="custom-checkbox-isImportant" class="custom-checkbox-label">
+						<span class="ml-3 line-height-normal">მნიშვნელოვანი </span>
+					</label>
+				</div>
+
+				<div class="col-auto custom-checkbox custom-checkbox-selected-blue pl-0">
+					<input type="checkbox" id="custom-checkbox-isForTesting" formControlName="isForTesting"
+						class="custom-checkbox-control" />
+					<label for="custom-checkbox-isForTesting" class="custom-checkbox-label">
+						<span class="ml-3">ტესტირებისთვის</span>
+					</label>
+				</div>
+			</div>
+
+
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+	</div>
+</form>

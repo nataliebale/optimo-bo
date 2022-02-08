@@ -1,0 +1,70 @@
+<app-header [requestButtonVisibility]="true"></app-header>
+<div class="request-container">
+  <div class="request-container-header d-none d-sm-block">
+    <img src="assets/images/request-demo-header.jpg" class="w-100" alt="" />
+    <div class="container position-relative h-100 px-40 px-lg-15">
+      <div class="position-absolute text-white d-flex align-items-center" style="bottom: 28px;">
+        <a [routerLink]="'/' + translateService.currentLang" class="text-decoration-none text-white"
+          style="opacity: .7;">{{'MainNavigation.Home' | translate}}</a>
+        <app-icon class="icon-light mx-12" icon="arrow-right"></app-icon>
+        <span>{{'DemoPage.RequestDemo' | translate}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="pt-32 pb-40">
+    <div class="container position-relative px-16 px-sm-40">
+      <div [class.inactive]="isSuccess" class="request-content">
+        <div class="row">
+          <div class="col-md-10 offset-md-1 d-none d-sm-block d-lg-none text-center">
+            <div class="font-size-24 font-family-semibold text-dark mb-4">
+              {{'DemoPage.RequestDemoSection.FirstLine' | translate}} {{'DemoPage.RequestDemoSection.SecondLine' |
+              translate}}
+            </div>
+            <div class="text-muted font-size-14 mb-5">
+              {{'DemoPage.RequestDemoSection.Description' | translate}}
+            </div>
+          </div>
+          <div class="col-sm-8 offset-sm-2 col-md-6 offset-md-3 offset-lg-0 p-0">
+            <app-request-demo-form (request)="onSubmit($event)"></app-request-demo-form>
+          </div>
+          <div class="col-lg-5 offset-lg-1 pt-5 d-none d-lg-block">
+            <div class="font-size-24 font-family-semibold mb-4 text-center text-lg-left" style="line-height: 42px;">
+              <div class="text-primary">{{'DemoPage.RequestDemoSection.FirstLine' | translate}}</div>
+              <div class="text-dark">{{'DemoPage.RequestDemoSection.SecondLine' | translate}}</div>
+            </div>
+            <div class="font-size-14 text-muted text-center text-lg-left" style="line-height: 28px;">
+              {{'DemoPage.RequestDemoSection.Description' | translate}}
+            </div>
+            <div class="d-none d-lg-block">
+              <div class="col-10 pl-0">
+                <hr />
+              </div>
+              <div class="font-family-medium text-dark mb-4">
+                {{'GENERAL.ContactUsIfYouHaveQuestions' | translate}}
+              </div>
+              <a href="tel:0322800900" class="d-inline-flex align-items-center mb-4 text-dark text-decoration-none">
+                <app-icon icon="phone"></app-icon>
+                <span class="font-family-regular text-muted ml-3">032 2 800 900</span>
+              </a>
+              <br />
+              <a href="mailto:info@optimo.ge" class="d-inline-flex align-items-center text-dark text-decoration-none">
+                <app-icon icon="email"></app-icon>
+                <span class="font-family-regular text-muted ml-3">info@optimo.ge</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="request-success text-center" [class.active]="isSuccess">
+        <app-icon icon="success"></app-icon>
+        <div class="font-size-20 font-size-sm-24 font-family-semibold text-dark mt-4">
+          {{'DemoPage.RequestSentSuccessfully.Thanks' | translate}}
+        </div>
+        <div class="font-size-16 font-size-sm-18 text-muted w-100 mx-auto mt-24 mt-sm-32" style="max-width: 730px;">
+          {{'DemoPage.RequestSentSuccessfully.YourRequestHasBeenSentSuccessfully' |
+          translate}}<br />{{'DemoPage.RequestSentSuccessfully.WeWillContactYouSoon' | translate}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

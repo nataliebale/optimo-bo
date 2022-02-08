@@ -1,0 +1,487 @@
+app-icon {
+  cursor: pointer;
+}
+.icon {
+  $root: &;
+  @include transition;
+  &-w-20px {
+    svg {
+      width: 20px;
+    }
+  }
+  &-w-16px {
+    svg {
+      width: 16px;
+    }
+  }
+  &-h-20px {
+    svg {
+      height: 20px;
+    }
+  }
+  &-w-h-28px {
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+  &-sidebar {
+    fill: $text-muted;
+  }
+  //  &-arrow-down-sidebar-admin{
+  //    svg{
+  //      g{
+  //        path + path{
+  //          stroke: white;
+  //        }
+  //      }
+  //    }
+  //  }
+  &-plus {
+    fill: $white;
+    transform: translateY(-2px);
+  }
+
+  // &-arrow {
+  //   &-down {}
+  // }
+
+  &-calendar {
+    &:hover {
+      path.icon-calendar-fill {
+        fill: $blue;
+      }
+
+      path.icon-calendar-stroke {
+        stroke: $blue;
+      }
+    }
+  }
+  &-rotate {
+    &-percent {
+      svg {
+        -webkit-animation: rotation 0.2s linear;
+        animation: rotation 0.2s linear;
+      }
+    }
+    &-static {
+      svg {
+        -webkit-animation: rotation 0.2s linear;
+        animation: rotation 0.2s linear;
+      }
+    }
+  }
+  &-arrow-down-sidebar {
+    svg {
+      @include transition;
+    }
+    &.active {
+      svg {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+  &-edit {
+    fill: $blue;
+    transform: translateY(-2px);
+  }
+  &-arrow {
+    &-left {
+      svg {
+        transform: rotate(90deg);
+      }
+    }
+    &-right {
+      svg {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+  &-hover {
+    &-opacity {
+      opacity: 0.35;
+      @include transition;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+  &-show {
+    fill: $blue;
+  }
+
+  &-hide {
+    fill: $blue;
+  }
+
+  &-trash {
+    transform: translateY(-2px);
+
+    &-suppliers {
+      svg {
+        width: 13px;
+        height: 13px;
+      }
+    }
+  }
+
+  &-sort-up path,
+  &-sort-down path {
+    @include transition;
+  }
+
+  &-statistics {
+    &-sm {
+      svg {
+        width: 7px;
+        height: 10px;
+      }
+    }
+  }
+
+  &-save {
+    fill: $blue;
+  }
+
+  &-save-white {
+    svg {
+      fill: $white;
+    }
+  }
+
+  &-done {
+    $icon-done: &;
+
+    &-path {
+      fill: $white;
+    }
+
+    &-profile {
+      cursor: pointer;
+      visibility: hidden;
+      opacity: 0;
+
+      #{$icon-done}-path {
+        fill: $blue;
+      }
+    }
+  }
+
+  &-close {
+    $icon-close: &;
+
+    // fill: $text-muted;
+
+    &:hover {
+      fill: $dark;
+    }
+
+    &-profile {
+      cursor: pointer;
+      visibility: hidden;
+      opacity: 0;
+
+      #{$icon-close} {
+        path {
+          fill: $text-muted;
+        }
+      }
+    }
+    &-dark {
+      fill: $dark;
+      svg {
+        g {
+          fill: #343434 !important;
+        }
+      }
+    }
+  }
+
+  &-eye {
+    fill: #c0c5d2;
+
+    &-wrapper {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 12px;
+      cursor: pointer;
+    }
+
+    &:hover {
+      fill: $blue;
+    }
+  }
+
+  &-back {
+    &-lg {
+      svg {
+        width: 24px;
+        height: 24px;
+        fill: $text-muted;
+        cursor: pointer;
+
+        &:hover {
+          fill: $dark;
+        }
+      }
+    }
+  }
+
+  &-header {
+    // &-settings {
+    //   margin-right: 12px;
+
+    //   svg {
+    //     fill: $blue;
+    //   }
+    // }
+  }
+
+  &-external-link {
+    transform: translateY(-2px);
+  }
+
+  &-import {
+    transform: translateY(-2px);
+  }
+
+  &-download {
+    #{$root}-import {
+      transform: rotate(180deg) translateX(-2px);
+    }
+  }
+
+  &-upload {
+    #{$root}-import {
+      transform: translateY(2px);
+    }
+  }
+
+  &-sell {
+    svg g {
+      fill: $blue;
+    }
+  }
+
+  &-import {
+    #{$root}-import {
+      transform: rotate(-90deg) translateX(2px);
+    }
+  }
+
+  &-attention {
+    svg {
+      margin: 0 auto;
+      width: 100%;
+      height: 48px;
+    }
+  }
+  &-info {
+    position: absolute;
+    right: 0px;
+    top: 30px;
+  }
+  &-reload-blue {
+    svg {
+      .main-path {
+        fill: rgb(0, 119, 255);
+      }
+    }
+  }
+  &-dark {
+    .stroke-change {
+      stroke: #343434;
+    }
+    .fill-change {
+      fill: #343434;
+    }
+  }
+}
+
+.active {
+  .icon-arrow-down {
+    transform: rotate(0);
+  }
+
+  &.has-route {
+    .icon {
+      &-sidebar {
+        fill: $blue;
+      }
+    }
+  }
+
+  // &.asc {
+  //   .icon-sort-up {
+  //     path {
+  //       // fill: darken(#e6ecf5, 70%);
+  //       fill:#4563ff;
+  //     }
+  //   }
+  // }
+
+  // &.desc {
+  //   .icon-sort-down {
+  //     path {
+  //       // fill: darken(#e6ecf5,70%);
+  //       fill:#4563ff;
+  //     }
+  //   }
+  // }
+
+  .icon-arrow-right {
+    transform: rotate(90deg);
+  }
+
+  .icon-location {
+    #shop {
+      fill: $blue;
+    }
+  }
+}
+
+.btn-primary:hover {
+  .icon-plus {
+    fill: $white;
+  }
+}
+
+.btn-outline-primary:hover {
+  .icon-back,
+  .icon-save {
+    fill: $white;
+  }
+}
+
+.btn-outline-danger:hover {
+  .icon-trash {
+    fill: $white;
+  }
+
+  .outline-close {
+    .icon-close path {
+      fill: $white;
+    }
+  }
+}
+
+.disabled {
+  .icon {
+    &-trash,
+    &-edit {
+      fill: #e6ecf5;
+    }
+  }
+}
+
+.btn-table-action {
+  .icon {
+    &-trash,
+    &-edit {
+      fill: $blue;
+    }
+  }
+}
+
+[class^='icon-'] {
+  @include transition;
+}
+
+.outline-close {
+  .icon-close {
+    width: 14px;
+    height: 14px;
+
+    path {
+      fill: $red;
+    }
+  }
+}
+
+.btn-outline-orange {
+  .icon-external-link {
+    fill: $orange;
+  }
+
+  &:hover {
+    .icon-external-link {
+      fill: $white;
+    }
+  }
+}
+
+[disabled],
+.disabled {
+  .icon-dashboard-light svg {
+    fill: #e6ecf5 !important;
+  }
+
+  .icon-trash,
+  .icon-edit {
+    fill: #e6ecf5;
+  }
+}
+
+.icon-dashboard-light svg {
+  fill: $blue !important;
+  // transform: scale(0.9);
+}
+
+.selected {
+  .icon-dashboard-light svg {
+    fill: $white;
+  }
+}
+
+tr:not(.selected) {
+  .btn-table-action {
+    &:not(.disableStatus) {
+      &:hover {
+        .icon-show,
+        .icon-show path,
+        .icon-hide,
+        .icon-hide path {
+          fill: $dark !important;
+        }
+      }
+    }
+  }
+}
+
+[disabled] .icon-sell svg g {
+  fill: $border-color;
+}
+
+[disabled] .icon-upload svg g {
+  fill: $border-color;
+}
+
+.disabled .icon-upload svg g {
+  fill: $border-color;
+}
+
+// [disabled] .icon-download svg g {
+//   fill: $border-color;
+// }
+
+app-icon {
+  &.w-20px {
+    width: 20px;
+    svg {
+      width: 20px;
+    }
+  }
+  &.w-18px {
+    width: 18px;
+    svg {
+      width: 18px;
+    }
+  }
+  &.h-20px {
+    height: 20px;
+    svg {
+      height: 20px;
+    }
+  }
+}

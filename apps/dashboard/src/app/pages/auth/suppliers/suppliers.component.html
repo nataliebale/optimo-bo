@@ -1,0 +1,76 @@
+<div class="h-100 d-flex flex-column" style="padding-bottom: 71px;">
+  <div class="d-flex align-items-center py-3 px-4" style="height: 80px;">
+    <div
+      class="d-flex align-items-center pr-3"
+      *ngIf="selectedRows && selectedRows.length === 0"
+    >
+      <a class="btn btn-primary btn-add mr-3" routerLink="/suppliers/add">
+        <span>{{ 'GENERAL.ADD' | translate}}</span>
+      </a>
+      <div
+        class=""
+        style="width: 1px; background-color: #e7e7e7; height: 32px;"
+      ></div>
+    </div>
+    <button
+      class="btn p-0 mr-2 bg-table-border-color"
+      (click)="goToEdit()"
+      *ngIf="selectedRows && selectedRows.length === 1"
+      [matTooltip]="'GENERAL.EDIT' | translate"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon [icon]="'edit'"></app-icon>
+    </button>
+
+    <button
+      class="btn mr-2 p-0 bg-table-border-color "
+      (click)="removeItems()"
+      *ngIf="selectedRows && selectedRows.length >= 1"
+      [matTooltip]="'GENERAL.DELETE' | translate"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon [icon]="'trash'"></app-icon>
+    </button>
+    <!-- <button
+      class="btn p-0 mr-2 bg-table-border-color"
+      (click)="onOpenTransactionPopup()"
+      *ngIf="selectedRows && selectedRows.length === 1"
+      [matTooltip]="'SUPPLIERS.PAYMENT_METHOD_BUTTON' | translate"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon icon="cash-lari"></app-icon>
+    </button> -->
+    <button
+      class="btn p-0 mr-2 bg-table-border-color"
+      (click)="onRSImport()"
+      style="width: 64px; height: 42px;"
+      [matTooltip]="'SUPPLIERS.RS_IMPORT_BUTTON' | translate"
+      *ngIf="selectedRows && selectedRows.length === 0"
+    >
+      <app-icon icon="rs" ></app-icon>
+    </button>
+  </div>
+
+  <div class="bg-white">
+    <app-table
+      #table
+      [dataSource]="dataSource"
+      [totalCount]="totalCount"
+      [state]="currentState"
+      [selectable]="true"
+      [paginable]="true"
+      [actions]="{ editable: true, deletable: true }"
+      defaultSort="id"
+      defaultSortDirection="DESC"
+      [displayedColumns]="displayedColumns"
+      [hasColumnSelector]="true"
+      (stateChanged)="onTableStateChanged($event)"
+      (selectionChanged)="onSelectionChanged($event)"
+      (rowEdit)="goToEdit($event)"
+      (rowDelete)="removeItems($event)"
+      (rowClick)="toQueryParam('supplierId', $event.id)"
+      class="table-suppliers"
+    >
+    </app-table>
+  </div>
+</div>

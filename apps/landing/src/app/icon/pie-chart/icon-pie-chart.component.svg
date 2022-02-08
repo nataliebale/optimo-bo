@@ -1,0 +1,26 @@
+<svg  viewBox="0 0 100 100" [style.transform]="transform"
+ width="40" height="40">
+  <circle cx="50" cy="50" r="24"
+          fill="none"
+          [attr.stroke]="data.secondaryColor"
+          stroke-width="48"
+          stroke-dasharray="314"
+          stroke-dashoffset="0"
+  />
+  <circle cx="50" cy="50" r="25"
+          fill="none"
+          [attr.stroke]="data.primaryColor"
+          stroke-width="48"
+          stroke-dasharray="314"
+          stroke-dashoffset="197">
+    <!-- <animate #secondAnimate begin="false" attributeName="stroke-dashoffset"  from="160" to="197" dur="250ms" fill="freeze"/> -->
+  </circle>
+  <circle cx="50" cy="50" r="25"
+          fill="none"
+          stroke="white"
+          stroke-width="50"
+          stroke-dasharray="314"
+          stroke-dashoffset="314">
+    <!-- <animate #firstAnimate attributeName="stroke-dashoffset" from="160" to="314" dur="1s" fill="freeze" begin="false"/> -->
+  </circle>
+</svg>

@@ -1,0 +1,16 @@
+.idle-popup {
+  &__logout {
+    float: left;
+    width: calc(50% - 10px);
+    margin-top: 10px;
+  }
+  &__continue {
+    float: right;
+    width: calc(50% - 10px);
+    margin-top: 10px;
+  }
+  &__message {
+    text-align: center;
+    margin: 10px 0 10px;
+  }
+}

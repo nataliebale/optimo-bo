@@ -1,0 +1,60 @@
+<div class="h-100 d-flex flex-column" style="padding-bottom: 71px;">
+  <div class="d-flex align-items-center py-3 px-4" style="height: 80px;">
+    <div
+      class="d-flex align-items-center pr-3"
+      *ngIf="selectedRows && selectedRows.length === 0"
+    >
+      <button
+        class="btn btn-primary btn-add mr-3"
+        routerLink="/receipt-templates/add"
+      >
+        <span>{{'GENERAL.ADD' | translate}}</span>
+      </button>
+      <!-- <div
+        class=""
+        style="width: 1px; background-color: #e7e7e7; height: 32px;"
+      ></div> -->
+    </div>
+    <button
+      class="btn p-0 mr-2 bg-table-border-color"
+      (click)="goToEdit()"
+      [matTooltip]="'GENERAL.EDIT' | translate"
+      *ngIf="selectedRows && selectedRows.length === 1"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon [icon]="'edit'"></app-icon>
+    </button>
+    <button
+    class="btn mr-2 p-0 bg-table-border-color"
+      (click)="removeItems()"
+      [matTooltip]="'GENERAL.DELETE' | translate"
+      *ngIf="selectedRows && selectedRows.length >= 1 && !anyIsUsed"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon [icon]="'trash'"></app-icon>
+    </button>
+  </div>
+
+  <div class="flex-grow-1 bg-white">
+    <app-table
+      #table
+      [dataSource]="dataSource"
+      [totalCount]="totalCount"
+      [state]="currentState"
+      [selectable]="true"
+      [paginable]="true"
+      [actions]="{ editable: true, deletable: isRowDeletable }"
+      defaultSort="id"
+      defaultSortDirection="DESC"
+      [displayedColumns]="displayedColumns"
+      (stateChanged)="onTableStateChanged($event)"
+      (selectionChanged)="onSelectionChanged($event)"
+      (rowEdit)="goToEdit($event)"
+      (rowDelete)="removeItems($event)"
+      (rowClick)="toQueryParam('receiptTemplateId', $event.id)"
+      class="table-categories"
+    >
+      <!-- <ng-template app-cell let-cell="cell" name="id"> </ng-template> -->
+    </app-table>
+  </div>
+</div>

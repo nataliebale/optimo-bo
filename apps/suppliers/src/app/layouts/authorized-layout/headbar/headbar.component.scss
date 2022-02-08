@@ -1,0 +1,67 @@
+@import 'libs/ui/styles/src/lib/scss/variables';
+@import 'libs/ui/styles/src/lib/scss/bootstrap-override';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins/breakpoints';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: $header-height;
+  background: $white;
+  padding-left: var(--sidebar-width);
+  &-profile {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.15s linear;
+
+    @include media-breakpoint-up(sm) {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+  &-dropdown {
+    pointer-events: all;
+    border-radius: 5px;
+    border: 1px solid #d6d6d6;
+    position: absolute;
+    top: 67px;
+    right: 16px;
+    z-index: 1035;
+    background-color: #fff;
+    width: 272px;
+    box-shadow: 0 11px 16px -18px #bababa;
+    padding-bottom: 4px;
+    &-item {
+      transition: all 0.15s linear;
+      height: 48px;
+      &:hover {
+        background-color: #f6f6f6;
+      }
+    }
+    &.left {
+      padding-top: 4px;
+      right: 115px;
+    }
+    .dropdown-item {
+      &.active {
+        background-color: #c2dbff;
+        &::after {
+          content: '';
+          display: block;
+          width: 24px;
+          height: 24px;
+          background-image: url($selected-blue-mark);
+          background-repeat: no-repeat;
+        }
+      }
+    }
+  }
+  &-burger {
+    margin-right: 30px;
+  }
+}

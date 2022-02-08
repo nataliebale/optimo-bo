@@ -1,0 +1,35 @@
+<div class="d-flex flex-column h-100">
+	<div class="bg-white d-block d-sm-flex align-items-sm-center product-header pr-4">
+		<div	
+			class="nav-tabs nav-tabs-two"
+			[class.first-load]="firstLoad"
+			(mouseover)="firstLoad = false"
+		>
+			<a class="nav-item" [routerLink]="['retail']" routerLinkActive="active"
+				[preserveQueryParams]="true">
+				{{'SalesHistory.retail' | translate}}
+				<span>{{'SalesHistory.retail' | translate}}</span>
+			</a>
+			<a class="nav-item" [routerLink]="['entity']" routerLinkActive="active"
+				[preserveQueryParams]="true">
+				{{'SalesHistory.entity' | translate}}
+				<span>{{'SalesHistory.entity' | translate}}</span>
+			</a>
+		</div>
+		<div style="width: 1px; background-color: #e7e7e7; height: 32px;" class="mx-3">
+		</div>
+		<button class="btn rounded bg-excel-export p-0 mr-2" (click)="onExport()" [matTooltip]="'SalesHistory.exportToExcel' | translate"
+			style="width: 64px; height: 42px;">
+			<app-icon icon="excel"></app-icon>
+		</button>
+		<!-- product-report-chart-header-export-button -->
+		<app-date-picker class="date-picker-regular ml-auto only-range-picker" [maxDate]="endOfToday" (dateChange)="onDateChanged($event)"
+			[defaultDate]="dateRange">
+		</app-date-picker>
+	</div>
+	<div class=" flex-grow-1" style="padding-bottom: 71px;">
+		<div class=" d-flex flex-column h-100 table-height-100">
+			<router-outlet (activate)="onChildChanged($event)"></router-outlet>
+		</div>
+	</div>
+</div>

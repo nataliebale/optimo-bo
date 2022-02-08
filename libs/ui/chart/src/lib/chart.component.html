@@ -1,0 +1,68 @@
+<div class="product-report-chart h-100 w-100">
+  <div class="product-report-chart-header">
+    <!-- <div class="product-report-chart-header-legend">
+      <ng-container *ngFor="let item of chartConfig.series">
+        <div
+          *ngIf="!item.hidden"
+          class="product-report-chart-header-legend-item"
+        >
+          <div
+            class="product-report-chart-header-legend-item-badge"
+            [style.backgroundColor]="item.color"
+          ></div>
+          <div class="product-report-chart-header-legend-item-title">
+            {{ item.text }}
+          </div>
+        </div>
+      </ng-container>
+    </div> -->
+    <!-- <div *ngIf="hasPeriodSelect" class="product-report-chart-header-filters">
+      <div class="product-report-chart-header-filters-period">
+        <mat-form-field>
+          <mat-select [(ngModel)]="selectedPeriod">
+            <mat-option *ngFor="let item of periodOptions" [value]="item.id">
+              {{ item.text }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div> -->
+    <!-- <div
+      *ngIf="selectDataGetter"
+      class="category-chart-header-filters-items"
+      style="width: 100%;"
+    >
+      <app-dynamic-select
+        style="min-width: 150px;"
+        placeholder="პროდუქტი"
+        [dataGetter]="selectDataGetter"
+        [showClearButton]="true"
+        [multiple]="selectMultiple"
+        [maxSelectedItems]="maxSelectedItems"
+        [(ngModel)]="selectedItems"
+        [closeOnSelect]="!selectMultiple"
+        [disabled]="hasSelectAll && isSelectedAll"
+        (clear)="isSelectedAll = true"
+      ></app-dynamic-select>
+
+      <mat-checkbox
+        *ngIf="hasSelectAll"
+        [(ngModel)]="isSelectedAll"
+        class="revenues-report-line-chart__chart-header-filters-items-all"
+      >
+        ყველა
+      </mat-checkbox>
+    </div> -->
+
+    <!-- <div *ngIf="hasExportButton" class="product-report-chart-header-export">
+      <button
+        class="product-report-chart-header-export-button"
+        mat-button
+        (click)="export()"
+      ></button>
+    </div> -->
+  </div>
+  <div class="product-report-chart-body h-100 w-100">
+    <div [id]="chartRefId" class="chart-div"></div>
+  </div>
+</div>

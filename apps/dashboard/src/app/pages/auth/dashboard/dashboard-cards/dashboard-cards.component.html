@@ -1,0 +1,211 @@
+<!--pt-md-3 pb-md-4 py-sm-4 py-lg-4 my-sm-0 mt-4 mb-0 my-lg-2-->
+
+<div class="container-fluid pt-20px pt-sm-4 my-0 mb-sm-2 mb-lg-5 mt-lg-2 px-0">
+	<div class="dashboard-row row align-items-stretch">
+		<div class="col-sm-6 col-custmd-3 mb-10px mb-sm-4 mb-lg-0 dashboard-col">
+			<div
+				class="dashboard-card-shadow dashboard-card-regular bg-medium-pink border rounded py-4 px-3 pr-lg-28px py-lg-4 pl-lg-4 d-flex justify-content-between flex-column overflow-hidden border-light-pink line-height-normal">
+				<div class="d-flex align-items-start justify-content-between">
+					<div>
+						<div class="font-family-regular font-size-14 text-dark">
+							{{ 'MAIN.CARDS.TOTAL_INCOME.TOTAL_INCOME' | translate }}
+						</div>
+						<div class="font-family-bold font-size-16 font-size-sm-20 text-dark mt-sm-1 mt-6px">
+							{{ revenueDetailsData?.totalRevenue | number: '1.2-2':'en' }}
+						</div>
+					</div>
+					<!-- ODIN-2210  -->
+					<!-- <div
+            *ngIf="revenueDetailsData?.changeRate"
+            class="p-2 rounded bgr-{{
+              revenueDetailsData?.changeRate > 0 ? 'green' : 'red'
+            }}"
+          >
+            <div
+              class="font-family-semibold font-size-14 text-{{
+                revenueDetailsData?.changeRate > 0 ? 'success' : 'danger'
+              }}"
+              style="line-height: 1.3;"
+            >
+              {{ math.abs(revenueDetailsData?.changeRate) }}%
+            </div>
+          </div> -->
+				</div>
+				<div class="d-flex justify-content-between mt-10px mt-sm-40px pt-sm-0 pt-10px" style="height: 98px;">
+					<app-chart 
+						*ngIf="revenueChartConfig?.yAxisConfig?.gridMinValue?.toString"
+						[dataSource]="stockitemsDataSource" [hasExportButton]="false" [hasPeriodSelect]="false"
+						[chartConfig]="revenueChartConfig">
+					</app-chart>
+					<div class="col-auto align-self-end pr-0 pt-sm-0 pt-20px ml-auto">
+						<app-icon *ngIf="revenueDetailsData?.changeAmount"
+							[icon]="revenueDetailsData?.changeAmount > 0 ? 'profit' : 'lose'"></app-icon>
+						<span class="font-family-bold font-size-16 font-size-lg-20 text-dark align-middle ml-1">{{
+							math.abs(revenueDetailsData?.changeAmount)
+							| number: '1.2-2':'en'
+							}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-custmd-3 mb-10px mb-sm-4 mb-lg-0 dashboard-col">
+			<div
+				class="dashboard-card-shadow dashboard-card-regular bg-medium-pink border rounded py-4 px-3 pr-lg-28px py-lg-4 pl-lg-4 d-flex justify-content-between flex-column overflow-hidden border-light-pink line-height-normal">
+				<div class="d-flex align-items-start justify-content-between">
+					<div>
+						<div class="font-family-regular font-size-14 text-dark">
+							ფასნამატი
+						</div>
+						<div class="mt-sm-1 mt-6px d-flex align-self-end">
+							<span class="font-family-bold font-size-16 font-size-sm-20 text-dark">{{ incomeDetailsData?.totalIncome | number: '1.2-2':'en' }}</span>
+							<div class="d-flex align-items-center pl-1">
+								<span class="font-size-sm-16 font-size-14 font-family-regular font-color-dark pr-1">
+									({{ incomeDetailsData?.totalIncomePercentage | number: '1.2-2':'en' }}%)
+								</span>
+								<!-- <app-icon 
+									matTooltip="მარჟა (მონაცემები დათვლილია მოგებისა და
+									თვითღირებულების შეფარდებით)"
+									icon="info-blue" 
+									class="icon-dark w-18px icon-hover-opacity"
+								>
+								</app-icon> -->
+							</div>
+						</div>
+						<!-- ODIN-2210  -->
+						<!-- <div
+							*ngIf="incomeDetailsData?.changeRate"
+							class="p-2  rounded bgr-{{
+								incomeDetailsData?.changeRate > 0 ? 'green' : 'red'
+							}}"
+						>
+							<div
+								*ngIf="incomeDetailsData?.changeRate"
+								class="font-family-semibold font-size-14 text-{{
+									incomeDetailsData?.changeRate > 0 ? 'success' : 'danger'
+								}}"
+								style="line-height: 1.3;"
+							>
+								{{ math.abs(incomeDetailsData?.changeRate) }}%
+							</div>
+						</div> -->
+					</div>
+				</div>
+				<div class="d-flex justify-content-between mt-10px mt-sm-40px pt-sm-0 pt-10px" style="height: 98px;">
+					<app-chart
+						*ngIf="incomeChartConfig?.yAxisConfig?.gridMinValue?.toString"
+						style="max-height: 300px;"
+						[dataSource]="stockitemsDataSource"
+						[hasExportButton]="false"
+						[hasPeriodSelect]="false"[chartConfig]="incomeChartConfig">
+					</app-chart>
+					<div class="col-auto align-self-end pr-0 ml-auto">
+						<app-icon *ngIf="incomeDetailsData?.changeAmount"
+							[icon]="incomeDetailsData?.changeAmount > 0 ? 'profit' : 'lose'"></app-icon>
+						<span class="font-family-bold font-size-16 font-size-lg-20 text-dark align-middle ml-1">{{
+							math.abs(incomeDetailsData?.changeAmount) | number: '1.2-2':'en'
+							}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-custmd-3 mb-10px mb-sm-4 mb-lg-0 dashboard-col">
+			<div
+				class="dashboard-card-shadow dashboard-card-regular bg-medium-pink border rounded pt-4 pl-4 pr-4 pb-3 border-light-pink d-flex flex-column">
+				<div class="w-100">
+					<div class="font-family-bold font-size-sm-18 font-size-16 text-dark line-height-normal">
+						{{ "GENERAL.INCOME" | translate }}
+					</div>
+					<div class="font-family-regular font-size-14 text-dark line-height-normal" style="margin-top: 5px;">
+						{{ "MAIN.CARDS.INCOME.ACCORDING_TO_ACCOUNT" | translate}}
+					</div>
+				</div>
+
+
+				<div class="d-flex align-items-stretch no-gutters pt-3 flex-grow-1">
+					<div class="col-6 d-flex flex-column justify-content-end">
+						<div class="d-flex pb-2">
+							<div class="bgr-blue circle"></div>
+							<div class="ml-2">
+								<div class="font-family-regular font-size-14 text-dark line-height-normal pb-1">
+									{{ 'GENERAL.CASH' | translate}}
+								</div>
+								<div class="font-family-bold font-size-16 text-dark line-height-18px">
+									{{
+									(revenueByMethodDataSource &&
+									revenueByMethodDataSource[1].value) ||
+									'0' | number: '1.2-2':'en'
+									}}
+								</div>
+							</div>
+						</div>
+						<div class="d-flex pb-2">
+							<div class="circle bgr-pink"></div>
+							<div class="ml-2">
+								<div class="font-family-regular font-size-14 text-dark line-height-normal pb-1">
+									{{ 'GENERAL.CREDIT' | translate}}
+								</div>
+								<div class="font-family-bold font-size-16 text-dark line-height-18px">
+									{{
+									(revenueByMethodDataSource &&
+									revenueByMethodDataSource[0].value) ||
+									'0' | number: '1.2-2':'en'
+									}}
+								</div>
+							</div>
+						</div>
+						<div class="d-flex">
+							<div class="circle" style="background-color: #6d48c8;"></div>
+							<div class="ml-2">
+								<div class="font-family-regular font-size-14 text-dark line-height-normal pb-1">
+									{{ 'GENERAL.CONSIGNATION' | translate}}
+								</div>
+								<div class="font-family-bold font-size-16 text-dark line-height-18px">
+									{{
+									(revenueByMethodDataSource &&
+									revenueByMethodDataSource[2].value) ||
+									'0' | number: '1.2-2':'en'
+									}}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-6">
+						<div style="height:98px;" class="dashboard-income-chart">
+							<app-chart style="max-height: 300px;" [dataSource]="revenueByMethodDataSource"
+								[hasExportButton]="false" [hasPeriodSelect]="false"
+								[chartConfig]="revenueByMethodChartConfig">
+							</app-chart>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-custmd-3 mb-10px mb-sm-4 mb-lg-0 dashboard-col">
+			<div
+				class="dashboard-card-shadow dashboard-card-regular bog-card bg-medium-orange border rounded pb-4 px-3 px-lg-4 border-light-orange d-flex flex-column justify-content-between">
+				<img src="./../../../../../assets/images/logo/bog-logo.svg" class="dashboard-bog-logo" />
+				<div class="font-size-14 text-dark mw-lg-340px">
+					<span class="pr-lg-0 pr-2">
+						{{ 'MAIN.CARDS.BOG_LOAN.TEXT1' | translate }}
+					</span>
+					<span>
+						{{ 'MAIN.CARDS.BOG_LOAN.TEXT2' | translate }}
+					</span>
+				</div>
+				<a href="https://bankofgeorgia.ge/retail/ge/business/loans/loan-gel" target="_blank"
+					class="btn bg-medium-orange btn-block btn-outline-orange rounded d-flex align-items-center"
+					style="height: 42px;">
+					<div class="col-1 px-0"></div>
+					<div class="col px-0">
+						<span class="font-family-bold font-size-14 ">
+							{{ 'MAIN.CARDS.BOG_LOAN.BUTTON_LABEL' | translate }}
+						</span>
+					</div>
+					<div class="col-1 px-0">
+						<app-icon icon="external-link" class="ml-2"></app-icon>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

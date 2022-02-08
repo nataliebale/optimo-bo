@@ -1,0 +1,311 @@
+<div class="h-100 d-flex flex-column" style="padding-bottom: 71px;">
+  <div class="d-flex align-items-center py-3 px-4" style="height: 80px;">
+    <div *ngIf="areNoRowsSelected" class="d-flex align-items-center pr-3">
+      <a class="btn btn-primary btn-add mr-3"  routerLink="/inventory/add">
+        <span>დამატება</span>
+      </a>
+      <div
+        class=""
+        style="width: 1px; background-color: #e7e7e7; height: 32px;"
+      ></div>
+    </div>
+    <button
+      *ngIf="isOneRowSelected"
+      [matTooltip]="'GENERAL.EDIT' | translate"
+      class="btn p-0 mr-2 bg-table-border-color"
+      (click)="goToEdit()"
+      [disabled]="!selectedRows || selectedRows.length !== 1"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon icon="edit"></app-icon>
+    </button>
+    <button
+      *ngIf="(isOneRowSelected || areMultipleRowsSelected) && !isAnyReceipt"
+      [matTooltip]="'GENERAL.DELETE' | translate"
+      class="btn mr-2 p-0 bg-table-border-color"
+      (click)="removeItems()"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon icon="trash"></app-icon>
+    </button>
+    <button
+      *ngIf="areNoRowsSelected"
+      [matTooltip]="'INVENTORY.SYNC_PRICES' | translate"
+      class="btn p-0 mr-2 bg-table-border-color"
+      (click)="onPricesSync()"
+      style="
+        width: 64px;
+        height: 42px;
+      "
+    >
+      <app-icon icon="sync"></app-icon>
+    </button>
+    <button
+      *ngIf="areNoRowsSelected"
+      [matTooltip]="'INVENTORY.CHANGE_PRICES' | translate"
+      class="btn p-0 mr-2 bg-table-border-color"
+      routerLink="/prices-change"
+      style="
+        width: 64px;
+        height: 42px;
+      "
+    >
+      <app-icon icon="sale" class="icon-dashboard-light"></app-icon>
+    </button>
+    <button
+      *ngIf="areNoRowsSelected"
+      (click)="onImportFromRS()"
+      [matTooltip]="'INVENTORY.RS_IMPORT' | translate"
+      class="btn bg-table-border-color rounded p-0 mr-2"
+      style="width: 64px; height: 42px;  "
+    >
+      <app-icon icon="rs" ></app-icon>
+    </button>
+    <div *ngIf="areNoRowsSelected" class="position-relative">
+      <div
+        [matTooltip]="'INVENTORY.UPLOAD_PRODUCTS' | translate"
+        class="btn bg-table-border-color rounded px-0 mr-2 position-relative d-flex align-items-center"
+        (click)="toggleUploadDropdown(); $event.stopPropagation()"
+        style="
+          height: 42px;
+          cursor: pointer;
+        "
+      >
+        <app-icon icon="form-exchange" class="px-20px"></app-icon>
+        <app-icon
+          icon="arrow-down"
+          class="px-7px border-left d-block border-divider-border"
+          style="height: 24px;"
+        ></app-icon>
+      </div>
+      <div
+        *ngIf="isUploadDropdownActive"
+        clickOutside
+        (clickOutside)="toggleUploadDropdown()"
+        class="filter-dialog filter-dialog-type-number px-0 py-1 text-left active no-before"
+        style="width: 195px; top: 109%; right: unset;"
+      >
+        <div
+          (click)="onImport()"
+          class="custom-select-option"
+          style="cursor: pointer;"
+        >
+          {{'INVENTORY.FORM_DOWNLOAD' | translate}}
+        </div>
+        <div class="custom-select-option">
+          <label
+            class="mb-0"
+            style="cursor: pointer; color: inherit;"
+            for="uploadTemplate"
+            (click)="fileInput.value = null"
+            >{{'INVENTORY.FORM_UPLOAD' | translate}}</label
+          >
+          <input
+            id="uploadTemplate"
+            data-hj-allow
+            class="d-none"
+            #fileInput
+            type="file"
+            accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+            (change)="onUpload($event.target.files)"
+          />
+        </div>
+      </div>
+    </div>
+    <div *ngIf="areNoRowsSelected" class="position-relative">
+      <div
+        [matTooltip]="'INVENTORY.EXPORT_FOR_SCALE' | translate"
+        class="btn bg-table-border-color rounded px-0 mr-2 position-relative d-flex align-items-center"
+        (click)="toggleScalesDropdown(); $event.stopPropagation()"
+        style="
+          height: 42px;
+          cursor: pointer;
+        "
+      >
+        <app-icon icon="scale" class="px-20px"></app-icon>
+        <app-icon
+          icon="arrow-down"
+          class="px-7px border-left d-block border-divider-border"
+          style="height: 24px;"
+        ></app-icon>
+      </div>
+
+      <div
+        *ngIf="isScalesDropdownActive"
+        clickOutside
+        (clickOutside)="toggleScalesDropdown()"
+        class="filter-dialog filter-dialog-type-number px-0 py-1 text-left active no-before"
+        style="width: 195px; top: 109%; right: unset;"
+      >
+        <div
+          (click)="onScalesExport(1)"
+          class="custom-select-option"
+          style="cursor: pointer;"
+        >
+          DIGI SM-320
+        </div>
+        <div
+          (click)="onScalesExport(0)"
+          class="custom-select-option"
+          style="cursor: pointer;"
+        >
+          Shtrih-Print M
+        </div>
+      </div>
+    </div>
+
+    <button
+      *ngIf="isOneRowSelected || areMultipleRowsSelected"
+      [matTooltip]="'INVENTORY.PRINT_BARCODE' | translate"
+      (click)="onPrintBarcode()"
+      class="btn rounded bg-table-border-color p-0 mr-2"
+      [disabled]="!selectedRows"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon icon="barcode"></app-icon>
+    </button>
+
+    <button
+      *ngIf="areNoRowsSelected"
+      [matTooltip]="'INVENTORY.EXPORT_TO_EXCEL' | translate"
+      class="btn rounded bg-excel-export p-0 mr-2"
+      (click)="onExport()"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon icon="excel"> </app-icon>
+    </button>
+  </div>
+
+  <div class="flex-grow-1 bg-white">
+    <app-table
+      #table
+      [dataSource]="dataSource"
+      [totalCount]="totalCount"
+      [state]="currentState"
+      [selectable]="true"
+      [actions]="{
+        editable: true,
+        deletable: isRowReceipt,
+        hideable: true,
+        activatable: null
+      }"
+      defaultSort="dateModified"
+      defaultSortDirection="DESC"
+      [displayedColumns]="displayedColumns"
+      [hasColumnSelector]="true"
+      (stateChanged)="onTableStateChanged($event)"
+      (selectionChanged)="onSelectionChanged($event)"
+      (rowEdit)="goToEdit($event)"
+      (rowDelete)="removeItems($event)"
+      (showHideToggle)="showHide($event)"
+      (rowClick)="toQueryParam('inventoryId', $event.id)"
+      (rowActivate)="onToggleActivate($event)"
+      class="table-inventory table-th-3-b-0 table-third-th-pl-15px"
+    >
+      <ng-template app-header-cell let-row="row" name="dashboardPriority">
+        <button
+          type="button"
+          class="btn p-0 bg-transparent mx-auto"
+		  [matTooltip]="activatedHeaderTooltip"
+          (click)="onActivateCol(); $event.stopPropagation()"
+        >
+          <app-icon
+            [icon]="activateHeaderIcon"
+            class="icon-dashboard-light"
+          ></app-icon>
+        </button>
+      </ng-template>
+      <ng-template
+        app-cell
+        let-cell="cell"
+        let-row="row"
+        name="dashboardPriority"
+        class="abcd"
+      >
+        <div class="d-flex">
+          <button
+            type="button"
+            class="btn p-0 bg-transparent"
+            [matTooltip]="
+              (isActivated(row) ? 'INVENTORY.REMOVE_FROM_FAVORITES' : 'INVENTORY.ADD_TO_FAVORITES') | translate
+			"
+			optimoShowMatTooltipIfTruncated
+            (click)="onToggleActivate(row); $event.stopPropagation()"
+          >
+            <app-icon
+              [icon]="isActivated(row) ? 'full-star' : 'empty-star'"
+              class="icon-dashboard-light"
+            ></app-icon>
+          </button>
+        </div>
+      </ng-template>
+      <ng-template app-cell let-cell="cell" let-row="row" name="photoUrl">
+        <div
+          class="table-stock-item-photo"
+          [ngStyle]="{ 'background-image': 'url(' + row.photoUrl + ')' }"
+          [class.no-stock-img]="!row.photoUrl"
+        ></div>
+      </ng-template>
+
+      <ng-template app-cell let-cell="cell" let-row="row" name="name">
+        <div class="line-height-normal translate-t-1px">
+          <span
+			      [matTooltip]="cell"
+			      #ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+            class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1"
+		      >
+            {{ cell }}
+          </span>
+          <br>
+          <span
+            [matTooltip]="row.barcode"
+            #ref3 [matTooltipDisabled]="textIsTruncated(ref3)"
+            class="text-truncate mw-100 d-inline-block table-text-dark"
+          >
+            {{ row.barcode }}
+          </span>
+        </div>
+      </ng-template>
+
+      <ng-template app-cell let-cell="cell" let-row="row" name="categoryName">
+        <div class="d-flex">
+          <span
+			[matTooltip]="cell"
+			#ref4 [matTooltipDisabled]="textIsTruncated(ref4)"
+            (click)="
+              toQueryParam('categoryId', row.categoryId);
+              $event.stopPropagation()
+            "
+            class="font-family-regular text-truncate mw-100 d-inline-block font-color-dark table-link"
+            style="cursor: pointer;"
+          >
+            {{ cell }}
+          </span>
+        </div>
+      </ng-template>
+
+      <ng-template app-cell let-cell="cell" name="suppliers">
+        <div
+          class="d-flex align-items-center font-family-regular table-text-dark"
+        >
+          <span
+            class="text-truncate d-inline-block flex-shrink-1 table-link font-color-dark"
+            (click)="
+              toQueryParam('supplierId', cell && cell[0].id);
+              $event.stopPropagation()
+            "
+			[matTooltip]="cell && cell[0].name"
+			#ref5 [matTooltipDisabled]="textIsTruncated(ref5)"
+            style="cursor: pointer;"
+          >
+            {{ getShortSuppliersName(cell) }}
+          </span>
+          <span *ngIf="cell && cell.length > 1" class="flex-shrink-0 ml-1" [matTooltip]="getSuppliersName(cell)">
+            {{ cell.length - 1 }} სხვა
+          </span>
+        </div>
+      </ng-template>
+    </app-table>
+  </div>
+</div>
+<app-print-barcode [print$]="print$"></app-print-barcode>

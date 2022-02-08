@@ -1,0 +1,11 @@
+.orders-report {
+  &-grids {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+
+    &-grid {
+      min-width: 30%;
+    }
+  }
+}

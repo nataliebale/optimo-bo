@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" class="alert-price-changes">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g transform="translate(-782 -739) translate(780 597) translate(0 122) translate(2 20)">
+                        <circle cx="10" cy="10" r="9.25" stroke="#FA9F00" stroke-width="1.5"/>
+                        <g fill="#FA9F00">
+                            <path d="M1.15 10.5c-.552 0-1-.448-1-1v-4c0-.552.448-1 1-1s1 .448 1 1v4c0 .552-.448 1-1 1zM1.15 2.8C.515 2.8 0 2.285 0 1.65 0 1.015.515.5 1.15.5c.635 0 1.15.515 1.15 1.15 0 .635-.515 1.15-1.15 1.15z" transform="matrix(1 0 0 -1 8.85 15.5)"/>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

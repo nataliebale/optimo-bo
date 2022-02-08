@@ -1,0 +1,103 @@
+<div class="offers-popup d-flex flex-column m-auto">
+  <div
+    class="w-100 d-flex pt-sm-30 pt-4 pl-lg-42 pl-sm-4 pl-3 pr-lg-5 pr-sm-4 pr-3 pb-sm-20 pb-4 border-bottom align-items-center"
+  >
+    <div class="w-100 d-flex">
+      <div
+        class="offeror-benefactor-logo"
+        [ngStyle]="{
+          'background-image': 'url(' + offer.logoUrl + ')'
+        }"
+      ></div>
+      <div class="pl-sm-3 pt-sm-2 pl-2">
+        <div
+          class="font-family-semibold font-size-16 text-dark pb-1 line-height-normal"
+        >
+          {{ offer.companyName }}
+        </div>
+        <div
+          class="font-family-semibold font-size-sm-13 font-size-12 text-muted offerror-small-intro"
+        >
+          {{ offer.category }}
+        </div>
+      </div>
+    </div>
+    <button class="btn px-lg-12 px-0">
+      <app-icon icon="close" (click)="dismissDialog()"></app-icon>
+    </button>
+  </div>
+
+  <div
+    class="pr-lg-4 pr-sm-2 pr-0 w-100 pt-sm-4 pt-lg-30 pb-4 position-relative mt-sm-0 mt-n1"
+  >
+    <!-- <div class="benefactor-image" [ngStyle]="{ display: 'flex' }"></div> -->
+    <div
+      class="benefactor-image"
+      [ngStyle]="{
+        'background-image': 'url(' + offer.photoUrl + ')'
+      }"
+    ></div>
+
+    <div
+      class="w-100 d-sm-flex pl-lg-42 pl-sm-4 pl-0 offerror-full-text pr-lg-0 pr-sm-2 pr-0"
+    >
+      <div class="flex-grow-1 px-0 order-2" style="min-height: 217px;"></div>
+      <div
+        class="order-1 pt-sm-0 pt-4 text-muted font-family-medium px-0 font-size-sm-14 font-size-13 line-height-171 inner-text px-sm-0 px-3"
+      >
+        <div
+          class="pb-13 pr-sm-3 line-height-171 line-height-under-sm-185 overflow-hidden"
+          [innerHTML]="offer.text"
+        ></div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="bg-offers-bg flex-grow-1 d-flex pl-lg-42 pl-sm-4 pr-lg-52 pr-sm-4 pl-3 pr-3 border-top"
+    [formGroup]="form"
+  >
+    <div class="form-group d-sm-flex mb-sm-1 mb-4 w-100 pt-sm-0 pt-6">
+      <div class="pr-lg-3 pr-sm-2 pr-0 pt-sm-18 pt-4 col pl-0">
+        <label
+          for="benefiter-phone"
+          class="font-family-medium text-dark font-size-14"
+        >
+          მობილური
+        </label>
+        <input
+          data-hj-allow
+          type="text"
+          class="form-control"
+          id="benefiter-phone"
+          formControlName="mobileNumber"
+          mask="9{22}"
+        />
+      </div>
+      <div class="pr-lg-3 pr-sm-2 pr-0 pt-sm-18 pt-3 col pl-0">
+        <label
+          for="benefiter-name"
+          class="font-family-medium text-dark font-size-14"
+        >
+          სახელი, გვარი
+        </label>
+        <input
+          data-hj-allow
+          type="text"
+          class="form-control"
+          id="benefiter-name"
+          formControlName="nameSurname"
+        />
+      </div>
+      <button
+        style="height: 48px;"
+        class="btn mt-sm-49 beneficiary-btn mt-4 font-family-semibold text-white font-size-16 px-lg-45 px-26 bg-blue"
+        (click)="onSubmit()"
+        tabindex="-1"
+        [disabled]="form.invalid"
+      >
+        განაცხადის გაგზავნა
+      </button>
+    </div>
+  </div>
+  <!-- forma ver chajda errorebi momca  -->
+</div>

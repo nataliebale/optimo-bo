@@ -1,0 +1,145 @@
+<div class="d-flex flex-column">
+	<div class="d-flex justify-content-between px-4 pb-2 statistics-fixed-header" style="height: 64px;"
+		[ngClass]="{'header-shadow': !scrolledToTop}">
+		<div class="font-size-18 font-family-bold font-color-dark" id="labelName">
+			{{dynamicLabel || ReportTypeTitles.get(activeTabType) | translate}}
+		</div>
+		<app-date-picker class="date-picker-regular ml-auto only-range-picker" [maxDate]="endOfToday"
+			(dateChange)="onDateChanged($event)" [defaultDate]="dateRange">
+		</app-date-picker>
+	</div>
+	<div class="flex-grow-1 pt-64px">
+		<div class="statistics-income-wrapper income-font-size-14 pb-26px">
+			<button class="product-report-chart-header-export-button statistics-export rounded position-absolute"
+				(click)="onExport('daily')"></button>
+			<app-date-chart [chartData]="daily" [chartId]="'dateChartContainer'">
+			</app-date-chart>
+			<div *ngIf="dailyLoading" class="loading"
+				style="top: 0px; left: 0px; position: absolute; width: 100%; height: 100%;">
+				<app-icon icon="loader-big"></app-icon>
+			</div>
+		</div>
+
+		<app-tabs [activeTabType]="activeTabType" [reportTabs]="reportTabs"
+			(reportTabClickHandler)="reportTabClick($event)"></app-tabs>
+		<div class="pt-5 mt-2">
+			<div class="font-size-18 font-family-bold font-color-dark px-4 pb-4" id="timesLabel">
+				{{'STATISTICS.GENERAL.HOURS_AND_DAYS' | translate}}
+			</div>
+			<div class="d-flex pb-5">
+
+				<div class="w-100 px-0 statistics-income-wrapper" style="max-width: 63.278%;">
+					<button
+						class="product-report-chart-header-export-button statistics-export rounded position-absolute"
+						(click)="onExport('hourly')"></button>
+					<app-column-chart [chartData]="hourly" [chartId]="'hourChartContainer'">
+					</app-column-chart>
+					<div *ngIf="hourlyLoading" class="loading"
+						style="top: 0px; left: 0px; position: absolute; width: 100%; height: 100%;">
+						<app-icon icon="loader-big"></app-icon>
+					</div>
+				</div>
+				<div class="w-100 px-0 statistics-income-wrapper" style="max-width: 36.783%;">
+					<button
+						class="product-report-chart-header-export-button statistics-export rounded position-absolute"
+						(click)="onExport('dayofweek')"></button>
+					<app-column-chart [chartData]="dow" [chartId]="'weekChartContainer'">
+					</app-column-chart>
+					<div *ngIf="dowLoading" class="loading"
+						style="top: 0px; left: 0px; position: absolute; width: 100%; height: 100%;">
+						<app-icon icon="loader-big"></app-icon>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div *ngIf="topTenStockItems && topTenStockItems.length"
+			class="table-statistics table-popular position-relative pt-10px f-th-w-25">
+			<div class="font-size-20px font-family-bold font-color-dark px-4 pb-4" id="topTensLabel"> {{ selectedTabLabel | translate }}</div>
+			<mat-tab-group (selectedTabChange)="onTabChange($event)" class="mat-tab-group-custom"
+				style="min-height: 670px;">
+				<mat-tab>
+					<ng-template mat-tab-label>
+						{{'GENERAL.PRODUCTS' | translate}}
+						<span>{{'GENERAL.PRODUCTS' | translate}}</span>
+					</ng-template>
+					<div class="table-content rounded overflow-hidden h-100 d-flex flex-column wrapper flex-grow-1">
+						<table class="table table-hover mb-0" style="table-layout: fixed;
+				overflow-y: auto;">
+							<thead>
+								<tr>
+									<th (click)="sort(item.key)" *ngFor="let item of popularTableProps"
+										[ngClass]="{'active': sortColumn === item.key, 'asc': sortDirection==='asc','desc': sortDirection==='desc'}">
+										<div class="w-100 text-center d-flex align-items-center">
+											<span>{{item.value | translate}}</span>
+											<div
+												class="d-inline-flex flex-column th-icons-sorting mr-0 align-items-center">
+												<app-icon [icon]="'sort-up'" style="line-height: 9px;"></app-icon>
+												<app-icon [icon]="'sort-down'" style="line-height: 9px;"></app-icon>
+											</div>
+										</div>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let item of topTenStockItems">
+									<td class="text-truncate table-hover-link pr-0"
+										(click)="navigateToProductStatistickPage(item.stockItemId)">
+										{{item['stockItemName']}}</td>
+									<td class="text-truncate">{{item['totalOrders'] | number:'1.0-0':'en'}}</td>
+									<td class="text-truncate">{{item['totalIncomePercentage'] | number: '1.2-2':'en'}} %</td>
+									<td class="text-truncate">{{item['totalIncome'] | number: '1.2-2':'en'}} ₾</td>
+									<td class="text-truncate">{{item['totalRevenue'] | number: '1.2-2':'en'}} ₾</td>
+								</tr>
+							</tbody>
+						</table>
+						<div *ngIf="topTenStockItemsLoading" class="loading"
+							style="top: 0px; left: 0px; position: absolute; width: 100%; height: 100%;">
+							<app-icon icon="loader-big"></app-icon>
+						</div>
+					</div>
+				</mat-tab>
+				<mat-tab>
+					<ng-template mat-tab-label>
+						{{'GENERAL.CATEGORIES' | translate}}
+						<span>{{'GENERAL.CATEGORIES' | translate}}</span>
+					</ng-template>
+					<div class="table-content rounded overflow-hidden h-100 d-flex flex-column wrapper flex-grow-1">
+						<table class="table table-hover mb-0" matSort style="table-layout: fixed;
+				overflow-y: auto;">
+							<thead>
+								<tr>
+									<th (click)="sortCategories(item.key)"
+										*ngFor="let item of popularCategoriesTableProps"
+										[ngClass]="{'active': sortCategoriesColumn === item.key, 'asc': sortCategoriesDirection==='asc','desc': sortCategoriesDirection==='desc'}">
+										<div class="w-100 text-center d-flex align-items-center">
+											<span>{{item.value | translate}}</span>
+											<div
+												class="d-inline-flex flex-column th-icons-sorting mr-0 align-items-center">
+												<app-icon [icon]="'sort-up'" style="line-height: 9px;"></app-icon>
+												<app-icon [icon]="'sort-down'" style="line-height: 9px;"></app-icon>
+											</div>
+										</div>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let item of topTenCategories">
+									<td class="text-truncate table-hover-link pr-0"
+										(click)="navigateToCategoriesStatistickPage(item.id)">{{item['name']}}</td>
+									<!-- <td>{{item['totalExpense'] | number: '1.2-2':'en'}} ₾</td> -->
+									<td class="text-truncate">{{item['totalIncomePercentage'] | number: '1.2-2':'en'}} %</td>
+									<td class="text-truncate">{{item['totalIncome'] | number: '1.2-2':'en'}} ₾</td>
+									<td class="text-truncate">{{item['totalRevenue'] | number: '1.2-2':'en'}} ₾</td>
+								</tr>
+							</tbody>
+						</table>
+						<div *ngIf="topTenCategoriesLoading" class="loading"
+							style="top: 0px; left: 0px; position: absolute; width: 100%; height: 100%;">
+							<app-icon icon="loader-big"></app-icon>
+						</div>
+					</div>
+				</mat-tab>
+			</mat-tab-group>
+		</div>
+	</div>
+</div>

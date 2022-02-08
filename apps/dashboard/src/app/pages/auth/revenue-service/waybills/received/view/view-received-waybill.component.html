@@ -1,0 +1,60 @@
+<div class="d-flex align-items-center border-bottom px-4 border-table-border-color" style="height: 87px;">
+  <div class="col-3 d-flex align-items-center px-0">
+      <button
+      (click)="onEdit()"
+      class="btn-view-action-rounded  "
+      style="width: 36px;height: 36px;"
+    >
+        <app-icon [icon]="'edit-tbls'"  ></app-icon>
+    </button>
+  </div>
+  <span class="font-size-20 font-family-bold text-dark col text-center text-truncate"
+    >#{{ waybill?.waybillNumber }}</span
+  >
+  <div class="col-3 text-right px-0">
+    <app-icon
+      (click)="close()"
+      [icon]="'close'"
+      class="ml-auto icon-close-dark"
+      style="cursor: pointer;"
+    ></app-icon>
+  </div>
+</div>
+
+<div style="height: 454px; overflow-y: auto;" class="custom-view-scroll d-flex flex-column">
+  <div class="container-fluid py-4 px-3 d-flex border-bottom border-table-border-color">
+    <optimo-view-attributes
+      [items]="waybillAttributeItems"
+      class="w-100"
+    ></optimo-view-attributes>   
+</div>
+  <app-table
+    *ngIf="displayedColumns"
+    [dataSource]="dataSource"
+    [totalCount]="dataSource?.length"
+    [displayedColumns]="displayedColumns"
+    [staticData]="true"
+    [selectable]="false"
+    [paginable]="false"
+    [filterable]="false"
+    defaultSort="barcode"
+    defaultSortDirection="DESC"
+    class="waybills-table-paddings table-dialogs table-view flex-grow-1 d-flex flex-column"
+  >
+  </app-table>
+</div>
+<div
+  *ngIf="waybill?.waybillNumber"
+  class="d-flex align-items-center justify-content-between border-top border-table-border-color px-4"
+  style="height: 80px;"
+>
+  <div  >
+    <span class="font-size-14 font-family-regular text-dark mt-2">
+      {{"WAYBILLS.RECEIVED_WAYBILLS.ITEM.FULL_AMOUNT" | translate}}:
+    </span>
+    <span class="font-family-bold font-size-18 text-dark">
+      {{ waybill?.fullAmount | number: '1.4-4':'en' }} ₾
+    </span>
+  </div>
+   
+</div>

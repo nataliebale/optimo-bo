@@ -1,0 +1,262 @@
+// Reboot
+$font-family-base: $font-regular;
+$body-color: #343434;
+$transition-base: all .15s linear !default;
+
+// Color system
+// $red: #FF6156;
+$red: #f11a5e;
+$red-form-control : #e21331;
+$danger-border:#f6759e;
+$danger-bg:#fcd1df;
+$danger-bg-alert:#ffc8d7;
+$red-bg-notifier:#fbc6d7;
+$red-border-notifier:#f6709a;
+$green-bg-notifier:#c9f4e8;
+$green-border-notifier:#85ccb1;
+$blue: #4563ff;
+$green: #15ac73;
+$light-green:#26d4a3;
+$orange: #f26724;
+$dark: #343434;
+$yellow: #FEB904;
+$text-muted: #808080;
+$purple: #713AC9;
+$sidebar-gray:#f6f6f6;
+$sidebar-dark-bg:#3a3e56;
+$divider-border:rgba(52, 52, 52, 0.1);
+$pagination-border:#d6d6d6;
+$white: #fff;
+$file-upload-bg:#dee8ff;
+$row-hover-blue:#c2dbff;
+$row-hover-border:#b7cff1;
+$excel-export:#37d4a3;
+$yellow-light:#ffcc00;
+$yellow-warning:#f69a00;
+$yellow-to-red:#ff8500;
+$light-pink: #dad5e4;
+$medium-pink: #f5f3f9;
+$light-orange: #e4cecc;
+$medium-orange: #fef3f2;
+$black: black;
+$transparent: transparent;
+
+
+// breakpoint-varaibles;
+$custsm:385px;
+
+//font-color
+$font-color : (
+  "dark": $dark,
+  "white": $white,
+  "blue" : $blue,
+  "black" : $black,
+  "red" : $red
+
+);
+
+
+@each $name, $value in $font-color {
+  .font-color-#{$name} {
+    color: $value !important;
+  }
+}
+
+
+// spacers 
+$spacers: (
+  1px: 1px,
+  2px: 2px,
+  3px: 3px,
+  5px: 5px,
+  6px: 6px,
+  7px: 7px,
+  8px: 8px,
+  10px: 10px,
+  11px: 11px,
+  12px: 12px,
+  13px: 13px,
+  14: 14px,
+  15px: 15px,
+  17px: 17px,
+  18px: 18px,
+  19px: 19px,
+  20px: 20px,
+  21px: 21px,
+  22px: 22px,
+  23px: 23px,
+  25px: 25px,
+  26px: 26px,
+  27px: 27px,
+  28px: 28px,
+  30px: 30px,
+  32px: 32px,
+  34px: 34px,
+  36px: 36px,
+  37px: 37px,
+  38px: 38px,
+  40: 40px,
+  42px: 42px,
+  45px: 45px,
+  50px: 50px,
+  53px: 53px,
+  54px: 54px,
+  58px: 58px,
+  64px: 64px,
+  66px: 66px,
+  68px: 68px,
+  70px: 70px,
+  72px: 72px,
+  74px: 74px,
+  80px: 80px,
+  90px: 90px,
+  125px: 125px
+
+);
+
+// Grid breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  'custsm': $custsm,
+  sm: 768px,
+  md: 1024px,
+  custmd: 1280px,
+  lg: 1367px,
+  xl: 1620px,
+);
+
+
+// Grid containers
+$container-max-widths: (
+  md: 960px,
+  xl: 1224px,
+  
+);
+
+// grid container generator
+@each $size, $value in $container-max-widths {
+  .container-#{$size} {
+    max-width: $value !important;
+    width: 100%;
+    margin: 0 auto;
+    
+  }
+}
+
+// Grid columns
+$grid-gutter-width: 24px;
+$grid-columns: 12;
+
+// Components
+$border-color: #e6ecf5;
+$component-active-color: $blue;
+
+// Card
+$card-border-color: $border-color;
+$card-spacer-x: 32px;
+
+// Dropdown
+$dropdown-link-color: #c0c5d2;
+$dropdown-link-active-color: #515366;
+$dropdown-link-active-bg: #f2f5fa;
+
+// Inputs
+$input-group-addon-bg: #fafbfc;
+$input-border-color: $border-color;
+$input-padding-x-sm: 1rem;
+$input-font-size: 0.875rem;
+$input-padding-y: 12.5px;
+$input-disabled-bg: #fafbfc;
+
+// Buttons
+$input-btn-padding-y: 0.8125rem;
+$input-btn-padding-x: 1rem;
+$input-btn-padding-y-lg: 1.5rem;
+$input-btn-padding-x-lg: 2.5rem;
+$input-btn-padding-y-sm: .5rem;
+$input-btn-padding-x-sm: 2.25rem;
+$btn-line-height: 1.25;
+$btn-focus-box-shadow: none;
+$input-btn-focus-box-shadow: none;
+$btn-focus-width: 0;
+$btn-font-size: 14px;
+$btn-disabled-opacity: 1;
+
+// Modals
+$modal-backdrop-opacity: .3;
+$modal-content-box-shadow-xs: 0 30px 30px 0 rgba(0, 0, 0, 0.1);
+$modal-content-border-color: $border-color;
+$modal-lg: 685px;
+
+// Tables
+$table-cell-padding: 0.625rem 1rem;
+// $table-hover-bg: #e3f2fd;
+$table-border-color: #e7e7e7;
+$table-color: #888ea8;
+$table-hover-color: #515366;
+
+// Nav
+//$nav-link-padding-x: 0;
+//$nav-tabs-border-width: 0;
+//$nav-tabs-link-active-border-color: $blue;
+//$nav-tabs-link-active-color: $dark;
+
+// Pagination
+$pagination-color: #888ea8;
+
+// Forms
+$form-group-margin-bottom: 0.875rem;
+$input-focus-border-color: $blue;
+$form-grid-gutter-width: 16px;
+$input-color: $dark;
+$form-feedback-icon-invalid: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyNCAyNCI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0iYSIgZD0iTTAgMi4zMDRoMjMuODY2VjIyLjgxSDB6Ii8+CiAgICA8L2RlZnM+CiAgICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxwYXRoIGZpbGw9IiNGQzNDMkQiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTExLjkzMyAxNy4wNzlhMS4xMDQgMS4xMDQgMCAxIDEtMS4xMDMgMS4xMDZjMC0uNjExLjQ5NC0xLjEwNiAxLjEwMy0xLjEwNk0xMS43ODUgMTUuMzE2YS42MDguNjA4IDAgMCAwIC42MDgtLjYwOVY4LjkyNGEuNjA4LjYwOCAwIDEgMC0xLjIxNiAwdjUuNzgzYzAgLjMzNi4yNzMuNjA5LjYwOC42MDkiLz4KICAgICAgICA8bWFzayBpZD0iYiIgZmlsbD0iI2ZmZiI+CiAgICAgICAgICAgIDx1c2UgeGxpbms6aHJlZj0iI2EiLz4KICAgICAgICA8L21hc2s+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZDM0MyRCIgZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNMjEuNzQ0IDIxLjU5MUgyLjExYy0uNTgtLjAwNy0uOTE1LS42NzUtLjYyLTEuMTc1bDkuMjY4LTE1LjcwMmMuNDcyLS43NTcuNzgyLTEuMjA3IDEuMTc1LTEuMjA3LjM4MyAwIC43NDcuNTcgMS4xNjggMS4yMmw5LjI3NSAxNS42ODdjLjI5Ni41LS4wMzggMS4xNy0uNjE5IDEuMTc3aC0uMDEzek0xNC4xNDggNC4xMTRsLS4wMjgtLjA0M2MtLjU2Mi0uODY4LTEuMTQ0LTEuNzY3LTIuMTg3LTEuNzY3LTEuMDg3IDAtMS42NTUuOTEyLTIuMjA2IDEuNzkzbC0uMDIyLjAzNi05LjYyIDE2LjMzMmMtLjA1Ni4wOTQtLjA4NS4xNDMtLjA4NS4yNTEgMCAxLjE4Ni45NTIgMi4wOTMgMi4xMjMgMi4wOTNoMTkuNjJjMS4xNzIgMCAyLjEyMy0uOTA3IDIuMTIzLTIuMDkzYS41MTIuNTEyIDAgMCAwLS4wODMtLjI4TDE0LjE0OCA0LjExNHoiIG1hc2s9InVybCgjYikiLz4KICAgIDwvZz4KPC9zdmc+Cg==');
+
+$spinner-border-width-sm: 2px;
+
+
+
+
+
+// solution for bug on browser screen resolution 80% and under ODIN-2144 and 2137s
+
+// .form-control{
+// border:none !important;
+// -webkit-box-shadow: 0 0 0 2px #e6ecf5; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+// -moz-box-shadow:  0 0 0 2px #e6ecf5;  /* Firefox 3.5 - 3.6 */
+// box-shadow:0 0 0 2px #e6ecf5; 
+// }
+
+
+$theme-colors: (
+  "medium-orange": $medium-orange,
+  "light-orange": $light-orange,
+  "medium-pink": $medium-pink,
+  "light-pink": $light-pink,
+  "orange": $orange,
+  "green": $green,
+  "table-border-color":$table-border-color,
+  "divider-border":$divider-border,
+  "pagination-border":$pagination-border,
+   "sidebar-dark-bg": $sidebar-dark-bg,
+   "danger-border":$danger-border,
+"danger-bg":$danger-bg,
+"file-upload-bg":$file-upload-bg,
+"sidebar-gray" : $sidebar-gray,
+"row-hover-blue" : $row-hover-blue,
+"excel-export" : $excel-export,
+"light-green" : $light-green,
+"blue" : $blue,
+"danger-bg-alert":$danger-bg-alert,
+"yellow-light":$yellow-light,
+"red-form-control":$red-form-control,
+"red-bg-notifier": $red-bg-notifier,
+"red-border-notifier": $red-border-notifier,
+"green-bg-notifier": $green-bg-notifier,
+"green-border-notifier": $green-border-notifier,
+"yellow-warning":$yellow-warning,
+"red":$red,
+"yellow-to-red":$yellow-to-red,
+"transparent": $transparent
+
+ 
+ );

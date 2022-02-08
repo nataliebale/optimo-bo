@@ -1,0 +1,36 @@
+<div class="flex-grow-1">
+  <div class="bg-white h-100">
+	<app-table
+	#tableInstance
+      [dataSource]="dataSource"
+      [totalCount]="totalCount"
+      [state]="currentState"
+      [selectable]="false"
+      defaultSort="orderDate"
+      defaultSortDirection="DESC"
+      [displayedColumns]="isHorecaMode ? horecaDisplayedColumns : displayedColumns"
+      [hasColumnSelector]="true"
+      (stateChanged)="onTableStateChanged($event)"
+      (rowClick)="toQueryParam('entitySaleOrderId', $event.id)"
+      class="table-sales-history"
+    >
+    <ng-template app-cell let-cell="cell" let-row="row" name="totalPrice">
+      <div class="text-truncate text-right">
+        <span [matTooltip]="(cell | number: '1.2-2':'en') + ' ₾'" #ref1 [matTooltipDisabled]="textIsTruncated(ref1)">{{ cell | number: '1.2-2':'en' }} ₾</span>
+      </div>
+    </ng-template>   
+
+    <ng-template app-cell let-cell="cell" let-row="row" name="totalOrderLinesPrice">
+        <div class="text-truncate text-right">
+          <span [matTooltip]="(cell | number: '1.2-2':'en') + ' ₾'" #ref2 [matTooltipDisabled]="textIsTruncated(ref2)"> {{ cell | number: '1.2-2':'en' }} ₾ </span>
+        </div>
+    </ng-template>
+  
+    <ng-template app-cell let-cell="cell" let-row="row" name="taxAmount">
+        <div class="text-truncate text-right">
+          <span [matTooltip]="(cell | number: '1.2-2':'en') + ' ₾'" #ref3 [matTooltipDisabled]="textIsTruncated(ref3)"> {{ cell | number: '1.2-2':'en' }} ₾ </span>
+        </div>
+    </ng-template> 
+    </app-table>
+  </div>
+</div>

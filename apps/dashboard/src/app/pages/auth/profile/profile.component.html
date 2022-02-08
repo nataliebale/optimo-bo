@@ -1,0 +1,17 @@
+<div class=" mx-auto w-100 bg-white profile-header d-flex align-items-center justify-content-center" style="max-width: 750px; height:80px; ">
+  <div class="row ">
+    <div class=" d-flex  align-items-center" > 
+      <div class="nav nav-tabs-custom">
+        <a
+          *ngFor="let page of pages"
+          class="nav-item nav-link text-decoration-none"
+          [routerLink]="page.path"
+          routerLinkActive="active"
+        >
+          {{ page.text | translate }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

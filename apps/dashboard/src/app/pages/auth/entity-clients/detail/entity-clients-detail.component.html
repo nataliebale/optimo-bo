@@ -1,0 +1,160 @@
+<form *ngIf="form" [formGroup]="form">
+  <div
+    class="container-fluid sticky-top bg-white"  
+    style="height: 72px;"
+  >
+    <div class="row align-items-center h-100 border-bottom border-secondary">
+      <div class="col pl-0 h-100">
+        <button
+          type="button"    
+          type="button"
+          class="btn bg-white px-2 h-100 rounded-0"
+          style="width: 102px;"
+          (click)="onCancel()"
+        >
+        <app-icon icon="close"></app-icon>
+        </button>
+      </div>
+      <div class="col-auto font-size-20 font-family-bold text-dark">
+        {{ title | translate }}
+      </div>
+      <div class="col pr-4 h-100 d-flex align-items-center justify-content-end">
+        <button
+          class="btn btn-primary font-size-14 font-family-bold text-white py-0 px-23px h-42px" 
+          (click)="createEntityClient()"
+          [disabled]="requestIsSent"
+        >
+          {{'GENERAL.SAVE' | translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="w-100" *ngIf="isSubmited && form?.invalid">
+    <div
+      class="mx-auto bg-danger-bg px-4 rounded text-center border d-flex align-items-center border-danger-border mt-3"
+      style="max-width: 960px;height: 54px;">
+      <div class="col-2 d-flex px-0">
+        <app-icon icon="alert"></app-icon>
+      </div>
+      <div class="col text-center font-size-14 font-color-dark font-family-regular">
+        {{'ENTITY_CLIENTS.ITEM.DETAILS.GLOBAL_ERROR_MESSAGE' | translate}}
+      </div>
+      <div class="col-2 px-0"></div>
+    </div>
+  </div>
+  <div [class.mt-70px]="!(isSubmited && form?.invalid)"
+  class="pt-20px px-0 mx-auto" style="max-width: 960px;">
+     
+  <div class="pb-30px">
+    <span class="font-size-20 font-color-dark font-family-bold">
+      {{'ENTITY_CLIENTS.ITEM.DETAILS.GENERAL_INFO' | translate}}
+    </span>
+  </div>
+      <div class="container-fluid px-0">
+        <div class="row align-items-stretch">
+
+          <div class="col-6">
+            <div class="form-group-lg">
+              <label for="entityName" class="font-size-15 font-color-dark font-family-bold">    
+                {{'ENTITY_CLIENTS.ITEM.DETAILS.TITLE' | translate}}*
+              </label>
+              <input
+                id="entityName"
+                hj-data-allow
+                class="form-control"
+                type="text"
+                formControlName="entityName"
+              />
+            </div>   
+            
+            <div class="form-group-lg">
+              <label for="contactPerson" class="font-size-15 font-color-dark font-family-bold">
+                {{'ENTITY_CLIENTS.ITEM.DETAILS.CONTACT_PERSON' | translate}}
+              </label>
+              <input
+                id="contactPerson"
+                data-hj-allow
+                class="form-control"
+                type="text"
+                formControlName="contactPerson"
+              />
+            </div>            
+          </div>
+
+
+          <div class="col-6">
+
+            <div class="form-group-lg">
+              <label for="entityIdentifierLbl" class="font-size-15 font-color-dark font-family-bold">
+                {{'ENTITY_CLIENTS.ITEM.DETAILS.ENTITY_IDENTIFIER' | translate}}*
+              </label>
+              <input
+                id="entityIdentifierLbl"
+                data-hj-allow
+                class="form-control"
+                type="text"
+                formControlName="entityIdentifier"
+                mask="9{11}"
+              />
+            </div>
+            <div class="form-group-lg">
+              <label for="phoneNumber" class="font-size-15 font-color-dark font-family-bold">
+                {{'ENTITY_CLIENTS.ITEM.DETAILS.PHONE_NUMBER' | translate}}
+              </label>
+              <input
+                id="phoneNumber"
+                data-hj-allow
+                class="form-control"
+                type="text"
+                formControlName="phoneNumber"
+                mask="9{22}"
+              />
+            </div>            
+          </div>
+          <div class="col-6">
+            <div class="form-group-lg">
+              <label for="email" class="font-size-15 font-color-dark font-family-bold">
+                {{'ENTITY_CLIENTS.ITEM.DETAILS.EMAIL' | translate}}
+              </label>
+                <input
+                  id="email"
+                  data-hj-allow
+                  class="form-control"
+                  type="text"
+                  formControlName="email"
+                />
+              </div>            
+            <div class="line-height-normal custom-checkbox-selected-blue">
+              <input
+                id="isVATRegistered"
+                data-hj-allow
+                class="custom-checkbox-control"
+                formControlName="isVATRegistered"
+                type="checkbox"
+                name="isVATRegistered"
+              />
+              <label for="isVATRegistered" class="custom-checkbox-label ">
+                <span style="margin-left: 12px;"  class="font-size-14 font-color-dark font-family-regular line-height-normal">
+                  {{'ENTITY_CLIENTS.ITEM.DETAILS.IS_VAT_REGISTERED' | translate}}
+                </span>
+              </label>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group-lg">
+              <label for="bankAccount" class="font-size-15 font-color-dark font-family-bold">
+                {{'ENTITY_CLIENTS.ITEM.DETAILS.BANK_ACCOUNT' | translate}}
+              </label>
+              <input
+                id="bankAccount"
+                data-hj-allow
+                class="form-control"
+                type="text"
+                formControlName="bankAccount"
+              />
+           </div>           
+          </div>          
+        </div>
+      </div>
+  </div>
+</form>

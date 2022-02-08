@@ -1,0 +1,25 @@
+<div class="orders-report-grids">
+  <div class="orders-report-grids-grid">
+    პოპულარული მომწოდებლები
+    <app-table
+      [dataSource]="topPopularSuppliersDataSource"
+      [totalCount]="gridEntryCount"
+      [selectable]="false"
+      [paginable]="false"
+      [displayedColumns]="topPopularSuppliersColumns"
+    >
+    </app-table>
+  </div>
+
+  <div class="orders-report-grids-grid">
+    ყველაზე ხშირად დაგვიანებადი მომწოდებლები
+    <app-table
+      [dataSource]="topDelaySuppliersDataSource"
+      [totalCount]="gridEntryCount"
+      [selectable]="false"
+      [paginable]="false"
+      [displayedColumns]="topDelaySuppliersColumns"
+    >
+    </app-table>
+  </div>
+</div>

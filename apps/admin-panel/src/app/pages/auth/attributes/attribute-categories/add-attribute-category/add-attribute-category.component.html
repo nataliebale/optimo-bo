@@ -1,0 +1,30 @@
+<div class="d-flex align-items-center justify-content-between border-bottom border-table-border-color pl-4 pr-18px" style="height: 60px;">
+    <span class="font-color-dark font-size-18 font-family-bold line-height-normal">
+      ატრიბუტის კატეგორიის {{isEditMode ? 'რედაქტირება' : 'დამატება'}}
+    </span>
+    <span>
+      <button class="btn bg-transparent rounded-0 p-0"
+        (click)="dismissDialog()"
+      > <app-icon icon="close" class="icon-w-20px icon-h-20px"></app-icon>
+       </button>
+    </span>
+  </div>
+<div class="form-group mb-0 pt-4 px-4">
+    <label for="attribute-category-name" class="font-size-14 font-color-dark font-family-bold line-height-normal">დასახელება</label>
+    <input
+        id="attribute-category-name"
+        type="text"
+        [formControl]="categoryName"
+        (keyup.enter)="onSubmit()"
+        class="form-control"
+    >
+    
+</div>
+<div class="d-flex justify-content-end pt-4 pb-4 px-4">
+  <button
+         class="btn btn-primary font-color-white font-size-14 font-family-bold"
+        (click)="onSubmit()"
+        style="width: 120px; height: 42px;"
+    >
+    {{isEditMode ? 'შენახვა' : 'დამატება'}}</button>
+</div>

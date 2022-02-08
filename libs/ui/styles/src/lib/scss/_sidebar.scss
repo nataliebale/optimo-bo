@@ -1,0 +1,219 @@
+.sidebar {
+  $root: &;
+  width: $sidebar-width;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 1035;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: $sidebar-dark-bg;
+  display: block;
+  @include transition;
+  box-shadow: inset -1px 0 1px 0 rgba(0, 0, 0, 0.09);
+  // &:hover {
+  //   width: 230px;
+  // }
+  &-header {
+    height: 82px;
+    display: flex;
+    .header__logo {
+      a {
+        img {
+          &::selection {
+            background: transparent;
+          }
+        }
+      }
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    transition: none !important;
+    &.active {
+      width: 100%;
+      &:hover {
+        width: 100%;
+      }
+    }
+    &:hover {
+      width: 0px;
+    }
+    &-header {
+      height: $header-height !important;
+    }
+    .header {
+      &-profile {
+        padding-left: 0px !important;
+        padding-right: 20px !important;
+
+        span {
+          display: inline !important;
+        }
+        app-icon {
+          display: inline !important;
+        }
+        width: 100%;
+      }
+      &-dropdown-wrapper {
+        .header-dropdown {
+          right: 16px;
+        }
+      }
+    }
+  }
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    position: absolute;
+  }
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 4px $border-color;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: darken($border-color, 10%);
+  }
+
+  .sidebar-menu-item {
+    .icon-arrow-down-sidebar {
+      visibility: hidden;
+      opacity: 0;
+      @include transition;
+    }
+    &:hover {
+      .icon-arrow-down-sidebar {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+    &.active {
+      .icon-arrow-down-sidebar {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// @include media-breakpoint-up(md) {
+//   .sidebar-fold-medium,
+//   .sidebar-fold {
+//     .sidebar {
+//       .sidebar-header {
+//         .header__logo {
+//           a {
+//             display: none;
+//           }
+//         }
+//       }
+//       overflow: visible !important;
+//       .nested-menu {
+//         .sidebar-menu-item {
+//           &:hover {
+//             & + .subnav {
+//               position: absolute;
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+@mixin folded-sidebar-hover {
+  .sidebar {
+    overflow: visible !important;
+    .sidebar-header {
+      .header__logo {
+        a {
+          display: none;
+        }
+      }
+    }
+    .nested-menu {
+      app-menu-item {
+        display: block;
+        position: relative;
+      }
+      .subnav-wrapper {
+        position: absolute;
+        top: 0px;
+        // left: 55px;
+        left: 40px;
+        padding-left: 15px;
+        visibility: hidden;
+        pointer-events: none;
+        opacity: 0;
+        display: block;
+        width: 230px;
+        .subnav {
+          // @include transition;
+          padding: 16px 8px;
+          background-color: white;
+          box-shadow: 0px 10px 30px -16px rgba(0, 0, 0, 0.6);
+          border: 1px solid $table-border-color;
+          border-radius: 5px;
+          width: 215px;
+          &-menu-heading {
+            display: block !important;
+            font: 14px $font-bold;
+            color: $dark;
+            padding-left: 16px;
+            padding-bottom: 16px;
+          }
+          &:after {
+            content: '';
+            position: absolute;
+            width: 9px;
+            height: 9px;
+            border-bottom-left-radius: 3px;
+            transform: rotate(45deg);
+            background: white;
+            top: 15px;
+            left: 10px;
+            border-bottom-left-radius: 3px;
+            border-left: 1px solid $table-border-color;
+            border-bottom: 1px solid $table-border-color;
+          }
+          .nested-menu-item {
+            padding-left: 12px;
+            &:hover {
+              background-color: $sidebar-gray;
+            }
+            &.active {
+              background-color: $sidebar-gray;
+            }
+          }
+        }
+        &.active-hover {
+          visibility: visible !important;
+          pointer-events: all !important;
+          opacity: 1 !important;
+        }
+        &.active {
+          transition: none !important;
+        }
+      }
+    }
+    &.sidebar-admin {
+      .subnav-wrapper {
+        .nested-menu-item {
+          color: $dark !important;
+        }
+      }
+    }
+  }
+}
+@include media-breakpoint-up(custmd) {
+  body.sidebar-fold {
+    @include folded-sidebar-hover;
+  }
+}
+@include media-breakpoint-between(md, custmd) {
+  body:not(.sidebar-fold-medium) {
+    @include folded-sidebar-hover;
+  }
+}

@@ -1,0 +1,32 @@
+<div class="d-block d-sm-flex align-items-sm-center text-right text-sm-left">
+  <div class="font-size-14 font-color-muted font-family-regular  ">  <!-- class.d-none -->
+     inpt act class
+  </div>
+  <app-icon icon="edit" class="ml-2 icon-hover-opacity"></app-icon> <!-- class.d-none -->
+  <!-- active class -->
+  <input
+    id="edit-value"
+    class="profile-control "
+    data-hj-allow
+    [type]="type"
+    [(ngModel)]="value"
+    [placeholder]="placeholder"
+    [disabled]="isDisabled"
+    [mask]="inputMask"
+  />
+  <!-- input-erteuliani -->
+  <div class="input-group-custom align-items-center d-control" style="width: 132px;">   <!-- class.active -->
+    <input
+      id="editWithUnit"
+      data-hj-allow
+      class="form-control input-left ">
+    <div class="font-size-14 font-color-dark font-family-regular input-section mt-n6px" style="top:20px;right: 16px;">%</div>
+  </div>
+
+  <!-- input-erteuliani -->
+
+  <button class="btn btn-primary btn-add mr-3 ml-2 profile-control-btn" (click)="onSave()">
+    შენახვა
+  </button>
+ 
+</div>

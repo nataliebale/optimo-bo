@@ -1,0 +1,18 @@
+.dialog {
+  &-full-page {
+    width: 100vw;
+    height: 100vh;
+    max-width: unset !important;
+    max-height: unset !important;
+    min-width: unset !important;
+    min-height: unset !important;
+    border-radius: 0 !important;
+  }
+}
+
+
+.mismatches-popup{
+  .approve-dialog-header{
+    padding-bottom: 0px !important;
+  }
+}

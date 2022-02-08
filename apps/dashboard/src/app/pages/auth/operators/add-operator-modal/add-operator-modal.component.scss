@@ -1,0 +1,59 @@
+.add-operator-modal {
+  position: relative;
+
+  &__yes {
+    float: right;
+    width: calc(50% - 10px);
+    margin-top: 10px;
+  }
+
+  &__no {
+    float: left;
+    width: calc(50% - 10px);
+    margin-top: 10px;
+  }
+
+  &__text {
+    text-align: center;
+    margin: 10px 0 10px;
+  }
+
+  &__suppliers {
+    text-align: center;
+    color: red;
+  }
+
+  &__input {
+    width: 100%;
+  }
+
+  &__pincode {
+    width: calc(50% - 10px);
+    float: left;
+  }
+
+  &__generate-pincode-btn {
+    width: calc(50% - 10px);
+    float: right;
+    margin-top: 10px;
+  }
+
+  &__close {
+    position: absolute;
+    right: 0;
+    top: -10px;
+    border: none;
+    background: transparent;
+    outline: none;
+  }
+
+  &__close-img {
+    width: 18px;
+    opacity: 0.5;
+  }
+
+  &__canReceivePurchaseOrders {
+    width: 100%;
+  }
+
+}

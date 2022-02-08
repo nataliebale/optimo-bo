@@ -1,0 +1,146 @@
+<div class="login">
+  <form [formGroup]="verifyForm" (submit)="onSubmit()" class="h-100 d-flex flex-row">
+    <div
+      class="bg-white pt-20px pt-custsm-4 px-3 px-custsm-32px px-lg-5 h-100 w-100 login-inner-wrapper"
+    >
+    <a href="https://optimo.ge" target="_blank" class="login-logo">
+      <img src="/assets/images/logo.svg" alt="" />
+    </a>
+      <div class="pt-lg-5 mt-lg-5">
+        <div class="font-size-20 font-family-bold font-color-dark pt-5 mt-custsm-5 mt-lg-2 mt-4">
+          პაროლის აღდგენა
+        </div>
+        <div class="font-size-14 font-family-regular font-color-dark pt-3">
+        <span>შეტყობინება გამოგზავნილია ნომერზე:</span>  
+        <span class="text-nowrap"> +995 {{ displayedPhoneNumber | mask: '000 000 000' }}</span>   
+        </div>
+       
+        <div class="pt-4">
+          <label for="" class="font-size-14 font-family-regular font-color-dark">ერთჯერადი კოდი</label>
+          <div class=" form-group-lg input-group-custom d-flex align-items-center">
+            <input
+              data-hj-allow
+              formControlName="token"
+              required
+              class="form-control input-left h-u-lg-42px"
+            />
+            <button
+              class="btn p-0 input-section"
+              style="right: 11px;"
+              (click)="onResend()"
+              type="button"
+              *ngIf="canSend"
+            >
+              <app-icon icon="reload"  ></app-icon>
+            </button>
+          </div>
+         
+        </div>
+        <div class="pb-lg-5 pb-32px border-bottom border-table-border-color">
+          <button
+            class="btn btn-primary btn-block reset-password-btn font-family-bold font-size-14 h-u-lg-42px"
+            type="submit"
+          >
+          გაგრძელება
+          </button>
+        </div>
+      </div>
+      <div  class="pt-22px">
+        <a  routerLink="/login"
+            class="text-decoration-none font-size-14 font-family-bold font-color-dark"
+      >
+      <app-icon class="d-inline-block" icon="arrow-down" style="transform: rotate(90deg);"></app-icon> დაბრუნება
+      </a>
+      </div>
+    </div>
+    <div class="login-cover-img"></div>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- <app-icon
+            (click)="onBack()"
+            icon="back"
+            class="icon-back-lg"
+          ></app-icon>  es butto ntavis punqcionalianad amovardnilia-->
+
+
+          <!--  <span *ngIf="!canSend"> {{ timer$ | async }} </span>   esec araa dizainshi -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="reset-password">
+  <form >
+    <div
+      class="reset-password-holder bg-white border rounded text-center mx-auto pt-1"
+    >
+      <div class="d-flex align-items-center">
+        <div class="col pl-4 text-left">
+          
+        </div>
+        <div class="col-auto">
+          <div class="font-size-22 font-family-semibold text-dark pt-3 pb-4">
+            შეტყობინება გამოგზავნილია
+          </div>
+        </div>
+        <div class="col pr-4"></div>
+      </div>
+      <div class="reset-password-padding">
+        <div class="text-muted mt-1">
+         
+        </div>
+        <div class="my-2 pt-4">
+          <input
+            formControlName="token"
+            required
+            placeholder="ჩაწერე კოდი"
+            class="form-control"
+          />
+        </div>
+        <div class="pt-4">
+          <button
+            class="btn btn-primary btn-block reset-password-btn"
+            type="submit"
+          >
+            შემდეგ
+          </button>
+        </div>
+        <div class="text-muted font-size-14 py-4">
+          <a   style="cursor: pointer;">
+            <app-icon icon="resend" class="mr-2"></app-icon>
+            თავიდან გამოგზავნა
+          </a>
+         
+        </div>
+      </div>
+
+      <div
+        class="d-flex align-items-center justify-content-center border-top"
+        style="height: 67px;"
+      >
+        <a
+          routerLink="/login"
+          class="text-primary font-size-14 font-family-medium text-decoration-none reset-password-link"
+          >ავტორიზაციაზე დაბრუნება</a
+        >
+      </div>
+    </div>
+  </form>
+</div> -->

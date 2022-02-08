@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>Group 22</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Landing-/-Demo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Headers" transform="translate(-214.000000, -232.000000)" fill-rule="nonzero">
+            <g id="Group-3" transform="translate(54.000000, 200.000000)">
+                <g id="Group-23" transform="translate(160.000000, 32.000000)">
+                    <g id="Group-22">
+                        <circle id="Oval" fill="#4563FF" cx="15.9927509" cy="15.9927509" r="15.9927509"></circle>
+                        <path d="M31.9872243,15.9944734 L15.9944734,15.9944734 L15.9944734,0.00172242875 C24.8270258,0.00172242875 31.9872243,7.16192091 31.9872243,15.9944734 L31.9872243,15.9944734 Z" id="Path" fill="#FF6257"></path>
+                        <path d="M31.9872243,15.9944734 L15.9944734,15.9944734 L15.9944734,31.985502 C20.2358562,31.9859587 24.3036794,30.3013962 27.3029515,27.3024471 C30.3022236,24.303498 31.9872243,20.2358563 31.9872243,15.9944734 Z" id="Path" fill="#3D1877"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,119 @@
+<div class="w-100 h-100 d-flex flex-column">
+  <div class="d-flex align-items-center px-4 py-3" style="height: 80px;">
+    <a
+      class="btn btn-primary btn-add mr-3"
+      [routerLink]="['./add']"
+      [ngClass]="{ 'd-none': selectedRows && selectedRows.length > 0 }"
+    >
+      <!-- <app-icon [icon]="'plus'" class="mr-2"></app-icon> -->
+      <span>დამატება</span>
+    </a>
+
+    <button
+      (click)="onEditSelected()"
+      class="btn mr-2 bg-table-border-color py-0"
+      style="width: 64px; height: 42px;"
+      [ngClass]="{ 'd-none': !selectedRows || selectedRows.length !== 1 }"
+    >
+      <app-icon icon="edit"></app-icon>
+    </button>
+
+    <button
+      class="btn mr-2 bg-table-border-color py-0"
+      (click)="openRemovalDialog(selectedRows)"
+      style="width: 64px; height: 42px;"
+      [ngClass]="{ 'd-none': !selectedRows || !selectedRows.length }"
+    >
+      <app-icon icon="trash"></app-icon>
+    </button>
+  </div>
+
+  <app-table
+    *ngIf="datasource"
+    [displayedColumns]="displayedColumns"
+    [dataSource]="datasource"
+    [totalCount]="totalCount"
+    [state]="curTableState"
+    [actions]="{ editable: false, deletable: false, hasViewAs: true  }"
+    [selectable]="true"
+    [filterable]="true"
+    [paginable]="true"
+    [defaultSort]="'id'"
+    [defaultSortDirection]="'DESC'"
+    (selectionChanged)="onSelectionChanged($event)"
+    (rowEdit)="goToEdit($event)"
+    (rowDelete)="openRemovalDialog([$event])"
+    (rowViewAs)="goViewAs($event)"
+    (stateChanged)="onTableStateChanged($event)"
+    class="table-offers action-control-w-90px flex-grow-1 table-categories"
+    style="padding-bottom: 71px;"
+  >
+  
+    <ng-template app-cell let-cell="cell" let-row="row" name="LegalEntityIdOrName">
+      <div class="line-height-normal translate-t-1px">
+        <span [matTooltip]="row.companyName"
+          class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1"
+        >
+          {{ row.companyName }}
+        </span>
+        <br />
+        <span class="text-truncate mw-100 d-inline-block table-text-dark" [matTooltip]="row.id">
+          {{ row.id }}
+        </span>
+      </div>
+    </ng-template>
+    <ng-template
+      app-cell
+      let-cell="cell"
+      let-row="row"
+      name="userEmailOrPhoneNumber"
+    >
+      <div class="line-height-normal translate-t-1px">
+        <span
+          class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1" [matTooltip]="row?.userEmail"
+        >
+          {{ row?.userEmail }}
+        </span>
+        <br />
+        <span class="text-truncate mw-100 d-inline-block table-text-dark" [matTooltip]="row?.userPhoneNumber">
+          {{ row?.userPhoneNumber }}
+        </span>
+      </div>
+    </ng-template>
+
+    <ng-template
+      app-cell
+      let-cell="cell"
+      let-row="row"
+      name="fullNameOrId"
+    >
+      <div class="line-height-normal translate-t-1px">
+        <span
+          class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1" [matTooltip]="row?.userFullName"
+        >
+          {{ row?.userFullName }}
+        </span>
+        <br />
+        <span class="text-truncate mw-100 d-inline-block table-text-dark" [matTooltip]="row?.identificationNumber">
+          {{ row?.identificationNumber }}
+        </span>
+      </div>
+    </ng-template>
+
+    <!-- <ng-template app-cell let-cell="cell" let-row="row" name="view">
+      <div>
+        <a
+          target="_blank"
+          class="btn mr-2 btn-primary btn-add"
+          style="justify-content: center; color: white;"
+          (click)="onGetViewAsLink(row.id)"
+        >
+          view as
+        </a>
+      </div>
+    </ng-template> 
+
+    <ng-template app-cell let-cell="cell" let-row="row" name="extra">
+    </ng-template>-->
+  </app-table>
+</div>

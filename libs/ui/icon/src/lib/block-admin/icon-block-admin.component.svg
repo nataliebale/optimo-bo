@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <filter id="cdktop9bba">
+            <feColorMatrix in="SourceGraphic" values="0 0 0 0 0.203922 0 0 0 0 0.203922 0 0 0 0 0.203922 0 0 0 1.000000 0"/>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <path d="M0 0H24V24H0z" transform="translate(-188 -28) translate(168 19) translate(20 9)"/>
+                    <g   transform="translate(-188 -28) translate(168 19) translate(20 9)">
+                        <g transform="translate(6 3.5)">
+                            <path fill-rule="nonzero" stroke="#343434" stroke-width="1.5" d="M10.514 7.264c.55.352.623.532.623.729h0v7.029c0 .205-.078.392-.208.527-.12.125-.287.205-.472.205h0l-8.91.006c-.186 0-.353-.08-.474-.206-.13-.136-.21-.323-.21-.529h0V7.998c0-.205.078-.393.209-.529.12-.125.286-.205.47-.205h0z"/>
+                            <circle cx="6" cy="11.5" r="1" fill="#343434" stroke="#343434"/>
+                            <path fill="#000" fill-rule="nonzero" d="M3.48 7.23V4.278c0-1.489 1.136-2.701 2.534-2.702 1.3 0 2.357.861 2.5 2.207v3.452c0 .41.333.743.743.743S10 7.645 10 7.235V3.783C9.852 1.566 8.13 0 6.013 0 3.799.001 1.999 1.92 2 4.279V7.43c.001.315.24.57.536.57h.41c.295 0 .535-.455.535-.77z"/>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,126 @@
+<div class="w-100 h-100 d-flex flex-column">
+  <div class="d-flex align-items-center px-4 py-3" style="height: 80px;">
+    <a
+      class="btn btn-primary btn-add mr-3"
+      [routerLink]="['./add']"
+      [ngClass]="{ 'd-none': selectedRows && selectedRows.length > 0 }"
+    >
+      <!-- <app-icon [icon]="'plus'" class="mr-2"></app-icon> -->
+      <span>დამატება</span>
+    </a>
+    <div
+    [ngClass]="{ 'd-none': selectedRows && selectedRows.length > 0 }"
+    class="mr-3"
+    style="width: 1px; background-color: #e7e7e7; height: 32px;"
+  ></div>
+
+    <button
+      (click)="onEditSelected()"
+      class="btn mr-2 bg-table-border-color py-0"
+      style="width: 64px; height: 42px;"
+      [ngClass]="{ 'd-none': !selectedRows || selectedRows.length !== 1 }"
+    >
+      <app-icon icon="edit"></app-icon>
+    </button>
+    
+    <button
+      class="btn mr-2 px-3 bg-table-border-color py-0"
+      (click)="openRemovalDialog(selectedRows)"
+      style="width: 64px; height: 42px;"
+      [ngClass]="{ 'd-none': !selectedRows || !selectedRows.length }"
+    >
+      <app-icon icon="trash"></app-icon>
+    </button>
+
+    <button
+      (click)="onSync()"
+      class="btn mr-2 bg-table-border-color py-0"
+      style="width: 64px; height: 42px;"
+      [ngClass]="{ 'd-none': selectedRows && selectedRows.length > 0 }"
+      [disabled]="isLoading"
+    >
+      <app-icon icon="sync"></app-icon>
+    </button>
+  </div>
+
+  <app-table
+    *ngIf="datasource"
+    [displayedColumns]="displayedColumns"
+    [dataSource]="datasource"
+    [totalCount]="totalCount"
+    [state]="curTableState"
+    [actions]="{ editable: true, deletable: true }"
+    [selectable]="true"
+    [filterable]="true"
+    [paginable]="true"
+    [defaultSort]="'id'"
+    [defaultSortDirection]="'DESC'"
+    (selectionChanged)="onSelectionChanged($event)"
+    (rowClick)="onRowClick($event.id)"
+    (rowEdit)="goToEdit($event)"
+    (rowDelete)="openRemovalDialog([$event])"
+    (stateChanged)="onTableStateChanged($event)"
+    class="s-th-w-72px flex-grow-1 table-inventory table-th-2-b-0 table-sec-th-td-w-55p table-sec-th-td-py-5px" 
+    style="padding-bottom: 71px;"
+  >
+    <ng-template app-cell let-cell="cell" let-row="row" name="name">
+      <div class="line-height-normal translate-t-1px">
+        <span
+          [matTooltip]="cell"
+          class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1"
+        >
+          {{ cell }}
+        </span>
+        <br />
+        <span
+          [matTooltip]="row.barcode"
+          class="text-truncate mw-100 d-inline-block table-text-dark"
+        >
+          {{ row.barcode }}
+        </span>
+      </div>
+    </ng-template>
+    <ng-template app-cell let-cell="cell" let-row="row" name="photoUrl">
+      <div
+        style="
+          width: 48px;
+          height: 48px;
+          flex-basis: 48px;
+          border: 1px solid lightgrey;
+          border-radius: 50%;
+          margin-left: auto;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center center;
+        "
+        [ngStyle]="{ 'background-image': 'url(' + row.photoUrl + ')' }"
+      ></div>
+    </ng-template>
+    <ng-template app-cell let-cell="cell" let-row="row" name="businessType">
+      <div *ngIf="cell?.name">{{ cell?.name }}</div>
+      <div *ngIf="!cell?.name">---</div>
+    </ng-template>
+    
+    <ng-template
+      app-cell
+      let-cell="cell"
+      let-row="row"
+      name="unitPrice"
+    >
+      <div class="text-truncate text-right">
+        {{ cell | number: '1.4-4':'en' }} ₾ 
+      </div>
+    </ng-template>
+    
+    <ng-template
+      app-cell
+      let-cell="cell"
+      let-row="row"
+      name="unitCost"
+    >
+      <div class="text-truncate text-right">
+        {{ cell | number: '1.4-4':'en' }} ₾ 
+      </div>
+    </ng-template>
+  </app-table>
+</div>

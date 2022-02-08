@@ -1,0 +1,22 @@
+<div class="circle-progress">
+  <svg class="circle-progress-chart" viewBox="0 0 17 17">
+    <defs>
+      <linearGradient [id]="id" x1="100%" y1="0%" x2="0%" y2="0%">
+        <stop offset="0%" [attr.stop-color]="startColor"></stop>
+        <stop offset="100%" [attr.stop-color]="endColor"></stop>
+      </linearGradient>
+    </defs>
+    <circle class="circle-progress-background" cx="8.5" cy="8.5" r="8"></circle>
+    <circle
+      *ngIf="active"
+      class="circle-progress-bar"
+      attr.stroke="url(#{{ id }})"
+      cx="8.5"
+      cy="8.5"
+      r="8"
+    ></circle>
+  </svg>
+  <div class="circle-progress-content">
+    <app-icon *ngIf="icon" [icon]="icon"></app-icon>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div #box class="single-table-wrapper" [style.width.px]="arrangement.width" [style.height.px]="arrangement.height"
+  [style.top.px]="arrangement.top" [style.left.px]="arrangement.left" [class.resize]="status === Status.RESIZE"
+  [class.move]="status === Status.MOVE" (mousedown)="moveHandler($event)" (dblclick)="toggleBoxType()"
+  (window:mouseup)="mouseUpHandler($event)" (mouseover)="onBoxTouch.emit(true)" (mouseleave)="onBoxTouch.emit(false)">
+
+  <div class="single-table d-flex justify-content-center align-items-center"
+    [style.borderRadius]="arrangement.boxType === EBoxType.Rectangle ? 0 + 'px' : arrangement.width > arrangement.height ? arrangement.height + 'px' : arrangement.width + 'px'">
+    <div [class.active]="!editMode" class="resize-action-wrapper" (mousedown)="resizeHandler($event)">
+      <div class="resize-action"></div>
+    </div>
+    <button [class.active]="editMode" class="btn p-0 position-absolute single-table-close-btn"> <span
+        (click)="deleteBox.emit()" class="deleteTableIcon cursor-pointer">
+
+        <app-icon icon="close-tables"> </app-icon>
+      </span>
+    </button>
+    <div class="single-table-name font-size-18 overflow-hidden w-100 font-family-bold" *ngIf="!editMode"
+      (click)="toggleEditMode($event)">
+
+      <span class="text-truncate"> {{editableName || name}}</span>
+    </div>
+    <!-- (blur)="rename($event)" -->
+    <input
+      data-hj-allow
+      class="position-absolute form-control single-table-input font-size-18 text-center"
+      [class.errorInput]="tableNameErrorMode" type="text"
+	    *ngIf="editMode"
+      [autofocus]="true" [(ngModel)]="editableName" (keydown.enter)="rename($event)"
+      (focusout)="toggleEditMode($event)">
+  </div>
+</div>

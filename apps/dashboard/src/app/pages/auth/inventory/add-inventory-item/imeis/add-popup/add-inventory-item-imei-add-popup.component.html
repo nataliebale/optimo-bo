@@ -1,0 +1,66 @@
+<form
+  *ngIf="form"
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+  (keydown.enter)="$event.preventDefault()"
+>
+  <div
+    class="d-flex align-items-center justify-content-between border-bottom border-table-border-color   container-fluid pl-4"
+    style="height:60px;"
+  >
+      <span class="text-dark font-size-18 font-family-bold"
+        >{{ 'INVENTORY.IMEI.POPUP_TITLE_PREFIX' | translate }} {{ (data.editIMEI ? 'GENERAL.EDIT' : 'GENERAL.ADD') | translate }}
+      </span>
+      <app-icon
+        (click)="onCancel()"
+        [icon]="'close'"
+        class="icon-w-20px icon-h-20px pr-1"
+        style="cursor: pointer;  "
+      ></app-icon>
+    
+  </div>
+  <div class="pt-3 px-4">
+    <div class="form-group">
+      <div class="position-relative w-100" >
+        <div class="font-size-14 font-family-bold font-color-dark line-height-normal">
+          {{ 'INVENTORY.IMEI.WRITE_IMEI' | translate }}
+        </div>
+        <input
+          formControlName="imei"
+          data-hj-allow
+          class="form-control mt-2"
+          type="text"
+          [placeholder]="'PLACEHOLDER.TEXT_INPUT' | translate"
+          autocomplete="off"
+          [ngClass]="{
+            'has-error-message': isNotUniq
+          }"
+        />
+        <div
+          *ngIf="isNotUniq"
+          [matTooltip]="'DASHBOARD.EDIT.IMEI_ALREADY_EXISTS' | translate"
+          matTooltipClass="tooltip-validation"
+          class="form-validation"
+        ></div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex  px-4 justify-content-end pb-4">
+    <button
+      class="btn  mr-2 font-family-bold"
+      style="width: 192px;height: 48px;"
+      type="button"
+      (click)="onCancel()"
+    >
+      {{ 'GENERAL.CANCEL' | translate }}
+    </button>
+    <button
+      class="btn btn-primary font-family-bold"
+      style="width: 192px;height: 48px;"
+      type="submit"
+      [disabled]="form.invalid"
+    >
+      {{ 'GENERAL.SAVE' | translate }}
+    </button>
+  </div>
+</form>

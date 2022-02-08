@@ -1,0 +1,230 @@
+image: node:12
+
+options:
+  size: 2x
+
+definitions:
+  steps:
+    - step: &deployScript
+        caches:
+          - node
+        name: Building
+        script:
+          - apt update && apt install zip awscli -y
+          - npm install --quiet
+          - sh tools/build.sh $BUILD_COMMAND
+          - pipe: atlassian/aws-s3-deploy:0.4.4
+            variables:
+              AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+              AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+              AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+              S3_BUCKET: $S3_BUCKET
+              LOCAL_PATH: '$(pwd)'
+              EXTRA_ARGS: '--exclude=* --include=*.zip'
+        artifacts:
+          - dist/**
+          - libs/**
+          - apps/**
+    - step: &build
+        caches:
+          - node
+        name: Build
+        script: 
+          - npm install --quiet
+          - npm run $BUILD_COMMAND
+        artifacts:
+          - dist/**
+          - libs/**
+          - apps/**
+
+    - step: &deploy
+        name: Create image and deploy
+        script:
+          - export BITBUCKET_COMMIT_SHORT=$(echo $BITBUCKET_COMMIT | cut -c1-7)
+          - docker build -t $IMAGE_NAME-$TAG -f $PROJECT_INFRA/Dockerfile .
+          - pipe: atlassian/aws-ecr-push-image:1.4.1
+            variables:
+              AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+              AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+              AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+              IMAGE_NAME: $IMAGE_NAME-$TAG
+              TAGS: '$BITBUCKET_COMMIT_SHORT $TAG'
+          - pipe: atlassian/aws-ecs-deploy:1.5.0
+            variables:
+              AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+              AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+              AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+              CLUSTER_NAME: $ECS_CLUSTER
+              SERVICE_NAME: $ECS_SERVICE-managed
+              FORCE_NEW_DEPLOYMENT: 'true'
+              #WAIT: 'true'
+                    
+    - step: &createInfra
+        name: Create Infra
+        script:
+          - export LbPriority=${!LbPriorityNameFromWorkspace}
+          - pipe: atlassian/aws-cloudformation-deploy:0.5.0
+            variables:
+              AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+              AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+              AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+              STACK_NAME: "${ApplicationName}"
+              TEMPLATE: "${PROJECT_INFRA}/angular.json"
+              CAPABILITIES: ['CAPABILITY_IAM']
+              WAIT: 'true'
+              STACK_PARAMETERS: >
+                  [{
+                    "ParameterKey": "ApplicationName",
+                    "ParameterValue": "${ApplicationName}"
+                  },{
+                    "ParameterKey": "LbStackName",
+                    "ParameterValue": "${LbStackName}"
+                  },{
+                    "ParameterKey": "VpcStackName",
+                    "ParameterValue": "${VpcStackName}"
+                  },{
+                    "ParameterKey": "RepositoryName",
+                    "ParameterValue": "${IMAGE_NAME}-${TAG}"
+                  },{
+                    "ParameterKey": "RepositoryTag",
+                    "ParameterValue": "${TAG}"
+                  },{
+                    "ParameterKey": "Memory",
+                    "ParameterValue": "${Memory}"
+                  },{
+                    "ParameterKey": "ClusterName",
+                    "ParameterValue": "${ClusterName}"
+                  },{
+                    "ParameterKey": "NumerOfTasks",
+                    "ParameterValue": "${NumerOfTasks}"
+                  },{
+                    "ParameterKey": "RouteZone",
+                    "ParameterValue": "${RouteZone}"
+                  },{
+                    "ParameterKey": "Domain",
+                    "ParameterValue": "${Domain}"
+                  },{
+                    "ParameterKey": "LbPriority",
+                    "ParameterValue": "${LbPriority}"
+                  }]
+
+pipelines:
+  branches:
+    master:
+      - step:
+          <<: *deployScript
+          name: Deploying to production
+          deployment: production
+      - step: 
+          <<: *createInfra 
+          name: Prod Suppliers Infra
+          deployment: Production-Sup-Infra
+      - step: 
+          <<: *createInfra 
+          name: Prod Dashboard Infra
+          deployment: Production-Dash-Infra
+      - step: 
+          <<: *deploy 
+          name: Deploy Suppliers to Prod
+          deployment: Production-Sup
+      - step: 
+          <<: *deploy 
+          name: Deploy Dashboard to Prod
+          deployment: Production-Dash
+
+    staging:
+      - step: 
+          <<: *createInfra 
+          name: Staging Admin Infra
+          deployment: Staging-Admin-Infra
+      - step: 
+          <<: *createInfra 
+          name: Staging Landing Infra
+          deployment: Staging-Landing-Infra
+      - step: 
+          <<: *createInfra 
+          name: Staging Dashboard Infra
+          deployment: Staging-Dash-Infra
+      - step: 
+          <<: *createInfra 
+          name: Staging Suppliers Infra
+          deployment: Staging-Sup-Infra
+      - step:
+          <<: *build
+          name: Build for staging
+          deployment: Staging-Build
+      - step: 
+          <<: *deploy 
+          name: Deploy Admin to Staging
+          deployment: Staging-Admin
+      - step: 
+          <<: *deploy 
+          name: Deploy Landing to Staging
+          deployment: Staging-Landing
+      - step: 
+          <<: *deploy 
+          name: Deploy Dashboard to Staging
+          deployment: Staging-Dash
+      - step: 
+          <<: *deploy 
+          name: Deploy Suppliers to Staging
+          deployment: Staging-Sup
+
+
+    develop:
+      - step: 
+          <<: *createInfra 
+          name: Develop Admin Infra
+          deployment: Develop-Admin-Infra
+      - step: 
+          <<: *createInfra 
+          name: Develop Landing Infra
+          deployment: Develop-Landing-Infra
+      - step: 
+          <<: *createInfra 
+          name: Develop Dashboard Infra
+          deployment: Develop-Dash-Infra
+      - step: 
+          <<: *createInfra 
+          name: Develop Suppliers Infra
+          deployment: Develop-Sup-Infra
+      - step:
+          <<: *build
+          name: Build for Develop
+          deployment: Develop-Build
+      - step: 
+          <<: *deploy 
+          name: Deploy Admin to Develop
+          deployment: Develop-Admin
+      - step: 
+          <<: *deploy 
+          name: Deploy Landing to Develop
+          deployment: Develop-Landing
+      - step: 
+          <<: *deploy 
+          name: Deploy Dashboard to Develop
+          deployment: Develop-Dash
+      - step: 
+          <<: *deploy 
+          name: Deploy Suppliers to Develop
+          deployment: Develop-Sup
+
+    style-redesign-june-2020:
+      - step:
+          name: Deploying Horeca
+          deployment: HorecaTesting
+          caches:
+            - node
+          script:
+            - apt update && apt install zip -y
+            - npm install --quiet
+            - npm run deploy:dev
+            - (cd ./dist/apps/dashboard && zip -r - .) > odin-dashboard-horeca.zip
+            - pipe: atlassian/aws-s3-deploy:0.4.4
+              variables:
+                AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+                S3_BUCKET: $S3_BUCKET
+                LOCAL_PATH: '$(pwd)'
+                EXTRA_ARGS: '--exclude=* --include=*.zip'

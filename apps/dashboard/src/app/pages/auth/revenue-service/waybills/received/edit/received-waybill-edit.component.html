@@ -1,0 +1,477 @@
+<div
+  class="h-100 d-flex flex-column position-relative waybills-edit-divider"
+>
+  <div class="container-fluid sticky-top bg-white px-12px" style="height: 72px;">
+    <div class="row align-items-center h-100 border-bottom border-table-border-color">
+      <div class="col pl-0 h-100">
+        <button
+          type="button"
+          class="btn bg-white pr-2 pl-0 h-100 rounded-0 ml-lg-0 ml-n1"
+          style="width: 102px;"
+          (click)="onClose()"
+        >
+          <app-icon icon="close"></app-icon>
+        </button>
+      </div>
+      <div class="col-auto font-size-20 font-family-bold text-dark">
+        {{'WAYBILLS.RECEIVED_WAYBILLS.ITEM.EDIT_WAYBILL' | translate}}
+      </div>
+      <div class="col pr-lg-32px pr-4 h-100 d-flex align-items-center justify-content-end">
+        <button
+          *ngIf="waybillData?.type != WaybillType.Return"
+          (click)="onSave('draft')"
+          class="btn bg-table-border-color font-size-14 font-family-bold text-dark  py-0 px-23px h-42px mr-lg-3 mr-10px"
+          [disabled]="disabled || !supplierId || requestIsSent"
+        >
+          {{'GENERAL.SAVE'|translate}}
+        </button>
+        <button
+          (click)="onSave('received')"
+          class="btn btn-primary font-size-14 font-family-bold text-white  py-0 px-23px h-42px"
+          [ngClass]="{ 'ml-auto': waybillData?.type == WaybillType.Return }"
+          [disabled]="
+            (
+              waybillData?.type != WaybillType.Return
+            )
+            &&
+            (
+              disabled ||
+              !supplierId ||
+              !waybillData ||
+              requestIsSent ||
+              !waybillPricesFilled
+            )
+          "
+        >
+          {{'GENERAL.CONFIRM'|translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="bg-white">
+    <div class="d-flex align-items-center "  >
+      <div
+        class="pt-lg-20px pt-32px h-100 d-flex pl-lg-32px pl-4"
+        style="width: 39.88%;"
+      >
+        <span class="font-family-bold font-size-18 text-dark"
+          >{{'WAYBILLS.RECEIVED_WAYBILLS.ITEM.WAYBILL' | translate}}</span
+        >
+      </div>
+      <div class="col pt-lg-20px pt-32px pl-lg-32px pl-4 h-100 d-flex">
+        <!-- border-left border-table-border-color -->
+        <span class="font-family-bold font-size-18 text-dark "
+          >შესყიდვა</span
+        >
+      </div>
+    </div>
+    <div class="d-flex border-bottom"  >
+      <div class="pl-lg-32px pl-4 h-100 pt-12px" style="width: 39.88%;">
+        <div
+          class="font-family-bold font-size-15 text-dark pb-10px d-flex line-height-normal"
+        >
+          <span class="col px-0 d-inline-block"  
+            >
+            
+          {{'WAYBILLS.RECEIVED_WAYBILLS.ITEM.SUPPLIER' | translate}}
+            </span
+          >
+          <span class="col px-0">
+            {{'WAYBILLS.RECEIVED_WAYBILLS.ITEM.BUY' | translate}}
+          </span> 
+        </div>
+        <div class="font-family-regular font-size-lg-15 font-size-14 text-dark d-flex">
+          <span class="px-0 col d-inline-block"  
+            >{{ waybillData?.sellerName }}</span
+          >
+         <span class="px-0 col d-inline-block">{{ waybillData?.waybillNumber }} </span> 
+        </div>
+      </div>
+      <div class="col px-lg-4 px-3 h-100 d-flex pt-12px pb-32px">
+        <!-- border-left border-table-border-color  -->
+        <div
+          class="d-flex flex-column col pl-2 pr-lg-3"
+          style="max-width: 553.5px;"
+        >
+          <label class="font-family-bold font-size-15 text-dark line-height-normal">
+            {{'WAYBILLS.RECEIVED_WAYBILLS.ITEM.SUPPLIER' | translate}}
+          </label>
+          <app-dynamic-select
+            class="w-100  input-pr-25px"
+            [dataGetter]="getSuppliers"
+            [itemGetterById]="getSupplierById"
+            [(ngModel)]="supplierId"
+            [disabled]="disabled"
+          >
+            <ng-template app-dynamic-select-footer-tmp>
+                <a
+                  class="text-decoration-none border-top border-table-border-color w-100 d-flex align-items-center justify-content-center"
+                  style="height: 54px;"
+                  routerLink="/suppliers/add"
+                  target="_blank"
+                >
+                  <app-icon [icon]="'add'"></app-icon>
+                  <span class="font-family-bold font-size-14 text-dark ml-2"
+                    >
+                    {{'WAYBILLS.RECEIVED_WAYBILLS.ITEM.ADD_SUPPLIER' | translate}}
+                    </span
+                  >
+                </a>
+            </ng-template>
+          </app-dynamic-select>
+        </div>
+        <div
+          class="d-flex flex-column col pr-2 pl-lg-3"
+          *ngIf="waybillData?.type != WaybillType.Return"
+        >
+          <div class="font-family-bold font-size-15 text-dark mb-2 line-height-normal" >
+            
+            {{'WAYBILLS.RECEIVED_WAYBILLS.ITEM.BUY' | translate}}
+            <ng-container
+              *ngIf="waybillData?.type == WaybillType.Return"
+            >
+              *
+            </ng-container>
+          </div>
+          <app-dynamic-select
+            #purchaseOrdersSelector
+            class="w-100 input-pr-25px"
+            [required]="waybillData?.type == WaybillType.Return"
+             
+            [dataGetter]="getPurchaseOrders"
+            [itemGetterById]="getPurchaseOrderById"
+            [(ngModel)]="purchaseOrderId"
+            [disabled]="disabled"
+          >
+          </app-dynamic-select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex-grow-1 bg-white rounded  ">
+    <app-table
+      *ngIf="productsDataSource && displayedColumns"
+      [dataSource]="productsDataSource"
+      [totalCount]="productsDataSource.length"
+      [displayedColumns]="displayedColumns"
+      [selectable]="false"
+      [filterable]="false"
+      [paginable]="false"
+      [staticData]="true"
+      class="table-waybills-edit"
+    >
+      <ng-template app-header-cell let-row="row" name="wbQuantity">
+        <span class="pr-1">რაოდენობა</span>
+        <app-icon 
+          class="icon-w-16px icon-hover-opacity"
+          icon="info-blue"
+          [matTooltip]="'WAYBILLS.RECEIVED_WAYBILLS.ITEM.DETAILS.LIST.WB_BOX_QUANTITY_TOOLTIP' | translate"
+        ></app-icon>
+      </ng-template>
+      <ng-template app-cell let-cell="cell" let-row="row" name="wbQuantity">
+        <input
+          class="form-control input-received-waybills-edit w-100"
+          style="max-width: 125px;"
+          (change)="
+            onBoxQuantityChange($event.target.value, row);
+            row.poMargin = row.poUnitPrice / row.poUnitCost * 100 - 100;
+          "
+          [ngModel]="row.wbBoxQuantity"
+          mask="separator.2"
+          >
+        <div class="quantity-value text-right font-family-regular font-size-14 font-color-dark" >
+          <span
+            class="es chauwerelze "
+            *ngIf="!row.wbBoxQuantity"
+          >
+            {{ row.wbQuantity | number: '1.4-4':'en' }}
+          </span>
+          <span
+            *ngIf="!!row.wbBoxQuantity"
+          >
+            <span style="color: #808080;">{{ row.wbQuantity | number: '1.0-2':'en' }}</span>  x {{row.wbBoxQuantity}}
+          </span>
+        </div>
+        <div class="multiply-number">
+          <div class=""></div>
+          <span style="max-width: 78%;overflow: hidden !important;">
+            {{ row.wbQuantity | number: '1.0-2':'en' }}
+          </span>
+          <div class="d-flex flex-column justify-content-between align-items-center justify-content-center position-relative multiply-divider"
+                >
+            <div style="width: 1px;height: 15px;" class="bg-pagination-border"></div>
+            <app-icon icon="multiply"></app-icon>
+            <div style="width: 1px;height: 15px;" class="bg-pagination-border"></div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template app-cell let-cell="cell" let-row="row" let-otherUnit="row.wbUnitId === '99'" name="wbUnitId">
+        <div class="d-flex align-items-center">
+          <span
+			[matTooltip]="otherUnit ? row.wbUnitTxt : mapOfunits[cell]"
+			#ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+          >
+            {{otherUnit ? row.wbUnitTxt : mapOfunits[cell]}}
+          </span>
+          <app-icon
+            *ngIf="otherUnit || row.wbUnitId === '14'"
+            [matTooltip]="'WAYBILLS.RECEIVED_WAYBILLS.ITEM.ERROR_MESSAGE'|translate"
+            icon="alert"
+            class="ml-2 w-20px h-20px "
+          ></app-icon>
+        </div>
+      </ng-template>
+      <ng-template app-cell let-cell="cell" let-row="row" name="wbName">
+        <div class="d-flex flex-column justify-content-center">
+          <span
+			[matTooltip]="row.wbName"
+			#ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+            class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark line-height-normal pb-1"
+          >
+            {{ row.wbName }}
+          </span>
+           
+          <span
+			[matTooltip]="row.wbSKU"
+			#ref3 [matTooltipDisabled]="textIsTruncated(ref3)"
+            class="text-truncate mw-100 d-inline-block table-text-dark line-height-normal"
+          >
+            {{ row.wbSKU }}
+          </span>
+        </div>
+      </ng-template>
+      
+      <ng-template app-cell let-row="row" name="poName">
+        <ng-container *ngIf="!row?.selectIsOpen">
+          <div
+            (click)="showOrderLineSelector(row)"
+            class="dynamic-value-column position-absolute  d-flex flex-column justify-content-center "
+          >
+            <div class="font-size-14 font-family-bold pb-1 line-height-normal text-truncate"
+              [ngClass]="
+                {
+                  'font-color-dark':
+                    row?.validation?.poSelection,
+                  'text-danger':
+                    !row?.validation?.poSelection
+                }
+              "
+            >
+              {{row?.poNameString || ''}}
+            </div>
+            <div class="font-size-14 font-family-regular line-height-normal text-truncate"
+              [ngClass]="
+                {
+                  'font-color-dark':
+                    row?.validation?.poSelection,
+                  'text-danger':
+                    !row?.validation?.poSelection
+                }
+              "
+            >
+              {{row?.poSKU || ''}}
+            </div>
+          </div>
+        </ng-container>
+        <app-dynamic-select
+          #orderLineSelector
+          class="add-inventory-item__dynamic-select input-pr-25px two-line-select"
+          placeholder="ჩაწერე"
+          [dataGetter]="getStockitems"
+          [itemGetterById]="getStockitemById"
+          sortField="name"
+          additionalSearchKey="barcode"
+          [(ngModel)]="row.poName"
+          [disabled]="disabled"
+          (change)="beforeOrderLineMatch($event, row)"
+          (closed)="hideOrderLineSelector(row)"
+        >
+          <ng-template app-dynamic-select-footer-tmp>
+            <a
+                  class="text-decoration-none border-top border-table-border-color w-100 d-flex align-items-center justify-content-center"
+                  style="height: 54px;"
+                  routerLink="/inventory/add"
+                [queryParams]="{
+                  supplierId: supplierId,
+                  barcode: row.wbSKU,
+                  name: row.wbName,
+                  unitCost: row.wbUnitCost
+                }"
+                target="_blank"
+                >
+                  <app-icon [icon]="'add'"></app-icon>
+                  <span class="font-family-bold font-size-14 text-dark ml-2"
+                    >
+                    {{'WAYBILLS.RECEIVED_WAYBILLS.ITEM.ADD_PRODUCT' | translate}}
+                    </span
+                  >
+                </a>
+          </ng-template>
+          <ng-template app-dynamic-select-option-tmp let-item="item">
+            <div
+              class="d-flex flex-column"
+              style="width:100%"
+            >
+              <div
+                class="font-size-14 font-color-dark font-family-bold pb-1 line-height-normal text-truncate"
+                [matTooltip]="item.name"
+			          #ref4 [matTooltipDisabled]="textIsTruncated(ref4)"
+              >
+                {{ item.name }}
+              </div>
+              <div
+                class="font-size-14 font-color-dark font-family-regular  line-height-normal text-truncate"
+                [matTooltip]="item.barcode"
+                #ref5 [matTooltipDisabled]="textIsTruncated(ref5)"
+              >
+                {{ item.barcode }}
+              </div>
+            </div>
+          </ng-template>
+        </app-dynamic-select>
+      </ng-template>
+ 
+      <ng-template app-cell let-row="row" let-i="i" name="poQuantity">
+        <!-- <ng-container *ngIf="!disabled"> -->
+            <input
+              [id]="'poQuantity_row_' + i"
+              data-hj-allow
+              class="form-control input-received-waybills-edit mx-auto text-center"
+              style="max-width: 90px;"
+              type="text"
+              autocomplete="off"
+              [ngModel]="row.poQuantity"
+              [class.warn]="row.wbUnitId == 99 || row.wbUnitId == 14"
+              (change)="
+                row.poQuantity = validateAndPareseInput(row, $event.target.value, 'poQuantity');
+              "
+              [ngClass]="{
+                'input-invalid': !row?.validation?.poQuantity
+              }"
+              mask="separator.2"
+              thousandSeparator=","
+              [disabled]="quantityInputsDisabled(row)"
+            />
+        <!-- </ng-container> -->
+        <!-- *ngIf="disabled" -->
+        <div class="quantity-value text-right" >
+          {{ row.poQuantity | number: '1.4-4':'en' }}
+        </div>
+      </ng-template>
+      <ng-template app-cell let-row="row" let-i="i" name="poUnitCost">
+          <input
+            [id]="'poUnitCost_row_' + i"
+            data-hj-allow
+            class="form-control input-received-waybills-edit mx-auto text-center"
+            style="max-width: 90px;"
+            *ngIf="!disabled"
+            type="text"
+            autocomplete="off"
+            [ngModel]="row.poUnitCost?.toString()"
+            (change)="
+              row.poUnitCost = parseFloatWithCommas($event.target.value);
+              row.poMargin = row.poUnitPrice / row.poUnitCost * 100 - 100;
+            "
+            [matTooltip]="
+              row.lastUnitCost || row.lastUnitCost === 0
+                ? 'ბოლო შესასყიდი ფასი: ' +
+                  (row.lastUnitCost | number: '1.4-4':'en')
+                : ''
+			      "
+            [ngClass]="{
+              'price-fall':
+                row.lastUnitCost && rowUnitCostFell(row) && row.poUnitCost !== 0,
+              'price-rised':
+                (row.lastUnitCost && row.lastUnitCost === 0) || rowUnitCostRose(row) || row.poUnitCost === 0
+            }"
+            mask="separator.4"
+            thousandSeparator=","
+            [disabled]="quantityInputsDisabled(row)"
+          />
+        <div
+          class="quantity-value text-right"
+          [ngClass]="{
+            'text-danger':
+              (row.lastUnitCost && row.lastUnitCost === 0) || rowUnitCostRose(row) || row.poUnitCost === 0,
+            'text-success':
+              row.lastUnitCost && rowUnitCostFell(row) && row.poUnitCost !== 0
+          }"
+        >
+          {{ row.poUnitCost | currency:'GEL':'symbol':'1.2-4'}}
+        </div>
+      </ng-template>
+      <ng-template app-cell let-row="row" name="poTotalCost">
+        <div
+		  [matTooltip]="row.poUnitCost * row.poQuantity | number: '1.4-4':'en'"
+		  #ref6 [matTooltipDisabled]="textIsTruncated(ref6)"
+          class="d-flex justify-content-end"
+        >
+          <span class="text-dark">{{
+            (row.poUnitCost * row.poQuantity) || null | currency:'GEL':'symbol':'1.2-4'
+          }}</span>
+        </div>
+      </ng-template>
+      <ng-template app-cell let-row="row" let-i="i" name="poUnitPrice">
+        <ng-container *ngIf="!row.stockItemIsIngredient">
+            <input
+              [id]="'poUnitPrice_row_' + i"
+              data-hj-allow
+              class="form-control input-received-waybills-edit mx-auto text-center"
+              style="max-width: 90px;"
+              *ngIf="!disabled"
+              type="text"
+              autocomplete="off"
+              [ngModel]="row.poUnitPrice"
+              (change)="
+                row.poUnitPrice = validateAndPareseInput(row, $event.target.value, 'poUnitPrice');
+                row.poMargin = row.poUnitPrice / row.poUnitCost * 100 - 100;
+              "
+              mask="separator.2"
+              thousandSeparator=","
+              [ngClass]="{
+                'input-invalid': !row?.validation?.poUnitPrice
+              }"
+            />
+          <div
+            class="quantity-value text-right"
+            [ngClass]="{
+              'text-danger': !row?.validation?.poUnitPrice
+            }"
+            >
+            {{ row.poName && row.poUnitPrice | currency:'GEL':'symbol':'1.2-4' }}
+          </div>
+        </ng-container>
+      </ng-template>
+      <ng-template app-cell let-row="row" name="poMargin">
+        <ng-container *ngIf="!row.stockItemIsIngredient">
+            <input
+              style="max-width: 90px;"
+              *ngIf="!disabled"
+              type="text"
+              autocomplete="off"
+              [ngModel]="row.poMargin"
+              (change)="
+                row.poMargin = validateAndPareseInput(row, $event.target.value, 'poMargin');
+                updateUnitPriceFromMargin(row);
+              "
+              class="form-control input-received-waybills-edit mx-auto text-center"
+              mask="separator.2"
+              thousandSeparator=","
+              [allowNegativeNumbers]="true"
+              [ngClass]="{
+                'input-invalid': row?.poMargin < 0
+              }"
+            />
+          <div
+            class="quantity-value text-right"
+            [ngClass]="{
+              'text-danger': row?.poMargin < 0
+            }"
+            >
+            {{ row.poName && row.poMargin | number: '1.2-2':'en' }}<span *ngIf="row?.poMargin > 0 || row?.poMargin < 0 || row?.poMargin === 0">%</span>
+          </div>
+        </ng-container>
+      </ng-template>
+    </app-table>
+  </div>
+</div>

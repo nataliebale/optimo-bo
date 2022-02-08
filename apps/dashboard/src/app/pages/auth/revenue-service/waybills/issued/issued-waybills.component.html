@@ -1,0 +1,21 @@
+<div
+  class="  h-100 d-flex flex-column container-fluid px-0"
+  
+>
+  <div class="bg-white h-100">
+    <app-table
+      class="waybills-table before-last-th-bordered"
+      [dataSource]="dataSource"
+      [totalCount]="totalCount"
+      [state]="currentState"
+      [selectable]="false"
+      [hasColumnSelector]="true"
+      defaultSort="beginDate"
+      defaultSortDirection="DESC"
+      [displayedColumns]="displayedColumns"
+      (stateChanged)="onTableStateChanged($event)"
+      (rowClick)="toQueryParam('waybillId', $event.waybillNumber)"
+    >
+    </app-table>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class=" flex-grow-1">
+  <div class=" bg-white h-100">
+    <app-table
+      [dataSource]="dataSource"
+      [totalCount]="totalCount"
+      [state]="currentState"
+      [selectable]="false"
+      [filterable]="false"
+      [paginable]="true"
+      [displayedColumns]="displayedColumns"
+      (stateChanged)="onTableStateChanged($event)"
+      class="table-sales-history"
+    >
+    
+    </app-table>
+  </div>
+</div>

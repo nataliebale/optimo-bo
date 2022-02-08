@@ -1,0 +1,19 @@
+th {
+  -moz-user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+.loading {
+  position: fixed;
+  width: 100%;
+  height: calc(100vh - --header-height);
+  top: --header-height;
+  z-index: 999;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.pointer-events-none {
+  pointer-events: none;
+}

@@ -1,0 +1,29 @@
+@import 'libs/ui/styles/src/lib/scss/_variables/';
+@import 'libs/ui/styles/src/lib/scss/_mixins/';
+@import 'libs/ui/styles/src/lib/scss/_bootstrap-override/';
+
+.sidebar {
+  background-color: $sidebar-gray;
+}
+::ng-deep .nested-menu-link {
+  color: $dark;
+  &:hover {
+    color: $dark;
+    background-color: $table-border-color;
+  }
+  &.active.has-route {
+    color: $blue;
+    // font-family: $font-bold;
+    background-color: white;
+    .item-icon {
+      svg {
+        .stroke-change {
+          stroke: $blue !important;
+        }
+        .fill-change {
+          fill: $blue !important;
+        }
+      }
+    }
+  }
+}

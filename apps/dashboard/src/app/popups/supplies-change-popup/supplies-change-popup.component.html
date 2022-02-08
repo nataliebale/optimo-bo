@@ -1,0 +1,90 @@
+<form
+  *ngIf="suppliesForm"
+  [formGroup]="suppliesForm"
+  (ngSubmit)="onSubmit()"
+>
+<div
+  class="d-flex align-items-center justify-content-between border-bottom border-table-border-color pl-4 pr-18px"
+  style="height: 60px;"
+>
+  <div class="font-color-dark font-size-18 font-family-bold line-height-normal">
+    მარაგების განახლება
+  </div>
+  <button class="btn bg-transparent rounded-0 p-0"  (click)="onCancel()">
+    <app-icon
+      icon="close"
+      class="icon-w-20px icon-h-20px"
+      style="cursor: pointer;"
+    ></app-icon>
+  </button>
+</div>
+  <div
+    class="pt-3 px-4"
+  >
+  <div class="form-group line-height-normal">
+    <label
+      class="font-size-14 font-color-dark font-family-bold line-height-normal"
+    >
+    აირჩიე მიზეზი
+    </label>
+    <ng-select
+    class="custom-select-header form-control"
+    [items]="suppliesChangeTypes"
+    formControlName="reason"
+    bindValue="value"
+    bindLabel="label"
+    [searchable]="true"
+    [clearable]="false"
+    (change)="setValue('supplies', '')"
+  >
+  </ng-select>
+  </div>  
+    <div class="position-relative">
+      <label
+      class="font-size-14 font-color-dark font-family-bold line-height-normal"
+    >
+    რაოდენობა
+    </label>
+      <input
+        data-hj-allow
+        class="form-control"
+        min="0"
+        type="number"
+        autocomplete="off"
+        formControlName="supplies"
+      />
+
+      <div
+        *ngIf="getValue('reason')"
+        class="font-family-regular font-size-14"
+        style="position: absolute; right: 16px; top: 50%; transform: translateY(4px); color: #c0c5d2;"
+      >
+        {{ description }}
+      </div>
+      <div
+        *ngIf="suppliesForm?.errors?.moreLossThanCurrentAmount"
+        class="font-family-medium font-color-red font-size-14 pt-2 line-height-normal"
+      >
+        შეიყვანეთ არსებულ მარაგზე მცირე რიცხვი
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-end pt-20px pb-4 px-4">
+    <button
+      class="btn bg-transparent mr-3 font-size-14 font-color-dark font-family-bold"
+      style="width: 120px; height: 42px;"
+      type="button"
+      (click)="onCancel()"
+    >
+      გაუქმება
+    </button>
+    <button
+      class="btn btn-primary font-color-white font-size-14 font-family-bold"
+      style="width: 113px; height: 42px;"
+      type="submit"
+      [disabled]="!suppliesForm.valid ? 'disabled' : null"
+    >
+      შენახვა
+    </button>
+  </div>
+</form>

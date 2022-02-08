@@ -1,0 +1,112 @@
+<div class="w-100 h-100 d-flex flex-column">
+  <div class="d-flex align-items-center px-4 py-3" style="height: 80px;">
+    <button
+    class="btn mr-2 px-3 bg-table-border-color py-0"
+    (click)="openRemovalDialog(selectedRows)"
+    style="width: 64px; height: 42px;"
+    [ngClass]="{ 'd-none': !selectedRows || !selectedRows.length }"
+  >
+    <app-icon icon="trash"></app-icon>
+  </button>
+  <button
+      class="btn mr-2 px-3 bg-table-border-color py-0"
+      *ngIf="selectedRows && selectedRows.length === 1"
+      style="width: 64px; height: 42px;"
+      (click)="onLock()"
+    >
+      <app-icon icon="block-admin"></app-icon>
+    </button>
+    <button
+    class="btn mr-2 px-3 bg-table-border-color py-0"
+    *ngIf="selectedRows && selectedRows.length === 1"
+    (click)="onUnlock()"
+    style="width: 64px; height: 42px;"
+     
+  >
+    <app-icon icon="unblock-admin"></app-icon>
+  </button>
+  </div>
+
+  <app-table
+    *ngIf="datasource"
+    [displayedColumns]="displayedColumns"
+    [dataSource]="datasource"
+    [totalCount]="totalCount"
+    [state]="curTableState"
+    [actions]="{ editable: false, deletable: true }"
+    [selectable]="true"
+    [filterable]="true"
+    [paginable]="true"
+    [defaultSort]="'id'"
+    [defaultSortDirection]="'DESC'"
+    (selectionChanged)="onSelectionChanged($event)"
+    (rowDelete)="openRemovalDialog([$event])"
+    (stateChanged)="onTableStateChanged($event)"
+    class="table-offers flex-grow-1 table-categories"
+    style="padding-bottom: 71px;"
+  >
+    <ng-template app-cell let-cell="cell" let-row="row" name="name">
+      <div class="line-height-normal translate-t-1px">
+        <span
+        class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1"
+        >
+          {{ row.id }}
+        </span>
+        <br />
+        <span class="text-truncate mw-100 d-inline-block table-text-dark">
+          {{ row.userName }}
+        </span>
+      </div>
+    </ng-template>
+
+    <ng-template app-cell let-cell="cell" let-row="row" name="legalEntity">
+      <div class="line-height-normal translate-t-1px">
+        <span
+        class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1"
+        >
+          {{ row.legalEntityCompanyName }}
+        </span>
+        <br />
+        <span class="text-truncate mw-100 d-inline-block table-text-dark">
+          {{ row.legalEntityIdentificationNumber }}
+        </span>
+      </div>
+    </ng-template>
+
+    <ng-template
+      app-cell
+      let-cell="cell"
+      let-row="row"
+      name="emailOrPhoneNumber"
+    >
+      <div class="line-height-normal translate-t-1px">
+        <span
+        class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1"
+        >
+          {{ row?.email }}
+        </span>
+        <br />
+        <span class="text-truncate mw-100 d-inline-block table-text-dark">
+          {{ row?.phoneNumber }}
+        </span>
+      </div>
+    </ng-template>
+
+    <ng-template app-cell let-cell="cell" let-row="row" name="view">
+      <div>
+        <a
+          target="_blank"
+          class="btn mr-2 btn-primary btn-add"
+          style="justify-content: center; color: white;"
+          (click)="onGetViewAsLink(row.id)"
+        >
+          <!-- [href]="onGetViewAsLink(row.id)" -->
+          view as
+        </a>
+      </div>
+    </ng-template>
+
+    <ng-template app-cell let-cell="cell" let-row="row" name="extra">
+    </ng-template>
+  </app-table>
+</div>

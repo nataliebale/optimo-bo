@@ -1,0 +1,292 @@
+<div class="row align-items-stretch mx-sm-n12px mx-n3">
+  <div class="col-12 col-custmd-6 mt-sm-0 mt-22px px-sm-12px px-0">
+    <div class="h-100">
+      <div
+         
+        class="d-flex flex-sm-row flex-column justify-content-between align-items-center bg-transparent px-sm-0 px-3"
+      >
+        <span class="font-family-bold font-size-18 text-dark pr-2 pb-sm-0 pb-20px d-sm-inline d-block">
+          {{"MAIN.CARDS.POPULAR_PRODUCTS.TITLE" | translate}}
+        </span>
+        <div class="nav-tabs nav-tabs-two">
+          <ng-container *ngFor="let tab of ['revenue', 'income']">
+            <button
+              class="nav-item"
+              [class.active]="activeTab === tab"
+              (click)="toggleTab(tab)"
+            >
+              <ng-container
+                *ngIf="tab === 'revenue'"
+              >  
+                {{ 'GENERAL.INCOME' | translate }}
+                <span>{{ 'GENERAL.INCOME' | translate }}</span>
+              </ng-container>
+              <ng-container
+                *ngIf="tab === 'income'"
+              >
+                {{ 'GENERAL.PROFIT' | translate }}
+                <span>{{ 'GENERAL.PROFIT' | translate }}</span>
+              </ng-container>
+              <!-- {{ tab === 'revenue' ? 'შემოსავალი' : 'მოგება' }} -->
+            </button>
+          </ng-container>
+        </div>
+      </div>
+      <div class="flex-grow-0 p-0 pt-sm-14">
+		<app-table
+		  #revenueTableInstance
+          [dataSource]="revenueDataSource"
+          [displayedColumns]="revenueColumns"
+          [totalCount]="totalCount"
+          [selectable]="false"
+          [paginable]="false"
+          [filterable]="false"
+          [border]="false"
+          [indexable]="true"
+          [hidden]="activeTab !== 'revenue'"
+          class="table-dashboard table-add-order first-th-centered border-bottom-unset table-min-h-361px second-th-pl-0"
+        >
+          <ng-template app-cell let-cell="cell" let-row="row" name="name">
+            <div class="line-height-normal ">
+              <span class="mat-tooltip-trigger font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1">
+                 {{ row.stockItemName }} </span>
+                 <br>
+                <span class="text-truncate mw-100 d-inline-block table-text-dark"> {{ row.stockItemBarcode }} </span>  
+            </div>
+          </ng-template>
+          <ng-template
+            app-cell
+            let-cell="cell"
+            let-row="row"
+            name="totalRevenue"
+          >
+            <div class="text-truncate text-right">
+              <span> {{ cell | number: '1.2-2':'en' }} ₾ </span>
+            </div>
+          </ng-template>
+        </app-table>
+		<app-table
+		  #incomeTableInstance
+          [dataSource]="incomeDataSource"
+          [displayedColumns]="incomeColumns"
+          [totalCount]="totalCount"
+          [selectable]="false"
+          [paginable]="false"
+          [filterable]="false"
+          [border]="false"
+          [indexable]="true"
+          [hidden]="activeTab !== 'income'"
+          class="table-dashboard table-add-order first-th-centered border-bottom-unset table-min-h-361px second-th-pl-0"
+        >
+          <ng-template app-cell let-cell="cell" let-row="row" name="name">
+            <div class="line-height-normal ">
+              <span class="mat-tooltip-trigger font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1">
+                 {{ row.stockItemName }} </span>
+                 <br>
+                <span class="text-truncate mw-100 d-inline-block table-text-dark"> {{ row.stockItemBarcode }} </span>  
+            </div>
+          </ng-template>
+          <ng-template
+            app-cell
+            let-cell="cell"
+            let-row="row"
+            name="totalIncome"
+          >
+            <div class="text-truncate text-right">
+              <span> {{ cell | number: '1.2-2':'en' }} ₾ </span>
+            </div>
+          </ng-template>
+          <ng-template
+            app-cell
+            let-row="row"
+            let-cell="cell"
+            name="quantityOnHand"
+          >
+            <div class="text-truncate text-right">
+              <span
+				class="d-inline-flex justify-content-end"
+				#ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+                [matTooltip]="
+                  (cell | number: '1.4-4':'en') +
+                  ' ' +
+                  getUMOAcronym(row.unitOfMeasurement)
+                "
+              >
+                <span class="text-truncate"
+                  >{{ cell | number: '1.4-4':'en' }}
+                  {{ getUMOAcronym(row.unitOfMeasurement) }}
+                </span>
+              </span>
+            </div>
+          </ng-template>
+        </app-table>
+      </div>
+      <div
+        style="height: 48px;"
+        class="border rounded dashboard-table-shadow rounded-top-0 d-none d-sm-flex flex-grow-1 bg-transparent px-4 align-items-center justify-content-end"
+      
+        >
+        <a
+          class="btn btn-see-more btn-sm border-0 py-0 bg-transparent text-primary font-size-14px"
+          [routerLink]="['/', 'popular-products', activeTab]"
+          [queryParams]="{
+            dateFrom: format(dateRange[0], 'yyyy-MM-dd'),
+            dateTo: format(dateRange[1], 'yyyy-MM-dd')
+          }"
+          *ngIf="locationId"
+        >
+         <span class="pr-2">მეტის ნახვა</span> 
+         
+          <app-icon icon="arrow-right-more" > </app-icon>
+          
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-custmd-6 mt-40 mt-sm-32px mt-custmd-0 px-sm-12px px-0">
+    <div class="h-100">
+      <div
+        class="d-flex align-items-center g-transparent d-flex justify-content-between align-items-center px-sm-0px px-3 pt-sm-7px pb-sm-8px"
+      >
+        <span class="font-family-bold font-size-18 text-dark"
+          >მარაგების მაჩვენებელი</span
+        >
+      </div>
+      <div class="pt-sm-14 p-0">
+        <app-table
+          [dataSource]="stockitemsDataSource"
+          [displayedColumns]="stockitemsColumns"
+          [totalCount]="totalCount"
+          [selectable]="false"
+          [paginable]="false"
+          [filterable]="false"
+          [border]="false"
+          [indexable]="true"
+          class="table-dashboard table-dashboard table-add-order first-th-centered border-bottom-unset table-min-h-361px second-th-pl-0"
+        >
+          <ng-template app-cell let-cell="cell" let-row="row" name="name">
+            <div class="line-height-normal ">
+              <span class="mat-tooltip-trigger font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1">
+                 {{ row.stockItemName }} </span>
+                 <br>
+                <span class="text-truncate mw-100 d-inline-block table-text-dark"> {{ row.stockItemBarcode }} </span>  
+            </div>
+          </ng-template>
+          <ng-template
+            app-cell
+            let-row="row"
+            let-cell="cell"
+            name="quantityOnHand"
+          >
+              <div
+				class="d-inline-flex justify-content-end mw-100 text-right w-100"
+				#ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+                [matTooltip]="
+                  (cell | number: '1.4-4':'en') +
+                  ' ' +
+                  getUMOAcronym(row.unitOfMeasurement)
+                "
+              >
+                <span class="text-truncate mw-100"
+                  >{{ cell | number: '1.4-4':'en' }}
+                  {{ getUMOAcronym(row.unitOfMeasurement) }}
+                </span>
+              </div>
+          </ng-template>
+        </app-table>
+      </div>
+      <div
+        class="border rounded dashboard-table-shadow rounded-top-0 d-none d-sm-flex flex-grow-1 bg-transparent px-4 align-items-center justify-content-end"
+        style="height: 48px;"
+      >
+        <a
+          class="btn btn-see-more btn-sm border-0 bg-transparent text-primary"
+          routerLink="/inventory"
+          *ngIf="locationId"
+        >
+        <span class="pr-2">მეტის ნახვა</span> 
+        <app-icon icon="arrow-right-more" > </app-icon>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 mt-lg-5 mt-40 mt-sm-32px mb-sm-32px px-sm-12px px-0">
+    <div class="h-100">
+      <div
+        class="d-flex align-items-center bg-transparent d-flex justify-content-between align-items-center px-sm-0px px-3 pt-sm-7px pt-sm-8px"
+      >
+        <span class="font-family-bold font-size-18 text-dark"
+          >მომავალი შესყიდვები</span
+        >
+      </div>
+      <div class="pt-sm-14 p-0">
+        <app-table
+          [dataSource]="purchaseOrdersDataSource"
+          [displayedColumns]="purchaseOrdersColumns"
+          [totalCount]="totalCount"
+          [selectable]="false"
+          [paginable]="false"
+          [filterable]="false"
+          [border]="false"
+          [indexable]="true"
+          class="table-dashboard table-dashboard table-add-order first-th-centered border-bottom-unset table-min-h-361px second-th-pl-0"
+        >
+          <ng-template
+            app-cell
+            let-cell="cell"
+            let-row="row"
+            name="supplierName"
+          >
+            <div>
+			  <a
+			  #ref3 [matTooltipDisabled]="textIsTruncated(ref3)"
+                [matTooltip]="cell"
+                class="text-truncate mw-100 d-inline-block font-family-regular table-link font-color-dark"
+                [routerLink]="['/suppliers']"
+                [queryParams]="{ supplierId: row.supplierId }"
+                style="cursor: pointer;"
+              >
+                {{ cell }}
+              </a>
+            </div>
+          </ng-template>
+          <ng-template app-cell let-cell="cell" let-row="row" name="name">
+            <span #ref4 [matTooltipDisabled]="textIsTruncated(ref4)" [matTooltip]="cell" class="text-truncate font-family-regular">
+              {{ cell }}
+            </span>
+          </ng-template>
+          <ng-template
+            app-cell
+            let-cell="cell"
+            let-row="row"
+            name="expectedTotalCost"
+          >
+			<div
+			#ref5 [matTooltipDisabled]="textIsTruncated(ref5)"
+              [matTooltip]="cell"
+              class="text-truncate font-family-regular text-right"
+            >
+              {{ cell | number: '1.2-2':'en' }} ₾
+            </div>
+          </ng-template>
+        </app-table>
+      </div>
+      <div
+        style="height: 48px;"
+        class="border rounded rounded-top-0 dashboard-table-shadow d-none d-sm-flex flex-grow-1 bg-transparent px-4 align-items-center justify-content-end"
+      >
+        <a
+          class="btn btn-see-more btn-sm border-0 bg-transparent text-primary"
+          routerLink="/orders"
+          *ngIf="locationId"
+        >
+          <span class="pr-2">მეტის ნახვა</span> 
+          <app-icon icon="arrow-right-more" > </app-icon>
+
+
+           
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

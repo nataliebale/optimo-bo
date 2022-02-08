@@ -1,0 +1,54 @@
+<form *ngIf="categoryForm"   [formGroup]="categoryForm" (ngSubmit)="onSubmit()"
+	(keydown.enter)="$event.preventDefault()">
+	<div class="d-flex align-items-center justify-content-between border-bottom border-table-border-color pl-4 pr-18px"
+		style="height: 60px;">
+		<span class="font-color-dark font-size-18 font-family-bold line-height-normal">
+			<ng-container *ngIf="data">{{'CATEGORIES.ADDOREDITMODAL.EDITCATEGORY' | translate}}</ng-container>
+			<ng-container *ngIf="!data">{{'CATEGORIES.ADDOREDITMODAL.ADDCATEGORY' | translate}}</ng-container>
+		</span>
+
+		<button class="btn bg-transparent rounded-0 p-0" (click)="$event.preventDefault(); onCancel()">
+			<app-icon icon="close" class="icon-w-20px icon-h-20px" style="cursor: pointer;"></app-icon>
+		</button>
+		<!--<div class="col-1 text-right px-0">
+       <app-icon
+        (click)="onCancel()"
+        [icon]="'close'"
+        class="ml-auto"
+        style="cursor: pointer; padding-right: 20px;"
+      ></app-icon>
+      </div> -->
+	</div>
+
+	<div class="form-group mb-0 pt-4 px-4">
+		<div class="position-relative mx-auto line-height-normal">
+			<label for="categoryName"
+				class="font-size-14 font-color-dark font-family-bold line-height-normal">{{'CATEGORIES.ADDOREDITMODAL.TITLE'
+				| translate}}</label>
+			<input data-hj-allow id="categoryName" formControlName="name" type="text" autocomplete="off" class="form-control"
+				[ngClass]="{
+          'has-error-message': duplicateCategoryNameError
+        }" />
+			<div *ngIf="duplicateCategoryNameError" [matTooltip]="'CATEGORIES.ADDOREDITMODAL.CATEGORY_ALREADY_EXISTS'	| translate"
+				matTooltipClass="tooltip-validation" class="form-validation"></div>
+		</div>
+		<div class="position-relative mx-auto mt-4" style="height: 245px;">
+			<app-file-uploader id="addCategoryPhoto" class="h-100" [shownImage]="editItem?.photoUrl"
+				(uploaded)="onPhotoUploaded($event)" class="image-custom-sizes-active"></app-file-uploader>
+		</div>
+		<div class="font-size-14 font-color-dark font-family-regular pt-2 line-height-normal">
+			{{'CATEGORIES.ADDOREDITMODAL.MINIMUMALLOWABLEDIMENSIONS' | translate}} 290x244px (.jpg, .jpeg .png)
+		</div>
+	</div>
+
+	<div class="d-flex justify-content-end pt-4 pb-4 px-4">
+		<button class="btn bg-transparent mr-3 font-size-14 font-color-dark font-family-bold"
+			style="width: 120px; height: 42px;" type="button" (click)="onCancel()">
+			{{'GENERAL.CANCEL' | translate}}
+		</button>
+		<button class="btn btn-primary font-color-white font-size-14 font-family-bold"
+			style="width: 120px; height: 42px;" type="submit" [disabled]="requestIsSent">
+			{{'GENERAL.SAVE' | translate}}
+		</button>
+	</div>
+</form>

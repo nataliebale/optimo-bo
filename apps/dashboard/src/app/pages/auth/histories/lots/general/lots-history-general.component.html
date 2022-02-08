@@ -1,0 +1,24 @@
+<div class="h-100 d-flex flex-column">
+  <div class="flex-grow-1 bg-white rounded">
+    <app-table #tableInstance [dataSource]="dataSource" [totalCount]="totalCount" [state]="currentState"
+      [selectable]="false" defaultSort="date" defaultSortDirection="DESC" [displayedColumns]="displayedColumns"
+      [hasColumnSelector]="true" (stateChanged)="onTableStateChanged($event)" class="table-inventory table-lot-overall">
+      <ng-template app-cell let-cell="cell" let-row="row" name="stockItemName">
+        <div class="line-height-normal translate-t-1px">
+          <span [matTooltip]="row.stockItemName" #ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+            class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1">
+            {{ row.stockItemName }}
+          </span>
+          <br>
+          <span [matTooltip]="row.stockItemBarcode" #ref2 [matTooltipDisabled]="textIsTruncated(ref2)" class="text-truncate mw-100 d-inline-block table-text-dark">
+            {{ row.stockItemBarcode }}
+          </span>
+        </div>
+      </ng-template>
+
+      <ng-template app-cell let-cell="cell" let-row="row" name="unitCost">
+        <div class="text-truncate text-right">{{ cell }} ₾</div>
+      </ng-template>
+    </app-table>
+  </div>
+</div>

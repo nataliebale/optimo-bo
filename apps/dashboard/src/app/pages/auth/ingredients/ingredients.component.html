@@ -1,0 +1,161 @@
+<div class="h-100 d-flex flex-column" style="padding-bottom: 71px;">
+  <div class="d-flex align-items-center py-3 px-4" style="height: 80px;">
+    <div
+      class="d-flex align-items-center pr-3"
+      *ngIf="selectedRows && selectedRows.length === 0"
+    >
+      <button
+        class="btn btn-primary btn-add mr-3"
+        routerLink="/ingredients/add"
+      >
+        <span> {{'GENERAL.ADD' | translate}}</span>
+      </button>
+      <div
+        class=""
+        style="width: 1px; background-color: #e7e7e7; height: 32px;"
+      ></div>
+    </div>
+    <button
+      class="btn p-0 mr-2 bg-table-border-color"
+      (click)="goToEdit()"
+      [matTooltip]="'GENERAL.EDIT' | translate"
+      *ngIf="selectedRows && selectedRows.length === 1"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon [icon]="'edit'"></app-icon>
+    </button>
+    <button
+      class="btn mr-2 p-0 bg-table-border-color"
+      (click)="removeItems()"
+      [matTooltip]="'GENERAL.DELETE' | translate"
+      *ngIf="selectedRows && selectedRows.length >= 1 && !anyIsUsed"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon [icon]="'trash'"></app-icon>
+    </button>
+    <div
+      class="position-relative"
+      *ngIf="selectedRows && selectedRows.length === 0"
+    >
+      <div 
+        [matTooltip]="'Ingredients.UploadIngredients' | translate"
+        class="btn bg-table-border-color rounded px-0 mr-2 position-relative d-flex align-items-center"
+        (click)="toggleUploadDropdown(); $event.stopPropagation()"
+        style="
+        height: 42px;
+        padding-top: 14px;
+        padding-bottom: 13px;
+        cursor: pointer;
+      "
+      >
+        <app-icon icon="form-exchange" class="px-19px"></app-icon>
+        <app-icon
+        icon="arrow-down"
+        class="px-2 border-left d-block border-divider-border"
+        style="height: 24px;"
+      ></app-icon>
+      </div>
+      <div
+        *ngIf="isUploadDropdownActive"
+        clickOutside
+        (clickOutside)="toggleUploadDropdown()"
+        class="filter-dialog filter-dialog-type-number px-0 py-1 text-left active no-before"
+        style="width: 195px; top: 109%; right: unset;"
+      >
+        <div
+          (click)="onImport()"
+          class="custom-select-option"
+        style="cursor: pointer;"
+        >
+          {{'Ingredients.DownloadForm' | translate}}
+        </div>
+        <div class="custom-select-option">
+          <label
+          class="mb-0"
+          style="cursor: pointer; color: inherit;"
+            for="uploadTemplate"
+            (click)="fileInput.value = null"
+            >{{'Ingredients.UploadForm' | translate}}</label
+          >
+          <input
+            id="uploadTemplate"
+            data-hj-allow
+            class="d-none"
+            #fileInput
+            type="file"
+            accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+            (change)="onUpload($event.target.files)"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="d-flex align-items-center pr-3"
+      *ngIf="areNoRowsSelected"
+    >
+      <button
+        [matTooltip]="'Ingredients.ExportToExcel' | translate"
+        class="btn rounded bg-excel-export p-0 mr-2"
+        (click)="onExport()"
+        style="width: 64px; height: 42px;"
+      >
+        <!-- product-report-chart-header-export-button -->
+        <app-icon icon="excel"> </app-icon>
+      </button>
+    </div>
+    <!-- <button
+      class="btn border bg-white px-3 mr-2"
+      (click)="openMigrationDialog()"
+    >
+      <app-icon [icon]="'move'" class="mr-2"></app-icon>
+      <span>პროდუქტის გადმოტანა</span>
+    </button> -->
+  </div>
+
+  <div class="flex-grow-1 bg-white">
+    <app-table
+      #table
+      [dataSource]="dataSource"
+      [totalCount]="totalCount"
+      [state]="currentState"
+      [selectable]="true"
+      [paginable]="true"
+      [actions]="{ editable: true, deletable: isRowDeletable }"
+      defaultSort="id"
+      defaultSortDirection="DESC"
+      [displayedColumns]="displayedColumns"
+      (stateChanged)="onTableStateChanged($event)"
+      (selectionChanged)="onSelectionChanged($event)"
+      (rowEdit)="goToEdit($event)"
+      (rowDelete)="removeItems($event)"
+      (rowClick)="toQueryParam('ingredientId', $event.id)"
+      class="table-categories category-span-link suppliers-span-link"
+    >
+      <ng-template app-cell let-cell="cell" let-row="row" name="unitCost">
+        <div class="text-truncate text-right">
+          <span> {{ cell | number: '1.4-4':'en' }} ₾ </span>
+        </div>
+      </ng-template>
+      <ng-template app-cell let-cell="cell" let-row="row" name="name">
+        <div class="line-height-normal translate-t-1px">
+          <span
+			[matTooltip]="row.name"
+			#ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+            class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1"
+          >
+            {{ row.name }}
+          </span>
+          <br>
+          <span
+			[matTooltip]="row.barcode"
+			#ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+            class="text-truncate mw-100 d-inline-block table-text-dark"
+          >
+            {{ row.barcode }}
+          </span>
+        </div>
+      </ng-template>
+      <ng-template app-cell let-cell="cell" name="id"> </ng-template>
+    </app-table>
+  </div>
+</div>

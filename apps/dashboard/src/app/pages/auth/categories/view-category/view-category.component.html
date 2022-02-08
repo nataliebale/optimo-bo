@@ -1,0 +1,149 @@
+<div
+  class="d-flex align-items-center border-bottom px-4 border-table-border-color"
+  style="height: 88px;"
+>
+  <div class="col-3 d-flex align-items-center px-0">
+    <ng-container *ngIf="category">
+      <button
+        (click)="onEdit()"
+        class="btn-view-action-rounded mr-2"
+        style="width: 36px; height: 36px;"
+      >
+        <app-icon [icon]="'edit-tbls'"></app-icon>
+      </button>
+      <button
+        (click)="onDelete()"
+        class="btn-view-action-rounded"
+        style="width: 36px; height: 36px;"
+      >
+        <app-icon [icon]="'trash-tbls'" fill="#fc3c2d"></app-icon>
+      </button>
+    </ng-container>
+  </div>
+  <span
+    class="font-size-20 font-family-bold text-dark col text-center text-truncate"
+    >{{ category?.name }}
+  </span>
+  <div class="col-3 text-right px-0">
+    <app-icon
+      (click)="back()"
+      [icon]="'close'"
+      class="ml-auto icon-close-dark"
+      style="cursor: pointer;"
+    ></app-icon>
+  </div>
+</div>
+<div
+  style="height: 448px;"
+  class="custom-view-scroll d-flex flex-column border-right border-transparent border-width-2px"
+>
+  <div
+    class="container-fluid pt-26px pb-25px border-bottom border-table-border-color px-3"
+  >
+     
+      <optimo-view-attributes
+      [items]="categoryAttributeItems"
+    ></optimo-view-attributes>
+      <!-- <div class="col-4 line-height-normal">
+        <div class="font-family-bold font-size-14 text-dark">
+          ჯამური ერთეული
+        </div>
+        <div class="font-size-14 font-family-regular text-dark mt-1">
+          {{ category?.totalQuantityOnHand }}
+        </div>
+      </div> -->
+      <!-- <div class="col-4 line-height-normal">
+        <div class="font-family-bold font-size-14 text-dark">
+          ჯამური ღირებულება
+        </div>
+        <div class="font-size-14 font-family-regular text-dark mt-1">
+          {{ category?.totalCost | number: '1.4-4':'en' }}
+        </div>
+      </div> -->
+      <!-- <div class="col-4 line-height-normal">
+        <div class="font-family-bold font-size-14 text-dark">
+          ასორტიმენტი
+        </div>
+        <div class="font-size-14 font-family-regular text-dark mt-1">
+          {{ category?.stockItemsCount }}
+        </div>
+      </div> -->
+     
+  </div>
+   
+      
+     
+  <app-table
+    [dataSource]="categoryStockItems"
+    [totalCount]="categoryStockItemsTotalCount"
+    [state]="currentState"
+    [selectable]="false"
+    [paginable]="true"
+    [filterable]="false"
+    defaultSort="id"
+    defaultSortDirection="DESC"
+    [displayedColumns]="stockItemsDisplayedColumns"
+    [externalPaginator]="paginator"
+    (stateChanged)="onTableStateChanged($event)"
+    class="table-dialogs table-view flex-grow-1 d-flex flex-column"
+  >
+    <ng-template app-cell let-cell="cell" let-row="row" name="name">
+      <div class="d-flex flex-column line-height-normal">
+        <span
+		  [matTooltip]="cell"
+		  #ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+          class="font-family-bold text-truncate mw-100 pb-1 table-text-dark "
+        >
+          {{ cell }}
+        </span>
+    
+        <span
+		  [matTooltip]="row.barcode"
+		  #ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+          class="font-family-regular text-truncate mw-100  table-text-dark"
+        >
+          {{ row.barcode }}
+        </span>
+      </div>
+    </ng-template>
+  </app-table>
+</div>
+<div
+  class="d-flex align-items-center justify-content-center px-4 border border-table-border-color"
+  style="height: 83px;"
+>
+  <!-- <ng-container *ngIf="category">
+    <button
+      (click)="onDelete()"
+      class="btn btn-outline-danger"
+      style="min-width: 150px; height: 48px;"
+    >
+      <app-icon
+        class="icon-trash-suppliers mr-3"
+        [icon]="'trash'"
+        fill="#fc3c2d"
+      ></app-icon>
+      წაშლა
+    </button>
+    <button
+      (click)="onEdit()"
+      class="btn btn-primary px-1 ml-3"
+      style="min-width: 150px; height: 48px;"
+    >
+      <span class="px-2">
+        <app-icon [icon]="'pencil'" class="mr-2"></app-icon>
+        რედაქტირება
+      </span>
+    </button>
+  </ng-container> -->
+
+  <app-paginator
+    #paginator
+    [length]="categoryStockItemsTotalCount"
+    [pageSize]="10"
+    [hidePageSize]="true"
+    [showNextPrevButtons]="false"
+    [autohide]="false"
+    class="pagination-sm ml-auto"
+  ></app-paginator>
+</div>

@@ -1,0 +1,109 @@
+<app-column
+  dataField="actions"
+  [sortable]="false"
+  [stickyEnd]="true"
+  [hidden]="true"
+  [widthPercent]="0"
+>
+  <ng-template #cell let-row="row">
+    <div *ngIf="hasAnyAction(row)" class="action-control">
+      <ng-container *ngIf="editingRow !== row">
+
+        <ng-container *ngFor="let action of actions?.customActions">
+          <button
+            type="button"
+            [matTooltip]="action.tooltip"
+            matTooltipClass="mat-tooltip-right"
+            class="btn-table-action"
+            (click)="action.onClick(row); $event.stopPropagation()"
+          >
+            <app-icon [icon]="action.icon"></app-icon>
+        </button>
+        </ng-container>
+        <button
+          type="button"
+          *ngIf="is('hideable', row)"
+          class="btn-table-action"
+          [ngClass]="
+            row.categoryStatus === ItemStatus.Disabled ? 'disableStatus' : ''
+          "
+          [matTooltip]="
+            row.categoryStatus === ItemStatus.Disabled
+              ? 'გამოაჩინე კატეგორია'
+              : row.status === ItemStatus.Disabled
+              ? 'გამოჩენა'
+              : 'დამალვა'
+          "
+          (click)="showHideToggle.emit(row); $event.stopPropagation()"
+        >
+          <app-icon
+            [icon]="row.status === ItemStatus.Disabled ? 'show' : 'hidden'"
+          ></app-icon>
+        </button>
+
+        <button
+          type="button"
+          *ngIf="is('hasViewAs', row)"
+          [matTooltip]="viewAsTooltip"
+          matTooltipClass="mat-tooltip-right-edge"
+          class="btn-table-action"
+          (click)="rowViewAs.emit(row); $event.stopPropagation()"
+        >
+          <!-- <app-icon [icon]="'link-open'"></app-icon> -->
+          <app-icon icon="open-link-suppliers"></app-icon>
+        </button>
+
+        <button
+          type="button"
+          *ngIf="is('activatable', row)"
+          class="btn-table-action"
+          [matTooltip]="is('activatable', row)"
+          (click)="rowActivateToggle.emit(row); $event.stopPropagation()"
+        >
+          <app-icon
+            [icon]="'favorites'"
+            class="icon-dashboard-light"
+          ></app-icon>
+        </button>
+
+        <button
+          type="button"
+          *ngIf="is('editable', row)"
+          matTooltip="რედაქტირება"
+          matTooltipClass="mat-tooltip-right"
+          class="btn-table-action"
+          (click)="rowEditToggle.emit(row); $event.stopPropagation()"
+        >
+          <app-icon [icon]="'edit-tbls'"></app-icon>
+        </button>
+        <button
+          type="button"
+          *ngIf="is('deletable', row)"
+          matTooltip="წაშლა"
+          class="btn-table-action"
+          (click)="onDelete(row); $event.stopPropagation()"
+        >
+          <app-icon [icon]="'trash-tbls'"></app-icon>
+        </button>
+      </ng-container>
+      <ng-container *ngIf="editingRow === row">
+        <button
+          mat-button
+          (click)="rowEditSave.emit(row); $event.stopPropagation()"
+        >
+          <mat-icon>
+            save
+          </mat-icon>
+        </button>
+        <button
+          mat-button
+          (click)="rowEditToggle.emit(row); $event.stopPropagation()"
+        >
+          <mat-icon>
+            clear
+          </mat-icon>
+        </button>
+      </ng-container>
+    </div>
+  </ng-template>
+</app-column>

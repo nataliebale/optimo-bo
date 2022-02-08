@@ -1,0 +1,27 @@
+.action-control {
+  padding-right: 16px;
+  position: absolute;
+  width: 140px;
+  height: 100%;
+  transition: 0.15s linear;
+  right: 0;
+  top: 0;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  @include transition;
+  opacity: 1;
+  visibility: visible;
+  .btn-table-action {
+    margin-right: 3px;
+    margin-left: 3px;
+  }
+}
+
+.hidden {
+  .action-control {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

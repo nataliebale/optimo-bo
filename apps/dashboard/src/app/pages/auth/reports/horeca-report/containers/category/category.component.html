@@ -1,0 +1,186 @@
+<div class="d-flex flex-column h-100">
+	<div class="statistics-fixed-header d-flex align-items-center justify-content-between px-4" style="height: 64px;" [ngClass]="{'header-shadow': !scrolledToTop}">
+		<div class="product-select product-search flex-grow-1 mb-3 mb-sm-0 w-100  border rounded border-pagination-border "
+			style="max-width: 600px;height: 42px;">
+			<app-dynamic-select [dataGetter]="getStockitemCategories" [itemGetterById]="getStockitemCategoryById"
+				[(ngModel)]="categoryId" class="flex-grow-1  mw-100 font-size-14 h-37px"
+				(change)="stockItemCategoryChange($event)" id="statistics-category-choose-category">
+			</app-dynamic-select>
+		</div>
+		<app-date-picker class="date-picker-regular ml-auto only-range-picker" [maxDate]="endOfToday" (dateChange)="onDateChanged($event)"
+			[defaultDate]="dateRange">
+		</app-date-picker>
+	</div>
+	<div *ngIf="!stockItemCategory" style="padding-top:205px;"
+		class="  d-flex align-items-center justify-content-center">
+		<div class="font-size-14 font-color-dark font-family-bold d-flex flex-column align-items-center">
+			<app-icon icon="no-data-stats" class="mb-2"></app-icon>
+			{{'STATISTICS.CATEGORY.NO_CATEGORY_SELECTED' | translate}}
+		</div>
+
+	</div>
+	<ng-container *ngIf="stockItemCategory">
+		<div
+			class="mt-72px bg-white border-top border-bottom border-pagination-border d-flex align-items-center flex-wrap flex-sm-nowrap px-4 py-sm-22px">
+
+			<ng-container *ngIf="stockItemCategory && stockItemCategory.photoUrl">
+				<div class="product-image rounded mb-3 mb-sm-0" style="background: no-repeat center / contain;"
+					[ngStyle]="{ 'background-image': 'url(' + stockItemCategory.photoUrl  + ')' }">
+				</div>
+			</ng-container>
+			<ng-container *ngIf="!stockItemCategory || !stockItemCategory.photoUrl">
+				<div class="product-image rounded mb-3 mb-sm-0" style="background: no-repeat center / cover;"
+					[ngStyle]="{ 'background-image': 'url(assets/images/no-image.png)' }">
+				</div>
+			</ng-container>
+
+			<div class="ml-0 ml-sm-3 ml-md-4 flex-grow-1">
+				<div class="container-fluid   px-0">
+					<div class="row align-items-center">
+						<div class="col mt-4 mt-sm-3 mt-md-0 line-height-normal d-flex flex-column justify-content-center text-truncate"
+							style="max-width:315px;">
+							<div class="font-family-bold font-size-14 font-color-dark pb-2 text-truncate"
+								[matTooltip]="stockItemCategory?.name" #ref1 [matTooltipDisabled]="textIsTruncated(ref1)">
+								{{stockItemCategory.name}}
+							</div>
+						</div>
+						<div class="col mt-4 mt-sm-3 mt-md-0 line-height-normal d-flex flex-column justify-content-center text-truncate"
+							style="max-width:315px;">
+							<div class="font-family-bold font-size-14 font-color-dark pb-2 text-truncate">
+								{{'GENERAL.DISTRIBUTOR' | translate}}
+							</div>
+							<div *ngIf="stockItemCategory.suppliers && stockItemCategory.suppliers.length"
+								class="font-family-regular font-size-14 text-dark  text-truncate mw-100 d-inline-block text-truncate"
+								[matTooltip]="stockItemCategory.suppliers" #ref2 [matTooltipDisabled]="textIsTruncated(ref2)">
+								{{stockItemCategory.suppliers}}
+							</div>
+						</div>
+						<div class="col mt-4 mt-sm-3 mt-md-0 line-height-normal d-flex flex-column justify-content-center text-truncate"
+							style="max-width:315px;">
+							<div class="font-family-bold font-size-14 font-color-dark pb-2 text-truncate">
+								{{'STATISTICS.CATEGORY.ASSORTMENT' | translate}}
+							</div>
+							<div class="font-family-regular font-size-14 text-dark  text-truncate mw-100 d-inline-block text-truncate"
+								matTooltip="{{ stockItemCategory.stockItemsCount }}" #ref3 [matTooltipDisabled]="textIsTruncated(ref3)">
+								{{stockItemCategory.stockItemsCount }}
+							</div>
+						</div>
+						<div class="col mt-4 mt-sm-3 mt-md-0 line-height-normal d-flex flex-column justify-content-center text-truncate"
+							style="max-width:315px;">
+							<div class="font-family-bold font-size-14 font-color-dark pb-2 text-truncate">
+								{{'STATISTICS.CATEGORY.TOTAL_COST' | translate}}
+							</div>
+							<div class="font-family-regular font-size-14 text-dark  text-truncate mw-100 d-inline-block text-truncate"
+								[matTooltip]="stockItemCategory?.totalCost | number: '1.2-2':'en'" #ref4 [matTooltipDisabled]="textIsTruncated(ref4)">
+
+								{{stockItemCategory.totalCost | number: '1.2-2':'en'}} ₾
+							</div>
+						</div>
+						<div class="col mt-4 mt-sm-3 mt-md-0 line-height-normal d-flex flex-column justify-content-center text-truncate"
+							style="max-width:315px;">
+							<div class="font-family-bold font-size-14 font-color-dark pb-2 text-truncate">
+								{{'STATISTICS.CATEGORY.TOTAL_PRICE' | translate}}
+							</div>
+							<div class="font-family-regular font-size-14 text-dark  text-truncate mw-100 d-inline-block text-truncate"
+								[matTooltip]="stockItemCategory.totalPrice  | number: '1.2-2':'en'" #ref5 [matTooltipDisabled]="textIsTruncated(ref5)">
+								{{stockItemCategory.totalPrice  | number: '1.2-2':'en'}} ₾
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="d-flex flex-column">
+			<div class="d-flex align-items-start px-4 my-3" style="height: 48px;">
+				<div class="font-size-18 font-family-bold font-color-dark">
+					{{ReportTypeTitles.get(activeTabType) | translate}}
+				</div>
+			</div>
+			<div class="flex-grow-1  ">
+				<div class="statistics-income-wrapper income-font-size-14 pb-26px">
+					<button
+						class="product-report-chart-header-export-button statistics-export rounded position-absolute"
+						(click)="onExport('daily')"></button>
+					<app-date-chart [chartData]="daily" [chartId]="'dateChartContainer'">
+					</app-date-chart>
+					<div *ngIf="dailyLoading" class="loading"
+						style="top: 0px; left: 0px; position: absolute; width: 100%; height: 100%;">
+						<app-icon icon="loader-big"></app-icon>
+					</div>
+				</div>
+				<app-tabs [activeTabType]="activeTabType" [reportTabs]="reportTabs"
+					(reportTabClickHandler)="reportTabClick($event)"></app-tabs>
+				<div class="pt-5 mt-2">
+					<div class="font-size-18 font-family-bold font-color-dark px-4 pb-4">
+						{{'STATISTICS.GENERAL.HOURS_AND_DAYS' | translate}}
+					</div>
+					<div class="d-flex">
+						<div class="w-100 px-0 statistics-income-wrapper" style="max-width: 63.278%;">
+							<button
+								class="product-report-chart-header-export-button statistics-export rounded position-absolute"
+								(click)="onExport('hourly')"></button>
+							<app-column-chart [chartData]="hourly" [chartId]="'hourChartContainer'">
+							</app-column-chart>
+							<div *ngIf="hourlyLoading" class="loading"
+								style="top: 0px; left: 0px; position: absolute; width: 100%; height: 100%;">
+								<app-icon icon="loader-big"></app-icon>
+							</div>
+						</div>
+						<div class="w-100 px-0 statistics-income-wrapper" style="max-width: 36.783%;">
+							<button
+								class="product-report-chart-header-export-button statistics-export rounded position-absolute"
+								(click)="onExport('dayofweek')"></button>
+							<app-column-chart [chartData]="dow" [chartId]="'weekChartContainer'">
+							</app-column-chart>
+							<div *ngIf="dowLoading" class="loading"
+								style="top: 0px; left: 0px; position: absolute; width: 100%; height: 100%;">
+								<app-icon icon="loader-big"></app-icon>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div *ngIf="topTenStockItems && topTenStockItems.length" class="table-statistics table-popular f-th-w-25">
+					<div class="font-size-20px font-family-bold font-color-dark px-4 pb-3 pt-40">
+						{{'STATISTICS.CATEGORY.CATEGORY_POPULAR_PRODUCTS' | translate}}
+					</div>
+					<div
+						class="table-content rounded overflow-hidden h-100 d-flex flex-column wrapper position-relative flex-grow-1">
+						<table class="table table-hover mb-0" style="table-layout: fixed;">
+							<thead>
+								<tr>
+									<th (click)="sort(item.key)" *ngFor="let item of popularTableProps"
+										[ngClass]="{'active': sortColumn === item.key, 'asc': sortDirection==='asc','desc': sortDirection==='desc'}">
+										<div class="w-100 d-flex align-items-center  ">
+											<span> {{item.value | translate}} </span>
+											<div
+												class="d-inline-flex flex-column th-icons-sorting mr-0 align-items-center">
+												<app-icon [icon]="'sort-up'" style="line-height: 9px;"></app-icon>
+												<app-icon [icon]="'sort-down'" style="line-height: 9px;"></app-icon>
+											</div>
+										</div>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let item of topTenStockItems">
+									<td class="text-truncate table-hover-link pr-0"
+										(click)="navigateToProductStatistickPage(item.stockItemId)">
+										{{item['stockItemName']}}</td>
+									<td class="text-truncate">{{item['totalOrders'] | number:'1.0-0':'en'}}</td>
+									<td class="text-truncate">{{item['totalIncome'] | number: '1.2-2':'en'}} ₾</td>
+									<td class="text-truncate">{{item['totalRevenue'] | number: '1.2-2':'en'}} ₾</td>
+								</tr>
+							</tbody>
+						</table>
+						<div *ngIf="topTenStockItemsLoading" class="loading"
+							style="top: 0px; left: 0px; position: absolute; width: 100%; height: 100%;">
+							<app-icon icon="loader-big"></app-icon>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</ng-container>
+</div>

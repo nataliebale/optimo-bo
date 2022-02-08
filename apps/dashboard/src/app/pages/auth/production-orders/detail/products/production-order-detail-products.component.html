@@ -1,0 +1,113 @@
+<div
+  class="row d-flex justify-content-between align-items-center"
+   
+>
+ 
+  <div class="w-100 pb-4 col" style="max-width: 656px; flex-basis: 656px;">
+    <div class="font-size-15 font-color-dark font-family-bold mb-2">{{'GENERAL.SELECT' | translate}} {{'GENERAL.RECEIPT' | translate}}</div>
+    <app-dynamic-select
+      #dynamicSelector="ngModel"
+      [dataGetter]="getProducts"
+      [itemGetterById]="getProductById"
+      additionalSearchKey="barcode"
+      [showClearButton]="false"
+      [multiple]="true"
+      [showLabel]="false"
+      [closeOnSelect]="false"
+      [(ngModel)]="selectedProductIds"
+      [ngModelOptions]="{ standalone: true }"
+      id="production-order-detail-products-choose-dish"
+    ></app-dynamic-select>
+  </div>
+</div>
+<app-table
+  [dataSource]="productsDataSource"
+  [totalCount]="productsDataSource?.length"
+  [selectable]="false"
+  [filterable]="false"
+  [paginable]="false"
+  [indexable]="true"
+  [displayedColumns]="displayedColumns"
+  [staticData]="true"
+  class="table-add-order first-th-centered"
+  [class.disabled]="productsDataSource && productsDataSource[0]?.placeholder"
+>
+  <ng-template app-cell let-cell="cell" let-row="row" name="name">
+    <div class="pt-1 line-height-normal">
+      <span
+		[matTooltip]="row.name"
+		#ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+        class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1"
+      >
+        {{ row.name }}
+      </span>
+      <br>
+      <span
+		[matTooltip]="row.barcode"
+		#ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+        class="text-truncate mw-100 d-inline-block table-text-dark"
+      >
+        {{ row.barcode }}
+      </span>
+    </div>
+  </ng-template>
+  <ng-template app-cell let-row="row" let-i="i" name="unitPrice">
+    <input
+      [id]="'unitPrice_row_' + i"
+      data-hj-allow
+      class="form-control   mx-auto text-center"
+      style="width: 122px;"
+      *ngIf="!row.placeholder"
+      #unitPrice="ngModel"
+      type="text"
+      autocomplete="off"
+      required
+      appMoreThan="0"
+      [ngModel]="row.unitPrice.toString()"
+      (change)="row.unitPrice = parseFloatWithCommas($event.target.value)"
+      mask="separator.4"
+      thousandSeparator=","
+    />
+    <div *ngIf="row.placeholder">
+      {{ row.unitPrice | number: '1.4-4':'en' }}
+    </div>
+  </ng-template>
+  <ng-template app-cell let-row="row" name="unitCost">
+    <div class="text-right">
+      {{ row.unitCost | number: '1.2-2':'en'}} ₾
+    </div>
+  </ng-template>
+  <ng-template app-cell let-row="row" let-i="i" name="quantity">
+    <input
+      [id]="'quantity_row_' + i"
+      data-hj-allow
+      class="form-control  mx-auto text-center"
+      style="width: 122px;"
+      *ngIf="!row.placeholder"
+      #quantity="ngModel"
+      type="text"
+      autocomplete="off"
+      required
+      appMoreThan="0"
+      [ngModel]="row.quantity.toString()"
+      (change)="row.quantity = parseFloatWithCommas($event.target.value)"
+      mask="separator.4"
+      thousandSeparator=","
+    />
+    <div *ngIf="row.placeholder">
+      {{ row.quantity }}
+    </div>
+  </ng-template>
+  <ng-template app-cell let-row="row" name="id">
+    <div class="d-flex justify-content-end">
+      <app-icon
+        [matTooltip]="'GENERAL.DELETE' | translate"
+        icon="trash-tbls"
+        fill="#515366"
+        (click)="onRemoveProduct(row)"
+        style="cursor: pointer; margin-left: 32px;"
+      >
+      </app-icon>
+    </div>
+  </ng-template>
+</app-table>

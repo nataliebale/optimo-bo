@@ -1,0 +1,27 @@
+@import "libs/ui/styles/src/lib/scss/_variables/";
+@import "libs/ui/styles/src/lib/scss/_mixins/";
+@import "libs/ui/styles/src/lib/scss/_bootstrap-override/";
+
+::ng-deep .nested-menu-link {
+    color: white;
+    span {
+        transition: all 0.15s linear;
+    }
+    &:hover {
+        color: white;
+        span {
+            opacity: 0.5;
+        }
+    }
+    &.active.has-route {
+        color: white;
+        background-color: $blue;
+    }
+    app-icon {
+        &.icon-arrow-down-sidebar-admin {
+            .stroke-white {
+                stroke: white !important;
+            }
+        }
+    }
+}

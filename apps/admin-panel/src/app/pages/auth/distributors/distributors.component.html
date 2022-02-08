@@ -1,0 +1,166 @@
+<div class="w-100 h-100 d-flex flex-column">
+  <div class="d-flex align-items-center px-4 py-3" style="height: 80px;">
+    <a
+      class="btn btn-primary btn-add mr-3"
+      [routerLink]="['./add']"
+      [ngClass]="{ 'd-none': selectedRows && selectedRows.length > 0 }"
+    >
+      <!-- <app-icon [icon]="'plus'" class="mr-2"></app-icon> -->
+      <span>დამატება</span>
+    </a>
+    <button
+      (click)="onEditSelected()"
+      class="btn mr-2 bg-table-border-color py-0"
+      style="width: 64px; height: 42px;"
+      matTooltip="რედაქტირება"
+      [ngClass]="{ 'd-none': !selectedRows || selectedRows.length !== 1 }"
+    >
+      <app-icon icon="edit"></app-icon>
+    </button>
+
+    <button
+      class="btn mr-2 bg-table-border-color py-0"
+      (click)="openRemovalDialog(selectedRows)"
+      style="width: 64px; height: 42px;"
+      matTooltip="წაშლა"
+      [ngClass]="{ 'd-none': !selectedRows || !selectedRows.length }"
+    >
+      <app-icon icon="trash"></app-icon>
+    </button>
+
+
+    <div *ngIf="selectedRows && selectedRows.length === 1" class="position-relative">
+      <div
+        matTooltip="კატალოგის ატვირთვა"
+        class="btn bg-table-border-color rounded px-0 mr-2 position-relative d-flex align-items-center"
+        (click)="toggleUploadDropdown(); $event.stopPropagation()"
+        style="
+          height: 42px;
+          cursor: pointer;
+        "
+      >
+        <app-icon icon="form-exchange" class="px-20px"></app-icon>
+        <app-icon
+          icon="arrow-down"
+          class="px-7px border-left d-block border-divider-border"
+          style="height: 24px;"
+        ></app-icon>
+      </div>
+
+      <div
+        *ngIf="isUploadDropdownActive"
+        clickOutside
+        (clickOutside)="toggleUploadDropdown()"
+        class="filter-dialog filter-dialog-type-number px-0 py-1 text-left active no-before"
+        style="width: 195px; top: 109%; right: unset;"
+      >
+        <div
+          (click)="onImportTemplate()"
+          class="custom-select-option"
+          style="cursor: pointer;"
+        >
+          ფორმის ჩამოტვირთვა
+        </div>
+        <div class="custom-select-option">
+          <label
+            class="mb-0"
+            style="cursor: pointer; color: inherit;"
+            for="uploadTemplate"
+            (click)="fileInput.value = null"
+            >ფორმის ატვირთვა</label
+          >
+          <input
+            #fileInput
+            class="d-none"
+            type="file"
+            id="uploadTemplate"
+            accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+            (change)="onUpload($event.target.files)"
+          />
+        </div>
+      </div>
+    </div>
+
+
+    <button
+      class="btn mr-2 bg-table-border-color py-0"
+      style="width: 64px; height: 42px;"
+      *ngIf="selectedRows && selectedRows.length === 1"
+      matTooltip="კატალოგის ჩამოტვირთვა"
+      (click)="onCatalogueExport()"
+    >
+      <app-icon icon="download"></app-icon>
+    </button>
+
+    
+  <button
+    class="btn mr-2 px-3 bg-table-border-color py-0"
+    *ngIf="selectedRows && selectedRows.length === 1 && selectedRows[0].status === 0"
+    style="width: 64px; height: 42px;"
+    matTooltip="დაბლოკვა"
+    (click)="onSuspend(true)"
+  >
+    <app-icon icon="block-admin"></app-icon>
+  </button>
+  <button
+    class="btn mr-2 px-3 bg-table-border-color py-0"
+    *ngIf="selectedRows && selectedRows.length === 1 && selectedRows[0].status === 1"
+    (click)="onSuspend(false)"
+    matTooltip="განბლოკვა"
+    style="width: 64px; height: 42px;"   
+  >
+  <app-icon icon="unblock-admin"></app-icon>
+  </button>
+
+  </div>
+
+  <app-table
+    *ngIf="datasource"
+    [displayedColumns]="displayedColumns"
+    [dataSource]="datasource"
+    [totalCount]="totalCount"
+    [state]="curTableState"
+    [actions]="{ editable: true, deletable: true, hasViewAs: true, hasViewAsTooltip: 'მომწოდებელზე გადასვლა' }"
+    [selectable]="true"
+    [filterable]="true"
+    [paginable]="true"
+    [defaultSort]="'id'"
+    [defaultSortDirection]="'DESC'"
+    (selectionChanged)="onSelectionChanged($event)"
+    (rowClick)="onRowClick($event.id)"
+    (rowEdit)="goToEdit($event)"
+    (rowDelete)="openRemovalDialog([$event])"
+    (rowViewAs)="goViewAs($event)"
+    (stateChanged)="onTableStateChanged($event)"
+    class="table-offers flex-grow-1 table-categories"
+    style="padding-bottom: 71px;"
+  >
+  <ng-template app-cell let-cell="cell" let-row="row" name="nameOrInn">
+    <div class="line-height-normal translate-t-1px">
+      <span
+       
+        class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1"
+      >
+        {{ row.name }}
+      </span>
+      <br />
+      <span class="text-truncate mw-100 d-inline-block table-text-dark">
+        {{ row.inn }}
+      </span>
+    </div>
+  </ng-template>
+  <ng-template app-cell let-cell="cell" let-row="row" name="emailOrPhoneNumber">
+    <div class="line-height-normal translate-t-1px">
+      <span
+      class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1"
+      >
+        {{ row.email }}
+      </span>
+      <br />
+      <span class="text-truncate mw-100 d-inline-block table-text-dark">
+        {{ row.phoneNumber }}
+      </span>
+    </div>
+  </ng-template>
+  </app-table>
+</div>

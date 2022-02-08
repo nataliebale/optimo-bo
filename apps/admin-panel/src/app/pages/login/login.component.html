@@ -1,0 +1,66 @@
+<div class="login">
+  <div
+    style="
+      width: 100%;
+      max-width: 628px;
+      padding: 64px;
+      transform: translateY(-32.5px);
+    "
+    class="m-auto bg-white rounded border"
+  >
+    <form  [formGroup]="loginForm" (submit)="onSubmit()">
+      <div class="font-family-semibold font-size-26 text-dark text-center mb-4">
+        ავტორიზაცია
+      </div>
+
+      <ng-container>
+        <div class="form-group pt-3">
+          <input
+            formControlName="userName"
+            type="text"
+            class="form-control"
+            placeholder="ტელეფონი ან ელ. ფოსტა"
+          />
+        </div>
+        <div class="form-group pt-2">
+          <input
+            formControlName="password"
+            type="password"
+            class="form-control"
+            placeholder="პაროლი"
+          />
+        </div>
+        <div
+          class="form-group d-flex align-items-center justify-content-between flex-wrap text-center"
+        >
+          <!-- <div class="custom-checkbox custom-checkbox-selected-blue mb-4">
+                <input
+                type="checkbox"
+                id="custom-checkbox-remember-me"
+                class="custom-checkbox-control"
+                formControlName="rememberMe"
+                />
+                <label
+                for="custom-checkbox-remember-me"
+                class="custom-checkbox-label"
+                >
+                <span class="ml-3">დამახსოვრება</span>
+                </label>
+            </div> -->
+          
+        </div>
+      </ng-container>
+
+      <button
+        [disabled]="loginForm.dirty && loginForm.invalid"
+        class="btn btn-primary btn-block"
+      >
+        <span
+          *ngIf="loading"
+          class="spinner-border text-white spinner-border-sm mr-2"
+        ></span>
+        <span *ngIf="!loading">შესვლა</span>
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+.custom-switch {
+  width: 80px;
+  height: 32px;
+  position: relative;
+  cursor: pointer;
+  @include transition;
+
+  &:active {
+    &::after {
+      width: 34px;
+    }
+  }
+
+  &:not(.active) {
+    background-color: #c0c5d2;
+
+    &::after {
+      left: 4px;
+    }
+  }
+
+  &.active {
+    background-color: $blue;
+
+    &::after {
+      transform: translateX(-100%);
+      left: calc(100% - 4px);
+    }
+  }
+
+  @include border-radius(16px);
+
+  &::after {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: $white;
+    position: absolute;
+    top: 4px;
+    @include border-radius(12px);
+    @include transition;
+  }
+}

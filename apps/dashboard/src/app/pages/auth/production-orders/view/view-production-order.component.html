@@ -1,0 +1,124 @@
+<ng-container *ngIf="productionOrder$ | async as productionOrder">
+  <div
+    class="d-flex align-items-center border-bottom px-4 border-table-border-color"
+    style="height: 87px;"
+  >
+  <div
+    *ngIf="productionOrder.status === ProductionOrderStatus.Draft"
+    class="col-4 d-flex align-items-center px-0"
+  >
+     
+    <button
+    (click)="onEdit()"
+    [disabled]="productionOrder.status !== ProductionOrderStatus.Draft"
+    class="btn-view-action-rounded  mr-2"
+    style="width: 36px;height: 36px;"
+    >
+        <app-icon [icon]="'edit-tbls'"  ></app-icon>
+    </button>
+    <button
+      (click)="onDelete(productionOrder.id)"
+      [disabled]="productionOrder.status !== ProductionOrderStatus.Draft"
+      class="btn-view-action-rounded mr-2"
+      style="width: 36px;height: 36px;"
+    >
+      <app-icon
+        [icon]="'trash-tbls'"
+        fill="#fc3c2d"
+      ></app-icon>
+    </button>
+    <button
+      (click)="onDraftFinish(productionOrder.id)"
+      [disabled]="productionOrder.status !== ProductionOrderStatus.Draft"
+      class="btn-view-action-rounded mr-2"
+      style="width: 36px;height: 36px;"
+    >
+      <app-icon
+        [icon]="'sell-filled'"
+        fill="#fc3c2d"
+      ></app-icon>
+    </button>
+  
+</div>
+    <span
+      class="font-size-20 font-family-bold text-dark col text-center text-truncate"
+      >{{ productionOrder.name }}
+    </span>
+    <div class="col-4 text-right px-0">
+      <app-icon
+        (click)="onBack()"
+        [icon]="'close'"
+        class="ml-auto icon-close-dark"
+        style="cursor: pointer;"
+      ></app-icon>
+    </div>
+  </div>
+  <div
+    style="height: 455px; overflow-y: auto;"
+    class="custom-view-scroll d-flex flex-column border-right border-transparent border-width-2px"
+  >
+    <div
+      class="container-fluid py-4 border-bottom border-table-border-color px-3"
+    >
+      <optimo-view-attributes
+        [items]="getAttributeItems(productionOrder)"
+      ></optimo-view-attributes>
+      <!-- <div class="row align-items-center  "  >
+        <div class="col-4 line-height-normal"  >
+          <div class="font-family-bold font-size-14 text-dark">
+            სტატუსი
+          </div>
+          <div class="font-size-14 font-family-regular text-dark mt-1">
+            {{ PRODUCTION_ORDER_STATUS_DATA[productionOrder.status] }}
+          </div>
+        </div>
+        <div class="col-4 line-height-normal">
+          <div class="font-family-bold font-size-14 text-dark">
+            თარიღი
+          </div>
+          <div class="font-size-14 font-family-regular text-dark mt-1">
+            {{ productionOrder.orderDate | date: 'd MMM yy, HH:mm' }}
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <div class="waybills-table-paddings flex-grow-1">
+      <app-table
+        *ngIf="productionOrder.orderLines"
+        [dataSource]="productionOrder.orderLines"
+        [displayedColumns]="displayedColumns"
+        [paginable]="false"
+        [selectable]="false"
+        [filterable]="false"
+        [staticData]="true"
+        class="table-dialogs table-view"
+      >
+        <ng-template
+          app-cell
+          let-cell="cell"
+          let-row="row"
+          name="stockItemName"
+        >
+          <div>
+            <span
+			  [matTooltip]="row.stockItemName"
+			  #ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+              class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark"
+            >
+              {{ row.stockItemName }}
+            </span>
+            <br />
+            <span
+			  [matTooltip]="row.stockItemBarcode"
+			  #ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+              class="text-truncate mw-100 d-inline-block table-text-dark"
+            >
+              {{ row.stockItemBarcode }}
+            </span>
+          </div>
+        </ng-template>
+      </app-table>
+    </div>
+  </div>
+ 
+</ng-container>

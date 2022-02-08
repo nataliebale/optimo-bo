@@ -1,0 +1,58 @@
+{
+  "HOME": {
+    "TITLE": "სახლის სათაური (for testing)",
+    "SELECT": "არჩევა (for testing)"
+  },
+  "MAIN": {
+    "TOTAL_COST": "ჯამური თვითღირებულება",
+    "TOTAL_PRICE": "ჯამური გასაყიდი ფასი",
+    "CARDS": {
+      "TOTAL_INCOME": {
+        "TOTAL_INCOME": "მთლიანი შემოსავალი"
+      },
+      "PROFIT": {
+        "PROFIT": "მოგება"
+      },
+      "INCOME": {
+        "INCOME": "შემოსავალი",
+        "ACCOUNT": "ანგარიშის მიხედვით",
+        "CASH": "ნაღდი",
+        "NO_CASH": "უნაღდო"
+      },
+      "BOG_LOAN": {
+        "TEXT": "მოითხოვე შენს ბიზნესზე მორგებული სესხი საქართველოს ბანკისგან",
+        "BUTTON_LABEL": "მოითხოვე სესხი"
+      },
+      "POPULAR_PRODUCTS": {
+        "TITLE": "პოპულარული პროდუქტები",
+        "SWITCHER": {
+          "INCOME": "შემოსავალი",
+          "PROFIT": "ფასნამატი"
+        },
+        "TABLE": {          
+          "NAME": "დასახელება",
+          "QUANTITY": "რაოდენობა",
+          "AMOUNT_OF_MONEY": "თანხა"
+        },
+        "SEE_MORE": "მეტის ნახვა"
+      },
+      "STOCK_HOLDINGS": {
+        "TITLE": "მარაგების მაჩვენებელი",
+        "TABLE": {
+          "NAME": "დასახელება",
+          "QUANTITY": "რაოდენობა"
+        },
+        "SEE_MORE": "მეტის ნახვა"
+      },
+      "UPCOMING_PURCHASE": {
+        "TITLE": "მომავალი შესყიდვები",
+        "TABLE": {
+          "NAME": "დასახელება",
+          "DISTRIBUTOR": "მომწოდებელი",
+          "TOTAL_AMOUNT": "ჯამური თანხა",
+          "DATE": "თარიღი"
+        }
+      }
+    }
+  }
+}

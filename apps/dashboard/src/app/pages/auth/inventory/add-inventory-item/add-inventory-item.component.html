@@ -1,0 +1,535 @@
+<form *ngIf="form" [formGroup]="form" (submit)="onSubmit()">
+	<div class="container-fluid sticky-top bg-white" style="height: 72px;">
+		<div class="row align-items-center h-100 border-bottom border-secondary">
+			<div class="col pl-0 h-100">
+				<button type="button" class="btn bg-white px-2 h-100 rounded-0" style="width: 102px;"
+					(click)="onCancel()">
+					<app-icon icon="close"></app-icon>
+				</button>
+			</div>
+			<div class="col-auto font-size-20 font-family-bold text-dark">
+				{{ 'INVENTORY.EDIT.PRODUCT_EDIT_TITLE_PREFIX' | translate }} {{ (editId ? 'GENERAL.EDIT' : 'GENERAL.ADD') | translate }}
+			</div>
+			<div class="col pr-4 h-100 d-flex align-items-center justify-content-end">
+				<button class="btn btn-primary font-size-14 font-family-bold text-white py-0 px-23px h-42px"
+					type="submit" [disabled]="requestIsSent">
+					{{ 'GENERAL.SAVE' | translate }}
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="w-100" *ngIf="isSubmited && form?.invalid">
+		<div class="mx-auto bg-danger-bg px-4 rounded text-center border d-flex align-items-center border-danger-border mt-3"
+			style="max-width: 960px;height: 54px;">
+			<div class="col-2 d-flex px-0">
+				<app-icon icon="alert"></app-icon>
+			</div>
+			<div class="col text-center font-size-14 font-color-dark font-family-regular">
+				{{ 'GENERAL.FILL_IN_EMPTY_INPUTS' | translate }}
+			</div>
+			<div class="col-2 px-0"></div>
+		</div>
+	</div>
+
+	<div id="addInventoryModalBodyId" [class.mt-70px]="!(isSubmited && form?.invalid)"
+		class="pt-20px px-0 pb-68px mx-auto" style="max-width: 960px;">
+		<div formGroupName="details" class="no-validation-padding">
+			<div class="pb-30px">
+				<span class="font-size-20 font-color-dark font-family-bold">
+					{{ 'GENERAL.GENERAL_INFO' | translate }}
+				</span>
+			</div>
+			<div class="container-fluid px-0">
+				<div class="row align-items-stretch">
+					<div class="col" style="max-width: 656px; flex-basis: 656px;">
+						<div class="w-100">
+							<div class="form-group-lg d-flex align-items-center line-height-normal mt-n2px">
+								<div class="col-6 pl-0">
+									<label for="addInventoryName"
+										class="font-size-15 font-color-dark font-family-bold">
+										{{ 'GENERAL.NAME' | translate }}*
+									</label>
+									<input
+										id="addInventoryName"
+										data-hj-allow
+										class="form-control w-100"
+										type="text"
+										formControlName="name" />
+								</div>
+								<div class="col-6 pr-0">
+									<label for="addInventoryCategoryId"
+										class="font-size-15 font-color-dark font-family-bold">
+										{{ 'GENERAL.CATEGORY' | translate }}*
+									</label>
+									<app-dynamic-select id="addInventoryCategoryId" #categorySelect
+										class="add-inventory-item__dynamic-select" [dataGetter]="getStockitemCategories"
+										[itemGetterById]="getStockitemCategoryById" formControlName="categoryId">
+										<ng-template app-dynamic-select-footer-tmp>
+											<div class="border-top">
+												<a class="my-1 py-2 d-inline-block text-decoration-none"
+													style="cursor: pointer;"
+													(click)="onAddCategory(); categorySelect.close()">
+													<app-icon [icon]="'add'"></app-icon>
+													<span
+														class="font-family-regular font-size-14 text-dark ml-2">
+														{{ 'INVENTORY.EDIT.ADD_CATEGORY' | translate }}
+													</span>
+												</a>
+											</div>
+										</ng-template>
+									</app-dynamic-select>
+								</div>
+							</div>
+							<div class="d-flex align-items-center line-height-normal mt-n2px">
+								<div class="col pl-0">
+									<label for="addInventoryBarcode"
+										class="font-size-15 font-color-dark font-family-bold">
+										{{ 'INVENTORY.EDIT.BARCODE_SLASH_SKU' | translate }}*
+									</label>
+									<input
+										id="addInventoryBarcode"
+										data-hj-allow
+										class="form-control w-100"
+										type="text"
+										formControlName="barcode" autocomplete="off" />
+								</div>
+								<div class="col pr-0">
+									<div class="form-group mb-0" style="max-width:304px;">
+										<label for="addInventorySupplierIds"
+											class="font-size-15 font-color-dark font-family-bold">
+											{{ 'GENERAL.DISTRIBUTOR' | translate }}*
+										</label>
+										<app-dynamic-select id="addInventorySupplierIds"
+											class="add-inventory-item__dynamic-select" [dataGetter]="getSuppliers"
+											[itemGetterById]="getSupplierById" [multiple]="true" [closeOnSelect]="false"
+											formControlName="supplierIds">
+											<ng-template app-dynamic-select-footer-tmp>
+												<div class="border-top">
+													<a class="my-1 py-2 d-inline-block text-decoration-none"
+														(click)="onAddSupplier()">
+														<app-icon [icon]="'add'"></app-icon>
+														<span
+															class="font-family-regular font-size-14 text-dark ml-2">
+															{{ 'INVENTORY.EDIT.ADD_DISTRIBUTOR' | translate }}
+														</span>
+													</a>
+												</div>
+											</ng-template>
+										</app-dynamic-select>
+									</div>
+								</div>
+							</div>
+							<!-- მომწოდებელი ჩავაკომენტე ar gvaq axal dizianshi  -->
+							<!-- <div class="form-group mb-0">
+                      <label for="addInventorySupplierIds"  class="font-size-15 font-color-dark font-family-bold">მომწოდებელი*</label>
+                      <app-dynamic-select
+                        id="addInventorySupplierIds"
+                        class="add-inventory-item__dynamic-select"
+                        [dataGetter]="getSuppliers"
+                        [itemGetterById]="getSupplierById"
+                        [multiple]="true"
+                        [closeOnSelect]="false"
+                        formControlName="supplierIds"
+                      >
+                        <ng-template app-dynamic-select-footer-tmp>
+                          <div class="border-top">
+                            <a
+                              class="my-1 py-2 d-inline-block text-decoration-none"
+                              (click)="onAddSupplier()"
+                            >
+                              <app-icon [icon]="'add'"></app-icon>
+                              <span
+                                class="font-family-regular font-size-14 text-dark ml-2"
+                                >დაამატე მომწოდებელი</span
+                              >
+                            </a>
+                          </div>
+                        </ng-template>
+                      </app-dynamic-select>
+                    </div> -->
+						</div>
+						<div class="col-12 mt-4 px-0">
+							<label for="addInventoryDescription"
+								class="font-size-15 font-color-dark font-family-bold">
+								{{ 'GENERAL.DESCRIPTION' | translate }}
+							</label>
+							<textarea
+								id="addInventoryDescription"
+								data-hj-allow
+								class="form-control"
+								formControlName="description"
+								style="height: 130px; resize: none;"
+								autocomplete="off"></textarea>
+						</div>
+					</div>
+					<div class="col d-flex flex-column pt-30px mt-n1" style="width: 100%; max-width: 458px;">
+						<div class="custom-file uploader-305-bg" style="height: 245px;">
+							<app-file-uploader id="addInventoryPhotoUploader" class="h-100"
+								[shownImage]="item?.photoUrl" (uploaded)="onPhotoUploaded($event)"></app-file-uploader>
+						</div>
+						<div class="font-size-13 font-color-dark font-family-regular pt-14">
+							<span class="pr-2">
+								{{ 'GENERAL.MIN_ACCEPTABLE_RESOLUTION' | translate }} 290x244px </span><span>(.jpg, .jpeg .png)
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="mt-5 pt-42px">
+			<div class="pb-30px">
+				<span class="font-size-20 font-color-dark font-family-bold">
+					{{ 'INVENTORY.EDIT.PRICES_AND_SUPPLIES' | translate }}
+				</span>
+			</div>
+
+			<div class="container-fluid px-0">
+				<div class="row d-block">
+					<div class="col-12 col-md-6" style="max-width: 656px; flex-basis: 656px;">
+						<div class="row">
+							<div class="col-12 col-md-6">
+								<div class="form-group form-group-lg no-validation-padding ">
+									<label for="addInventoryQuantityOnHand"
+										class="font-size-15 font-color-dark font-family-bold">
+										{{ 'INVENTORY.EDIT.CURRENT_SUPPLY' | translate }}
+									</label>
+									<div class="input-group-custom d-flex align-items-center input-select">
+										<ng-container formGroupName="price">
+											<input
+												id="addInventoryQuantityOnHand"
+												data-hj-allow
+												class="form-control input-left border-right-0"
+												type="text"
+												style="padding-right: 90px;" formControlName="quantityOnHand"
+												(click)="onUpdateSupplies()"
+												[readonly]="item?.quantity || item?.quantity === 0" autocomplete="off"
+												[mask]="item?.quantity < 0 ? '' : 'separator.4'"
+												thousandSeparator="," /></ng-container>
+										<ng-container formGroupName="details">
+											<ng-select [ngClass]="{
+                          'ng-touched': getQuantityOnHandTouched()
+                        }" id="addInventoryUnitOfMeasurement" formControlName="unitOfMeasurement"
+												[items]="mapOfMeasurementUnitsShort" bindValue="value" bindLabel="label"
+												class="custom-select-header bg-transparent  border-left-radius-0 form-control ng-value-centered input-section"
+												[searchable]="false" [clearable]="false"
+												style="width: 85px;right: 0px;padding: 0px !important;">
+											</ng-select>
+										</ng-container>
+									</div>
+								</div>
+							</div>
+							<div class="col-12 col-md-6">
+								<div class="form-group form-group-lg no-validation-padding" formGroupName="details">
+									<label for="addInventoryLowStockThreshold"
+										class="font-size-15 font-color-dark font-family-bold">
+										{{ 'INVENTORY.EDIT.MIN_SUPPLY_THRESHOLD' | translate }}*
+									</label>
+									<div class="input-group-custom d-flex align-items-center">
+										<input
+											id="addInventoryLowStockThreshold"
+											data-hj-allow
+											class="form-control input-left"
+											formControlName="lowStockThreshold" autocomplete="off"
+											[allowNegativeNumbers]="true"
+											mask="separator.4"
+											[thousandSeparator]="','"
+											/>
+										<div class="font-size-14 font-color-dark font-family-regular input-section  ">
+											{{unitOfMeasurementAcronym}}
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-12 col-md-6 line-height-normal">
+								<div class="form-group form-group-lg no-validation-padding" formGroupName="price">
+									<label for="addInventoryUnitCost"
+										class="font-size-15 font-color-dark font-family-bold">
+										{{ 'INVENTORY.EDIT.UNIT_COST' | translate }}*
+									</label>
+									<div class="input-group-custom d-flex align-items-center">
+										<input
+											id="addInventoryUnitCost"
+											data-hj-allow
+											class="form-control input-left"
+											formControlName="unitCost" (change)="calcFromUnitCost($event.target.value)"
+											autocomplete="off"
+											mask="separator.4"
+											[thousandSeparator]="','"
+											/>
+										<div class="font-size-14 font-color-dark font-family-regular input-section">
+											₾
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-12 col-md-6 line-height-normal">
+								<div class="form-group form-group-lg no-validation-padding" formGroupName="price">
+									<label for="addInventoryUnitPrice"
+										class="font-size-15 font-color-dark font-family-bold">
+										{{ 'INVENTORY.EDIT.UNIT_PRICE' | translate }}*
+									</label>
+									<div class="input-group-custom d-flex align-items-center">
+										<input
+											id="addInventoryUnitPrice"
+											data-hj-allow
+											class="form-control input-left"
+											formControlName="unitPrice"
+											autocomplete="off"
+											(change)="calcFromUnitPrice($event.target.value)"
+											mask="separator.4"
+											[thousandSeparator]="','"
+											/>
+										<div class="font-size-14 font-color-dark font-family-regular input-section">
+											₾
+										</div>
+									</div>
+								</div>
+							</div>
+
+							
+						</div>
+
+						<div class="row">
+							<div class="col-12 col-md-6" *ngIf="editId">
+								<div class="no-validation-padding" formGroupName="price">
+									<div class="input-group d-flex flex-column">
+											<label for="inventorisationDate"
+												class="font-size-15 font-color-dark font-family-bold">
+												{{ 'INVENTORY.EDIT.PRICE_UPDATE_DATE' | translate }}*
+											</label>
+											<div class="position-relative">
+												<div class="input-group-custom d-flex align-items-center">
+													<input
+														id="inventoryPriceChangeDate"
+														data-hj-allow
+														class="form-control input-left bg-white"
+														type="text"
+														readonly (click)="
+                              onToggleDatePicker();
+															$event.stopPropagation()
+                            "
+														value="{{getValue('price', 'startDate') | date}}"/>
+													<button type="button" class="btn rounded p-0  input-section "
+														style="right: 16px;"
+														[matTooltip]="'INVENTORY.TOOLTIPS.SELECT_PRICE_CHANGE_DATE' | translate" (click)="
+                              onToggleDatePicker(); $event.stopPropagation()
+                            ">
+														<app-icon icon="calendar" class="cursor-pointer"></app-icon>
+													</button>
+												</div>
+											</div>
+											<app-date-picker 
+											    [showActionsAndInput]="false"
+												[isDatePickerVisible]="isDatePickerVisible"
+												(onIsDatePickerVisible)="isDatePickerVisible = $event"
+												(dateChange)="onStartDateChange($event)"
+												 [minDate]="minDate"
+												[defaultDate]="startDate"
+												 [isRangePicker]="false"
+												class="date-picker-regular w-304px"></app-date-picker>
+											<div class="position-relative ml-2"></div>
+											<span class="font-size-12 position-absolute"
+												style="color: #c0c5d2; bottom: -20px;">
+												<ng-container *ngIf="isPriceChanged && startDate < startOfTomorrow">
+													{{ 'INVENTORY.EDIT.PRICE_WILL_UPDATE_ON_NEXT_SYNC' | translate }}
+												</ng-container>
+												<ng-container *ngIf="isPriceChanged && startDate >= startOfTomorrow">
+													{{ 'INVENTORY.EDIT.PRICE_WILL_UPDATE' | translate }} {{ startDate | date: 'dd/MM/yyyy' }}
+												</ng-container>
+												<ng-container *ngIf="
+                            ((item && item.newUnitPrice) ||
+                              (item && item.newtUnitPrice === 0)) &&
+                            !isControlDirty('price', 'startDate') &&
+                            !isControlDirty('price', 'unitPrice')
+                          ">
+													{{startDate | date: 'dd MMM. yyyy'}} - {{ item.newUnitPrice }} ₾
+												</ng-container>
+											</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-12 col-md-6">
+								<div class="form-group form-group-lg no-validation-padding">
+									<label for="addInventoryMargin"
+										class="font-size-15 font-color-dark font-family-bold">ფასნამატი*</label>
+									<div class="position-relative input-group-wrapper">
+										<div *ngIf="margeShowType === 'amount'" formGroupName="price"
+											class="input-group-custom-bordered whole-input d-flex align-items-center">
+											<input
+												id="addInventoryMargin"
+												data-hj-allow
+												class="form-control input-left"
+												formControlName="marginNumber"
+												(change)="calcFromMarginNumber($event.target.value)"
+												autocomplete="off"
+												mask="separator.4"
+												[thousandSeparator]="','"
+												/>
+											<div class="input-section bg-sidebar-gray border-right border-top border-bottom border-pagination-border rounded-right"
+												(click)="onToggleMargeType()">
+
+												<span class="font-size-14 text-dark">
+													₾
+												</span>
+											</div>
+										</div>
+										<div *ngIf="margeShowType === 'percent'"
+											class="input-group-custom-bordered whole-input d-flex align-items-center no-validation-padding"
+											formGroupName="price">
+											<input
+												id="addInventoryMargin"
+												data-hj-allow
+												class="form-control input-left"
+												type="number"
+												formControlName="marginPercent"
+												(change)="calcFromMarginPercent($event.target.value)"
+												autocomplete="off" />
+											<div class="input-section bg-sidebar-gray border-right border-top border-bottom border-pagination-border rounded-right"
+												(click)="onToggleMargeType()">
+												<span class="font-size-14 text-dark">
+													%
+												</span>
+											</div>
+										</div>
+										<div class="divider-icon border-0 half-bordered">
+											<app-icon *ngIf="margeShowType === 'percent'" [icon]="'toggle-gel'"
+												(click)="onToggleMargeType()"
+												class="bg-transparent icon-rotate-percent">
+											</app-icon>
+											<app-icon *ngIf="!(margeShowType === 'percent')" [icon]="'toggle-gel'"
+												(click)="onToggleMargeType()"
+												class="bg-transparent icon-rotate-percent">
+											</app-icon>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-12 col-md-6">
+								<div class="no-validation-padding" formGroupName="details">
+									<label for="addInventoryVatRateType"
+										class="font-size-15 font-color-dark font-family-bold">
+										{{ 'INVENTORY.EDIT.VAT_TYPE' | translate }}*
+									</label>
+									<ng-select id="addInventoryVatRateType" formControlName="vatRateType"
+										[items]="arrayOfVATTypes" bindValue="value" bindLabel="label"
+										class="custom-select-header form-control" [searchable]="true"
+										[clearable]="false">
+									</ng-select>
+								</div>
+							</div>
+							<div class="col-12 col-md-6">
+								<div class="no-validation-padding">
+									<label for="addInventoryVATAmount"
+										class="font-size-15 font-color-dark font-family-bold">
+										{{ 'GENERAL.VAT' | translate }}
+									</label>
+									<div class="input-group-custom d-flex align-items-center">
+										<input
+											id="addInventoryVATAmount"
+											data-hj-allow
+											class="form-control input-left"
+											[value]="VATAmount | number: '0.4-4':'en'"
+											disabled
+											autocomplete="off"
+											/>
+										<div class="font-size-14 font-color-dark font-family-regular input-section">
+											₾
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="d-flex">
+				<div class="col-auto custom-checkbox custom-checkbox-selected-blue mt-4 pl-0 pr-40">
+					<input
+						id="toggleAdditionalData"
+						data-hj-allow
+						class="custom-checkbox-control"
+						type="checkbox"
+						(change)="toggleAdditionalData()" [checked]="isAttributesVisible" />
+					<label for="toggleAdditionalData" class="custom-checkbox-label">
+						<span class="ml-3">
+							{{ 'GENERAL.ADDITIONAL_INFO' | translate }}
+						</span>
+					</label>
+				</div>
+
+				<div class="col-auto custom-checkbox custom-checkbox-selected-blue mt-4 pl-0">
+					<input
+						id="toggleImei"
+						data-hj-allow
+						class="custom-checkbox-control"
+						type="checkbox"
+						name="toggleImei"
+						(change)="onImeisToggle()"
+						[checked]="isImeisVisible"/>
+					<label for="toggleImei" class="custom-checkbox-label">
+						<span class="ml-3">
+							{{ 'GENERAL.IMEI_CODE' | translate }}
+						</span>
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div *ngIf="isAttributesVisible" formGroupName="attributes"
+				class="mt-5 pt-5 no-validation-padding col-12 col-md-6" style="max-width: 656px; flex-basis: 656px;">
+				<div class="pb-30px">
+					<span class="font-size-20 font-color-dark font-family-bold">
+						{{ 'INVENTORY.EDIT.SIZE_COLOR_GROUP_ID' | translate }}
+					</span>
+				</div>
+
+				<div class="row">
+					<div class="col-12 col-md-6">
+						<div class="form-group form-group-lg no-validation-padding">
+							<label for="itemColorAttribute"
+								class="font-size-15 font-color-dark font-family-bold">
+								{{ 'GENERAL.COLOR' | translate }}*
+							</label>
+							<ng-select id="itemColorAttribute" class="custom-select-header form-control"
+								[items]="itemColors?.values" formControlName="attributeColor" bindLabel="value"
+								[searchable]="true" [clearable]="false">
+							</ng-select>
+						</div>
+					</div>
+
+					<div class="col-12 col-md-6">
+						<div class="form-group form-group-lg no-validation-padding">
+							<label for="itemSizeAttribyte"
+								class="font-size-15 font-color-dark font-family-bold">
+								{{ 'GENERAL.SIZE' | translate }}*
+							</label>
+							<ng-select id="itemSizeAttribyte" class="custom-select-header form-control"
+								[items]="itemSizes?.values" formControlName="attributeSize" bindLabel="value"
+								[searchable]="true" [clearable]="false">
+							</ng-select>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-12 col-md-6">
+						<div class="no-validation-padding">
+							<label for="attributeGroupId" class="font-size-15 font-color-dark font-family-bold">ჯგუფის
+								ID*</label>
+							<input
+								id="attributeGroupId"
+								data-hj-allow
+								class="form-control w-100"
+								type="number"
+								formControlName="attributeGroupId"
+								autocomplete="off" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<app-add-inventory-item-imeis *ngIf="isImeisVisible" [(imeis)]="imeis"></app-add-inventory-item-imeis>
+		<app-add-inventory-item-lots *ngIf="editId" [stockItemId]="editId"></app-add-inventory-item-lots>
+	</div>
+</form>

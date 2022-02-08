@@ -1,0 +1,223 @@
+.input-group {
+    &-custom {
+        position: relative;
+        .input-left {
+            padding-right: 48px;
+            &:disabled {
+                & + div {
+                    opacity: 0.5;
+                }
+            }
+        }
+        .input-section {
+            position: absolute;
+            right: 22px;
+        }
+        &-bordered {
+            &.whole-input {
+                input.input-left {
+                    &:focus {
+                        & + .input-section {
+                            border-width: 2px !important;
+                            border-color: $blue !important;
+                        }
+                        &.ng-valid {
+                            & + .input-section {
+                                border-color: $blue !important;
+                            }
+                        }
+                        &.ng-invalid {
+                            & + .input-section {
+                                border-color: $red !important;
+                            }
+                            &.ng-untouched {
+                                & + .input-section {
+                                    border-color: $blue !important;
+                                }
+                            }
+                        }
+                    }
+                    &.ng-touched.ng-invalid {
+                        & + .input-section {
+                            border-color: $red !important;
+                        }
+                    }
+                }
+            }
+            .input-left {
+                padding-right: 72px;
+                // &:disabled{
+                //     & + .input-section {
+                //         span{
+                //             opacity: 0.5;
+                //             color: $dark !important;
+                //         }
+                //     }
+                // }
+                // disabled ar unda iyos marjis procentidan larze gadayvana
+            }
+            .input-section {
+                @include transition($input-transition);
+                position: absolute;
+                right: 0px;
+                width: 60px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                cursor: pointer;
+                span {
+                    @include text-truncate;
+                }
+                &:hover {
+                    span {
+                        color: $blue !important;
+                    }
+                }
+            }
+        }
+        &.d-control {
+            display: none;
+            &.active {
+                display: flex;
+            }
+        }
+        &.input-select {
+            .ng-select {
+                padding: 0px !important;
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+                .ng-select-container {
+                    padding: 12.5px 1rem !important;
+                    cursor: pointer;
+                    background-color: white;
+                    border-top-right-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                    border-top-left-radius: 0px;
+                    border-bottom-left-radius: 0px;
+                }
+                &-opened {
+                    &:not(.ng-select-top) {
+                        border-bottom-right-radius: 0px;
+                        .ng-select-container {
+                            border-bottom-right-radius: 0px;
+                        }
+                    }
+                    &.ng-select-top{
+                        border-top-right-radius: 0px;
+                        .ng-select-container {
+                            border-top-right-radius: 0px;
+                        }
+                    }
+                }
+                .ng-dropdown-panel {
+                    &:not(.ng-select-top) {
+                        top: 100% !important;
+                    }
+                    &.ng-select-top {
+                        transform: translateY(-100%);
+                    }
+                }
+            }
+            input.input-left{
+                &:focus{
+                   & + .ng-select{
+                        border: 2px solid $blue;
+                    }
+                }
+                &.ng-invalid{
+                    & + .ng-select{
+                        border-color: $red;
+                    }
+                }
+                &:read-only{
+                    background-color: white !important;
+                }
+            }
+            .input-section{
+                &.ng-select-disabled{
+                    // pointer-events: none;
+                    .ng-select-container{
+                        cursor: default;
+                        background-color:$sidebar-gray !important;
+                        .ng-value-container , .ng-arrow-wrapper{
+                            opacity: 0.5;
+                        }
+                    }
+                }
+            }
+        }
+        &.disabled{
+            pointer-events: none;
+            input{
+                background-color: #f6f6f6;
+                color: rgba(52, 52, 52, 0.5);
+            }
+            app-icon{
+                opacity: 0.5;
+            }
+        }
+    }
+}
+.divider {
+    &-icon {
+        height: 100%;
+        position: absolute;
+        right: 60px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        border-left: 1px solid $pagination-border;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        app-icon {
+            position: absolute;
+            margin-left: -2px;
+            background-color: white;
+        }
+        &.half-bordered {
+            &::before {
+                content: "";
+                position: absolute;
+                background-color: $table-border-color;
+                width: 1px;
+                height: 11px;
+                top: 0px;
+            }
+            &::after {
+                content: "";
+                position: absolute;
+                background-color: $table-border-color;
+                width: 1px;
+                height: 11px;
+                bottom: 0px;
+            }
+        }
+    }
+}
+
+.input {
+    $root: &;
+    &-left-custom-focus {
+        border-top-right-radius: 0px !important;
+        border-bottom-right-radius: 0px !important;
+        &:focus {
+            border-top-right-radius: 5px !important;
+            border-bottom-right-radius: 5px !important;
+            & + #{$root}-right-custom-focus {
+                border-left-width: 1px !important;
+            }
+        }
+    }
+    &-right-custom-focus {
+        border-top-left-radius: 0px !important;
+        border-bottom-left-radius: 0px !important;
+        border-left-width: 0px;
+        &:focus {
+            border-top-left-radius: 5px !important;
+            border-bottom-left-radius: 5px !important;
+            border-left-width: 2px;
+        }
+    }
+}

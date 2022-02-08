@@ -1,0 +1,34 @@
+<div class="supplier-report-grids">
+  <div class="supplier-report-grids-grid">
+    <app-table
+      [dataSource]="topTenIncomeDataSource"
+      [totalCount]="gridEntryCount"
+      [selectable]="false"
+      [paginable]="false"
+      [displayedColumns]="topTenIncomeColumns"
+    >
+    </app-table>
+  </div>
+
+  <div class="supplier-report-grids-grid">
+    <app-table
+      [dataSource]="topTenSoldDataSource"
+      [totalCount]="gridEntryCount"
+      [selectable]="false"
+      [paginable]="false"
+      [displayedColumns]="topTenSoldColumns"
+    >
+    </app-table>
+  </div>
+
+  <div class="supplier-report-grids-grid">
+    <app-table
+      [dataSource]="topTenPassiveDataSource"
+      [totalCount]="gridEntryCount"
+      [selectable]="false"
+      [paginable]="false"
+      [displayedColumns]="topTenPassiveColumns"
+    >
+    </app-table>
+  </div>
+</div>

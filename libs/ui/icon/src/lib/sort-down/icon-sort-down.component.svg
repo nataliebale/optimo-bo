@@ -1,0 +1,10 @@
+ <svg width="8px" height="5px" viewBox="0 0 8 5" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="icon-sort-down">
+    <title>Path 3</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"  >
+        <g id="Icon/sorting" transform="translate(-8.000000, -14.000000)"  >
+            <g id="Group" transform="translate(8.000000, 5.000000)">
+                <path fill="#c7d0ff" d="M0.85,9.8 L3.6,13.4666667 C3.76568542,13.6875806 4.0790861,13.7323521 4.3,13.5666667 C4.33790283,13.5382395 4.37157288,13.5045695 4.4,13.4666667 L7.15,9.8 C7.31568542,9.5790861 7.2709139,9.26568542 7.05,9.1 C6.96345191,9.03508894 6.85818511,9 6.75,9 L1.25,9 C0.973857625,9 0.75,9.22385763 0.75,9.5 C0.75,9.60818511 0.785088936,9.71345191 0.85,9.8 Z" id="Path-3"></path>
+            </g>
+        </g>
+    </g>
+</svg>

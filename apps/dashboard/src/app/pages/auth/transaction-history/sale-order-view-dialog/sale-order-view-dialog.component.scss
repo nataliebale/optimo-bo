@@ -1,0 +1,25 @@
+.full-width {
+    width: 100%;
+}
+
+.sale-order{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    &-transaction-id{
+        width: 40%;
+        margin-right: 1em;
+    }
+    &-total-price{
+        width: 40%;
+    }
+    &-products-table{
+        margin-top: 2em;
+        width: 100%;
+    }
+}
+
+.sale-order-products-table table{
+    width: 100%;
+}

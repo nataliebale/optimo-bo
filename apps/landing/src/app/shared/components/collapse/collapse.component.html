@@ -1,0 +1,15 @@
+<div
+  class="faq-list-item-header d-flex align-items-center"
+  [id]="data.id"
+  (click)="onToggleItem()"
+>
+  <div class="col pl-0">
+    {{ data.title }}
+  </div>
+  <div class="col-auto pr-0">
+    <app-icon [icon]="active ? 'dismiss' : 'open'"></app-icon>
+  </div>
+</div>
+<div class="faq-list-item-body" *ngIf="active">
+  {{ data.content }}
+</div>

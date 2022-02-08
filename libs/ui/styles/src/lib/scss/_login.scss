@@ -1,0 +1,36 @@
+.login {
+  $root: &;
+  width: 100vw;
+  height: 99.999vh;
+  margin-top: calc(-1 * var(--header-height));
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  #{$root}-inner-wrapper {
+    max-width: 385px;
+    @include media-breakpoint-up(lg) {
+      max-width: 497px;
+    }
+  }
+  .login-cover-img {
+    background-image: url('/assets/images/login.jpg');
+    background-position: top left;
+    background-size: cover;
+    flex-grow: 1;
+    // @media screen and (max-width: 1366px) and (max-height: 768px){
+    //   max-height: 768px;
+    // }
+  }
+  .login-logo {
+    img {
+      height: 39px;
+    }
+  }
+  @media screen and (max-width: 384px) {
+    .login-logo {
+      img {
+        width: 116px;
+      }
+    }
+  }
+}

@@ -1,0 +1,119 @@
+<form *ngIf="form" [formGroup]="form">
+	<div class="container-fluid sticky-top bg-white" style="height: 72px;">
+		<div class="row align-items-center h-100 border-bottom border-secondary">
+			<div class="col pl-0 h-100">
+				<button type="button" class="btn bg-white px-2 h-100 rounded-0" style="width: 102px;"
+					(click)="onCancel()">
+					<app-icon icon="close"></app-icon>
+				</button>
+			</div>
+			<div class="col-auto font-size-20 font-family-bold text-dark">
+				{{ title | translate}}
+			</div>
+			<div class="col pr-4 h-100 d-flex align-items-center justify-content-end">
+				<button class="btn btn-primary font-size-14 font-family-bold text-white py-0 px-23px h-42px"
+					(click)="onSave()" [disabled]="requestIsSent">
+					{{"GENERAL.SAVE" | translate}}
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="w-100" *ngIf="isSubmited && isFormInvalid">
+		<div class="mx-auto bg-danger-bg px-4 rounded text-center border d-flex align-items-center border-danger-border mt-3"
+			style="max-width:960px;height: 54px;">
+			<div class="col-2 d-flex px-0">
+				<app-icon icon="alert"></app-icon>
+			</div>
+			<div class="col text-center font-size-14 font-color-dark font-family-regular">
+				{{'Inventorisations.Item.Details.globalErrorMessage' | translate}}
+			</div>
+			<div class="col-2 px-0"></div>
+		</div>
+	</div>
+	<div class="pt-20px px-0 pb-50px mx-auto" style="max-width: 960px;"
+		[class.mt-70px]="!(isSubmited && form?.invalid)">
+
+		<div class="font-size-20 font-color-dark font-family-bold pb-30px">
+			{{'Inventorisations.Item.Details.generalInfo' | translate}}
+		</div>
+
+		<div class="row">
+			<div class="col-6">
+				<label for="inventorisationName"
+					class="font-size-15 font-color-dark font-family-bold">{{'Inventorisations.Item.Details.title' |
+					translate}}*</label>
+				<div class="form-group form-group-lg d-flex">
+					<input
+						id="inventorisationName"
+						data-hj-allow
+						class="form-control"
+						type="text"
+						formControlName="name" />
+				</div>
+
+				<div>
+					<label for="inventorisationType"
+						class="font-size-15 font-color-dark font-family-bold">{{'Inventorisations.Item.Details.type' |
+						translate}}*</label>
+					<ng-select id="inventorisationType" class="custom-select-header form-control"
+						[items]="mapOfInventorisationTypes" formControlName="type" bindValue="value" bindLabel="label"
+						[searchable]="true" [clearable]="false" (change)="onTypeChange()">
+					</ng-select>
+				</div>
+			</div>
+			<div class="col-6">
+				<div class="mb-4">
+					<label for="inventorisationDate"
+						class="font-size-15 font-color-dark font-family-bold">{{'Inventorisations.Item.Details.date' |
+						translate}}*</label>
+					<div class="position-relative">
+						<div class="input-group-custom d-flex align-items-center">
+							<input
+								id="inventorisationDate"
+								data-hj-allow
+								class="form-control input-left"
+								type="text"
+								formControlName="orderDate"
+								[value]="inventorisationDate | date" readonly
+								(click)="onToggleDatePicker(); $event.stopPropagation()" />
+							<app-icon style="right: 16px;" icon="calendar"
+								(click)="onToggleDatePicker(); $event.stopPropagation()"
+								class="input-section cursor-pointer"></app-icon>
+						</div>
+						<app-date-picker [isDatePickerVisible]="isDatePickerVisible" [showActionsAndInput]="false"
+							(onIsDatePickerVisible)="isDatePickerVisible = $event" [isRangePicker]="false"
+							[defaultDate]="inventorisationDate" (dateChange)="onInventorisationDateChange($event)"
+							class="date-picker-regular r-0 top-4px">
+						</app-date-picker>
+					</div>
+
+				</div>
+
+
+
+				<div class="form-group form-group-lg">
+					<label for="inventorisationCriteria"
+						class="font-size-15 font-color-dark font-family-bold">{{'Inventorisations.Item.Details.criteria'
+						| translate}}*</label>
+					<ng-select id="inventorisationCriteria" class="custom-select-header form-control"
+						[items]="mapOfInventorisationCriterias" formControlName="criteria" bindValue="value"
+						bindLabel="label" [searchable]="true" [clearable]="false">
+					</ng-select>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div *ngIf="getValue('type') === InventorisationType.Partial" class="mt-5 pt-42px">
+			<div class="font-size-20 font-color-dark font-family-bold pb-30px">
+				{{ "Inventorisations.Item.Details."+criteriasTitle | translate}}
+			</div>
+			<div>
+				<app-inventorisation-detail-list [criteria]="getValue('criteria')"
+					[criteriaValues]="item?.criteriaValues" (changeCriteriaValues)="criteriaValues = $event">
+				</app-inventorisation-detail-list>
+			</div>
+		</div>
+	</div>
+</form>

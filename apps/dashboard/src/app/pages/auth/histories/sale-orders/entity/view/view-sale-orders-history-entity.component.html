@@ -1,0 +1,125 @@
+<ng-container *ngIf="entitySale$ | async as entitySale">
+  <div class="d-flex align-items-center border-bottom px-4 border-table-border-color" style="height: 87px;">
+    <div class="col-1 px-0"></div>
+    <div class="d-flex flex-column col text-center">
+      <span class="font-size-20 font-family-bold text-dark    text-truncate">{{ entitySale.entityName }}
+      </span>
+      <span class="font-size-14 font-family-regular text-dark    text-truncate">#0b94b0d2-0fa2-461e-a902-8caeb0f1baed
+      </span>
+    </div>
+    <div class="col-1 text-right px-0">
+      <app-icon (click)="onBack()" [icon]="'close'" class="ml-auto icon-close-dark" style="cursor: pointer;"></app-icon>
+    </div>
+  </div>
+  <div style="height: 455px; overflow-y: auto;" class="custom-view-scroll d-flex flex-column border-right border-transparent border-width-2px">
+    <div class="container-fluid py-4 border-bottom border-table-border-color px-3">
+      <optimo-view-attributes [items]="entitySaleAttributeItems(entitySale)"></optimo-view-attributes>
+      <!-- <div class="row align-items-center"  >
+        <div class="col-4 line-height-normal "  >
+          <div class="font-family-bold font-size-14 text-dark">
+            გადახდის მეთოდი
+          </div>
+          <div class="font-size-14 font-family-regular text-dark mt-1">
+            {{ entitySale.paymentMethodDescription }}
+          </div>
+        </div>
+        <div class="col-4 line-height-normal">
+          <div class="font-family-bold font-size-14 text-dark">
+            თარიღი
+          </div>
+          <div class="font-size-14 font-family-regular text-dark mt-1">
+            {{ entitySale.orderDate | date }}
+          </div>
+        </div>
+        <div class="col-4 line-height-normal todo">
+          <div class="font-family-bold font-size-14 text-dark">
+            თარიღი
+          </div>
+          <div class="font-size-14 font-family-regular text-dark mt-1">
+            {{ entitySale.orderDate | date }}
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="row align-items-center pt-2"  >
+        <div class="col-4"  >
+          <div class="font-family-medium font-size-15 text-dark">
+            საწყისი მისამართი
+          </div>
+          <div class="font-size-14 font-family-regular text-muted mt-1">
+            {{ entitySale.startAddress }}
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="font-family-medium font-size-15 text-dark">
+            საბოლოო მისამართი
+          </div>
+          <div class="font-size-14 font-family-regular text-muted mt-1">
+            {{ entitySale.endAddress }}
+          </div>
+        </div>
+      </div> -->
+      <!-- <div
+        *ngIf="entitySale.hasTransportation"
+        class="row align-items-center pt-2"
+        style="height: 89px;"
+      >
+        <div class="col-4" style="padding-left: 32px;">
+          <div class="font-family-medium font-size-15 text-dark">
+            მძღოლის პირადი ნომერი
+          </div>
+          <div class="font-size-14 font-family-regular text-muted mt-1">
+            {{ entitySale.driverPIN }}
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="font-family-medium font-size-15 text-dark">
+            მძღოლის სახელი და გვარი
+          </div>
+          <div class="font-size-14 font-family-regular text-muted mt-1">
+            {{ entitySale.driverName }}
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="font-family-medium font-size-15 text-dark">
+            მანქანის ნომერი
+          </div>
+          <div class="font-size-14 font-family-regular text-muted mt-1">
+            {{ entitySale.driverCarNumber }}
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <div class="waybills-table-paddings flex-grow-1">
+      <app-table *ngIf="entitySale.orderLines" [dataSource]="entitySale.orderLines"
+        [displayedColumns]="displayedColumns" [paginable]="false" [selectable]="false" [filterable]="false"
+        [staticData]="true" class="table-dialogs table-view">
+        <ng-template app-cell let-cell="cell" let-row="row" name="stockItemName">
+          <div>
+            <span [matTooltip]="row.stockItemName" #ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+              class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark">
+              {{ row.stockItemName }}
+            </span>
+            <br />
+            <span [matTooltip]="row.stockItemBarcode" #ref2 [matTooltipDisabled]="textIsTruncated(ref2)" class="text-truncate mw-100 d-inline-block table-text-dark">
+              {{ row.stockItemBarcode }}
+            </span>
+          </div>
+        </ng-template>
+      </app-table>
+    </div>
+  </div>
+  <!-- <div
+class="d-flex align-items-center justify-content-center px-4 border border-table-border-color"
+style="
+  height: 83px;
+   
+"
+>
+  
+
+  <app-paginator
+     
+    class="pagination-sm ml-auto"
+  ></app-paginator>
+</div> -->
+</ng-container>

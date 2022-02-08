@@ -1,0 +1,115 @@
+
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+  *ngIf="form"
+>
+  <div class="d-flex align-items-center justify-content-between border-bottom border-table-border-color pl-4 pr-18px"
+       style="height: 60px;"
+  >
+    <span class="font-color-dark font-size-18 font-family-bold line-height-normal">
+      <!-- {{'SUPPLIERS.TRANSACTIONS.PAYMENT' | translate}} -->
+      {{title}}
+      </span>
+    <button
+      class="btn bg-transparent rounded-0 p-0"
+      type="button"
+      (click)="onCancel()"
+    >
+      <app-icon icon="close" class="icon-w-20px icon-h-20px"   style="cursor: pointer;"></app-icon>
+    </button>
+  </div>
+  <div
+    class="px-4 pt-3"
+   
+  >
+  <label class="font-size-14 font-color-dark font-family-bold pt-3 line-height-normal" for="suppliers-history-transaction-popup-name">
+    დასახელება
+  </label>
+  <input
+    data-hj-allow
+    class="form-control"
+    type="text"
+    autocomplete="off"
+    formControlName="name"
+    id="suppliers-history-transaction-popup-name"
+
+  />
+  <label for="supplierId" class="font-size-14 font-color-dark font-family-bold pt-20px line-height-normal">
+    მომწოდებელი
+  </label>
+  <app-dynamic-select id="supplierId"
+    class="add-inventory-item__dynamic-select ng-option-selected-marked" [dataGetter]="getSuppliers"
+    [itemGetterById]="getSupplierById"
+    formControlName="supplierId">
+  </app-dynamic-select>
+  <label class="font-size-14 font-color-dark font-family-bold pt-20px line-height-normal" for="suppliers-history-transaction-popup-payment-method">
+    გადახდის მეთოდი
+  </label>
+    <ng-select
+      class="custom-select-header form-control"
+      [items]="paymentMethods"
+      bindValue="value"
+      bindLabel="label"
+      [searchable]="true"
+      [clearable]="false"
+      formControlName="paymentMethod"
+      id="suppliers-history-transaction-popup-payment-method"
+    >
+    </ng-select>
+    <label class="font-size-14 font-color-dark font-family-bold pt-3 line-height-normal" for="suppliers-history-transaction-popup-payment-amount">
+      თანხა
+    </label>
+    <input
+      data-hj-allow
+      class="form-control"
+      min="0"
+      type="number"
+      autocomplete="off"
+      formControlName="amount"
+      id="suppliers-history-transaction-popup-payment-amount"
+    />
+    <label for="transactionDate" class="font-size-14 font-color-dark font-family-bold pt-3 line-height-normal">
+      თარიღი</label>
+    <div class="position-relative">
+      <div class="input-group-custom d-flex align-items-center">
+        <input
+          id="transactionDate"
+          data-hj-allow
+          type="text"
+          class="form-control input-left"
+          formControlName="date"
+          [value]="transactionDate | date"
+          readonly
+          (click)="onToggleDatePicker(); $event.stopPropagation()" />
+        <app-icon style="right: 16px;" icon="calendar"
+          (click)="onToggleDatePicker(); $event.stopPropagation()"
+          class="input-section cursor-pointer"></app-icon>
+      </div>
+      <app-date-picker [isDatePickerVisible]="isDatePickerVisible" [showActionsAndInput]="false"
+        (onIsDatePickerVisible)="isDatePickerVisible = $event" [isRangePicker]="false" [maxDate]="endOfToday" 
+        [minDate]="minDate"
+        (dateChange)="onInventorisationDateChange($event)" [defaultDate]="transactionDate"
+        class="date-picker-regular r-0 bottom-54px">
+      </app-date-picker>
+    </div>
+  </div>
+  <div class="d-flex justify-content-end pt-4 pb-4 px-4">
+    <button
+    class="btn bg-transparent mr-3 font-size-14 font-color-dark font-family-bold"   
+    style="width: 120px;height: 42px;"
+    type="button"
+    (click)="onCancel()"
+  >
+    {{'GENERAL.CANCEL' | translate}}
+  </button>
+    <button
+      class="btn btn-primary font-color-white  font-size-14  font-family-bold"
+      style="width: 113px;height: 42px;"
+      type="submit"
+      [disabled]="isSubmited"
+    >
+      {{'GENERAL.SAVE' | translate}}
+    </button>
+  </div>
+</form>

@@ -1,0 +1,115 @@
+<div
+  class="bg-white border-top border-bottom border-pagination-border d-flex align-items-center flex-wrap flex-sm-nowrap p-4"
+>
+  <div
+    class="product-image rounded mb-3 mb-sm-0"
+    style="background: no-repeat center / contain;"
+    [ngStyle]="{ 'background-image': 'url(' + imgSrc + ')' }"
+    [class.bg-cover]="imgSrc?.indexOf('no-image.png') !== -1"
+  ></div>
+  <div class="ml-0 ml-sm-3 ml-md-4 flex-grow-1">
+    <div class="container-fluid px-0">
+      <div class="row align-items-center">
+        <div
+          class="col mt-4 mt-sm-3 mt-md-0 line-height-normal d-flex flex-column justify-content-center"
+          style="max-width:312px"
+        >
+          <div
+            class="font-family-bold font-size-14 font-color-dark pb-2 text-truncate"
+            style="color: #898da8;"
+			[matTooltip]="stockItem?.name"
+			#ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+          >
+          {{ stockItem?.name }}
+          </div>
+          <div
+            class="font-family-regular font-size-14 text-dark text-truncate mw-100 d-inline-block"
+            
+			[matTooltip]="stockItem?.barcode"
+			#ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+          >
+            {{ stockItem?.barcode }}
+          </div>
+        </div>
+        <div
+          class="col mt-4 mt-sm-3 mt-md-0 line-height-normal d-flex flex-column justify-content-center"
+          style="max-width:312px"
+        >
+          <div
+            class="font-family-bold font-size-14 font-color-dark pb-2 text-truncate"
+            style="color: #898da8;"
+          >
+            {{'LOTS.SPECIFIC_LOTS.CARD.CATEGORY'| translate}}
+          </div>
+          <div
+            class="font-family-regular font-size-14 text-dark text-truncate mw-100 d-inline-block"
+            
+			[matTooltip]="stockItem?.categoryName"
+			#ref3 [matTooltipDisabled]="textIsTruncated(ref3)"
+          >
+            {{ stockItem?.categoryName }}
+          </div>
+        </div>
+        <div
+          class="col mt-4 mt-sm-3 mt-md-0 line-height-normal d-flex flex-column justify-content-center"
+          style="max-width:312px"
+        >
+          <div
+            class="font-family-bold font-size-14 font-color-dark pb-2 text-truncate"
+            style="color: #898da8;"
+          >
+            {{'LOTS.SPECIFIC_LOTS.CARD.TOTAL_QUANTITY'| translate}}
+          </div>
+          <div
+            class="font-family-regular font-size-14 text-dark text-truncate mw-100 d-inline-block"
+            
+			matTooltip="{{ stockItem?.quantity || 0 | number: '1.4-4':'en' }} ც"
+			#ref4 [matTooltipDisabled]="textIsTruncated(ref4)"
+          >
+            {{ stockItem?.quantity | number: '1.4-4':'en' }}
+            {{ getUMOAcronym(stockItem?.unitOfMeasurement) }}
+          </div>
+        </div>
+        <div
+          class="col mt-4 mt-sm-3 mt-md-0 line-height-normal d-flex flex-column justify-content-center"
+          style="max-width:312px"
+        >
+          <div
+            class="font-family-bold font-size-14 font-color-dark pb-2 text-truncate"
+            style="color: #898da8;"
+          >
+            
+          {{'LOTS.SPECIFIC_LOTS.CARD.UNIT_COST'| translate}}
+          </div>
+          <div
+            class="font-family-regular font-size-14 text-dark text-truncate mw-100 d-inline-block"
+            
+			[matTooltip]="stockItem?.unitCost | number: '1.4-4':'en'"
+			#ref5 [matTooltipDisabled]="textIsTruncated(ref5)"
+          >
+            {{ stockItem?.unitCost | number: '1.4-4':'en' }}
+          </div>
+        </div>
+        <div
+          class="col mt-4 mt-sm-3 mt-md-0 line-height-normal d-flex flex-column justify-content-center"
+          style="max-width:312px"
+        >
+          <div
+            class="font-family-bold font-size-14 font-color-dark pb-2 text-truncate"
+            style="color: #898da8;"
+          >
+          {{'LOTS.SPECIFIC_LOTS.CARD.UNIT_PRICE'| translate}}
+          </div>
+          <div
+            class="font-family-regular font-size-14 text-dark text-truncate mw-100 d-inline-block"
+            
+			[matTooltip]="stockItem?.unitPrice | number: '1.4-4':'en'"
+			#ref6 [matTooltipDisabled]="textIsTruncated(ref6)"
+          >
+            {{ stockItem?.unitPrice | number: '1.4-4':'en' }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

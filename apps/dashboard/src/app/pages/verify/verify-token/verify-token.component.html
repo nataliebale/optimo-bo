@@ -1,0 +1,44 @@
+<div class="verify-token">
+  <div class="verify-token__overlay"></div>
+
+  <div class="verify-token__form-container">
+    <div style="text-align: center;">
+      <img alt="Logo" src="../../../assets/images/logo/area-logo.svg" />
+
+      <!-- If request is loading nothing is shown -->
+      <div *ngIf="!isLoading">
+        <!-- Appears if request succesed -->
+
+        <ng-container *ngIf="sentSuccessfully">
+          <h1 class="verify-token__heading verify-token__heading--success">
+            <ng-container *ngIf="type != 2">
+              თქვენ წარმატებით დარეგისტრირდით
+            </ng-container>
+            <ng-container *ngIf="type == 2">
+              მეილი შეიცვალა
+            </ng-container>
+          </h1>
+
+          <div style="padding-top: 30px;">
+            <button routerLink="/" mat-raised-button>
+              მთავარ გვერდზე დაბრუნება
+            </button>
+          </div>
+        </ng-container>
+
+        <!-- Appears if request failed -->
+        <h1
+          *ngIf="!sentSuccessfully"
+          class="verify-token__heading verify-token__heading--fail"
+        >
+          <div *ngIf="type != 2">
+            მოხდა შეცდომა რეგისტრაციისას
+          </div>
+          <div *ngIf="type == 2">
+            მეილი ვერ შეიცვალა
+          </div>
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>

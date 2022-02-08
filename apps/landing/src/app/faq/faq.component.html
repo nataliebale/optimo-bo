@@ -1,0 +1,41 @@
+<app-header
+  class="header-faq"
+  [requestButtonVisibility]="true"
+  [isFixed]="false"
+></app-header>
+<div class="faq-container">
+  <div class="container px-sm-40 px-lg-15">
+    <div class="row">
+      <div class="col-12 mt-4 mt-sm-40 mt-md-80">
+        <div
+          class="font-size-18 font-size-sm-24 font-family-semibold text-dark text-center"
+        >
+          {{'FAQPage.HowCanWeHelp' | translate}}
+        </div>
+      </div>
+      <div
+        class="col-md-10 col-lg-8 offset-lg-2 offset-md-1 mt-40 mb-4 mb-sm-40 mb-md-80"
+      >
+        <app-faq-search-box class="faq-search"></app-faq-search-box>
+      </div>
+    </div>
+    <app-faq-categories></app-faq-categories>
+    <div class="row">
+      <div class="col-md-10 offset-md-1 mt-32 mt-md-80">
+        <app-faq-list [FAQs]="FAQs | push"></app-faq-list>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="faq-info pb-80">
+  <div class="container px-sm-40 px-lg-15">
+    <div class="row">
+      <div
+        class="col-12 text-center font-size-16 font-size-sm-24 text-dark font-family-semibold mb-80"
+      >
+      {{'FAQPage.ContactUs' | translate}}
+      </div>
+      <app-contact class="col-12 px-15 px-md-0"></app-contact>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="purchase-order" *ngIf="item">
+  <div class="purchase-order-detail">
+    <mat-form-field class="full-width">
+      <input 
+        data-hj-allow
+        matInput placeholder="სახელი" readonly [value]="item.name" />
+    </mat-form-field>
+  </div>
+
+  <div class="purchase-order-detail">
+    <mat-form-field class="full-width">
+      <input
+        data-hj-allow
+        matInput
+        placeholder="მომწოდებლის სახელი"
+        readonly
+        [value]="item.supplierName"
+      />
+    </mat-form-field>
+  </div>
+  <div class="purchase-order-detail">
+    <mat-form-field class="full-width">
+      <input
+        data-hj-allow
+        matInput
+        placeholder="მოტანის თარიღი"
+        readonly
+        [value]="item.receiveDate"
+      />
+    </mat-form-field>
+  </div>
+  <div class="purchase-order-detail">
+    <mat-form-field class="full-width">
+      <input
+        data-hj-allow
+        matInput
+        placeholder="ჯამური ფასი"
+        readonly
+        [value]="item.receivedTotalCost"
+      />
+    </mat-form-field>
+  </div>
+  <div class="purchase-order-products-table">
+    <app-table
+      [dataSource]="item.orderLines"
+      [totalCount]="item.orderLines.length"
+      [displayedColumns]="stockItemsDiplayedColumns"
+      [selectable]="false"
+      [staticData]="true"
+    >
+    </app-table>
+  </div>
+</div>

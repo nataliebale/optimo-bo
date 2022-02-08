@@ -1,0 +1,108 @@
+<ng-container>
+  <div class="d-flex align-items-center border-bottom pl-4 pr-28px border-table-border-color " style="height: 88px;">
+    <div class="col-4 px-0 d-flex ">
+      <ng-container
+        *ngIf="isDraft"
+      >
+        <button
+          (click)="onEdit()"
+          class="btn-view-action-rounded mr-1"
+          style="width: 36px;height: 36px;"
+        >
+            <app-icon [icon]="'edit-tbls'" ></app-icon>
+        </button>
+        <button
+          (click)="onDelete()"
+          class="btn-view-action-rounded mr-1"
+          style="width: 36px;height: 36px;"
+        >
+          <app-icon
+            [icon]="'trash-tbls'"
+            fill="#fc3c2d"
+          ></app-icon>
+        <!--  class="icon-trash-suppliers" -->
+        </button>
+        <button
+          *ngIf="isDraft"
+          class="btn-view-action-rounded mr-1"
+          style="width: 36px;height: 36px;"
+          (click)="onDraftFinish(shipping.id)"
+        >
+          <app-icon
+            [icon]="'shipping'"
+            fill="#fc3c2d"
+          >
+          </app-icon>
+        </button>
+      </ng-container>
+      <button
+        (click)="onExcelDownload()"
+        class="btn-view-action-rounded"
+        style="width: 36px;height: 36px;"
+        *ngIf="shipping?.isExcel && shipping?.excelFileUrl"
+      >
+        <app-icon
+          [icon]="'excel-download'"
+          fill="#fc3c2d"
+        ></app-icon>
+      </button>
+    </div>
+    <span
+      class="font-size-20 font-family-bold text-dark col text-center text-truncate px-0"
+    >
+      {{ shipping?.name }}
+    </span>
+    <div class="col-4 text-right px-0">
+      <app-icon
+        (click)="onBack()"
+        [icon]="'close'"
+        class="ml-auto icon-close-dark"
+        style="cursor: pointer;"
+      ></app-icon>
+    </div>
+  </div>
+  <div style="height: 524px; overflow-y: auto;" class="custom-view-scroll d-flex flex-column border-right border-transparent border-width-2px"
+    infiniteScroll
+    [scrollWindow]="false"
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()"
+  >
+    <div class="container-fluid py-27px border-bottom border-table-border-color px-3">
+      <optimo-view-attributes
+        [items]="shippingAttributeItems"
+      ></optimo-view-attributes>
+    </div>
+ 
+      <app-table
+        *ngIf="orderLines"
+        [dataSource]="orderLines"
+        [displayedColumns]="displayedColumns"
+        [paginable]="false"
+        [selectable]="false"
+        [filterable]="false"
+        [staticData]="true"
+        class="waybills-table-paddings table-dialogs table-view flex-grow-1 d-flex flex-column"
+      >
+        <ng-template app-cell let-cell="cell" let-row="row" name="stockItemName">
+          <div  class="d-flex flex-column line-height-normal">
+            <span
+			  [matTooltip]="cell"
+			  #ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+              class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark font-size-14 pb-1"
+            >
+              {{ cell }}
+            </span>
+            <span
+			  [matTooltip]="row.stockItemBarcode"
+			  #ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+              class="text-truncate mw-100 d-inline-block table-text-dark font-size-14"
+            >
+              {{ row.stockItemBarcode }}
+            </span>
+          </div>
+        </ng-template>
+      </app-table>
+     
+  </div>
+</ng-container>

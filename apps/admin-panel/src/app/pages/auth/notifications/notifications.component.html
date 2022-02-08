@@ -1,0 +1,41 @@
+<div class="w-100 h-100 d-flex flex-column">
+	<!-- <h1
+	  [matTooltip]="'აბცდ'"
+	>
+	  შეთავაზებები
+	</h1> -->
+
+	<div class="d-flex align-items-center px-4 py-3" style="height: 80px;">
+		<a *ngIf="!(selectedRows?.length > 0)" class="btn btn-primary btn-add mr-3" [routerLink]="['./add']">
+			<!-- <app-icon [icon]="'plus'" class="mr-2"></app-icon> -->
+			<span>დამატება</span>
+		</a>
+
+		<button *ngIf="selectedRows?.length === 1" (click)="onEditSelected()"
+			class="btn px-3 mr-2 bg-table-border-color py-0" style="width: 64px; height: 42px;">
+			<app-icon icon="edit"></app-icon>
+		</button>
+	</div>
+
+	<app-table *ngIf="datasource" [displayedColumns]="displayedColumns" [dataSource]="datasource"
+		[state]="curTableState" [totalCount]="totalCount" [actions]="{editable: true, hideable: true }"
+		[selectable]="true" [filterable]="true" [paginable]="true" [defaultSort]="'createDate'"
+		[defaultSortDirection]="'DESC'" (selectionChanged)="onSelectionChanged($event)" (rowClick)="onRowClick($event)"
+		(rowEdit)="goToEdit($event)" (showHideToggle)="onShowHideToggle($event)"
+		(stateChanged)="onTableStateChanged($event)" class="table-offers flex-grow-1 table-categories" style="padding-bottom: 71px;">
+		<ng-template app-cell let-cell="cell" let-row="row" name="isImportant">
+			<div class="text-truncate text-right">
+				<span>
+					{{ row.isImportant ? "კი" : "არა" }}
+				</span>
+			</div>
+		</ng-template>
+		<ng-template app-cell let-cell="cell" let-row="row" name="createDate">
+			<div class="text-truncate text-right">
+				<span [matTooltip]="row.createDate | date: 'd MMM yy, HH:mm'">
+					{{ row.createDate | date: 'd MMM yy, HH:mm' }}
+				</span>
+			</div>
+		</ng-template>
+	</app-table>
+</div>

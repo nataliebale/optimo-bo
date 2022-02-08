@@ -1,0 +1,69 @@
+
+<form
+  *ngIf="form"
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="d-flex align-items-center justify-content-between border-bottom border-table-border-color pl-4 pr-18px"
+       style="height: 60px;"
+  >
+    <span class="font-color-dark font-size-18 font-family-bold line-height-normal">
+      {{'SUPPLIERS.TRANSACTIONS.PAYMENT' | translate}}
+      </span>
+    <button
+      class="btn bg-transparent rounded-0 p-0"
+      (click)="onCancel()"
+    >
+      <app-icon icon="close" class="icon-w-20px icon-h-20px"   style="cursor: pointer;"></app-icon>
+    </button>
+  </div>
+  <div
+    class="px-4 pt-3"
+   
+  >
+  <label class="font-size-14 font-color-dark font-family-bold   line-height-normal">
+    {{'SUPPLIERS.TRANSACTIONS.PAYMENT_TYPE' | translate}}
+  </label>
+    <ng-select
+      class="custom-select-header form-control"
+      [items]="paymentMethods"
+      placeholder="აირჩიე"
+      bindValue="value"
+      bindLabel="label"
+      [searchable]="true"
+      [clearable]="false"
+      formControlName="paymentMethod"
+    >
+    </ng-select>
+    <label class="font-size-14 font-color-dark font-family-bold   pt-3   line-height-normal">
+      {{'SUPPLIERS.TRANSACTIONS.ENTER_THE_AMOUNT' | translate}}
+    </label>
+    <input
+      id="transactionAmout"
+      data-hj-allow
+      class="form-control"
+      min="0"
+      type="number"
+      autocomplete="off"
+      formControlName="transactionAmount"
+    />
+  </div>
+  <div class="d-flex justify-content-end pt-4 pb-4 px-4">
+    <button
+    class="btn bg-transparent mr-3 font-size-14 font-color-dark font-family-bold"   
+    style="width: 120px;height: 42px;"
+    type="button"
+    (click)="onCancel()"
+  >
+    {{'GENERAL.CANCEL' | translate}}
+  </button>
+    <button
+      class="btn btn-primary font-color-white  font-size-14  font-family-bold"
+      style="width: 113px;height: 42px;"
+      type="submit"
+      [disabled]="!form.valid ? 'disabled' : null"
+    >
+      {{'GENERAL.SAVE' | translate}}
+    </button>
+  </div>
+</form>

@@ -1,0 +1,37 @@
+<div class="order-cards">
+  <div class="order-cards-card">
+    <div class="order-cards-card-header">წელი {{ lastYear }}</div>
+    <div class="order-cards-card-row">
+      <div class="order-cards-card-row-key">შესყიდვების რაოდენობა:</div>
+      <div class="order-cards-card-row-value">
+        {{ lastYearOrdersCount }}
+      </div>
+    </div>
+  </div>
+
+  <div class="order-cards-card">
+    <div class="order-cards-card-header">წელი {{ currentYear }}</div>
+    <div class="order-cards-card-row">
+      <div class="order-cards-card-row-key">შესყიდვების რაოდენობა:</div>
+      <div class="order-cards-card-row-value">
+        {{ currentYearOrdersCount }}
+      </div>
+    </div>
+  </div>
+
+  <div class="order-cards-card">
+    <div class="order-cards-card-row">
+      <div class="order-cards-card-row-key">განს. პროდუქტების რაოდენობა:</div>
+      <div class="order-cards-card-row-value">
+        {{ ordersCount }}
+      </div>
+    </div>
+  </div>
+
+  <div class="order-cards-card">
+    <div class="order-cards-card-row">
+      <div class="order-cards-card-row-key">საშ. ღირებულება:</div>
+      <div class="order-cards-card-row-value">₾ {{ averageOrdersPrice }}</div>
+    </div>
+  </div>
+</div>

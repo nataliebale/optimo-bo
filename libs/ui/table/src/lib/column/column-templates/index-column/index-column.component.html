@@ -1,0 +1,5 @@
+<app-column dataField="_index" [sortable]="false" [caption]="'#'">
+  <ng-template #cell let-i="i">
+    {{ startIndex + i + 1 }}
+  </ng-template>
+</app-column>

@@ -1,0 +1,30 @@
+<div (click)="onToggleMenu($event)" class="header-profile ml-auto" [class.active]="isMenuVisible">
+  <div class="avatar avatar-sm flex-shrink-0 mr-md-2 mr-sm-4 mr-3">
+    {{avatarText}}
+  </div>
+  <span
+    class="font-family-bold font-size-14 text-dark text-truncate d-none d-md-inline mr-1">{{ userDetails?.brandName }}</span>
+  <app-icon icon="arrow-down" class="flex-shrink-0 d-none d-md-inline mr-4 ml-auto"></app-icon>
+  <div *ngIf="isMenuVisible" clickOutside (clickOutside)="onToggleMenu()" class="header-dropdown" style="right: 24px;">
+    <div class="pt-3 px-18px pb-20px">
+      <div class="font-family-bold font-size-14 text-dark text-truncate line-height-normal">
+        {{ userDetails?.brandName || ('HEADBAR.MENU.NO_NAME_ASSIGNED' | translate) }}
+      </div>
+      <div class="font-size-14 font-family-regular font-color-dark mt-1"  >
+        {{ userDetails?.identificationNumber }}
+      </div>
+    </div>
+    <a routerLink="/profile" (click)="onToggleMenu()" class="header-dropdown-item  w-100 d-flex align-items-center px-2  text-decoration-none"   >
+      <app-icon icon="settings"  class="mr-2"></app-icon>
+      <span class="font-size-14 font-family-regular text-dark">
+        {{ 'GENERAL.PROFILE' | translate}}
+      </span>
+    </a>
+    <div (click)="logout.emit()" style=" cursor:pointer;" class="header-dropdown-item px-2 d-flex align-items-center">
+      <app-icon icon="logout" class="mr-2"></app-icon>
+      <span class="font-size-14 font-family-regular text-dark">
+        {{ 'GENERAL.SIGN_OUT' | translate }}
+      </span>
+    </div>
+  </div>
+</div>

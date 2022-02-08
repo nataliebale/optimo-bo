@@ -1,0 +1,13 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <rect width="20" height="20" x="4" y="4" fill="#4562FF" rx=".8"/>
+            <rect width="20" height="20" fill="#C7CFFF" rx="1.6"/>
+        </g>
+        <g fill="#4562FF">
+            <path d="M9 4h2v12H9z"/>
+            <path d="M4 9h12v2H4z"/>
+        </g>
+    </g>
+</svg>

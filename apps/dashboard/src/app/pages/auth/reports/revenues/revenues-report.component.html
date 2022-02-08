@@ -1,0 +1,22 @@
+<app-revenues-report-cards></app-revenues-report-cards>
+
+<div style="height: 500px; padding-right: 30px">
+  <app-revenues-report-line-chart
+    dateAxisTitle="პერიოდი"
+    valueAxisTitle="შემოსავალი"
+    dateDataField="saleDate"
+    valueDataField="totalRevenue"
+  >
+  </app-revenues-report-line-chart>
+</div>
+
+<div style="height: 500px; padding-right: 30px">
+  <app-revenues-report-line-chart
+    dateAxisTitle="პერიოდი"
+    valueAxisTitle="მოგება"
+    dateDataField="saleDate"
+    valueDataField="totalIncome"
+  >
+  </app-revenues-report-line-chart>
+</div>
+<app-revenues-report-pie-charts></app-revenues-report-pie-charts>

@@ -1,0 +1,376 @@
+<form *ngIf='form' [formGroup]='form'>
+  <div
+    class='container-fluid sticky-top bg-white'
+    style='height: 72px;'
+  >
+    <div class='row align-items-center h-100 border-bottom border-pagination-border'>
+      <div class='col pl-0 h-100'>
+        <button
+          type='button'
+          class='btn bg-white px-2 h-100 rounded-0'
+          style='width: 102px;'
+          (click)='onCancel()'
+        >
+          <app-icon icon='close'></app-icon>
+        </button>
+      </div>
+      <div class='col-auto font-size-20 font-family-bold text-dark'>
+        {{ title | translate}}
+      </div>
+      <div class='col pr-4 h-100 d-flex align-items-center justify-content-end'>
+        <ng-container
+          *ngIf='isManualInputVisible'
+        >
+          <button
+            class='btn bg-table-border-color font-size-14 font-family-bold text-dark  py-0 px-23px h-42px mr-3'
+
+            (click)='createOrder(shippingStatuses.Draft)'
+            [disabled]='requestIsSent'
+          >
+            {{'GENERAL.SAVE' | translate}}
+          </button>
+          <button
+            class='btn btn-primary font-size-14 font-family-bold text-white  py-0 px-23px h-42px'
+            (click)='createOrder(shippingStatuses.Shipped)'
+
+            [disabled]='requestIsSent'
+          >
+            {{'Shipping.ShippingButton' | translate}}
+          </button>
+        </ng-container>
+        <ng-container
+          *ngIf='!isManualInputVisible && !isFileUploaded'
+        >
+          <button
+            class='btn bg-table-border-color font-size-14 font-family-bold text-dark  py-0 px-23px h-42px mr-3'
+
+            (click)='saveOrderExcel(true)'
+            [disabled]='requestIsSent'
+          >
+            {{'GENERAL.SAVE' | translate}}
+          </button>
+        </ng-container>
+        <ng-container
+          *ngIf='isExcelInputVisible && isFileUploaded'
+        >
+          <button
+            class='btn btn-primary font-size-14 font-family-bold text-white  py-0 px-23px h-42px'
+            (click)='createOrderExcel()'
+
+            [disabled]='requestIsSent'
+          >
+            {{'Shipping.ShippingButton' | translate}}
+          </button>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <div class='w-100' *ngIf='isSubmited && isFormInvalid'>
+    <div
+      class='mx-auto bg-danger-bg  px-4  rounded text-center border  d-flex align-items-center border-danger-border mt-3'
+      style='max-width: 960px;height: 54px;'>
+      <div class='col-2 d-flex px-0'>
+        <app-icon icon='alert'></app-icon>
+      </div>
+      <div
+        class='col text-center font-size-14 font-color-dark font-family-regular'>{{'Shipping.Item.Details.globalErrorMessage' | translate}}</div>
+      <div class='col-2 px-0'></div>
+    </div>
+  </div>
+  <div [class.mt-70px]='!(isSubmited && isFormInvalid)' class='mx-auto  pt-20px px-0 pb-50px' style='max-width: 960px;'>
+    <div>
+      <div class='font-size-20 font-color-dark font-family-bold pb-30px'>
+        {{'Shipping.Item.Details.generalInfo' | translate}}
+      </div>
+      <div>
+        <div class='row'>
+          <div class='col-6'>
+            <label for='shippingName'
+                   class='font-size-15 font-color-dark font-family-bold'>{{'Shipping.Item.Details.title' | translate}}
+              *</label>
+            <div class=' form-group-lg input-group-custom d-flex align-items-center'>
+              <input
+                id='shippingName'
+                data-hj-allow
+                class='form-control input-left'
+                type='text'
+                formControlName='name'
+              />
+              <button
+                class='btn p-0 input-section'
+                style='right: 11px;'
+                (click)='onGenerateName()'
+
+              >
+                <app-icon icon='reload'></app-icon>
+              </button>
+            </div>
+            <label for='shippingLocationIdTo'
+                   class='font-size-15 font-color-dark font-family-bold'>{{'Shipping.Item.Details.locationNameTo' | translate}}
+              *</label>
+            <div>
+              <app-dynamic-select
+                id='shippingLocationIdTo'
+                [dataGetter]='getLocations'
+                [itemGetterById]='getLocationById'
+                formControlName='locationIdTo'
+                (change)='onLocationIdToChange($event)'
+              ></app-dynamic-select>
+            </div>
+
+            <!-- <div class="d-flex w-100 align-items-center  mt-4 mb-4">
+              <div
+              class="mr-5 custom-checkbox custom-checkbox-selected-blue"
+              style="justify-content: left; padding: 0;"
+            >
+              <input
+                type="checkbox"
+                id="hasTransportation"
+                name="hasTransportation"
+                (change)="onHasTransportationToggle()"
+                formControlName="hasTransportation"
+                class="custom-checkbox-control"
+              />
+              <label for="hasTransportation" class="custom-checkbox-label">
+                <span class="ml-3">ტრანსპორტირებით</span>
+              </label>
+            </div>
+          </div> -->
+          </div>
+          <div class='col-6 d-flex flex-column justify-content-between'>
+            <div class='form-group form-group-lg'>
+              <label for='shippingLocationIdFrom'
+                     class='font-size-15 font-color-dark font-family-bold'>{{'Shipping.Item.Details.locationNameFrom' | translate}}
+                *</label>
+              <div class='form-group form-group-lg d-flex'>
+                <input
+                  id='shippingLocationIdFrom'
+                  data-hj-allow
+                  class='form-control'
+                  type='text'
+                  [value]='locationIdFromName'
+                  disabled
+                />
+              </div>
+            </div>
+            <!-- <button
+            *ngIf="isDraftSaveVisible"
+            class="ml-auto line-height-normal btn bg-blue px-4  font-size-14 font-color-white font-family-bold py-12px"
+            (click)="saveOrderExcel()"
+            [disabled]="requestIsSent">
+            {{'GENERAL.CONTINUE' | translate}}
+          </button> -->
+          </div>
+          <!-- <ng-container
+            *ngIf="getValue('hasTransportation')"
+          > -->
+          <div
+            class='w-100 font-size-20 font-color-dark font-family-bold pb-30px pt-5 mt-42px px-12px'
+          >
+            ტრანსპორტირებით
+          </div>
+          <div class='col-6'>
+
+            <label
+              for='driverIsForeignСitizen'
+              class='font-size-15 font-color-dark font-family-bold'
+            >ტრანსპორტირების მეთოდი</label
+            >
+            <div class='form-group form-group-lg d-flex'>
+              <ng-select
+                id='driverIsForeignСitizen'
+                class='custom-select-header form-control'
+                [items]='transportationTypes'
+                formControlName='transportationType'
+                bindValue='value'
+                bindLabel='label'
+                [searchable]='false'
+                [clearable]='false'
+                (change)='onTransportationChange(true)'
+              >
+              </ng-select>
+            </div>
+          </div>
+
+
+          <ng-container *ngIf="getValue('transportationType') === TransportationMethod.Other">
+            <div class='col-6'>
+              <label
+                for='transportName'
+                class='font-size-15 font-color-dark font-family-bold'
+              >
+                სხვა ტრანსპორტი*
+              </label>
+              <div class='form-group form-group-lg d-flex'>
+                <input
+                  data-hj-allow
+                  id='transportName'
+                  type='text'
+                  class='form-control'
+                  formControlName='transportName'
+                />
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="getValue('transportationType') === TransportationMethod.RoadTransportation">
+            <div class='col-6'>
+
+              <label
+                for='driverName'
+                class='font-size-15 font-color-dark font-family-bold'
+              >მძღოლის სახელი და გვარი*</label
+              >
+              <div class='form-group form-group-lg d-flex'>
+                <input
+                  data-hj-allow
+                  id='driverName'
+                  type='text'
+                  class='form-control'
+                  formControlName='driverName'
+                />
+              </div>
+              <!-- <label for="driverPIN" class="font-size-15 font-color-dark font-family-bold">მძღოლის პირადი ნომერი*</label>
+                <div class=" d-flex">
+                  <input
+                    id="driverPIN"
+                    type="text"
+
+                    class="form-control"
+                    formControlName="driverPIN"
+                    [mask]="entityIdentifierMask"
+                  />
+                </div> -->
+
+            </div>
+            <div class='col-6'>
+              <label
+                for='driverIsForeignСitizen'
+                class='font-size-15 font-color-dark font-family-bold'
+              >მოქალაქეობა*</label
+              >
+              <div class='form-group form-group-lg d-flex'>
+                <ng-select
+                  id='driverIsForeignСitizen'
+                  class='custom-select-header form-control'
+                  [items]='citizenships'
+                  formControlName='driverIsForeignСitizen'
+                  bindValue='value'
+                  bindLabel='label'
+                  [searchable]='false'
+                  [clearable]='false'
+                  (change)='onCitizenshipChange()'
+                >
+                </ng-select>
+              </div>
+            </div>
+            <div class='col-6'>
+              <label
+                for='driverPIN'
+                class='font-size-15 font-color-dark font-family-bold'
+              >მძღოლის პირადი ნომერი*</label
+              >
+              <div class='form-group form-group-lg d-flex'>
+                <input
+                  data-hj-allow
+                  id='driverPIN'
+                  type='text'
+                  class='form-control'
+                  formControlName='driverPIN'
+                  [mask]='entityIdentifierMask'
+                />
+              </div>
+
+            </div>
+            <div class='col-6'>
+              <label
+                for='driverCarNumber'
+                class='font-size-15 font-color-dark font-family-bold'
+              >ავტომობილი ნომერი*</label
+              >
+              <div class='d-flex'>
+                <input
+                  data-hj-allow
+                  id='driverCarNumber'
+                  type='text'
+                  class='form-control'
+                  formControlName='driverCarNumber'
+                />
+              </div>
+            </div>
+          </ng-container>
+
+          <div class='col-6'>
+            <label
+              for='entitySalesDetailEndAddress'
+              class='font-size-15 font-color-dark font-family-bold'
+            >
+              საბოლოო მისამართი*
+            </label>
+            <div class='form-group form-group-lg d-flex'>
+              <input
+                data-hj-allow
+                id='entitySalesDetailEndAddress'
+                type='text'
+                class='form-control'
+                formControlName='endAddress'
+              />
+            </div>
+          </div>
+          <!-- </ng-container> -->
+          <div class='px-12px d-flex justify-content-between w-100 align-items-start'>
+            <div class='custom-checkbox custom-checkbox-selected-blue '>
+              <input
+                id='excel-toggle-checkbox'
+                data-hj-allow
+                type='checkbox'
+                class='custom-checkbox-control'
+                formControlName='isExcelUpload' />
+              <label for='excel-toggle-checkbox' class='custom-checkbox-label line-height-normal'>
+               <span class='ml-3'>
+                {{'Shipping.Item.Details.uploadProducts' | translate}}
+               </span>
+              </label>
+              <label>
+              </label>
+            </div>
+            <button
+              *ngIf='isDraftSaveVisible'
+              class='line-height-normal btn bg-blue px-4  font-size-14 font-color-white font-family-bold py-12px'
+              (click)='saveOrderExcel()'
+              [disabled]='requestIsSent'>
+              {{'GENERAL.CONTINUE' | translate}}
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div
+      *ngIf='isManualInputVisible'
+      class='mt-5 pt-42px'>
+      <div
+        class='font-size-20 font-color-dark font-family-bold pb-30px'
+      >
+        {{'Shipping.Item.Details.addProduct' | translate}}
+      </div>
+      <div>
+        <app-shipping-detail-products
+          [orderLines]='item?.orderLines'
+          (changeOrderLines)='orderLines = $event'
+        ></app-shipping-detail-products>
+      </div>
+    </div>
+    <div
+      *ngIf='isExcelInputVisible'
+      class='mt-5 pt-42px'>
+      <app-order-lines-excel-import
+        [shippingId]='shippingId'
+        formControlName='selectedFile'
+      >
+      </app-order-lines-excel-import>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,5 @@
+.rs-upload {
+  &:not([disabled]) {
+    border: solid 1px #2fcd8a !important;
+  }
+}

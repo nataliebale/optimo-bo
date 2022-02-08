@@ -1,0 +1,80 @@
+<!-- <div class="approve-dialog">
+  <div class="d-flex align-items-center justify-content-between  px-4" style="height: 60px;">
+    <div *ngIf="data?.title" class="font-size-18px font-family-bold font-color-dark">
+      ნამდვილად გსურს წაშლა?
+    </div>
+    <button
+      class="btn bg-transparent rounded-0 p-0"
+      (click)="onDecline()"
+    >
+      <app-icon icon="close" class="icon-w-20px icon-h-20px"   style="cursor: pointer;"></app-icon>
+    </button>
+  </div>
+  <div
+    *ngIf="data?.message"
+    class="approve-dialog-text  p-4"
+    [class.border-top]="data?.title"
+  >
+    {{ data.message }}
+  </div>
+  <ng-container [ngTemplateOutlet]="data?.templateRef"></ng-container>
+  <div class="font-size-14 font-color-dark font-family-regular pt-4 border-top border-table-border-color px-4" >წაშლილ პროდუქტებს უკან ვერ დააბრუნებ.</div>
+  <div class="d-flex p-4 justify-content-end">
+    <button
+      class="btn bg-transparent px-4 mr-2 font-size-14 font-color-dark font-family-bold"
+      style="height: 42px;"
+
+      (click)="onApprove()"
+    >
+      გაუქმება
+    </button>
+    <button
+      class="btn btn-primary px-4 font-size-14 font-color-white font-family-bold"
+      (click)="onDecline()"
+      style="height: 42px;"
+    >
+      წაშლა
+    </button>
+  </div>
+</div> -->
+<div class="approve-dialog">
+  <div class="d-flex align-items-center justify-content-between px-4 border-bottom border-table-border-color" style="height: 60px;">
+    <div *ngIf="data?.title" class="font-size-18px font-family-bold font-color-dark">
+      {{ data.title | translate}}
+    </div>
+    <button
+      class="btn bg-transparent rounded-0 p-0"
+      (click)="onClose()"
+    >
+      <app-icon icon="close" class="icon-w-20px icon-h-20px"   style="cursor: pointer;"></app-icon>
+    </button>
+  </div>
+  <div
+    *ngIf="data?.message"
+    class="approve-dialog-text  px-4 pt-4"
+    
+  >
+  <!-- [class.border-top]="data?.title" -->
+    {{ data.message  | translate}}
+  </div>
+  <ng-container [ngTemplateOutlet]="data?.templateRef"></ng-container>
+  <div class="d-flex px-4 pb-4  pt-4 justify-content-end">
+    <button
+      class="btn bg-transparent px-4 font-size-14 font-color-dark font-family-bold"
+      (click)="onDecline()"
+      style="height: 42px;min-width: 113px;"
+    >
+    {{ data.denyBtnLabel || 'GENERAL.CANCEL'  | translate}}
+    </button>
+    <button
+      class="btn  btn-primary font-color-white px-4 font-size-14  font-family-bold"
+      style="height: 42px;min-width: 95px;"
+
+      (click)="onApprove()"
+    >
+    {{ data.approveBtnLabel || 'GENERAL.DELETE' | translate}}
+    </button>
+    
+  </div>
+  
+</div>

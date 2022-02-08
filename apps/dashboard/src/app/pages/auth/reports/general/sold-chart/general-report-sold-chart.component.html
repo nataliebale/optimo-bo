@@ -1,0 +1,108 @@
+<div class="card mt-4">
+  <div
+    class="card-header bg-transparent d-block d-sm-flex align-items-center px-4 pt-4 pb-3 pb-sm-4"
+  >
+    <div
+      class="d-flex flex-wrap align-items-center font-family-semibold mb-3 mb-sm-0"
+    >
+      გაყიდვები
+      <span
+        style="width: 5px; height: 5px; background-color: #c0c5d2;"
+        class="d-inline-block rounded-circle mx-2"
+      ></span>
+      {{ revenueSummaryData?.totalRevenue | number: '1.2-2':'en' }}
+    </div>
+    <div class="ml-auto d-flex flex-wrap flex-sm-nowrap align-items-stretch">
+      <div class="product-calendar position-relative order-2 order-sm-1">
+        <div
+          class="input-group"
+          (click)="onToggleDatePicker(); $event.stopPropagation()"
+        >
+          <input
+            id=""
+            data-hj-allow
+            type="text"
+            class="form-control bg-transparent d-block d-sm-none d-md-block"
+            placeholder="არჩიე პერიოდი"
+            value="{{ dateRange[0] | date }} - {{ dateRange[1] | date }}"
+            readonly
+          />
+          <div class="input-group-append">
+            <span class="input-group-text bg-transparent">
+              <app-icon
+                style="transform: translateY(-1px);"
+                [icon]="'calendar'"
+                [fill]="'#0077ff'"
+              ></app-icon>
+            </span>
+          </div>
+        </div>
+        <app-date-picker
+          *ngIf="isDatePickerVisible"
+          clickOutside
+          (clickOutside)="onToggleDatePicker()"
+          [maxDate]="endOfToday"
+          (dateChange)="onDateChanged($event)"
+          [defaultDate]="dateRange"
+        ></app-date-picker>
+      </div>
+      <div class="custom-tabs ml-0 ml-sm-3 order-1 order-sm-2">
+        <button
+          class="btn btn-sm px-3 flex-grow-1"
+          style="height: 42px;"
+          [ngClass]="
+            activeTab === tab.revenue
+              ? 'bg-primary-light border-primary text-primary'
+              : 'bg-white border text-muted'
+          "
+          (click)="toggleTab(tab.revenue)"
+        >
+          შემოსავალი
+        </button>
+        <button
+          class="btn btn-sm px-3 flex-grow-1"
+          style="height: 42px;"
+          [ngClass]="
+            activeTab === tab.quantity
+              ? 'bg-primary-light border-primary text-primary'
+              : 'bg-white border text-muted'
+          "
+          (click)="toggleTab(tab.quantity)"
+        >
+          რაოდენობა
+        </button>
+      </div>
+      <app-chart-export
+        class="ml-2 ml-sm-3 order-3"
+        [chart]="activeTab === tab.revenue ? revenueChart : quantityChart"
+        [mapsOfColumnTitle]="
+          activeTab === tab.revenue
+            ? mapOfRevenueChartExportTitles
+            : mapOfQuantityChartExportTitles
+        "
+        [fileNamePrefix]="
+          activeTab === tab.revenue
+            ? 'SalesRevenueByPaymentMethod'
+            : 'SalesQuantitySoldByPaymentMethod'
+        "
+        ></app-chart-export>
+        <!-- mixpanelExportName="General Statistics Revenue Export" -->
+    </div>
+  </div>
+  <div class="card-body charts-card">
+    <app-chart
+      #revenueChart
+      [dataSource]="revenueDataSource"
+      [chartConfig]="revenueChartConfig"
+      [hidden]="activeTab !== tab.revenue"
+    >
+    </app-chart>
+    <app-chart
+      #quantityChart
+      [dataSource]="quantityDataSource"
+      [chartConfig]="quantityChartConfig"
+      [hidden]="activeTab !== tab.quantity"
+    >
+    </app-chart>
+  </div>
+</div>

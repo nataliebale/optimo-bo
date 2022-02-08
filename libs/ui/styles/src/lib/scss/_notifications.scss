@@ -1,0 +1,135 @@
+.notifications {
+    &-wrapper {
+        .notification {
+            &-btn {
+                position: relative;
+                width: 36px;
+                height: 36px;
+                @include media-breakpoint-down(custsm) {
+                    width: 30px;
+                    height: 30px;
+                }
+                app-icon {
+                    pointer-events: none;
+                }
+                &:hover {
+                    background-color: $table-border-color;
+                }
+                &.active {
+                    background-color: $row-hover-blue;
+                    app-icon {
+                        svg {
+                            .fill-change {
+                                @include transition;
+                                fill: $blue;
+                                stroke: $blue;
+                            }
+                        }
+                    }
+                }
+            }
+            &-number {
+                pointer-events: none;
+                position: absolute;
+                top: 0px;
+                right: -5px;
+                font: 12px $font-bold;
+                color: white;
+                padding: 2px 5px;
+                border-radius: 9px;
+                background-color: $red;
+                min-width: 20px;
+                max-width: 30px;
+                @include text-truncate;
+            }
+            &-list {
+                &-wrapper {
+                    position: absolute;
+                    top: $header-height;
+                    right: 24px;
+                    box-shadow: $custom-select-box-shadow;
+                    border: 1px solid $pagination-border;
+                    border-radius: 5px;
+                    height: 88.5vh;
+                    width: 440px;
+                    background-color: white;
+                    @include custom-scroll-1;
+                    @include media-breakpoint-down(custsm) {
+                        width: 100vw;
+                        height: calc(100vh - var(--header-height));
+                        right: 0px;
+                        border: none;
+                        box-shadow: none;
+                        border-radius: 0px;
+                        width: 100vw;
+                    }
+                }
+                &-item {
+                    &-wrapper {
+                        @include transition;
+                        border-radius: 5px;
+                        // border: 1px solid transparent;
+                        position: relative;
+                        margin-top: -2px;
+                        &:hover {
+                            background-color: $sidebar-gray;
+                            // border: 1px solid $pagination-border;
+                            // box-shadow: 0 10px 30px -16px rgba(0, 0, 0, 0.6);
+                            &::after {
+                                background-color: transparent !important;
+                            }
+                            & + div {
+                                &::after {
+                                    background-color: transparent;
+                                }
+                            }
+                        }
+                        &:not(:nth-child(2)) {
+                            &:after {
+                                content: "";
+                                @include transition;
+                                width: calc(100% - 26px);
+                                height: 1px;
+                                background-color: $table-border-color;
+                                position: absolute;
+                                top: 0px;
+                            }
+                            @include media-breakpoint-down(custsm) {
+                                &:after {
+                                    width: calc(100% - 16px);
+                                }
+                            }
+                        }
+                        @include media-breakpoint-down(custsm) {
+                            &:hover {
+                                box-shadow: none;
+                                // border-color: transparent;
+                                border-radius: 7px;
+                            }
+                        }
+                    }
+                }
+            }
+            &-text {
+                max-height: 64px;
+                overflow: hidden;
+                line-height: 1.64;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                &-wrapper {
+                    // max-width: 355px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.notification-list-open {
+    @include media-breakpoint-down(custsm) {
+        overflow-y: hidden;
+    }
+}

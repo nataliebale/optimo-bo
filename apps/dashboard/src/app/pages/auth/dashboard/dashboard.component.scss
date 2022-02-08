@@ -1,0 +1,188 @@
+.dashboard {
+  .table {
+    td {
+      height: 67px;
+    }
+  }
+
+  &-filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    &-search {
+      flex-grow: 8;
+    }
+
+    &-datepicker {
+      flex-grow: 1;
+      margin: 0 20px;
+    }
+
+    &-periods {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-grow: 1;
+
+      &-period {
+      }
+    }
+  }
+
+  &-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+
+    &-card {
+      height: 200px;
+      border: solid 1px #afafaf;
+      border-radius: 5px;
+
+      &-footer {
+        border-top: solid 1px #afafaf;
+        padding-top: 1px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 10px;
+
+        &-button {
+          margin-left: auto;
+          color: #afafaf;
+        }
+      }
+
+      &-body {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: calc(100% - 40px);
+        padding: 20px;
+
+        &-left {
+          flex-grow: 3;
+          margin-right: 10px;
+
+          &-title {
+            font-size: 16px;
+            color: #afafaf;
+          }
+
+          &-value {
+            font-size: 30px;
+            font-weight: 600;
+          }
+        }
+
+        &-right {
+          flex-grow: 5;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+
+          &-item {
+            width: calc(50% - 20px);
+            height: calc(50% - 20px);
+            margin: 10px;
+
+            &-title {
+              font-size: 16px;
+              color: #afafaf;
+            }
+
+            &-value {
+              font-size: 20px;
+            }
+          }
+
+          &-item:nth-child(2n) {
+            text-align: right;
+          }
+        }
+      }
+
+      &-revenue {
+        width: calc(40% - 10px);
+      }
+
+      &-income {
+        margin: 0 20px;
+        width: calc(40% - 10px);
+      }
+
+      &-bog {
+        width: 20%;
+      }
+    }
+  }
+
+  &-grids {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &-grid {
+      width: calc(50% - 20px);
+      margin-top: 10px;
+      border: solid 1px #afafaf;
+      border-radius: 5px;
+
+      &-header {
+        padding: 10px;
+        border-bottom: solid 1px #afafaf;
+        font-size: 1.3em;
+      }
+
+      &-body {
+        height: 370px;
+      }
+
+      &-footer {
+        border-top: solid 1px #afafaf;
+        padding-top: 1px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 10px;
+
+        &-button {
+          margin-left: auto;
+          color: #afafaf;
+        }
+      }
+    }
+
+    &-grid:nth-child(2n) {
+      margin-left: 20px;
+    }
+  }
+
+}
+
+.full-width {
+  width: 100%;
+}
+
+#income-chart {
+  height: 90%;
+  width: 100%;
+}
+
+.order-delayed .mat-cell {
+  color: red !important;
+}
+
+.order-incoming .mat-cell {
+  color: green !important;
+}

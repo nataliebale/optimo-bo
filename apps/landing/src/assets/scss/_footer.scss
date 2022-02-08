@@ -1,0 +1,31 @@
+.footer {
+  background-color: $footer-bg;
+  color: $footer-color;
+  min-height: $footer-height;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  &-link {
+    &:not(.disabled) {
+      color: rgba(#ebecf5, .7);
+    }
+
+    @include transition;
+
+    &:not(.disabled):hover {
+      color: #ebecf5;
+      text-decoration: none;
+    }
+
+    &.disabled {
+      color: rgba(#ebecf5, .3);
+      cursor: not-allowed;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}

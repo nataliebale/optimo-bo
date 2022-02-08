@@ -1,0 +1,112 @@
+<div
+  class="d-flex align-items-center border-bottom px-4 border-table-border-color"
+  style="height: 87px;"
+>
+  <div *ngIf="receiptTemplate?.id" class="d-flex align-items-center col-3 px-0">
+    <button
+      (click)="onEdit()"
+      class="btn-view-action-rounded mr-2"
+      style="width: 36px; height: 36px;"
+    >
+      <app-icon [icon]="'edit-tbls'"></app-icon>
+    </button>
+    <button
+      (click)="onDelete()"
+      class="btn-view-action-rounded"
+      style="width: 36px; height: 36px;"
+      *ngIf="receiptTemplate && receiptTemplate.isInUse !== true"
+    >
+      <app-icon [icon]="'trash-tbls'" fill="#fc3c2d"></app-icon>
+    </button>
+  </div>
+  <span
+    class="font-size-20 font-family-bold text-dark col text-center text-truncate"
+    >{{ receiptTemplate?.name }}</span
+  >
+
+  <div class="col-3 text-right px-0">
+    <app-icon
+      (click)="close()"
+      [icon]="'close'"
+      class="ml-auto icon-close-dark"
+      style="cursor: pointer;"
+    ></app-icon>
+  </div>
+</div>
+
+<div
+  style="height: 455px; overflow-y: auto;"
+  class="custom-view-scroll d-flex flex-column border-right border-transparent border-width-2px"
+>
+  <div
+    class="container-fluid py-4 border-bottom border-table-border-color px-3"
+  >
+    <optimo-view-attributes
+      [items]="receiptTemplateAttribteItems"
+    ></optimo-view-attributes>
+    <!-- <div class="row align-items-center">
+      <div class="col line-height-normal" >
+        <div class="font-family-bold font-size-14 text-dark">
+          დასახელება
+        </div>
+        <div class="font-size-14 font-family-regular text-dark mt-1">
+          {{ receiptTemplate?.name }}
+        </div>
+      </div>
+      <div class="col line-height-normal">
+        <div class="font-family-bold font-size-14 text-dark">
+          ერთეული
+        </div>
+        <div class="font-size-14 font-family-regular text-dark mt-1">
+          {{ receiptTemplate?.unitOfMeasurementDescription }}
+        </div>
+      </div>
+    </div>
+    <div class="row align-items-center pt-4">
+      <div class="col line-height-normal"  >
+        <div class="font-family-bold font-size-14 text-dark">
+          აღწერა
+        </div>
+        <div class="font-size-14 font-family-regular text-dark mt-1">
+          {{ receiptTemplate?.description }}
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <div class="waybills-table-paddings">
+    <app-table
+      *ngIf="receiptTemplate?.templateItems"
+      [dataSource]="receiptTemplate.templateItems"
+      [displayedColumns]="templateColumns"
+      [paginable]="false"
+      [selectable]="false"
+      [filterable]="false"
+      [staticData]="true"
+      class="table-dialogs table-view"
+    >
+      <ng-template app-cell let-cell="cell" let-row="row" name="name">
+        <div class="d-flex flex-column">
+          <span
+			[matTooltip]="cell"
+			#ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+            class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark"
+          >
+            {{ cell }}
+          </span>
+          <span
+			[matTooltip]="row.barcode"
+			#ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+            class="text-truncate mw-100 d-inline-block table-text-dark pt-1"
+          >
+            {{ row.barcode }}
+          </span>
+        </div>
+      </ng-template>
+      <ng-template app-cell let-cell="cell" let-row="row" name="unitCost">
+        <div class="text-truncate text-right">
+          {{ cell | number: '1.4-4':'en' }} ₾
+        </div>
+      </ng-template>
+    </app-table>
+  </div>
+</div>

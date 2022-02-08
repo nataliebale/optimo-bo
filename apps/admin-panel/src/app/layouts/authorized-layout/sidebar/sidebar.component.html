@@ -1,0 +1,31 @@
+<div class="sidebar sidebar-admin" [class.active]="active">
+  <div class="sidebar-header align-items-center pl-3 overflow-hidden">
+    <app-icon
+      icon="burger-admin"
+      style="cursor: pointer;"
+      (click)="onToggleActive()"
+      class="mr-30px d-md-none mt-14px ml-3"
+    ></app-icon>
+
+    <app-icon
+      class="d-lg-inline d-none mr-30px"
+      style="cursor: pointer;"
+      icon="burger-admin"
+      (click)="onToggleFold()"
+    ></app-icon>
+    <app-icon
+      class="d-md-inline d-lg-none d-none mr-30px"
+      style="cursor: pointer;"
+      icon="burger-admin"
+      (click)="onToggleFoldMedium()"
+    ></app-icon>
+
+    <a routerLink="/" class="router-link-active d-none d-md-block"
+      ><img src="/assets/images/logo-admin.svg" alt=""
+    /></a>
+  
+  </div>
+  <app-nested-menu
+    [menu]="MENU_TREE"
+  ></app-nested-menu>
+</div>

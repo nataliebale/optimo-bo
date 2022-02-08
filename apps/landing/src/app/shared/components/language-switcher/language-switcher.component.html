@@ -1,0 +1,16 @@
+<ng-select class="" [searchable]="false" [clearable]="false" [ngModel]="translateService.currentLang"
+  (ngModelChange)="onLanguageChange($event)">
+
+  <ng-option value='ka' class="d-flex align-items-center">
+    <app-icon icon="flag-geo"></app-icon>
+    <span class="font-size-16 font-family-regular pl-2">GE</span>
+  </ng-option>
+  <ng-option value='en' class="d-flex align-items-center">
+    <app-icon icon="flag-eng"></app-icon>
+    <span class="font-size-16 font-family-regular pl-2">EN</span>
+  </ng-option>
+  <ng-option value='ru' class="d-flex align-items-center">
+    <app-icon icon="flag-rus"></app-icon>
+    <span class="font-size-16 font-family-regular pl-2">RU</span>
+  </ng-option>
+</ng-select>

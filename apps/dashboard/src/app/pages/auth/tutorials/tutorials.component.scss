@@ -1,0 +1,135 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+
+.tutorials {
+  padding: 40px 101px 56px 93px;
+
+  // &-items {
+  //   margin: 58px;
+  // }
+
+  &-modal {
+    &-backdrop {
+      position: fixed;
+      z-index: $zindex-modal-backdrop;
+      opacity: 0.8;
+      background-color: #121628;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    &-body {
+      width: 100%;
+      max-width: 1024px;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: $zindex-modal;
+      border-radius: 5px;
+  box-shadow: 0 5px 30px -10px rgba(13, 18, 46, 0.5);
+  padding: 32px;
+  background-color: white;
+    }
+
+    &-close {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      backdrop-filter: blur(5px);
+      background-color: rgba(37, 37, 37, 0.5);
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      right: -50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.15s linear;
+
+      &:hover {
+        background-color: rgba(37, 37, 37, 0.7);
+      }
+    }
+  }
+}
+
+.tutorial {
+  $tutorial: &;
+  display: block;
+
+  &-img {
+    height: 197px;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &-length {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 2px;
+    font: 14px 'notosans-medium';
+    color: white;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+}
+// @media all and (max-width: 1620px) {
+//   .tutorials {
+//     padding: 26px 80px 56px;
+//     &-items {
+//       margin: 40px;
+//     }
+//   }
+// }
+// @media all and (max-width: 1500px) {
+//   .tutorials {
+//     padding: 26px 40px 56px;
+//     &-items {
+//       margin: 40px;
+//     }
+//   }
+// }
+@media all and (max-width: 1366px) {
+  .tutorials {
+    padding: 26px 180px 56px;
+    &-items {
+      margin: 40px;
+    }
+  }
+}
+@media all and (max-width: 1280px) {
+  .tutorials {
+    padding: 26px 120px 56px;
+    &-items {
+      margin: 40px;
+    }
+  }
+}
+@media all and (max-width: 1024px) {
+  .tutorials {
+    padding: 26px 20px 56px;
+    &-items {
+      margin: 40px 20px;
+    }
+  }
+}
+@media all and (max-width: 768px) {
+  .tutorials {
+    padding: 26px 100px 56px;
+  }
+}
+@media all and (max-width: 575px) {
+  .tutorials {
+    padding: 26px 20px 56px;
+  }
+}

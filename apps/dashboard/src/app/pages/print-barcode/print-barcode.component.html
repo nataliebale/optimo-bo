@@ -1,0 +1,30 @@
+  <div
+    *ngFor="let data of data; let index = index"
+    [ngClass]="{
+      'break-after-always': true
+    }"
+    class="print-barcode-wrapper"
+  >
+    <div class="w-100 d-flex align-items-center justify-content-center flex-column">
+      <span class="font-size-28 text-center mb-2 font-family-regular font-color-black" style="max-width: 80%;letter-spacing: 1px;font-weight: 600;">
+        {{ data?.name }}
+      </span>
+      <span class="text-center mb-2 font-family-regular font-color-black"  style="font-weight: 600; font-size: 38px;max-width: 80%;"
+        >{{ data?.unitPrice | number: '1.2-2':'en' }} ₾</span>
+    </div>
+    
+
+    <div class="d-flex justify-content-center"
+    >
+      <ngx-barcode6
+        [bc-value]="data?.barcode"
+        [bc-width]="4"
+        [bc-margin]="0"
+        bc-font-options="bold"
+        [bc-margin-top]="0"
+        [bc-font-size]="38"
+        [bc-display-value]="true"
+      ></ngx-barcode6>
+    </div>
+  </div>  
+ 

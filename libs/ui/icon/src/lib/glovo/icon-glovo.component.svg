@@ -1,0 +1,14 @@
+<svg id="icon-sidebar-home" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="Group_66" data-name="Group 66">
+    <g id="Group_65" data-name="Group 65">
+      <g id="Group_64" data-name="Group 64">
+        <g id="Group_63" data-name="Group 63">
+          <path id="Path_36" data-name="Path 36" d="M0,0H24V-24H0Z" transform="translate(0 24)" fill="none" fill-rule="evenodd"/>
+          <g id="Group_111" data-name="Group 111" transform="translate(-119.125 2.873)">
+            <path id="Path_50" data-name="Path 50" d="M131.125.127a5.742,5.742,0,0,0-5.779,5.689,5.591,5.591,0,0,0,1.09,3.317l.154.21,3.008,4.18a1.409,1.409,0,0,0,1.168.591h.719a1.4,1.4,0,0,0,1.167-.591l3.009-4.18.152-.21A5.589,5.589,0,0,0,136.9,5.816,5.742,5.742,0,0,0,131.125.127ZM133.5,7.5l-.16.221L131.126,10.8l-2.215-3.075-.163-.223a2.837,2.837,0,0,1-.557-1.684,2.933,2.933,0,0,1,5.866,0A2.828,2.828,0,0,1,133.5,7.5Zm-4,9.184v-.011a1.61,1.61,0,0,1,3.218-.011v.011a1.567,1.567,0,0,1-1.618,1.547,1.55,1.55,0,0,1-1.6-1.536Z" fill="#343434" fill-rule="evenodd"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

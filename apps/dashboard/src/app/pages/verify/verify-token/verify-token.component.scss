@@ -1,0 +1,38 @@
+.verify-token {
+  width: 100vw;
+  height: 100vh;
+
+  // background-image: url('libs/ui/styles/src/lib/images/background/bg.jpg');
+  background-size: cover;
+  background-position: center;
+
+  &__overlay {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($color: #000000, $alpha: 0.6);
+  }
+
+  &__heading {
+    padding-top: 15px;
+
+    &--success {
+      color: green;
+    }
+
+    &--fail {
+      color: red;
+    }
+  }
+
+  &__form-container {
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    padding: 30px 60px 30px 60px;
+    background: white;
+    border: 1px solid lightgray;
+  }
+}

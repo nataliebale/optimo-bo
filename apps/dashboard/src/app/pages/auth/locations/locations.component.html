@@ -1,0 +1,73 @@
+<div class="h-100 d-flex flex-column" style="padding-bottom: 71px;">
+  <div class="d-flex align-items-center py-3 px-4" style="height: 80px;">
+    <div
+      class="d-flex align-items-center pr-3"
+      *ngIf="!(selectedRows.length > 0 || isAllDeletable)"
+    >
+      <button (click)="addNewItem()" class="btn btn-primary btn-add mr-3">
+        <span>
+          {{'GENERAL.ADD' | translate}}
+        </span>
+      </button>
+    </div>
+    <button
+    class="btn p-0 mr-2 bg-table-border-color"
+    style="width: 64px; height: 42px;"
+      [matTooltip]="'GENERAL.EDIT' | translate"
+      (click)="goToEdit()"
+      *ngIf="selectedRows.length === 1"
+    >
+      <app-icon [icon]="'edit'"></app-icon>
+    </button>
+    <button
+    class="btn mr-2 p-0 bg-table-border-color"
+      (click)="openRemovalDialog()"
+      [matTooltip]="'GENERAL.DELETE' | translate"
+      *ngIf="selectedRows.length !== 0 || isAllDeletable"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon [icon]="'trash'"></app-icon>
+    </button>
+  </div>
+  <div class="bg-white">
+    <app-table
+      [dataSource]="dataSource"
+      [totalCount]="totalCount"
+      [state]="currentState"
+      [selectable]="true"
+      [actions]="{ editable: true, deletable: isRowDeletable }"
+      defaultSort="name"
+      defaultSortDirection="DESC"
+      [displayedColumns]="displayedColumns"
+      (stateChanged)="onTableStateChanged($event)"
+      (selectionChanged)="onSelectionChanged($event)"
+      (rowEdit)="goToEdit($event)"
+      (rowDelete)="openRemovalDialog($event)"
+      class="table-operators before-last-th-bordered dropdown-select-overflow-scroll table-header-dropdown-select-right table-min-h-730px table-header-dropdown-select-w-300px"
+    >
+      <ng-template app-cell let-cell="cell" let-row="row" name="phoneNumber">
+        <div>
+          <span
+            [matTooltip]="cell"
+            #ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+            class="font-family-regular text-truncate mw-100 d-inline-block table-text-dark"
+          >
+            {{ cell }}
+          </span>
+        </div>
+      </ng-template>
+      <ng-template app-cell let-cell="cell" let-row="row" name="locationAddressId">
+        <div>
+          <span
+            [matTooltip]="cell"
+            #ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+            class="text-truncate d-inline-block table-text-dark"
+          >
+            {{ addressMap.get(cell) || '' }}
+          </span>
+        </div>
+      </ng-template>
+      <ng-template app-cell let-cell="cell" name="id"> </ng-template>
+    </app-table>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+<div class="w-100 h-100 d-flex flex-column">
+  <div class="d-flex align-items-center px-4 py-3" style="height: 80px;">
+    <button
+      class="btn mr-2 px-3 bg-table-border-color py-0"
+      (click)="openRemovalDialog(selectedRows)"
+      style="width: 64px; height: 42px;"
+      *ngIf="!(!selectedRows || !selectedRows.length)"
+    >
+      <app-icon icon="trash"></app-icon>
+    </button>
+
+    <a
+      class="btn mr-2 px-3 bg-table-border-color py-0 d-flex align-items-center justify-content-center"
+      *ngIf="
+        selectedRows &&
+        selectedRows.length === 1 &&
+        selectedRows[0].registrationRequestStatus !== 99
+      "
+      (click)="onSubmitClick()"
+      style="width: 64px; height: 42px;"
+    >
+    <app-icon icon="submit-admin"></app-icon>
+    </a>
+
+    
+  </div>
+
+  <app-table
+    *ngIf="datasource"
+    [displayedColumns]="displayedColumns"
+    [dataSource]="datasource"
+    [totalCount]="totalCount"
+    [state]="curTableState"
+    [actions]="{ editable: false, deletable: true }"
+    [selectable]="true"
+    [filterable]="true"
+    [paginable]="true"
+    [defaultSort]="'id'"
+    [defaultSortDirection]="'DESC'"
+    (selectionChanged)="onSelectionChanged($event)"
+    (rowClick)="onRowClick($event.id)"
+    (rowDelete)="openRemovalDialog([$event])"
+    (stateChanged)="onTableStateChanged($event)"
+    class="table-offers flex-grow-1 table-categories"
+    style="padding-bottom: 71px;"
+  >
+    <ng-template app-cell let-cell="cell" let-row="row" name="name">
+      <div class="line-height-normal translate-t-1px">
+        <span
+          [matTooltip]="row.firstName"
+          class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1"
+        >
+          {{ row.firstName }}
+        </span>
+        <br />
+        <span
+        class="text-truncate mw-100 d-inline-block table-text-dark"
+          [matTooltip]="row.lastName"
+        >
+          {{ row.lastName }}
+        </span>
+      </div>
+    </ng-template>
+    <ng-template
+      app-cell
+      let-cell="cell"
+      let-row="row"
+      name="phoneNumberOrEmail"
+    >
+      <div class="line-height-normal translate-t-1px">
+        <span
+        class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1"
+          [matTooltip]="row?.email"
+        >
+          {{ row?.email }}
+        </span>
+        <br />
+        <span
+        class="text-truncate mw-100 d-inline-block table-text-dark"
+          [matTooltip]="row?.phoneNumber"
+        >
+          {{ row?.phoneNumber }}
+        </span>
+      </div>
+    </ng-template>
+
+    <ng-template app-cell let-cell="cell" let-row="row" name="businessTypes">
+      <ng-container *ngIf="(row?.businessTypes)[0]">
+        <div>
+          <span
+            class="font-family-medium text-truncate mw-100 d-inline-block table-text-dark"
+            [matTooltip]="(row?.businessTypes)[0].name"
+          >
+            {{ (row?.businessTypes)[0].name }}
+          </span>
+        </div>
+      </ng-container>
+    </ng-template>
+  </app-table>
+</div>

@@ -1,0 +1,265 @@
+{
+  "GENERAL": {
+    "Login": "Log in",
+    "JoinUs": "Join us",
+    "FAQ": "Frequently asked questions",
+    "BecomeDealer": "Become a dealer",
+    "RequestDemo": "Request a demo",
+    "AllRightsReserved": "All rights reserved",
+    "Yes": "Yes",
+    "No": "No",
+    "Soon": "Soon",
+    "AnnualDiscount": "Annual discount",
+    "Functional": "Functional",
+    "Month": "Month",
+    "Basic": "Basic",
+    "Standart": "Standard",
+    "Premium": "Premium",
+    "Popular": "Popular",
+    "Tel": "Phone",
+    "Address": "Address",
+    "CompanyTypes": {
+      "Individual": "Individual Entrepreneur",
+      "LTD": "Ltd.",
+      "Other": "Other"
+    },
+    "FirstName": "Name",
+    "LastName": "Surname",
+    "TelNumber": "Phone number",
+    "Email": "E-mail",
+    "CompanyType": "Company type",
+    "CompanyName": "Company name",
+    "PersonalNumber": "Personal number",
+    "IdentificationCode": "Identification code",
+    "ActualAddress": "Actual address",
+    "FieldOfBusiness": "Field of business",
+    "ChooseAPackage": "Select a package",
+    "Send": "Send",
+    "ContactUsIfYouHaveQuestions": "Contact us if you have any questions",
+    "Search": "Search",
+    "NotFoundText": "Nothing found",
+    "TypeToSearchText": "Enter keyword to search"
+  },
+  "Footer": {
+    "SimplifyYourBusiness": {
+      "FirstLine": "Simplify your business",
+      "SecondLine": "with Optimo"
+    },
+    "ProductHeading": "Product",
+    "ContactHeading": "Contact"
+  },
+  "MainNavigation": {
+    "Home": "Home Page",
+    "Packages": "Packages"
+  },
+  "HomePage": {
+    "VideoTitle": {
+      "FirstLine": "Manage and develop your business",
+      "SecondLine": "with Optimo"
+    },
+    "WhatIsOptimoSection": {
+      "Question": "About Optimo",
+      "Answer": "A modern, digital tool to lead your business and manage your sales",
+      "EasyWithOptimo": {
+        "FirstLine": "with Optimo",
+        "SecondLine": "it's easier",
+        "Description": "to manage business, control stocks, track statistics and adjust RS-uploaded waybills"
+      },
+      "OptimoIsInformative": {
+        "title": "Informative",
+        "Description": "Basic information about the business accumulated in a single space"
+      },
+      "OptimoIsIntuitive": {
+        "title": "Intuitive",
+        "Description": "Simple and easy-to-use functional makes it easier to find the information or the product you need."
+      },
+      "OptimoIsDevelopmental": {
+        "title": "Up to date ",
+        "Description": "Optimo solution is constantly updated and refined, thereby always providing the access to modern technologies."
+      }
+    },
+    "ManagerWorkspaceSection": {
+      "Title": "Manager's workspace",
+      "Description": "The best solution to optimize your business",
+      "ManageYourBusiness": {
+        "FirstLine": "Manage",
+        "SecondLine": "your business",
+        "Description": "Optimo is tailored to your business needs, offering interesting information and advice, contributing to the growth and development of your business activity"
+      },
+      "WillBeConstantlyInformed": {
+        "Title": "You will be always informed",
+        "Description": "You will have the access to the information about your business from anywhere at any time"
+      },
+      "WillHaveIntegrationWithRS": {
+        "Title": "You will have possibility to integrate with RS",
+        "Description": "You will easily manage the waybills uploaded to your business"
+      },
+      "EasilyReadStatistics": {
+        "Title": "You will easily track statistics",
+        "Description": "You will be able to track the latest data on your stocks, sales and income at any time"
+      }
+    },
+    "CashierSection": {
+      "Title": "Cashier space",
+      "Description": "Fast and flexible system for cashiers",
+      "SaveTimeAndSellEasily": {
+        "FirstLine": "Save your time",
+        "SecondLine": "Sell easily!",
+        "Description": "A modern app Optimo will help you manage sales quickly and easily"
+      },
+      "EasyInterface": {
+        "Title": "Simple interface",
+        "Description": "Intuitive app Optimo will allow a cashier to execute sales quickly and easily"
+      },
+      "IntegratedOrders": {
+        "Title": "Integrated orders",
+        "Description": "A cashier will be able to get pre-registered orders"
+      },
+      "EasyPayment": {
+        "Title": "Easy Payment",
+        "Description": "Optimo allows to quickly and easily receive payments not only in cash, but also on any type of credit cards."
+      }
+    },
+    "DevicesSection": {
+      "Title": "Devices",
+      "Description": "A modern and flexible device for your business",
+      "OptimoDevice": {
+        "FirstLine": "Device",
+        "SecondLine": "Optimo",
+        "Description": "An easy-to-use and comfortable device for a cashier, which is perfectly compatible with the Optimo software"
+      },
+      "ModernAndBudget": {
+        "Title": "Modern and low-cost",
+        "Description": "Optimo device saves your time and money and is best for your business optimization"
+      },
+      "Flexible": {
+        "Title": "Flexible device",
+        "Description": "It can be installed everywhere and be moved to any place"
+      },
+      "Compatible": {
+        "Title": "Compatible",
+        "Description": "You can connect Optimo to any device that you need for your business"
+      }
+    },
+    "OptimoIsAlreadyInUseSection": {
+      "Title": "Optimo is already used by:",
+      "AutoPartsStore": "Autopart store",
+      "ZooShop": "Zoo shop",
+      "GroceryStore": "Grocery",
+      "HardwareStore": "Hardware store"
+    },
+    "BecomeTheNext": "Be the next",
+    "ManageAndGrowYourBusinessWithOptimo": "Manage and develop your business with Optimo"
+  },
+  "PackagesPage": {
+    "BusinessDashboard": "Business-Dashboard",
+    "InventoryManagement": "Stock management",
+    "ProductManagement": "Product management",
+    "Integrations": "Integrations",
+    "Production": "Production",
+    "Reports": "Reports",
+    "ManagingBranches": "Branch management",
+    "Statistics": "Statistics",
+    "IfAnnualDiscountIsActive": "Package price in case of annual payment",
+    "ManageCategories": "Category Management",
+    "SupplierManagement": "Supplier Management",
+    "OrderManagement": "Order Management",
+    "PriceManagement": "Price Management",
+    "Inventorization": "Inventorization",
+    "Recipes": "Recipes",
+    "Making": "Making",
+    "IntegrationWithRS": "Integration with RS.ge",
+    "IntegrationWithElectricScales": "Integration with electric scales",
+    "IntegrationWithKasa.ge": "Integration with Kasa.ge fiscal device",
+    "IntegrationWithDaisyExpert": "Integration with Daisy Expert fiscal device",
+    "IntegrationWithExtra.ge": "Integration with Extra.ge",
+    "SalesManagement": "Sales management",
+    "BalanceManagement": "Balance management",
+    "GeneralStatistics": "General statistics",
+    "ProductStatistics": "Product statistics",
+    "StatisticsOfSuppliers": "Supplier statistics",
+    "CategoryStatistics": "Category statistics",
+    "StatisticsOfShifts": "Shift statistics",
+    "InformationRequiredForAnAccountant": "Information required for an accountant",
+    "Technic": "Technic",
+    "CashDevice": "Cash device",
+    "Unlimited": "Unlimited",
+    "ModernSection": {
+      "Title": "Modernize your business",
+      "Description": "Choose an optimal package for your business ",
+      "WantDevice": "Want to get a device?",
+      "UseThe14DaysForFree": "14-day free trial"
+    },
+    "AdvantagesComparisonSection": {
+      "Title": "Compare the advantages",
+      "Description": "Get familiar with Optimo functional and choose a package tailored to your business"
+    },
+    "Contact": {
+      "AddressValue": "#41 Pekini Ave. Tbilisi 0160, Georgia"
+    }
+  },
+  "RequestPage": {
+    "FillOutTheApplication": "Fill out the application",
+    "BecomeMemberOfOptimo": {
+      "FirstLine": "Become",
+      "SecondLine": "the member of Optimo",
+      "Description": "Fill out a brief application and manage your business with Optimo"
+    },
+    "RequestSentSuccessfully": {
+      "Thanks": "Thanks",
+      "YourRequestHasBeenSentSuccessfully": "Your application has been sent successfully.",
+      "WeWillContactYouSoon": "We will contact you soon."
+    },
+    "Form": {
+      "DoYouUseInventoryManagementSoftware": "Do you use an inventory management software?",
+      "WhichInventoryManagementSoftwareDoYouUse": "Which Inventory Management Software do you use?",
+      "HowDoYouRecordProducts": "How do you record products?"
+    }
+  },
+  "DemoPage": {
+    "RequestDemo": "Request a demo",
+    "FillOutTheApplication": "Fill out an application",
+    "RequestDemoSection": {
+      "FirstLine": "Request",
+      "SecondLine": "Demo",
+      "Description": "If you would like to get more information about Optimo, please request a demonstration, our representative will contact you within three working days, make an appointment and provide you with the detailed information you are interested in"
+    },
+    "RequestSentSuccessfully": {
+      "Thanks": "Thanks",
+      "YourRequestHasBeenSentSuccessfully": "Your request has been successfully submitted.",
+      "WeWillContactYouSoon": "We will contact you soon."
+    }
+  },
+  "PageTitleAndMetaTags": {
+    "MainPage": {
+      "title": "Inventory management and accounting",
+      "meta": "Optimo simplifies product accounting, inventory management, income accounting, tracking statistics, waybill adjustment and other processes.Learn more."
+    },
+    "RequestPage": {
+      "title": "Join us",
+      "meta": "Join us - get detailed information. Optimo is a modern inventory management and accounting software for small and medium-size companies. Learn more."
+    },
+    "FaqPage": {
+      "title": "Frequently asked questions",
+      "meta": "Frequently asked questions – get detailed information. Optimo is a modern inventory management and accounting software for small and medium-size companies. Learn more."
+    },
+    "PackagesPage": {
+      "title": "Packages",
+      "meta": "Packages-get detailed information. Optimo is a modern inventory management and accounting software for small and medium-size companies. Learn more."
+    },
+    "RequestDemoPage": {
+      "title": "Request demo",
+      "meta": "Request demo - get detailed information. Optimo is a modern inventory management and accounting software for small and medium-size companies. Learn more."
+    }
+  },
+  "FAQPage": {
+    "ContactUs": "If you have additional questions, please, contact us.",
+    "HowCanWeHelp": "How can we help?",
+    "Categories": {
+      "general": "General questions",
+      "packages": "Prices and Packages",
+      "managers": "Manager's space",
+      "operators": "Cashier's space"
+    }
+  }
+}

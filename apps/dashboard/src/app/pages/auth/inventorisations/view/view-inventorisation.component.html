@@ -1,0 +1,128 @@
+<ng-container>
+  <div class="d-flex align-items-center border-bottom px-4 border-table-border-color " style="height: 88px;">
+    <div class="col-3 px-0 d-flex">
+      <ng-container
+        *ngIf="isDraft"
+      >
+          <button
+            (click)="onEdit()"
+            class="btn-view-action-rounded mr-2"
+            style="width: 36px;height: 36px;"
+          >
+              <app-icon [icon]="'edit-tbls'" ></app-icon>
+          </button>
+          <button
+          (click)="onDelete()"
+          class="btn-view-action-rounded "
+          style="width: 36px;height: 36px;"
+        >
+          <app-icon
+          
+            [icon]="'trash-tbls'"
+            fill="#fc3c2d"
+          ></app-icon>
+          </button>
+      </ng-container>
+    </div>
+    <span
+    class="font-size-20 font-family-bold text-dark col text-center text-truncate"
+      >{{ inventorisation?.name }}</span
+    >
+    <div class="col-3 text-right px-0">
+      <app-icon
+        (click)="onBack()"
+        [icon]="'close'"
+        class="ml-auto icon-close-dark"
+        style="cursor: pointer;"
+      ></app-icon>
+    </div>
+  </div>
+
+  <div
+    *ngIf="inventorisation?.type === InventorisationType.Full; else partial"
+  >
+    <div class="py-4 d-flex border-bottom">
+      <div class="col-5 px-3 font-family-bold font-size-14 text-dark">
+        {{'Inventorisations.Item.FullTypeAttributes.type' | translate}}
+      </div>
+      <div class="col-7 px-3 font-family-regular font-size-14 text-dark">
+		{{'Inventorisations.Item.FullTypeAttributes.typeHardValue' | translate}}
+      </div>
+    </div>
+    <div class="py-4 d-flex ">
+      <div class="col-5 px-3 font-family-bold font-size-14 text-dark">
+        {{'Inventorisations.Item.FullTypeAttributes.orderDate' | translate}}
+      </div>
+      <div class="col-7 px-3 font-family-regular font-size-14 text-dark">
+        {{ inventorisation?.orderDate | date }}
+      </div>
+    </div>
+  </div>
+
+  <ng-template #partial>
+    <div style="height: 455px; overflow-y: auto;" class="custom-view-scroll d-flex flex-column border-right border-transparent border-width-2px">
+      <div class="container-fluid py-4 border-bottom border-table-border-color px-3 ">
+        <optimo-view-attributes
+          [items]="inventorisationAttributeItems"
+        ></optimo-view-attributes>
+      </div>
+      <app-table
+        *ngIf="inventorisation"
+        [dataSource]="
+          inventorisation.orderLines.length
+              ? inventorisation.orderLines
+              : inventorisation.criteriaValuesDescriptions
+        "
+        [displayedColumns]="displayedColumns"
+        [paginable]="false"
+        [sortable]="false"
+        [selectable]="false"
+        [filterable]="false"
+        [staticData]="true"
+        class="waybills-table-paddings table-dialogs table-view flex-grow-1 d-flex flex-column"
+      >
+        <ng-template app-cell let-row="row" let-cell="cell" name="mismatch">
+          <div class="text-truncate text-right">
+            <span
+              class="d-flex justify-content-end"
+              [matTooltip]="
+                (cell | number: '1.4-4':'en') +
+                ' ' +
+                getUMOAcronym(row.unitOfMeasurement)
+			  "
+			  #ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+              [ngClass]="{
+                'text-danger': cell < 0,
+                'text-success': cell > 0
+              }"
+            >
+              <span class="text-truncate"
+                >{{ cell | number: '1.4-4':'en' }}
+                {{ getUMOAcronym(row.unitOfMeasurement) }}
+              </span>
+            </span>
+          </div>
+        </ng-template>
+        <ng-template app-cell let-cell="cell" let-row="row" name="stockItemName">
+          <div class="d-flex flex-column line-height-normal">
+            <span
+			  [matTooltip]="cell"
+			  #ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+              class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark font-size-14 pb-1"
+            >
+              {{ cell }}
+            </span>
+            <span
+			  [matTooltip]="row.stockItemBarcode"
+			  #ref3 [matTooltipDisabled]="textIsTruncated(ref3)"
+              class="text-truncate mw-100 d-inline-block table-text-dark font-size-14"
+            >
+              {{ row.stockItemBarcode }}
+            </span>
+          </div>
+        </ng-template>
+      </app-table>
+      
+    </div>
+  </ng-template>
+</ng-container>

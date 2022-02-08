@@ -1,0 +1,49 @@
+<div class="h-100">
+	<div class="d-flex flex-column h-100" style="padding-bottom: 71px;">
+		<div class="d-flex align-items-center py-3 px-4" style="height: 80px;">
+			<button class="btn rounded bg-excel-export p-0 mr-2" (click)="onExport()" [matTooltip]="'PricesHistory.exportToExcel' | translate"
+				style="width: 64px; height: 42px;">
+				<app-icon icon="excel"></app-icon>
+			</button>
+			<app-date-picker class="date-picker-regular ml-auto only-range-picker" [maxDate]="endOfToday" (dateChange)="onDateChanged($event)"
+				[defaultDate]="dateRange">
+			</app-date-picker>
+		</div>
+		<div class="bg-white flex-grow-1">
+			<app-table #tableInstance [dataSource]="dataSource" [totalCount]="totalCount" [state]="currentState" [selectable]="false"
+				[paginable]="true" defaultSort="date" defaultSortDirection="DESC" [displayedColumns]="displayedColumns"
+				(stateChanged)="onTableStateChanged($event)" class="table-sales-history before-last-th-bordered">
+				<ng-template app-cell let-cell="cell" let-row="row" name="name">
+					<div class="line-height-normal translate-t-1px">
+						<span [matTooltip]="cell"
+						#ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+							class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1">
+							{{ row.name }}
+						</span>
+						<br>
+						<span [matTooltip]="row.stockItemBarcode"
+						#ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+							class="text-truncate mw-100 d-inline-block table-text-dark">
+							{{ row.stockItemBarcode }}
+						</span>
+					</div>
+				</ng-template>
+				<ng-template app-cell let-cell="cell" name="unitPriceChange">
+					<div class="text-truncate text-right">
+						<span class="d-flex justify-content-end" [ngClass]="{
+                'text-danger': cell < 0,
+                'text-success': cell > 0
+              }">
+							<ng-container *ngIf="cell > 0">
+								+
+							</ng-container>
+
+							<span class="pl-2px"> {{ cell | number: '1.4-4':'en' }} ₾ </span>
+						</span>
+					</div>
+				</ng-template>
+				<ng-template app-cell let-cell="cell" name="id"> </ng-template>
+			</app-table>
+		</div>
+	</div>
+</div>

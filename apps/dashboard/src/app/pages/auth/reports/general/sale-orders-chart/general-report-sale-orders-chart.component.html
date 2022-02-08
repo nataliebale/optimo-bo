@@ -1,0 +1,60 @@
+<div class="card mt-3 mt-sm-4">
+  <div
+    class="card-header bg-transparent d-block d-sm-flex align-items-center py-4"
+  >
+    <div
+      class="d-flex flex-wrap align-items-center font-family-semibold mb-3 mb-sm-0"
+    >
+      ჩეკები
+      <span
+        style="width: 5px; height: 5px; background-color: #c0c5d2;"
+        class="d-inline-block rounded-circle mx-2"
+      ></span>
+      {{ revenueSummaryData?.totalRevenue | number: '1.2-2':'en' }}
+    </div>
+    <div
+      class="ml-0 ml-sm-auto d-flex flex-grow-1 align-items-stretch justify-content-end mw-100"
+    >
+      <div
+        class="position-relative flex-grow-1 flex-sm-grow-0"
+        style="width: 272px;"
+      >
+        <div
+          class="border rounded d-flex align-items-center h-100 px-4"
+          (click)="onToggleDatePicker(); $event.stopPropagation()"
+          style="cursor: pointer;"
+        >
+          {{ dateRange[0] | date: 'MMMM, yyyy' }}
+          <app-icon
+            style="transform: translateY(-1px);"
+            class="ml-auto"
+            [icon]="'arrow-down'"
+          ></app-icon>
+        </div>
+        <app-date-picker
+          *ngIf="isDatePickerVisible"
+          clickOutside
+          (clickOutside)="onToggleDatePicker()"
+          [maxDate]="endOfToday"
+          (dateChange)="onDateChanged($event)"
+          [defaultDate]="dateRange"
+          [isRangePicker]="false"
+          [isMonthSelect]="true"
+          class="datepicker-months"
+        ></app-date-picker>
+      </div>
+      123
+      <app-chart-export
+        class="ml-3"
+        [chart]="chart"
+        [mapsOfColumnTitle]="mapOfExportTitles"
+        fileNamePrefix="SalesAverageRevenue"
+        trackActions="[() => console.log('dev => now track something')]"
+      ></app-chart-export>
+    </div>
+  </div>
+  <div class="card-body charts-card">
+    <app-chart #chart [dataSource]="dataSource" [chartConfig]="chartConfig">
+    </app-chart>
+  </div>
+</div>

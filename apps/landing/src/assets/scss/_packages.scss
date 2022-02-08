@@ -1,0 +1,111 @@
+.packages {
+  &-container {
+    padding-top: $header-height;
+  }
+
+  &-background {
+    content: '';
+    display: block;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f6f7fb;
+    z-index: 0;
+  }
+
+  &-header {
+    .header-light {
+      background-color: transparent;
+      box-shadow: none;
+      position: absolute;
+    }
+  }
+
+  &-border {
+    @include media-breakpoint-up(sm) {
+      border-bottom: 1px solid $border-color;
+    }
+  }
+
+  &-info {
+    padding-bottom: 80px;
+    @include media-breakpoint-up(sm) {
+      padding-top: 120px;
+      padding-bottom: 120px;
+    }
+    @include media-breakpoint-up(lg) {
+      padding-bottom: 200px;
+    }
+  }
+
+  &-tabs {
+    background-color: $white;
+    margin-left: -$grid-gutter-width / 2;
+    margin-right: -$grid-gutter-width / 2;
+    padding: 12px 8px;
+    box-shadow: 0 19px 21px -1px rgba(10, 31, 68, 0.05);
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-item {
+      border: $border-width solid $border-color;
+      background-color: transparent;
+      font-size: 14px;
+      flex: 1;
+      padding-top: 25px;
+      padding-bottom: 24px;
+      @include transition;
+
+      &:focus {
+        outline: none;
+      }
+
+      &.active {
+        border-color: $blue;
+        color: $blue;
+      }
+
+      &:first-child {
+        @include border-left-radius(4px);
+
+        + button.active {
+          border-left-color: $blue;
+        }
+      }
+
+      &:nth-child(2) {
+        border-left-color: transparent;
+      }
+
+      &:last-child {
+        @include border-right-radius(4px);
+
+        border-left-color: transparent;
+
+        &.active {
+        }
+      }
+    }
+  }
+}
+
+.custom-switch-margin {
+  @include media-breakpoint-up(lg) {
+    margin-bottom: 134px;
+  }
+
+  @include media-breakpoint-up(md) {
+    margin-bottom: 80px;
+  }
+
+  margin-bottom: 64px;
+}
+
+app-packages-table {
+  width: 100%;
+}
+

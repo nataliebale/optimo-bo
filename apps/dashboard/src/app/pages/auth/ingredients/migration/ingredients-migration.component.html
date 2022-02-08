@@ -1,0 +1,94 @@
+<div class="approve-dialog">
+  <form [formGroup]="form">
+    <div class="d-flex align-items-center justify-content-between p-4 border-bottom">
+      <div class="mx-2  text-primary font-family-semibold">
+        <!-- <app-icon icon="warn" class="mr-2" style="height: 21px;"></app-icon> -->
+
+        {{'Ingredients.MoveProduct' | translate}}
+      </div>
+      <button
+        class="close py-0 font-size-16 ml-auto approve-dialog-close"
+        (click)="onDecline()"
+      >
+        <app-icon icon="close" style="cursor: pointer;"></app-icon>
+      </button>
+    </div>
+    <div class="approve-dialog-text pr-4 pl-4 pt-4 " style="color: #888ea8;">
+      <span class="mb-2 font-size-14">  {{'Ingredients.ProductName' | translate}} </span>
+      
+
+      <app-dynamic-select
+        [placeholder]="'GENERAL.SELECT' | translate"
+        [dataGetter]="getStockitems"
+        (change)="getStockitemsSupply($event)"
+        formControlName="stockItemIdFrom"
+        class="mt-4"
+        
+      ></app-dynamic-select>
+    </div>
+
+    <div class="approve-dialog-text font-size-14 pt-4 pr-4 pl-4 " style="color: #888ea8;">
+		{{'Ingredients.IngredientName' | translate}}
+
+      <app-dynamic-select
+        placeholder="აირჩიე"
+        [dataGetter]="getIngredients"
+        formControlName="stockItemIdTo"
+        class="mt-4"
+      ></app-dynamic-select>
+    </div>
+
+    <div class="approve-dialog-text font-size-14 pt-4 pr-4 pl-4 " style="color: #888ea8;">
+      <div class="form-group font-size-14">
+        {{'GENERAL.QUANTITY' | translate}}
+        <input
+          id="addInventoryBarcode"
+          data-hj-allow
+          class="form-control w-100 mt-4 mb-2"
+          type="text"
+          placeholder="ჩაწერე"
+          formControlName="quantity"
+          autocomplete="off"
+        />
+        <div class="d-flex w-100 justify-content-end">
+          <span > {{'GENERAL.STOCK' | translate}}: {{ supply }} </span>
+        
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="approve-dialog-text font-size-14 pt-2 pr-4 pl-4 " style="color: #888ea8;" >
+		{{'Ingredients.UpdatableStockType' | translate}}
+      <ng-select
+        class="custom-select-header form-control mt-4"
+        [items]="mapOfHoldingTypes"
+        placeholder="აირჩიე"
+        formControlName="holdingType"
+        bindValue="value"
+        bindLabel="label"
+        [searchable]="true"
+        [clearable]="false"
+      >
+      </ng-select>
+    </div>
+
+    <div class="d-flex p-4 border-top mt-4">
+      <button
+        class="btn btn-primary border w-50 flex-grow-1 mr-3"
+        [disabled]="!form.valid"
+        (click)="onApprove()"
+      >
+        {{'GENERAL.SAVE' | translate}}
+      </button>
+
+      <button
+        class="btn btn-outline-primary w-50 flex-grow-1 "
+        (click)="onDecline()"
+      >
+	  {{'GENERAL.CANCEL' | translate}}
+      </button>
+      
+    </div>
+  </form>
+</div>

@@ -1,0 +1,108 @@
+.faq {
+  &-container {
+    padding-top: $header-height;
+  }
+
+  &-category {
+    &-item {
+      height: 96px;
+      text-align: center;
+      @include media-breakpoint-up(sm) {
+        height: 112px;
+      }
+      @include media-breakpoint-up(md) {
+        height: 143px;
+        font-size: 16px;
+        transform: scale(1);
+      }
+      @include media-breakpoint-up(lg) {
+        height: 166px;
+      }
+
+      border: $border-width solid $border-color;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #888ea8;
+      font: 12px $font-regular, $font-regular-georgian;
+      padding: 16px;
+
+      app-icon {
+        transform: scale(.7);
+      }
+
+      @include border-radius;
+      @include transition;
+
+      &:not(.active) {
+        &:hover {
+          text-decoration: none;
+          color: rgba($primary, .5);
+          border-color: rgba($primary, .5);
+        }
+
+        app-icon {
+          opacity: .5;
+        }
+      }
+
+      &.active {
+        border-color: $primary;
+        color: $primary;
+        font-family: $font-medium, $font-medium-georgian;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  &-list {
+    &-item {
+      border-bottom: $border-width solid $border-color;
+
+      &:first-child {
+        border-top: $border-width solid $border-color;
+      }
+
+      &-header {
+        font-size: 14px;
+        @include media-breakpoint-up(sm) {
+          font-size: 16px;
+        }
+        font-family: $font-medium, $font-medium-georgian;
+        color: $dark;
+        padding-top: 32px;
+        padding-bottom: 32px;
+        cursor: pointer;
+      }
+
+      &-body {
+        color: $text-muted;
+        line-height: 28px;
+        padding-bottom: 32px;
+        //max-width: 706px;
+        //width: 100%;
+        font-size: 14px;
+        @include media-breakpoint-up(sm) {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  &-info {
+    padding-top: 100px;
+    @include media-breakpoint-up(sm) {
+      padding-top: 80px;
+    }
+  }
+
+  &-icon {
+    path {
+      fill: $blue;
+    }
+  }
+}

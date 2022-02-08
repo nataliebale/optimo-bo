@@ -1,0 +1,31 @@
+.deleteTableIcon {
+  width: 22px;
+  height: 22px;
+  background-color: #3a3e56;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.loadingMode {
+  opacity: 0.5;
+}
+
+.spaceSelector {
+  .spaceSelector__spaceEdit,
+  .spaceSelector__spaceDelete {
+    -webkit-transition: all 0.15s linear;
+    transition: all 0.15s linear;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &:hover {
+    .spaceSelector__spaceEdit,
+    .spaceSelector__spaceDelete {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,59 @@
+.request {
+  &-container {
+    user-select: text;
+    padding-top: $header-height;
+  }
+
+  &-form {
+    @include border-radius();
+
+    &.translate-y-0 {
+      transform: translateY(0);
+    }
+
+    @include media-breakpoint-up(xs) {
+      padding: 0 20px;
+    }
+    @include media-breakpoint-up(lg) {
+      transform: translateY(-125px);
+      width: 652px;
+      box-shadow: $request-form-box-shadow;
+      border: solid 1px $request-form-border-color;
+      padding: $request-form-padding;
+      background-color: $white;
+
+    }
+    @include media-breakpoint-up(xl) {
+      transform: translateY(-160px);
+    }
+  }
+  &-content {
+    opacity: 1;
+    visibility: visible;
+    @include transition($transition-fade);
+
+    &.inactive {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  &-success {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 80px;
+    @include media-breakpoint-up(sm) {
+      padding-top: 180px;
+    }
+    opacity: 0;
+    visibility: hidden;
+    @include transition($transition-fade);
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}

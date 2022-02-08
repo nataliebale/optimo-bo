@@ -1,0 +1,58 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@optimo/core": ["libs/core/src/index.ts"],
+      "@optimo/ui-table": ["libs/ui/table/src/index.ts"],
+      "@optimo/ui-icon": ["libs/ui/icon/src/index.ts"],
+      "@optimo/ui-date-picker": ["libs/ui/date-picker/src/index.ts"],
+      "@optimo/util-click-outside": ["libs/util/click-outside/src/index.ts"],
+      "@optimo/ui-year-select": ["libs/ui/year-select/src/index.ts"],
+      "@optimo/ui-slider": ["libs/ui/slider/src/index.ts"],
+      "@optimo/ui-loader-bar": ["libs/ui/loader-bar/src/index.ts"],
+      "@optimo/ui-file-uploader": ["libs/ui/file-uploader/src/index.ts"],
+      "@optimo/ui-dynamic-select": ["libs/ui/dynamic-select/src/index.ts"],
+      "@optimo/ui-chart": ["libs/ui/chart/src/index.ts"],
+      "@optimo/ui-circle-progress": ["libs/ui/circle-progress/src/index.ts"],
+      "@optimo/ui-nested-menu": ["libs/ui/nested-menu/src/index.ts"],
+      "@optimo/ui-print-barcode": ["libs/ui/print-barcode/src/index.ts"],
+      "@optimo/ui-password-edit-box": [
+        "libs/ui/password-edit-box/src/index.ts"
+      ],
+      "@optimo/ui-bottom-sheet-dispacher": [
+        "libs/ui/bottom-sheet-dispacher/src/index.ts"
+      ],
+      "@optimo/ui-popups-approve-dialog": [
+        "libs/ui/popups/approve-dialog/src/index.ts"
+      ],
+      "@optimo/ui-styles/*": ["libs/ui/styles/src/lib/*"],
+      "@optimo/ui/view-attributes": ["libs/ui/view-attributes/src/index.ts"],
+      "@optimo/util/text-is-truncated": [
+        "libs/util/text-is-truncated/src/index.ts"
+      ],
+      "@optimo/ui/notification-view": [
+        "libs/ui/notification-view/src/index.ts"
+      ],
+      "@optimo/mixpanel": ["libs/mixpanel/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"],
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
+}

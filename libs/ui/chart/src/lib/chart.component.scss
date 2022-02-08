@@ -1,0 +1,67 @@
+.product-report {
+  &-chart {
+    margin-bottom: 3vh;
+    max-width: 160px;
+    &-header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding-left: 77px;
+
+      &-legend {
+        justify-self: flex-start;
+        margin-right: auto;
+        display: flex;
+        flex-direction: row;
+
+        &-item {
+          display: flex;
+          flex-direction: row;
+
+          &-badge {
+            margin-right: 1vmin;
+            width: 5vmin;
+            height: 2vmin;
+          }
+
+          &-title {
+            margin-right: 2vmin;
+          }
+        }
+      }
+
+      &-filters {
+        justify-self: flex-end;
+        display: flex;
+        flex-direction: row;
+
+        &-period {
+          margin-right: 2vmin;
+          padding-top: 5px;
+        }
+
+        &-items {
+          margin-right: 2vmin;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: row;
+
+          &-all {
+            margin-left: 1vmin;
+          }
+        }
+      }
+    }
+
+    &-body {
+      height: 45vh;
+    }
+  }
+}
+
+.chart-div {
+  height: 100% !important;
+}

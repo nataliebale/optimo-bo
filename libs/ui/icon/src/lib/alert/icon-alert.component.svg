@@ -1,0 +1,17 @@
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 21</title>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g  transform="translate(-710.000000, -380.000000)">
+            <g  transform="translate(686.000000, 363.000000)">
+                <g  transform="translate(25.000000, 18.000000)">
+                    <g  stroke="#F11A5E" stroke-width="2">
+                        <g >
+                            <circle id="Shape" cx="11" cy="11" r="11"></circle>
+                        </g>
+                    </g>
+                    <path d="M11,13.85 C11.6351275,13.85 12.15,14.3648725 12.15,15 C12.15,15.6351275 11.6351275,16.15 11,16.15 C10.3648725,16.15 9.85,15.6351275 9.85,15 C9.85,14.3648725 10.3648725,13.85 11,13.85 Z M11,4.85 C11.5927856,4.85 12.0808159,5.29851119 12.143252,5.87469483 L12.15,6 L12.15,11 C12.15,11.6351275 11.6351275,12.15 11,12.15 C10.4072144,12.15 9.91918414,11.7014888 9.85674804,11.1253052 L9.85,11 L9.85,6 C9.85,5.36487254 10.3648725,4.85 11,4.85 Z" id="Combined-Shape" fill="#F11A5E" fill-rule="nonzero"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

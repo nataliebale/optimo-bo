@@ -1,0 +1,38 @@
+.view-supplier {
+  padding: 20px;
+  &-rows {
+    display: flex;
+    flex-direction: column;
+
+    &-row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding-bottom: 10px;
+      &-key {
+        font-weight: bold;
+        font-size: 1.15em;
+        width: 25%;
+        text-align: left;
+      }
+      &-value {
+        margin-left: 5em;
+        margin-right: auto;
+        color: #adadad;
+        font-size: 1.15em;
+      }
+    }
+  }
+  &-grid {
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  &-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    &-action {
+      margin-left: 10px;
+    }
+  }
+}

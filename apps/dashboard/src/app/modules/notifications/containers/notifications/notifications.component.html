@@ -1,0 +1,11 @@
+<div class="notifications-wrapper pr-sm-4 pr-13px" clickOutside (clickOutside)="clickOutside()">
+  <div [class.active]="showList"
+    class="btn p-0 notification-btn rounded-circle d-flex justify-content-center align-items-center"
+    (click)="toggleNotificationList()">
+    <app-icon icon="notification" matTooltip='შეტყობინებები'></app-icon>
+    <div *ngIf="unseenNotificationQuantity$ | async as unseenNotificationQuantity" class="notification-number">
+      {{unseenNotificationQuantity}}</div>
+  </div>
+  <app-notification-list *ngIf="showList" [notifications]="notifications" (openNotification)="openNotification($event)"
+    (onScroll)="onScroll()"></app-notification-list>
+</div>

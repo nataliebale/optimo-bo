@@ -1,0 +1,139 @@
+<!--
+<div class="view-order">
+  <div class="view-order-rows">
+    <div class="view-order-rows-row" *ngFor="let row of rows">
+      <div class="view-order-rows-row-key">{{ row.key }}:</div>
+      <div class="view-order-rows-row-value">{{ row.value }}</div>
+    </div>
+  </div>
+  <div class="view-order-grid">
+    <app-table
+      [dataSource]="order.orderLines"
+      [displayedColumns]="stockItemsDisplayedColumns"
+      [paginable]="false"
+      [selectable]="false"
+    >
+    </app-table>
+  </div>
+  <div class="view-order-actions">
+    <button
+      mat-stroked-button
+      class="view-order-actions-action"
+      (click)="back()"
+    >
+      დაბრუნება
+    </button>
+    <button
+      mat-stroked-button
+      class="view-order-actions-action"
+      (click)="edit()"
+      *ngIf="order.status == orderStatuses.Draft"
+    >
+      რედაქტირება
+    </button>
+    <button
+      mat-stroked-button
+      class="view-order-actions-action"
+      (click)="delete()"
+    >
+      წაშლა
+    </button>
+  </div>
+</div>
+-->
+<div class="d-flex align-items-center border-bottom px-4 border-table-border-color" style="height: 87px;">
+  <div class="col-4 d-flex align-items-center px-0">
+    <button
+      (click)="onEdit()"
+      class="btn-view-action-rounded"
+      style="width: 36px;height: 36px;"
+      *ngIf="order && order.status === orderStatuses.Draft"
+    >
+        <app-icon [icon]="'edit-tbls'" ></app-icon>
+    </button>
+    <button
+    (click)="onDelete()"
+      class="btn-view-action-rounded"
+      style="width: 36px;height: 36px;"
+      *ngIf="order && order.status !== orderStatuses.Received"
+    >
+      <app-icon
+        [icon]="'trash-tbls'"
+        fill="#fc3c2d"
+      ></app-icon>
+    </button>
+    <button
+    (click)="onExcelDownload()"
+      class="btn-view-action-rounded"
+      style="width: 36px;height: 36px;"
+      *ngIf="order?.isExcel && order?.importedFileUrl"
+    >
+      <app-icon
+        [icon]="'excel-download'"
+        fill="#fc3c2d"
+      ></app-icon>
+    </button>
+  </div>
+  <span class="font-size-20 font-family-bold text-dark col text-center text-truncate px-0"
+    >{{ order?.name }}
+  </span>
+  <div class="col-4 text-right px-0">
+    <app-icon
+      (click)="onBack()"
+      [icon]="'close'"
+      class="ml-auto icon-close-dark"
+      style="cursor: pointer;"
+    ></app-icon>
+  </div>
+</div>
+<div style="height: 515px; overflow-y: auto;" class="custom-view-scroll d-flex flex-column border-right border-transparent border-width-2px"
+  infiniteScroll
+  [scrollWindow]="false"
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="onScroll()"
+>
+  <div class="container-fluid py-4 px-3 border-bottom border-table-border-color"
+  >
+    <optimo-view-attributes
+      [items]="orderAttributeItems"
+    ></optimo-view-attributes>
+  </div>
+  <div
+    class="waybills-table-paddings flex-grow-1"
+  >
+    <app-table
+      *ngIf="orderLines && stockItemsDisplayedColumns"
+      [dataSource]="orderLines"
+      [displayedColumns]="stockItemsDisplayedColumns"
+      [paginable]="false"
+      [selectable]="false"
+      [filterable]="false"
+      [staticData]="true"
+      class="table-dialogs table-view"
+    >
+      <ng-template app-cell let-cell="cell" let-row="row" name="stockItemName">
+        <div class="d-flex flex-column">
+          <span
+			[matTooltip]="cell"
+			#ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+            class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1"
+          >
+            {{ cell }}
+          </span>
+           
+          <span
+			[matTooltip]="row.stockItemBarcode"
+			#ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+            class="text-truncate mw-100 d-inline-block table-text-dark"
+          >
+            {{ row.stockItemBarcode }}
+          </span>
+        </div>
+      </ng-template>
+    </app-table>
+  </div>
+</div>
+<!-- <div class=" d-flex align-items-center px-4 justify-content-end border-top border-table-border-color" style="height: 83px;">
+  <app-paginator></app-paginator>
+</div> -->

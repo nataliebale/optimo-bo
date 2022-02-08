@@ -1,0 +1,68 @@
+<div class="w-100 h-100 d-flex flex-column">
+  <div class="d-flex align-items-center px-4 py-3" style="height: 80px;">
+    <button
+      type="button"
+      class="btn btn-primary btn-add mr-3"
+      [ngClass]="{ 'd-none': selectedRows && selectedRows.length > 0 }"
+      (click)="goToAdd()"
+    >
+      <span>დამატება</span>
+    </button>
+    <button
+    (click)="onEditSelected()"
+    class="btn mr-2 bg-table-border-color py-0"
+    style="width: 64px; height: 42px;"
+    [ngClass]="{ 'd-none': !selectedRows || selectedRows.length !== 1 }"
+  >
+    <app-icon icon="edit"></app-icon>
+  </button>
+  <button
+    class="btn mr-2 bg-table-border-color py-0"
+    (click)="openRemovalDialog(selectedRows)"
+    style="width: 64px; height: 42px;"
+    [ngClass]="{ 'd-none': !selectedRows || !selectedRows.length }"
+  >
+    <app-icon icon="trash"></app-icon>
+  </button>
+  </div>
+
+  <app-table
+    *ngIf="datasource"
+    [displayedColumns]="displayedColumns"
+    [dataSource]="datasource"
+    [totalCount]="totalCount"
+    [state]="curTableState"
+    [actions]="{ editable: true, deletable: true }"
+    [selectable]="true"
+    [filterable]="true"
+    [paginable]="true"
+    [defaultSort]="'id'"
+    [defaultSortDirection]="'DESC'"
+    (selectionChanged)="onSelectionChanged($event)"
+    (rowEdit)="goToEdit($event?.id)"
+    (rowDelete)="openRemovalDialog([$event])"
+    (rowViewAs)="goViewAs($event)"
+    (stateChanged)="onTableStateChanged($event)"
+    class="table-offers flex-grow-1 table-categories action-control-w-90px"
+    style="padding-bottom: 71px;"
+  >
+    <ng-template
+      app-cell
+      let-cell="cell"
+      let-row="row"
+      name="emailOrPhoneNumber"
+    >
+      <div class="line-height-normal translate-t-1px ">
+        <span
+          class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1"
+        >
+          {{ row?.email }}
+        </span>
+        <br />
+        <span class="text-truncate mw-100 d-inline-block table-text-dark">
+          {{ row?.phoneNumber }}
+        </span>
+      </div>
+    </ng-template>
+  </app-table>
+</div>

@@ -1,0 +1,22 @@
+<div class="carousel">
+  <div
+    class="carousel-item"
+    [ngClass]="{ active: isActive(i) }"
+    *ngFor="let slide of slides; let i = index"
+  >
+    <a *ngIf="slide.routePath; else notPath" [routerLink]="slide.routePath">
+      <img [src]="slide.img" [alt]="slide.alt" class="img-fluid" />
+    </a>
+    <ng-template #notPath>
+      <img [src]="slide.img" [alt]="slide.alt" class="img-fluid" />
+    </ng-template>
+  </div>
+  <div class="carousel-indicators" *ngIf="slides?.length > 1">
+    <div
+      *ngFor="let slide of slides; let i = index"
+      class="carousel-indicator"
+      [ngClass]="{ active: isActive(i) }"
+      (click)="slideTo(i)"
+    ></div>
+  </div>
+</div>

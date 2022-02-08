@@ -1,0 +1,78 @@
+<div class="w-100 h-100 d-flex flex-column">
+  <!-- <h1
+    [matTooltip]="'აბცდ'"
+  >
+    შეთავაზებები
+  </h1> -->
+
+  <div class="d-flex align-items-center px-4 py-3" style="height: 80px;">
+    <a
+      *ngIf="!(selectedRows?.length > 0)"
+      class="btn btn-primary btn-add mr-3"
+      [routerLink]="['./add']"
+    >
+      <!-- <app-icon [icon]="'plus'" class="mr-2"></app-icon> -->
+      <span>დამატება</span>
+    </a>
+
+    <button
+      *ngIf="selectedRows?.length === 1"
+      (click)="onEditSelected()"
+      class="btn px-3 mr-2 bg-table-border-color py-0"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon icon="edit"></app-icon>
+    </button>
+
+    <button
+      *ngIf="selectedRows?.length >= 1"
+      class="btn mr-2 px-3 bg-table-border-color py-0"
+      (click)="onDeleteSelected()"
+      style="width: 64px; height: 42px;"
+    >
+      <app-icon icon="trash"></app-icon>
+    </button>
+  </div>
+
+  <app-table
+    *ngIf="datasource"
+    [displayedColumns]="displayedColumns"
+    [dataSource]="datasource"
+    [state]="curTableState"
+    [totalCount]="totalCount"
+    [actions]="{ editable: true, deletable: true }"
+    [selectable]="true"
+    [filterable]="true"
+    [paginable]="true"
+    [defaultSort]="'lastModifiedOn'"
+    [defaultSortDirection]="'DESC'"
+    (selectionChanged)="onSelectionChanged($event)"
+    (rowClick)="onRowClick($event.id)"
+    (rowEdit)="goToEdit($event)"
+    (rowDelete)="openRemovalDialog([$event.id])"
+    (stateChanged)="onTableStateChanged($event)"
+    class="table-offers flex-grow-1 s-th-w-72px"
+    style="padding-bottom: 71px;"
+  >
+    <ng-template app-cell let-cell="cell" let-row="row" name="logo">
+      <div
+        class="table-company-logo"
+        [ngStyle]="{ 'background-image': 'url(' + row.logoUrl + ')' }"
+      ></div>
+    </ng-template>
+
+    <ng-template app-cell let-cell="cell" let-row="row" name="lastModifiedOn">
+      <div class="text-truncate text-right">
+        <span [matTooltip]="row.lastModifiedOn | date: 'd MMM yy, HH:mm'">
+          {{ row.lastModifiedOn | date: 'd MMM yy, HH:mm' }}
+        </span>
+      </div>
+    </ng-template>
+
+    <!-- <div *ngIf="!cellTmpl" class="text-truncate text-right">
+    <span [matTooltip]="row[col.dataField] | date: format">
+      {{ row[col.dataField] | date: format }}
+    </span>
+  </div> -->
+  </app-table>
+</div>

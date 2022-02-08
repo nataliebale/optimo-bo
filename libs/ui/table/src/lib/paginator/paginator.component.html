@@ -1,0 +1,78 @@
+<div
+  *ngIf='showPaginator'
+  class='container-fluid'
+>
+  <div class='row align-items-center'>
+    <ng-container *ngIf='!hidePageSize'>
+      <ng-select
+        class='form-control border border-pagination-border ng-option-centered pt-6px pb-6px pr-10px pl-3'
+        style='width: 68px; height: 34px;'
+        [ngModel]='pageSize'
+        [items]='pageSizeOptions'
+        (change)='changePageSize($event)'
+        [searchable]='false'
+        [clearable]='false'
+      >
+      </ng-select>
+
+      <div class='ml-10px font-family-regular font-size-14 font-color-dark'>
+        / {{ length }}
+        <!-- {{ rangeLabel }} -->
+      </div>
+    </ng-container>
+    <nav class='ml-auto d-flex align-items-center justify-content-center'>
+      <button
+        *ngIf='showNextPrevButtons'
+        (click)='goTo(pageIndex)'
+        [disabled]='!hasPreviousPage()'
+        class='btn bg-transparent'
+      >
+        <span class='font-size-12 text-muted'>წინა</span>
+      </button>
+      <ul class='pagination justify-content-center mb-0'>
+        <ng-container *ngFor='let page of shownPages'>
+          <li
+            class='page-item text-center'
+            [class.active]='pageIndex + 1 === page'
+            [class.dots]='page < 0'
+          >
+            <a
+              *ngIf='page > 0'
+              class='page-link position-relative'
+              href='javascript: void(0)'
+              (click)='goTo(page)'
+            >
+              <span class='line-height-normal'> {{ page }} </span>
+            </a>
+            <ng-container *ngIf='page < 0'>...</ng-container>
+          </li>
+        </ng-container>
+      </ul>
+      <button
+        *ngIf='showNextPrevButtons'
+        (click)='goTo(pageIndex + 2)'
+        [disabled]='!hasNextPage()'
+        class='btn bg-transparent'
+      >
+        <span class='font-size-12 text-muted'>შემდეგი</span>
+      </button>
+    </nav>
+    <ng-container *ngIf='!hidePageSize'>
+      <div
+        class='mr-2 ml-2 font-family-regular font-size-14 border-left pl-4 border-table-border-color font-color-dark'
+      >
+        მიუთითე გვერდი
+      </div>
+      <ng-select
+        class='form-control border border-pagination-border no-arrow py-2 ng-option-centered'
+        style='width: 65px; height: 34px;'
+        [ngModel]='pageIndex + 1'
+        [items]='pagesArray.length!==0 ? pagesArray : [pageIndex + 1]'
+        (change)='goTo($event)'
+        [searchable]='false'
+        [clearable]='false'
+      >
+      </ng-select>
+    </ng-container>
+  </div>
+</div>

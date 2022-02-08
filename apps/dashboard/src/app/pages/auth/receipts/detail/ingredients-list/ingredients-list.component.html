@@ -1,0 +1,135 @@
+<div class="row justify-content-between align-items-center">
+  <div class="w-100 pb-3 col" style="max-width: 656px; flex-basis: 656px;">
+    <div class="font-size-15 font-color-dark font-family-bold mb-2">
+	  {{'GENERAL.SELECT' | translate}} {{'GENERAL.INGREDIENT' | translate}}
+    </div>
+    <div class="d-flex align-items-center justify-content-between">
+      <app-dynamic-select
+        #dynamicSelector="ngModel"
+        [dataGetter]="getProducts"
+        [itemGetterById]="getProductById"
+        additionalSearchKey="stockItemBarcode"
+        [showClearButton]="false"
+        [multiple]="true"
+        [showLabel]="false"
+        [closeOnSelect]="false"
+        [(ngModel)]="selectedProductIds"
+        [ngModelOptions]="{ standalone: true }"
+        id="ingredients-list-choose-ingredient"
+      ></app-dynamic-select>
+    </div>
+  </div>
+  <!-- *ngIf="productsDataSource && !productsDataSource[0]?.placeholder" -->
+  <div
+    class="col d-flex align-items-center justify-content-end pt-2"
+    style="width: 100%; max-width: 328px;"
+  >
+    <span class="font-family-regular font-size-14 text-dark pr-2px"
+      >{{'GENERAL.TOTAL_COST' | translate}}:
+    </span>
+    <span class="font-family-bold text-dark font-size-18 text-truncate">
+      {{
+        ingredientsTotalPrice
+          ? (ingredientsTotalPrice | number: '1.4-4':'en')
+          : (0 | number: '1.4-4':'en')
+      }}
+      ₾
+    </span>
+  </div>
+</div>
+<app-table
+  [dataSource]="productsDataSource"
+  [totalCount]="productsDataSource?.length"
+  [selectable]="false"
+  [filterable]="false"
+  [paginable]="false"
+  [indexable]="true"
+  [displayedColumns]="displayedColumns"
+  [staticData]="true"
+  [inlineEdit]="true"
+  class="table-add-order first-th-centered"
+  [class.disabled]="productsDataSource && productsDataSource[0]?.placeholder"
+>
+  <ng-template app-cell let-cell="cell" let-row="row" name="name">
+    <div
+      
+      class="line-height-normal"
+    >
+      <span
+		[matTooltip]="row.name"
+		#ref1 [matTooltipDisabled]="textIsTruncated(ref1)"
+        class="font-family-bold text-truncate mw-100 d-inline-block table-text-dark pb-1"
+      >
+        {{ row.name }}
+      </span>
+<br>
+      <span
+        *ngIf="row?.stockItemBarcode"
+		[matTooltip]="row.stockItemBarcode"
+		#ref2 [matTooltipDisabled]="textIsTruncated(ref2)"
+        class="text-truncate mw-100 d-inline-block table-text-dark"
+      >
+        {{ row.stockItemBarcode }}
+      </span>
+    </div>
+  </ng-template>
+  <ng-template app-cell let-row="row" let-i="i" name="quantity">
+    <input
+      [id]="'quantity_row_' + i"
+      data-hj-allow
+      class="form-control text-center "
+      style="width:122px;"
+      *ngIf="!row.placeholder"
+      #quantity="ngModel"
+      type="text"
+      autocomplete="off"
+      required
+      appMoreThan="0"
+      [ngModel]="row.quantity.toString()"
+      (input)="row.quantity = parseFloatWithCommas($event.target.value)"
+      (change)="row.quantity = checkValueToZero($event.target.value)"
+      mask="separator.4"
+      thousandSeparator=","
+    />
+    <div *ngIf="row.placeholder">
+      {{ row.quantity }}
+    </div>
+  </ng-template>
+  <ng-template app-cell let-row="row" name="totalCost">
+    <div class="d-flex justify-content-end">
+      <div class="text-dark pr-40 mw-100 d-flex align-items-center w-100 text-truncate justify-content-end" style="max-width: 98px;">
+        <span class="pr-2px text-truncate"> 
+        <ng-container *ngIf="!row.placeholder && row.unitCostAVG * row.quantity">
+          {{ row.unitCostAVG * row.quantity | number: '1.4-4':'en' }}
+        </ng-container>
+        <ng-container *ngIf="row.placeholder || !(row.unitCostAVG * row.quantity)">
+          {{ row.unitCostAVG }}
+        </ng-container>
+      </span>
+      <ng-container *ngIf="!row.placeholder">
+        <div class="d-flex align-items-center">
+          ₾
+        </div>
+      </ng-container>
+      </div>
+      <app-icon
+          [matTooltip]="'GENERAL.DELETE' | translate"
+          [icon]="'trash-tbls'"
+          fill="#e6ecf5"
+          (click)="onRemoveProduct(row)"
+          style="cursor: pointer;"
+        >
+        </app-icon>
+    </div>
+
+
+
+ 
+  </ng-template>
+
+  <ng-template app-cell let-cell="cell" let-row="row" name="unitOfMeasurement">
+    <div class="text-truncate">
+      <span> {{ getUMOFullName(cell) }} </span>
+    </div>
+  </ng-template>
+</app-table>
